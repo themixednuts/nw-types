@@ -1,13 +1,13 @@
 // To parse this data:
 //
-//   import { Convert, PlayerbaseattributesD } from "./file";
+//   import { Convert, PlayerBaseAttributesData } from "./file";
 //
-//   const playerbaseattributesD = Convert.toPlayerbaseattributesD(json);
+//   const playerBaseAttributesData = Convert.toPlayerBaseAttributesData(json);
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface PlayerbaseattributesD {
+export interface PlayerBaseAttributesData {
     __type:                                    string;
     "player attribute data":                   PlayerAttributeData;
     "structure placement data":                StructurePlacementData;
@@ -611,12 +611,12 @@ export interface DeployableLimitsEditable {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toPlayerbaseattributesD(json: string): PlayerbaseattributesD {
-        return cast(JSON.parse(json), r("PlayerbaseattributesD"));
+    public static toPlayerBaseAttributesData(json: string): PlayerBaseAttributesData {
+        return cast(JSON.parse(json), r("PlayerBaseAttributesData"));
     }
 
-    public static playerbaseattributesDToJson(value: PlayerbaseattributesD): string {
-        return JSON.stringify(uncast(value, r("PlayerbaseattributesD")), null, 2);
+    public static playerBaseAttributesDataToJson(value: PlayerBaseAttributesData): string {
+        return JSON.stringify(uncast(value, r("PlayerBaseAttributesData")), null, 2);
     }
 }
 
@@ -773,7 +773,7 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "PlayerbaseattributesD": o([
+    "PlayerBaseAttributesData": o([
         { json: "__type", js: "__type", typ: "" },
         { json: "player attribute data", js: "player attribute data", typ: r("PlayerAttributeData") },
         { json: "structure placement data", js: "structure placement data", typ: r("StructurePlacementData") },
