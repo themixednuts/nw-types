@@ -3,6 +3,5 @@
   "version": "1.0.0",
   "description": "",
   "main": "datasheets.d.ts",
-  "author": "Mixed Nuts",
-  "license": "ISC"
+  "license": "MIT"
 }
