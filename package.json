@@ -1,7 +1,14 @@
 {
-  "name": "@new-world/types-datasheets",
+  "name": "@mixednuts/types",
   "version": "1.0.0",
   "description": "",
   "main": "datasheets.d.ts",
-  "license": "MIT"
+  "types": [
+    "datasheets.d.ts",
+    "playerbaseattributes.d.ts"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.0.4"
+  }
 }
