@@ -7,8 +7,5 @@
     "datasheets.d.ts",
     "playerbaseattributes.d.ts"
   ],
-  "license": "MIT",
-  "dependencies": {
-    "typescript": "^5.0.4"
-  }
+  "license": "MIT"
 }
