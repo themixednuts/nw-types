@@ -1,13 +1,13 @@
 // To parse this data:
 //
-//   import { Convert, PlayerBaseAttributesData } from "./file";
+//   import { Convert, PlayerBaseAttributeData } from "./file";
 //
-//   const playerBaseAttributesData = Convert.toPlayerBaseAttributesData(json);
+//   const playerBaseAttributeData = Convert.toPlayerBaseAttributeData(json);
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface PlayerBaseAttributesData {
+export type PlayerBaseAttributeData = {
     __type:                                    string;
     "player attribute data":                   PlayerAttributeData;
     "structure placement data":                StructurePlacementData;
@@ -34,26 +34,26 @@ export interface PlayerBaseAttributesData {
     "milestone correction data":               MilestoneCorrectionData;
 }
 
-export interface ClaimLeaderboardsData {
+export type ClaimLeaderboardsData = {
     __type:                                       string;
     "leaderboard snapshot period length minutes": number;
     "leaderboard periods in a season":            number;
     "leaderboard snapshot regions":               LeaderboardSnapshotRegion[];
 }
 
-export interface LeaderboardSnapshotRegion {
+export type LeaderboardSnapshotRegion = {
     __type: string;
     value1: string;
     value2: LeaderboardSnapshotRegionValue2;
 }
 
-export interface LeaderboardSnapshotRegionValue2 {
+export type LeaderboardSnapshotRegionValue2 = {
     __type:                       string;
     "snapshot start time hour":   number;
     "snapshot start time minute": number;
 }
 
-export interface ContractData {
+export type ContractData = {
     __type:                              string;
     "base number of buy/sell contracts": number;
     "base number of other contracts":    number;
@@ -64,24 +64,24 @@ export interface ContractData {
     "sell contract transaction tax":     number;
 }
 
-export interface ContractDurationFeeMap {
+export type ContractDurationFeeMap = {
     __type: string;
     value1: number;
     value2: BuyContractDurationFeeMapValue2;
 }
 
-export interface BuyContractDurationFeeMapValue2 {
+export type BuyContractDurationFeeMapValue2 = {
     __type:           string;
     "flat fee":       number;
     "percentage fee": number;
 }
 
-export interface DailyBonusData {
+export type DailyBonusData = {
     __type:         string;
     bonusresethour: number;
 }
 
-export interface EventCreditData {
+export type EventCreditData = {
     __type:                               string;
     "credit time limit seconds":          number;
     "credit health threshold percentage": number;
@@ -91,7 +91,7 @@ export interface EventCreditData {
     "group credit modifiers":             CreditModifier[];
 }
 
-export interface CreditModifier {
+export type CreditModifier = {
     __type:                        EventCreditModifierType;
     "xp modifier":                 number;
     "loot modifier":               number;
@@ -99,11 +99,9 @@ export interface CreditModifier {
     "territory standing modifier": number;
 }
 
-export enum EventCreditModifierType {
-    CreditModifierData = "CreditModifierData",
-}
+export type EventCreditModifierType = "CreditModifierData";
 
-export interface FactionData {
+export type FactionData = {
     __type:                            string;
     "sanctuary enter notification id": string;
     "sanctuary exit notification id":  string;
@@ -120,32 +118,28 @@ export interface FactionData {
     "pvp kill faction token modifier": number;
 }
 
-export interface FortCaptureGameeventid {
+export type FortCaptureGameeventid = {
     __type:     FortCaptureGameeventidType;
     m_valuestr: string;
     m_valuecrc: AzothCurrencyID;
 }
 
-export enum FortCaptureGameeventidType {
-    EditCRC = "EditCrc",
-}
+export type FortCaptureGameeventidType = "EditCrc";
 
-export interface AzothCurrencyID {
+export type AzothCurrencyID = {
     __type: AzothCurrencyIDType;
     value:  number;
 }
 
-export enum AzothCurrencyIDType {
-    Crc32 = "Crc32",
-}
+export type AzothCurrencyIDType = "Crc32";
 
-export interface PvpKillValueThreshold {
+export type PvpKillValueThreshold = {
     __type:                 string;
     "kill reward modifier": FortCaptureGameeventid;
     "value threshold":      number;
 }
 
-export interface FactionInfluenceConfigData {
+export type FactionInfluenceConfigData = {
     __type:                             string;
     maxinfluence:                       number;
     decrementrate:                      number;
@@ -164,7 +158,7 @@ export interface FactionInfluenceConfigData {
     minimuminfluencethresholdforwar:    number;
 }
 
-export interface FishingData {
+export type FishingData = {
     __type:                                      string;
     "fish catch game event":                     string;
     "fish hook game event":                      string;
@@ -187,25 +181,25 @@ export interface FishingData {
     "fish tired swim away multiplier":           number;
 }
 
-export interface GatherGameData {
+export type GatherGameData = {
     __type:                            string;
     "perfect hit time amount to take": number;
     "average hit time amount to take": number;
 }
 
-export interface GuaranteedItemTransferData {
+export type GuaranteedItemTransferData = {
     __type:       string;
     itemname:     string;
     itemquantity: number;
 }
 
-export interface GuildSiegeWindowRegionDatum {
+export type GuildSiegeWindowRegionDatum = {
     __type: string;
     value1: string;
     value2: GuildSiegeWindowRegionDatumValue2;
 }
 
-export interface GuildSiegeWindowRegionDatumValue2 {
+export type GuildSiegeWindowRegionDatumValue2 = {
     __type:       string;
     "start hour": number;
     "end hour":   number;
@@ -215,18 +209,18 @@ export interface GuildSiegeWindowRegionDatumValue2 {
     observesdst:  boolean;
 }
 
-export interface GuildTreasuryData {
+export type GuildTreasuryData = {
     __type:                           string;
     "default daily withdrawal limit": number;
 }
 
-export interface MilestoneCorrectionData {
+export type MilestoneCorrectionData = {
     __type:                  string;
     currentmilestoneversion: number;
     milestonecorrections:    Milestonecorrection[];
 }
 
-export interface Milestonecorrection {
+export type Milestonecorrection = {
     __type:               string;
     milestoneachievement: FortCaptureGameeventid;
     milestoneplayerlevel: number;
@@ -234,7 +228,7 @@ export interface Milestonecorrection {
     relocationterritory:  number;
 }
 
-export interface PlayerAttributeData {
+export type PlayerAttributeData = {
     __type:                                                                     string;
     "base amount to apply":                                                     number;
     "base apply rate":                                                          number;
@@ -362,26 +356,26 @@ export interface PlayerAttributeData {
     "first house flat discount":                                                number;
 }
 
-export interface AbilityPointRowRequirement {
+export type AbilityPointRowRequirement = {
     __type: string;
     value1: number;
     value2: number;
 }
 
-export interface CampingAchievementID {
+export type CampingAchievementID = {
     __type:         string;
     "blueprint id": FortCaptureGameeventid;
     "effect id":    FortCaptureGameeventid;
 }
 
-export interface ItemRarityDatum {
+export type ItemRarityDatum = {
     __type:                       string;
     "rarity level loc string":    string;
     "max perk count":             number;
     "level requirement modifier": number;
 }
 
-export interface PerkGenerationData {
+export type PerkGenerationData = {
     __type:                            string;
     "perk data per tier":              PerkDataPerTier[];
     "crafting result loot bucket id":  AzothCurrencyID;
@@ -391,7 +385,7 @@ export interface PerkGenerationData {
     "roll perk on upgrade perk count": number;
 }
 
-export interface PerkDataPerTier {
+export type PerkDataPerTier = {
     __type:                           string;
     "max perk channel":               number;
     "gem slot probability":           number;
@@ -402,11 +396,11 @@ export interface PerkDataPerTier {
     "attribute perk bucket id":       AzothCurrencyID;
 }
 
-export interface StatusEffectCategoryLimit {
+export type StatusEffectCategoryLimit = {
     __type: string;
 }
 
-export interface ProgressionValidationAchievementData {
+export type ProgressionValidationAchievementData = {
     __type:                           string;
     azothstaffachievements:           string[];
     azothstaffitemids:                FortCaptureGameeventid[];
@@ -423,7 +417,7 @@ export interface ProgressionValidationAchievementData {
     campingrankupachievements:        string[];
 }
 
-export interface RemoteStorageItemTransferFeeData {
+export type RemoteStorageItemTransferFeeData = {
     __type:                        string;
     "item tier base fees":         number[];
     "item type fee multipliers":   ItemTypeFeeMultiplier[];
@@ -431,20 +425,20 @@ export interface RemoteStorageItemTransferFeeData {
     "fee multiplier per interval": number;
 }
 
-export interface ItemTypeFeeMultiplier {
+export type ItemTypeFeeMultiplier = {
     __type:                      string;
     "item tier base fees":       number;
     "item type fee multipliers": number;
 }
 
-export interface StructureAttributeData {
+export type StructureAttributeData = {
     __type:                  string;
     "demolish min percent":  number;
     "demolish max percent":  number;
     "demolish min quantity": number;
 }
 
-export interface StructurePlacementData {
+export type StructurePlacementData = {
     __type:                                                string;
     "grid box size":                                       number;
     "grid box height":                                     number;
@@ -473,17 +467,17 @@ export interface StructurePlacementData {
     "los box width":                                       number;
 }
 
-export interface MaterialFileName {
+export type MaterialFileName = {
     __type:     string;
     baseclass1: Baseclass1;
 }
 
-export interface Baseclass1 {
+export type Baseclass1 = {
     __type:    string;
     assetpath: string;
 }
 
-export interface IntMeshFileName {
+export type IntMeshFileName = {
     __type: string;
     guid:   string;
     subId:  string;
@@ -491,30 +485,28 @@ export interface IntMeshFileName {
     hint:   string;
 }
 
-export interface Settings {
+export type Settings = {
     __type:                        string;
     m_aboveminpointvalidthreshold: number;
     m_belowminpointvalidthreshold: number;
 }
 
-export interface TaskinteractData {
+export type TaskinteractData = {
     __type:                         string;
     interacttagentries:             Interacttagentry[];
     destinationoverrideinteracttag: string;
 }
 
-export interface Interacttagentry {
+export type Interacttagentry = {
     __type:          InteracttagentryType;
     "interact tag":  string;
     "landmark type": number;
     "landmark data": string[];
 }
 
-export enum InteracttagentryType {
-    TaskInteractEntryData = "TaskInteractEntryData",
-}
+export type InteracttagentryType = "TaskInteractEntryData";
 
-export interface TerritoryBonusDatum {
+export type TerritoryBonusDatum = {
     __type:                 TerritoryBonusDatumType;
     "territory bonus id":   number;
     "progression point id": string;
@@ -523,11 +515,9 @@ export interface TerritoryBonusDatum {
     "min value":            number;
 }
 
-export enum TerritoryBonusDatumType {
-    TerritoryEntryData = "TerritoryEntryData",
-}
+export type TerritoryBonusDatumType = "TerritoryEntryData";
 
-export interface ValidGroupData {
+export type ValidGroupData = {
     __type:     string;
     names:      any[];
     objectives: any[];
@@ -535,27 +525,25 @@ export interface ValidGroupData {
     colors:     Color[];
 }
 
-export interface Color {
+export type Color = {
     __type:  ColorType;
     __value: number[];
 }
 
-export enum ColorType {
-    Color = "Color",
-}
+export type ColorType = "Color";
 
-export interface WarColorData {
+export type WarColorData = {
     __type:           string;
     "war colors map": WarColorsMap[];
 }
 
-export interface WarColorsMap {
+export type WarColorsMap = {
     __type: string;
     value1: number;
     value2: Color;
 }
 
-export interface WarData {
+export type WarData = {
     __type:                                string;
     "war cost":                            number[];
     "war extension cost modifier":         number;
@@ -586,13 +574,13 @@ export interface WarData {
     "deployable limits":                   DeployableLimit[];
 }
 
-export interface DeployableLimit {
+export type DeployableLimit = {
     __type: string;
     value1: AzothCurrencyID;
     value2: DeployableLimitValue2;
 }
 
-export interface DeployableLimitValue2 {
+export type DeployableLimitValue2 = {
     __type:           string;
     m_id:             AzothCurrencyID;
     m_displayname:    string;
@@ -602,7 +590,7 @@ export interface DeployableLimitValue2 {
     m_defenderlimit:  number;
 }
 
-export interface DeployableLimitsEditable {
+export type DeployableLimitsEditable = {
     __type: string;
     value1: string;
     value2: DeployableLimitValue2;
@@ -611,12 +599,12 @@ export interface DeployableLimitsEditable {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toPlayerBaseAttributesData(json: string): PlayerBaseAttributesData {
-        return cast(JSON.parse(json), r("PlayerBaseAttributesData"));
+    public static toPlayerBaseAttributeData(json: string): PlayerBaseAttributeData {
+        return cast(JSON.parse(json), r("PlayerBaseAttributeData"));
     }
 
-    public static playerBaseAttributesDataToJson(value: PlayerBaseAttributesData): string {
-        return JSON.stringify(uncast(value, r("PlayerBaseAttributesData")), null, 2);
+    public static playerBaseAttributeDataToJson(value: PlayerBaseAttributeData): string {
+        return JSON.stringify(uncast(value, r("PlayerBaseAttributeData")), null, 2);
     }
 }
 
@@ -773,7 +761,7 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "PlayerBaseAttributesData": o([
+    "PlayerBaseAttributeData": o([
         { json: "__type", js: "__type", typ: "" },
         { json: "player attribute data", js: "player attribute data", typ: r("PlayerAttributeData") },
         { json: "structure placement data", js: "structure placement data", typ: r("StructurePlacementData") },

@@ -176,7 +176,7 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface AbilityData {
+export type AbilityData = {
     AbilityID:                                      string;
     DisplayName:                                    string;
     Description:                                    string;
@@ -429,531 +429,87 @@ export interface AbilityData {
     HoldConditionButtonIcon?:                       HoldConditionButtonIcon;
 }
 
-export enum AbilityCooldownComparisonType {
-    Empty = "",
-    Equal = "Equal",
-    GreaterThan = "GreaterThan",
-    GreaterThanOrEqual = "GreaterThanOrEqual",
-    LessThan = "LessThan",
-    LessThanOrEqual = "LessThanOrEqual",
-    NotEqual = "NotEqual",
-}
+export type AbilityCooldownComparisonType = "" | "Equal" | "LessThan" | "GreaterThan" | "GreaterThanOrEqual" | "LessThanOrEqual" | "NotEqual";
 
-export enum AbilityIDToCheckForTrackedHits {
-    AbilityGreatswordCounter = "Ability_Greatsword_Counter",
-    AbilitySwordFinalStand = "Ability_Sword_FinalStand",
-    BlunderbussBuckshot = "Blunderbuss_Buckshot",
-    BlunderbussCharge = "Blunderbuss_Charge",
-    Empty = "",
-    PassiveBowHunterDmgOnFirst = "Passive_Bow_Hunter_DmgOnFirst",
-    PassiveGreatswordDef8 = "Passive_Greatsword_Def_8",
-    PassiveGreatswordOff8 = "Passive_Greatsword_Off_8",
-    PassiveHatchetThrowingAxeCriticalThrows = "Passive_Hatchet_ThrowingAxe_CriticalThrows",
-    UltPassiveHatchetExtendDebuffDuration = "Ult_Passive_Hatchet_ExtendDebuffDuration",
-    UltimateBowHunter = "Ultimate_Bow_Hunter",
-    UltimateGreatswordDefense = "Ultimate_Greatsword_Defense",
-    UltimateGreatswordOffense = "Ultimate_Greatsword_Offense",
-    UpgradeGreatswordCombo2 = "Upgrade_Greatsword_Combo_2",
-    UpgradeGreatswordCounter1 = "Upgrade_Greatsword_Counter_1",
-    UpgradeGreatswordCounter2 = "Upgrade_Greatsword_Counter_2",
-    UpgradeGreatswordDash2 = "Upgrade_Greatsword_Dash_2",
-    UpgradeGreatswordDrain1 = "Upgrade_Greatsword_Drain_1",
-}
+export type AbilityIDToCheckForTrackedHits = "" | "Ultimate_Greatsword_Offense" | "Blunderbuss_Buckshot" | "Blunderbuss_Charge" | "Passive_Bow_Hunter_DmgOnFirst" | "Ultimate_Bow_Hunter" | "Upgrade_Greatsword_Dash_2" | "Upgrade_Greatsword_Combo_2" | "Passive_Greatsword_Off_8" | "Upgrade_Greatsword_Counter_1" | "Ability_Greatsword_Counter" | "Upgrade_Greatsword_Counter_2" | "Upgrade_Greatsword_Drain_1" | "Passive_Greatsword_Def_8" | "Ultimate_Greatsword_Defense" | "Passive_Hatchet_ThrowingAxe_CriticalThrows" | "Ult_Passive_Hatchet_ExtendDebuffDuration" | "Ability_Sword_FinalStand";
 
-export enum Options {
-    AbilitySpecific = "AbilitySpecific",
-    ActiveWeapon = "ActiveWeapon",
-    AllExcept = "AllExcept",
-    Empty = "",
-}
+export type Options = "" | "ActiveWeapon" | "AbilitySpecific" | "AllExcept";
 
-export enum AbilityTrigger {
-    AfterPerform = "AfterPerform",
-    Empty = "",
-    OnPerform = "OnPerform",
-}
+export type AbilityTrigger = "" | "OnPerform" | "AfterPerform";
 
-export enum AfterAction {
-    AbilityRapierSlash = "Ability_Rapier_Slash",
-    Dodge = "Dodge",
-    Empty = "",
-    HatchetPowerThrow = "Hatchet_PowerThrow",
-}
+export type AfterAction = "" | "Dodge" | "Hatchet_PowerThrow" | "Ability_Rapier_Slash";
 
-export enum AttackType {
-    Ability = "Ability",
-    Empty = "",
-    Heavy = "Heavy",
-    HeavyAbility = "Heavy,Ability",
-    HeavyMagic = "Heavy,Magic",
-    HeavyMagicAbility = "Heavy,Magic,Ability",
-    Light = "Light",
-    LightHeavy = "Light,Heavy",
-    LightHeavyAbility = "Light,Heavy,Ability",
-    LightHeavyMagic = "Light,Heavy,Magic",
-    Medium = "Medium",
-}
+export type AttackType = "" | "Heavy,Magic" | "Light,Heavy,Magic" | "Heavy,Magic,Ability" | "Light,Heavy,Ability" | "Ability" | "Light" | "Light,Heavy" | "Heavy" | "Heavy,Ability" | "Medium";
 
-export enum AttackerVitalsCategory {
-    AttackerVitalsCategoryBoss = "Boss-",
-    AttackerVitalsCategoryDungeon = "Dungeon+",
-    AttackerVitalsCategoryDungeonNoCurrency = "Dungeon_NoCurrency",
-    AttackerVitalsCategoryElite = "Elite",
-    AttackerVitalsCategoryNamedSolo = "Named_Solo",
-    AttackerVitalsCategoryOutpostRushSolo = "OutpostRushSolo",
-    AttackerVitalsCategorySolo = "Solo",
-    AttackerVitalsCategorySoloStarterBeach = "Solo_StarterBeach",
-    Boss = "Boss",
-    Critter = "Critter",
-    Dungeon = "Dungeon",
-    DungeonBoss = "DungeonBoss",
-    DungeonMiniBoss = "DungeonMiniBoss",
-    DungeonNoCurrency = "Dungeon+_NoCurrency",
-    Elite = "Elite+",
-    EliteBoss = "EliteBoss",
-    EliteMiniBoss = "EliteMiniBoss",
-    Empty = "",
-    NamedSolo = "Named_Solo+",
-    OutpostRushGroup = "OutpostRushGroup+",
-    OutpostRushSolo = "OutpostRushSolo+",
-    Player = "Player",
-    PurpleBoss = "Boss+",
-    PurpleDungeon = "Dungeon-",
-    PurpleDungeonNoCurrency = "Dungeon-_NoCurrency",
-    PurpleElite = "Elite-",
-    PurpleSolo = "Solo-",
-    PurpleSoloStarterBeach = "Solo+_StarterBeach",
-    Skull = "Skull",
-    Solo = "Solo+",
-    SoloStarterBeach = "Solo-_StarterBeach",
-    Spell = "Spell",
-}
+export type AttackerVitalsCategory = "" | "Player" | "Solo+" | "Elite+" | "Solo" | "Named_Solo+" | "EliteBoss" | "Dungeon" | "Dungeon+" | "Solo-" | "Dungeon-" | "Elite" | "Boss" | "DungeonBoss" | "Elite-" | "DungeonMiniBoss" | "EliteMiniBoss" | "Critter" | "Solo-_StarterBeach" | "Solo_StarterBeach" | "Named_Solo" | "Spell" | "OutpostRushSolo+" | "OutpostRushSolo" | "OutpostRushGroup+" | "Dungeon+_NoCurrency" | "Boss-" | "Boss+" | "Skull" | "Solo+_StarterBeach" | "Dungeon_NoCurrency" | "Dungeon-_NoCurrency";
 
-export enum DamageCategory {
-    Elemental = "Elemental",
-    Empty = "",
-    Physical = "Physical",
-}
+export type DamageCategory = "" | "Elemental" | "Physical";
 
-export enum DamageTableRowOverride {
-    AttackDarknessCalls = "Attack_Darkness_Calls",
-    BowAttackKnockBack = "BowAttackKnockBack",
-    BowPenetratingAttackA1 = "Bow_Penetrating_AttackA1",
-    BowPoisonShotUpgrade = "Bow_PoisonShot_Upgrade",
-    Empty = "",
-    HatchetBerserkTaunt = "Hatchet_Berserk_Taunt",
-    IceMagicSpikesUpgrade = "IceMagic_Spikes_Upgrade",
-    OHShieldAttackBashUpgrade = "OH_Shield_Attack_Bash_Upgrade",
-    OHShieldFinalStand = "OH_Shield_FinalStand",
-    ReactionBreakout = "Reaction_Breakout",
-    RuneCannonBlastProjectileGreater = "Rune_CannonBlast_Projectile_Greater",
-    RuneCannonBlastProjectileSurvivor = "Rune_CannonBlast_Projectile_Survivor",
-    RuneHereticFallAoEDominator = "Rune_HereticFall_AoE_Dominator",
-    The1HRapierRiposteTaunt = "1H_Rapier_Riposte_Taunt",
-    The2HSpearCyclonePushback = "2H_Spear_Cyclone_Pushback",
-    The2HSpearJavelinKnockback = "2H_Spear_Javelin_Knockback",
-    WarhammerDamageMightyGavelUpg = "Warhammer_Damage_MightyGavel_Upg",
-}
+export type DamageTableRowOverride = "" | "Attack_Darkness_Calls" | "Reaction_Breakout" | "Bow_PoisonShot_Upgrade" | "BowAttackKnockBack" | "Bow_Penetrating_AttackA1" | "Rune_CannonBlast_Projectile_Greater" | "Rune_CannonBlast_Projectile_Survivor" | "Rune_HereticFall_AoE_Dominator" | "Hatchet_Berserk_Taunt" | "IceMagic_Spikes_Upgrade" | "1H_Rapier_Riposte_Taunt" | "2H_Spear_Javelin_Knockback" | "2H_Spear_Cyclone_Pushback" | "OH_Shield_Attack_Bash_Upgrade" | "OH_Shield_FinalStand" | "Warhammer_Damage_MightyGavel_Upg";
 
-export enum DamageTableStatusEffectOverride {
-    Empty = "",
-    SpearPerforateRendUpgrade = "Spear_Perforate_Rend_Upgrade",
-    SpearSkewerBleedUpgrade = "Spear_Skewer_Bleed_Upgrade",
-}
+export type DamageTableStatusEffectOverride = "" | "Spear_Skewer_Bleed_Upgrade" | "Spear_Perforate_Rend_Upgrade";
 
-export enum DamageTypes {
-    Acid = "Acid",
-    AfflictionDisease = "AfflictionDisease",
-    AfflictionFrostbite = "AfflictionFrostbite",
-    Arcane = "Arcane",
-    Brimstone = "Brimstone",
-    Corruption = "Corruption",
-    Deflect = "Deflect",
-    Empty = "",
-    Falling = "Falling",
-    Fire = "Fire",
-    Ice = "Ice",
-    Lightning = "Lightning",
-    Magic = "Magic",
-    MagicFireLightningCorruptionVoidLifeIceArcaneNature = "Magic,Fire,Lightning,Corruption,Void,Life,Ice, Arcane, Nature",
-    Nature = "Nature",
-    PhysFire = "PhysFire",
-    Siege = "Siege",
-    Slash = "Slash",
-    SlashStrike = "Slash,Strike",
-    Slashing = "Slashing",
-    Standard = "Standard",
-    Strike = "Strike",
-    Thrust = "Thrust",
-    True = "True",
-    Void = "Void",
-}
+export type DamageTypes = "" | "Fire" | "Slash,Strike" | "Thrust" | "Ice" | "Lightning" | "Nature" | "Corruption" | "Magic,Fire,Lightning,Corruption,Void,Life,Ice, Arcane, Nature" | "Arcane" | "Slashing" | "Void" | "Standard" | "Strike" | "Slash" | "Siege" | "Falling" | "Deflect" | "Magic" | "AfflictionDisease" | "AfflictionFrostbite" | "Acid" | "True" | "PhysFire" | "Brimstone";
 
-export enum EnableHoldConditionIfTrackedSpellExistsOfType {
-    Empty = "",
-    IcePylon = "IcePylon",
-}
+export type EnableHoldConditionIfTrackedSpellExistsOfType = "" | "IcePylon";
 
-export enum EquipLoadCategory {
-    Empty = "",
-    Fast = "Fast",
-    Normal = "Normal",
-}
+export type EquipLoadCategory = "" | "Fast" | "Normal";
 
-export enum ExcludeFromGameModes {
-    Any = "Any",
-    Empty = "",
-    Expedition = "Expedition",
-    Invasion = "Invasion",
-    Location = "Location",
-    OutpostRush = "OutpostRush",
-    Settlement = "Settlement",
-    War = "War",
-}
+export type ExcludeFromGameModes = "" | "OutpostRush" | "Any" | "War" | "Location" | "Settlement" | "Expedition" | "Invasion";
 
-export enum GatheringTradeskill {
-    Arcana = "Arcana",
-    Armoring = "Armoring",
-    AzothStaff = "AzothStaff",
-    Cooking = "Cooking",
-    Empty = "",
-    Engineering = "Engineering",
-    Fishing = "Fishing",
-    Furnishing = "Furnishing",
-    Harvesting = "Harvesting",
-    Jewelcrafting = "Jewelcrafting",
-    Leatherworking = "Leatherworking",
-    Logging = "Logging",
-    Mining = "Mining",
-    Musician = "Musician",
-    None = "None",
-    Skinning = "Skinning",
-    Smelting = "Smelting",
-    Stonecutting = "Stonecutting",
-    Weaponsmithing = "Weaponsmithing",
-    Weaving = "Weaving",
-    Woodworking = "Woodworking",
-}
+export type GatheringTradeskill = "" | "Harvesting" | "Skinning" | "Logging" | "Mining" | "Arcana" | "Armoring" | "Cooking" | "Engineering" | "Furnishing" | "Jewelcrafting" | "Weaponsmithing" | "None" | "Leatherworking" | "Smelting" | "Stonecutting" | "Weaving" | "Woodworking" | "AzothStaff" | "Fishing" | "Musician";
 
-export enum HoldConditionButtonIcon {
-    Empty = "",
-    LyshineuiImagesIconsAbilitiesIceMagicAbility4PNG = "lyshineui/images/icons/abilities/iceMagic_Ability4.png",
-}
+export type HoldConditionButtonIcon = "" | "lyshineui/images/icons/abilities/iceMagic_Ability4.png";
 
-export enum IgnoreDisabledAttackTypes {
-    Ability = "Ability",
-    Arcane = "Arcane",
-    Bullet = "Bullet",
-    Empty = "",
-    Fall = "Fall",
-    Falling = "Falling",
-    Heartgem = "Heartgem",
-    Heavy = "Heavy",
-    IgnoreDisabledAttackTypesMagic = "Magic ",
-    Light = "Light",
-    Magic = "Magic",
-    MagicSpell = "MagicSpell",
-}
+export type IgnoreDisabledAttackTypes = "Heartgem" | "" | "Light" | "Heavy" | "Ability" | "Magic" | "MagicSpell" | "Bullet" | "Magic " | "Fall" | "Arcane" | "Falling";
 
-export enum InAction {
-    AbilityLifestaffOrbofProtectionCast = "Ability_Lifestaff_OrbofProtection_Cast",
-    AbilityRapierEvasion = "Ability_Rapier_Evasion",
-    AbilityRapierFlurry = "Ability_Rapier_Flurry",
-    AbilityWarHammerArmorBreaker = "Ability_WarHammer_ArmorBreaker",
-    AbilityWarHammerClearOut = "Ability_WarHammer_ClearOut",
-    AbilityWarHammerMightyGavel = "Ability_WarHammer_MightyGavel",
-    AbilityWarHammerPathOfDestiny = "Ability_WarHammer_PathOfDestiny",
-    AbilityWarHammerShockwave = "Ability_WarHammer_Shockwave",
-    BlockUpperBody = "Block_UpperBody",
-    BlockUpperbody = "Block_Upperbody",
-    BowJumpBackShot = "Bow_JumpBackShot",
-    BowRapidShot = "Bow_RapidShot",
-    Dodge = "Dodge",
-    Empty = "",
-    FirearmAimShootSubState = "Firearm_AimShoot_SubState",
-    GreatswordCounter = "Greatsword_Counter",
-    HatchetAttackSprintLand = "Hatchet_Attack_Sprint_Land",
-    HatchetInfectedThrow = "Hatchet_InfectedThrow",
-    HatchetRapidStrikes = "Hatchet_RapidStrikes",
-    InAction = ".",
-    SpearPerforate = "Spear_Perforate",
-    SpearSkewer = "Spear_Skewer",
-    VoidGauntletHarvest = "VoidGauntlet_Harvest",
-}
+export type InAction = "" | "Bow_JumpBackShot" | "Bow_RapidShot" | "Block_UpperBody" | "Dodge" | "." | "Greatsword_Counter" | "Block_Upperbody" | "Hatchet_Attack_Sprint_Land" | "Hatchet_RapidStrikes" | "Hatchet_InfectedThrow" | "Ability_Lifestaff_OrbofProtection_Cast" | "Firearm_AimShoot_SubState" | "Ability_Rapier_Flurry" | "Ability_Rapier_Evasion" | "Spear_Skewer" | "Spear_Perforate" | "VoidGauntlet_Harvest" | "Ability_WarHammer_ArmorBreaker" | "Ability_WarHammer_MightyGavel" | "Ability_WarHammer_ClearOut" | "Ability_WarHammer_Shockwave" | "Ability_WarHammer_PathOfDestiny";
 
-export enum IsNotConsumableIDS {
-    Empty = "",
-    PotionGypsumYellow = "PotionGypsumYellow",
-}
+export type IsNotConsumableIDS = "" | "PotionGypsumYellow";
 
-export enum MyMarker {
-    BlockEarly = "BlockEarly",
-    Empty = "",
-}
+export type MyMarker = "" | "BlockEarly";
 
-export enum NumberOfHitsComparisonType {
-    Empty = "",
-    Equal = "Equal",
-    GreaterThanOrEqual = "GreaterThanOrEqual",
-    LessThanOrEqual = "LessThanOrEqual",
-    LessthanOrEqual160 = "LessthanOrEqual&#160;",
-}
+export type NumberOfHitsComparisonType = "" | "LessThanOrEqual" | "LessthanOrEqual&#160;" | "GreaterThanOrEqual" | "Equal";
 
-export enum RangedAttackName {
-    Basic = "Basic",
-    BlunderbussAzothShrapnelBlunderbussAzothShrapnelUpgraded = "BlunderbussAzothShrapnel,BlunderbussAzothShrapnel_Upgraded",
-    Empty = "",
-}
+export type RangedAttackName = "" | "BlunderbussAzothShrapnel,BlunderbussAzothShrapnel_Upgraded" | "Basic";
 
-export enum RangedAttackNameOverride {
-    BonusDMGOverDistance = "BonusDMGOverDistance",
-    Empty = "",
-}
+export type RangedAttackNameOverride = "" | "BonusDMGOverDistance";
 
-export enum RemoveStatusEffects {
-    AbilitySpecific = "AbilitySpecific",
-    All = "All",
-    Empty = "",
-    GlobalWeaponDodgeSuccessArcaneDMGTracker = "Global_Weapon_DodgeSuccess_ArcaneDMG_Tracker",
-    GlobalWeaponDodgeSuccessFireDMGTracker = "Global_Weapon_DodgeSuccess_FireDMG_Tracker",
-    GlobalWeaponDodgeSuccessIceDMGTracker = "Global_Weapon_DodgeSuccess_IceDMG_Tracker",
-    GlobalWeaponDodgeSuccessLightningDMGTracker = "Global_Weapon_DodgeSuccess_LightningDMG_Tracker",
-    GlobalWeaponDodgeSuccessNatureDMGTracker = "Global_Weapon_DodgeSuccess_NatureDMG_Tracker",
-    GlobalWeaponDodgeSuccessVoidDMGTracker = "Global_Weapon_DodgeSuccess_VoidDMG_Tracker",
-}
+export type RemoveStatusEffects = "" | "AbilitySpecific" | "Global_Weapon_DodgeSuccess_FireDMG_Tracker" | "Global_Weapon_DodgeSuccess_NatureDMG_Tracker" | "Global_Weapon_DodgeSuccess_IceDMG_Tracker" | "Global_Weapon_DodgeSuccess_LightningDMG_Tracker" | "Global_Weapon_DodgeSuccess_VoidDMG_Tracker" | "Global_Weapon_DodgeSuccess_ArcaneDMG_Tracker" | "All";
 
-export enum RemoveTargetStatusEffectCats {
-    Buff = "Buff",
-    Cc = "CC",
-    Debilitate = "Debilitate",
-    Debuff = "Debuff",
-    Dot = "Dot",
-    Empower = "Empower",
-    Empty = "",
-    FoodUtility = "FoodUtility",
-    FortifyArmorFortify = "Fortify,ArmorFortify",
-    FrostBuff = "FrostBuff",
-    GreatswordBuff = "GreatswordBuff",
-    HarvestHP = "HarvestHP",
-    LastStand = "LastStand",
-    RootSlow = "Root,Slow",
-}
+export type RemoveTargetStatusEffectCats = "" | "Buff" | "Debuff" | "Root,Slow" | "FoodUtility" | "CC" | "Dot" | "Debilitate" | "Empower" | "Fortify,ArmorFortify" | "GreatswordBuff" | "FrostBuff" | "LastStand" | "HarvestHP";
 
-export enum List {
-    AIThorpeForceGrabTracker = "AI_Thorpe_Force_Grab_Tracker",
-    AbilitySpearPerforate = "Ability_Spear_Perforate",
-    Empty = "",
-    FireStaffPyroDOT = "FireStaff_Pyro_DOT",
-    HatchetInfectedDiseaseHatchetInfectedWeaken = "Hatchet_Infected_Disease,Hatchet_Infected_Weaken",
-    HatchetRendingThrowRend = "Hatchet_RendingThrow_Rend",
-    MusketPowderBurnBurn = "Musket_PowderBurn_Burn",
-    RapierBleedDOT = "Rapier_Bleed_DOT",
-    StatusAbilityLifestaffBeacon = "Status_Ability_Lifestaff_Beacon",
-    SwordShieldBashStun2 = "Sword_ShieldBash_Stun2",
-    VoidGauntletScream = "VoidGauntlet_Scream",
-}
+export type List = "" | "AI_Thorpe_Force_Grab_Tracker" | "FireStaff_Pyro_DOT" | "Rapier_Bleed_DOT" | "Hatchet_RendingThrow_Rend" | "Hatchet_Infected_Disease,Hatchet_Infected_Weaken" | "Status_Ability_Lifestaff_Beacon" | "Musket_PowderBurn_Burn" | "Ability_Spear_Perforate" | "Sword_ShieldBash_Stun2" | "VoidGauntlet_Scream";
 
-export enum ResetCooldownTimers {
-    ActiveWeapon = "ActiveWeapon",
-    All = "All",
-    Empty = "",
-}
+export type ResetCooldownTimers = "" | "All" | "ActiveWeapon";
 
-export enum SetMannequinTag {
-    Crouch = "Crouch",
-    Detonate = "Detonate",
-    Empty = "",
-}
+export type SetMannequinTag = "" | "Detonate" | "Crouch";
 
-export enum StatusEffectBeingApplied {
-    AIAdmiralBruteBarrelExplode = "AI_AdmiralBrute_BarrelExplode",
-    AIBrotherUmbertoMinionDeath = "AI_BrotherUmberto_MinionDeath",
-    AIEvilKnightFireChampionDangerCheck = "AI_Evil_Knight_Fire_Champion_DangerCheck",
-    AIEvilKnightFireChampionOverheat = "AI_Evil_Knight_Fire_Champion_Overheat",
-    AIEvilKnightFlamekeeperCombustible = "AI_Evil_Knight_Flamekeeper_Combustible",
-    AIIceDragonEmpoweringLinkStack = "AI_IceDragon_EmpoweringLink_Stack",
-    AISandElementalSoldierRockPileAbsorb = "AI_SandElemental_Soldier_RockPile_Absorb",
-    BlunderbussChargeMortarUsedSignal = "Blunderbuss_ChargeMortarUsedSignal",
-    Empty = "",
-    GreatswordPassiveBlockCount = "Greatsword_Passive_BlockCount",
-    GreatswordStanceDefense = "Greatsword_Stance_Defense",
-    GreatswordStanceOffense = "Greatsword_Stance_Offense",
-    GreatswordStanceOffenseGreatswordStanceDefense = "Greatsword_Stance_Offense,Greatsword_Stance_Defense",
-    MutCurse1FirMajorDamageDoT = "Mut_Curse1_Fir_Major_Damage_DoT",
-    MutCurse1IceMajorDamageDoT = "Mut_Curse1_Ice_Major_Damage_DoT",
-    MutCurse1LigMajorDamageDoT = "Mut_Curse1_Lig_Major_Damage_DoT",
-    MutCurse1MinorORBCount = "Mut_Curse1_Minor_OrbCount",
-    MutCurse1NatMajorDamageDoT = "Mut_Curse1_Nat_Major_Damage_DoT",
-    MutCurse1VFXKill = "Mut_Curse1_VFX_Kill",
-    MutCurse1VoiMajorDamageDoT = "Mut_Curse1_Voi_Major_Damage_DoT",
-    MutCurse2FirMajorDamage = "Mut_Curse2_Fir_Major_Damage",
-    MutCurse2IceMajorDamage = "Mut_Curse2_Ice_Major_Damage",
-    MutCurse2NatMajorDamage = "Mut_Curse2_Nat_Major_Damage",
-    MutCurse2VoiMajorDamage = "Mut_Curse2_Voi_Major_Damage",
-    PVPArenaPreRound = "PvP_Arena_PreRound",
-    RuneStoneFormDominator = "Rune_StoneForm_Dominator",
-    VoidGauntletEssenceStack = "VoidGauntlet_EssenceStack",
-}
+export type StatusEffectBeingApplied = "" | "AI_AdmiralBrute_BarrelExplode" | "AI_SandElemental_Soldier_RockPile_Absorb" | "AI_Evil_Knight_Fire_Champion_DangerCheck" | "AI_Evil_Knight_Fire_Champion_Overheat" | "AI_Evil_Knight_Flamekeeper_Combustible" | "AI_BrotherUmberto_MinionDeath" | "AI_IceDragon_EmpoweringLink_Stack" | "Blunderbuss_ChargeMortarUsedSignal" | "Mut_Curse1_VFX_Kill" | "Mut_Curse1_Minor_OrbCount" | "Mut_Curse1_Fir_Major_Damage_DoT" | "Mut_Curse1_Lig_Major_Damage_DoT" | "Mut_Curse1_Voi_Major_Damage_DoT" | "Mut_Curse1_Nat_Major_Damage_DoT" | "Mut_Curse1_Ice_Major_Damage_DoT" | "Mut_Curse2_Fir_Major_Damage" | "Mut_Curse2_Voi_Major_Damage" | "Mut_Curse2_Nat_Major_Damage" | "Mut_Curse2_Ice_Major_Damage" | "PvP_Arena_PreRound" | "Rune_StoneForm_Dominator" | "Greatsword_Stance_Offense" | "Greatsword_Stance_Defense" | "Greatsword_Stance_Offense,Greatsword_Stance_Defense" | "Greatsword_Passive_BlockCount" | "VoidGauntlet_EssenceStack";
 
-export enum StatusEffectCategoriesList {
-    Debilitate = "Debilitate",
-    Debuff = "Debuff",
-    DoT = "DoT",
-    Empty = "",
-    SlowRoot = "Slow,Root",
-}
+export type StatusEffectCategoriesList = "" | "Debuff" | "DoT" | "Debilitate" | "Slow,Root";
 
-export enum StatusEffectDamageTableIDForRowOverride {
-    DamageTable = "DamageTable",
-    Empty = "",
-}
+export type StatusEffectDamageTableIDForRowOverride = "" | "DamageTable";
 
-export enum StatusEffectDamageTableRowOverride {
-    ArcaneWave2 = "Arcane_Wave_2",
-    CommonDamageOverTimeOverride = "Common_DamageOverTime_Override",
-    CommonHealOverTimeOverride = "Common_HealOverTime_Override",
-    DummyRow = "Dummy_Row",
-    Empty = "",
-    FireStaffCommonDoT = "FireStaff_Common_DoT",
-    GlacierBlade2 = "Glacier_Blade_2",
-    NoEntry = "NO_ENTRY ",
-    The1HRapierSlashBleed = "1H_Rapier_Slash_Bleed",
-    The2HSpearSkewerBleed = "2H_Spear_Skewer_Bleed",
-}
+export type StatusEffectDamageTableRowOverride = "" | "Dummy_Row" | "Glacier_Blade_2" | "Arcane_Wave_2" | "Common_DamageOverTime_Override" | "NO_ENTRY " | "FireStaff_Common_DoT" | "Common_HealOverTime_Override" | "1H_Rapier_Slash_Bleed" | "2H_Spear_Skewer_Bleed";
 
-export enum StatusEffectDurationCats {
-    Cc = "CC",
-    Debilitate = "Debilitate",
-    Debuff = "Debuff",
-    Dot = "Dot",
-    Empower = "Empower",
-    Empty = "",
-    FoodUtility = "FoodUtility",
-    Haste = "Haste",
-    Stance = "Stance",
-    StoneForm = "StoneForm",
-}
+export type StatusEffectDurationCats = "" | "FoodUtility" | "CC" | "Dot" | "Debilitate" | "Empower" | "Haste" | "Debuff" | "StoneForm" | "Stance";
 
-export enum StatusEffectsList {
-    AIAdmiralBruteBlackpowder = "AI_AdmiralBrute_Blackpowder",
-    AIEvilKnightFireChampionOverheatSpellPhase01 = "AI_Evil_Knight_Fire_Champion_OverheatSpell_Phase01",
-    AIEvilKnightFireChampionOverheatSpellPhase02 = "AI_Evil_Knight_Fire_Champion_OverheatSpell_Phase02",
-    AIEvilKnightFlamekeeperCombustible = "AI_Evil_Knight_Flamekeeper_Combustible",
-    AIEvilKnightFlamekeeperStopDropAndRoll = "AI_Evil_Knight_Flamekeeper_Stop_Drop_And_Roll",
-    AIIceDragonEmpoweringLink = "AI_IceDragon_EmpoweringLink",
-    All = "All",
-    BlunderbussChargeCooldown = "Blunderbuss_ChargeCooldown",
-    BlunderbussChargeMortarUsedSignal = "Blunderbuss_ChargeMortarUsedSignal",
-    Empty = "",
-    GreatswordPassiveBlockCount = "Greatsword_Passive_BlockCount",
-    MutCurse1FirMajorCast = "Mut_Curse1_Fir_Major_Cast",
-    MutCurse1FirMinorCast = "Mut_Curse1_Fir_Minor_Cast",
-    MutCurse1IceMajorCast = "Mut_Curse1_Ice_Major_Cast",
-    MutCurse1IceMinorCast = "Mut_Curse1_Ice_Minor_Cast",
-    MutCurse1LigMajorCast = "Mut_Curse1_Lig_Major_Cast",
-    MutCurse1LigMinorCast = "Mut_Curse1_Lig_Minor_Cast",
-    MutCurse1NatMajorCast = "Mut_Curse1_Nat_Major_Cast",
-    MutCurse1NatMinorCast = "Mut_Curse1_Nat_Minor_Cast",
-    MutCurse1VoiMajorCast = "Mut_Curse1_Voi_Major_Cast",
-    MutCurse1VoiMinorCast = "Mut_Curse1_Voi_Minor_Cast",
-    MutFirAOEVFX = "Mut_Fir_AOE_VFX",
-    RapierBonusDMGAfterAbility = "Rapier_BonusDMGAfterAbility",
-    RapierEvadeForwardDamage = "Rapier_Evade_Forward_Damage",
-    RapierFlecheBackstab = "Rapier_Fleche_Backstab",
-    SpearCDROnHitAfterDodge = "Spear_CDROnHitAfterDodge",
-    StatusPassiveFirestaffFireMageDmgNoDmg = "Status_Passive_Firestaff_FireMage_DmgNoDmg",
-    VoidGauntletEssenceStack = "VoidGauntlet_EssenceStack",
-    YetiGlacierBladeDamage = "Yeti_GlacierBlade_Damage",
-}
+export type StatusEffectsList = "" | "Mut_Fir_AOE_VFX" | "Yeti_GlacierBlade_Damage" | "AI_AdmiralBrute_Blackpowder" | "AI_Evil_Knight_Fire_Champion_OverheatSpell_Phase01" | "AI_Evil_Knight_Fire_Champion_OverheatSpell_Phase02" | "AI_Evil_Knight_Flamekeeper_Stop_Drop_And_Roll" | "AI_Evil_Knight_Flamekeeper_Combustible" | "AI_IceDragon_EmpoweringLink" | "Blunderbuss_ChargeMortarUsedSignal" | "Blunderbuss_ChargeCooldown" | "Status_Passive_Firestaff_FireMage_DmgNoDmg" | "All" | "Mut_Curse1_Fir_Minor_Cast" | "Mut_Curse1_Lig_Minor_Cast" | "Mut_Curse1_Voi_Minor_Cast" | "Mut_Curse1_Nat_Minor_Cast" | "Mut_Curse1_Ice_Minor_Cast" | "Mut_Curse1_Fir_Major_Cast" | "Mut_Curse1_Lig_Major_Cast" | "Mut_Curse1_Voi_Major_Cast" | "Mut_Curse1_Nat_Major_Cast" | "Mut_Curse1_Ice_Major_Cast" | "Greatsword_Passive_BlockCount" | "Rapier_Fleche_Backstab" | "Rapier_Evade_Forward_Damage" | "Rapier_BonusDMGAfterAbility" | "Spear_CDROnHitAfterDodge" | "VoidGauntlet_EssenceStack";
 
-export enum TargetCollisionFilters {
-    Empty = "",
-    Structure = "Structure",
-}
+export type TargetCollisionFilters = "" | "Structure";
 
-export enum TargetMarker {
-    Empty = "",
-    IsKnockedDown = "IsKnockedDown",
-}
+export type TargetMarker = "" | "IsKnockedDown";
 
-export enum TargetStatusEffectCategory {
-    Bleed = "Bleed",
-    BuffNonDispellableBuff = "Buff,NonDispellableBuff",
-    Burn = "Burn",
-    BurnFireBurn = "Burn,FireBurn",
-    CCSlowUnclampedSlow = "CC,Slow,UnclampedSlow",
-    CCUnclampedSlowSlow = "CC,UnclampedSlow,Slow",
-    Cc = "CC",
-    Debuff = "Debuff",
-    Empty = "",
-    Frost = "Frost",
-    Harvest = "Harvest",
-    Haste = "Haste",
-    IgnoreDebuffs = "IgnoreDebuffs",
-    LifestaffBuff = "LifestaffBuff",
-    PowderBurn = "PowderBurn",
-    Slow = "Slow",
-    ThrowingAxe = "ThrowingAxe",
-    TrapRoot = "TrapRoot",
-    Trapper = "Trapper",
-    VoidGauntlet = "VoidGauntlet",
-    Warhammer = "Warhammer",
-}
+export type TargetStatusEffectCategory = "" | "Slow" | "CC,UnclampedSlow,Slow" | "Debuff" | "Burn,FireBurn" | "CC,Slow,UnclampedSlow" | "IgnoreDebuffs" | "Burn" | "Haste" | "Buff,NonDispellableBuff" | "ThrowingAxe" | "Frost" | "LifestaffBuff" | "PowderBurn" | "TrapRoot" | "CC" | "Trapper" | "Bleed" | "VoidGauntlet" | "Harvest" | "Warhammer";
 
-export enum TargetStatusEffectDurationCats {
-    Bleed = "Bleed",
-    Buff = "Buff",
-    Burn = "Burn",
-    DebilitateDoT = "Debilitate,DoT",
-    Disease = "Disease",
-    Dot = "Dot",
-    DotDebilitate = "Dot,Debilitate",
-    Empower = "Empower",
-    Empty = "",
-    Haste = "Haste",
-    LifestaffBuff = "LifestaffBuff",
-    Poison = "Poison",
-    RainofArrows = "RainofArrows",
-    Slow = "Slow",
-    Spear = "Spear",
-    ThrowingAxe = "ThrowingAxe",
-    Weaken = "Weaken",
-}
+export type TargetStatusEffectDurationCats = "" | "Dot" | "Buff" | "Debilitate,DoT" | "Empower" | "Haste" | "Poison" | "Bleed" | "Burn" | "Slow" | "Weaken" | "Disease" | "RainofArrows" | "ThrowingAxe" | "LifestaffBuff" | "Spear" | "Dot,Debilitate";
 
-export enum UICategory {
-    Buff = "Buff",
-    Debuff = "Debuff",
-    Empty = "",
-    Heal = "Heal",
-    MagicDamage = "Magic Damage",
-    MeleeDamage = "Melee Damage",
-    Passive = "Passive",
-    RangedDamage = "Ranged Damage",
-}
+export type UICategory = "" | "Ranged Damage" | "Buff" | "Debuff" | "Passive" | "Magic Damage" | "Melee Damage" | "Heal";
 
-export enum WeaponTag {
-    Axe = "Axe",
-    Blunderbuss = "Blunderbuss",
-    Bow = "Bow",
-    Club = "Club",
-    Empty = "",
-    Fire = "Fire",
-    GreatAxe = "GreatAxe",
-    Greatsword = "Greatsword",
-    Heal = "Heal",
-    Ice = "Ice",
-    MagicGauntlet = "MagicGauntlet",
-    MagicStaff = "MagicStaff",
-    Rapier = "Rapier",
-    Rifle = "Rifle",
-    ShieldOH = "Shield_OH",
-    Spear = "Spear",
-    Sword = "Sword",
-    VoidGauntlet = "VoidGauntlet",
-    Warhammer = "Warhammer",
-}
+export type WeaponTag = "" | "Blunderbuss" | "Bow" | "Fire" | "GreatAxe" | "Greatsword" | "Axe" | "Ice" | "Heal" | "Rifle" | "Rapier" | "Spear" | "Sword" | "VoidGauntlet" | "Warhammer" | "MagicStaff" | "MagicGauntlet" | "Club" | "Shield_OH";
 
-export interface AchievementData {
+export type AchievementData = {
     AchievementID:                                                  string;
     AchievementIndex:                                               number;
     Category:                                                       AchievementCategoryEnum;
@@ -963,37 +519,11 @@ export interface AchievementData {
     "AchivementsIndex &gt; 16000 will require a code change!":      string;
 }
 
-export enum AchievementCategoryEnum {
-    CampSkin = "CampSkin",
-    Dye = "Dye",
-    Empty = "",
-    FirstCraft = "FirstCraft",
-    Journal = "Journal",
-    Map = "Map",
-    MusicalPerformances = "MusicalPerformances",
-    MusicalPerformancesEasy = "MusicalPerformancesEasy",
-    MusicalPerformancesHard = "MusicalPerformancesHard",
-    MusicalPerformancesMedium = "MusicalPerformancesMedium",
-    Objective = "Objective",
-    OneTimePersistenceValidation = "OneTimePersistenceValidation",
-    Recipe = "Recipe",
-    Store = "Store",
-    Title = "Title",
-    Whisper = "Whisper",
-}
+export type AchievementCategoryEnum = "Map" | "Journal" | "Dye" | "Objective" | "Recipe" | "Title" | "" | "CampSkin" | "OneTimePersistenceValidation" | "MusicalPerformances" | "Store" | "MusicalPerformancesEasy" | "MusicalPerformancesMedium" | "MusicalPerformancesHard" | "FirstCraft" | "Whisper";
 
-export enum AchievementDatumGameEventID {
-    ChartLocation = "Chart_Location",
-    Empty = "",
-    GameEventIDChartLocation = "Chart_location",
-    PurpleChartLocation = "chart_location",
-    ReadLoreItem = "Read_LoreItem",
-    ReadLoreItemAncientGlyph = "Read_LoreItem_AncientGlyph",
-    ReadLoreItemMonumentLarge = "Read_LoreItem_Monument_Large",
-    ReadLoreItemMonumentSmall = "Read_LoreItem_Monument_Small",
-}
+export type AchievementDatumGameEventID = "Read_LoreItem" | "" | "Chart_Location" | "Chart_location" | "Read_LoreItem_AncientGlyph" | "chart_location" | "Read_LoreItem_Monument_Small" | "Read_LoreItem_Monument_Large";
 
-export interface AffixData {
+export type AffixData = {
     AffixID:               string;
     DisplayName:           string;
     Category:              AffixDatumCategory;
@@ -1005,13 +535,9 @@ export interface AffixData {
     Rarity:                number | null;
 }
 
-export enum AffixDatumCategory {
-    Magic = "Magic",
-    Material = "Material",
-    Type = "Type",
-}
+export type AffixDatumCategory = "Material" | "Magic" | "Type";
 
-export interface AffixStatData {
+export type AffixStatData = {
     StatusID:                     string;
     BaseDamageModifier:           number | null;
     DisableDurabilityLoss:        boolean | null;
@@ -1129,57 +655,11 @@ export interface AffixStatData {
     MP_FinalNotePerfectXPBonus:   number | null;
 }
 
-export enum AffixStatDatumABSVitalsCategory {
-    Ancient0025 = "Ancient=0.025",
-    Ancient0035 = "Ancient=0.035",
-    Ancient005 = "Ancient=0.05",
-    AngryEarth0025 = "AngryEarth=0.025",
-    AngryEarth0035 = "AngryEarth=0.035",
-    AngryEarth005 = "AngryEarth=0.05",
-    Beast0025 = "Beast=0.025",
-    Beast0035 = "Beast=0.035",
-    Beast005 = "Beast=0.05",
-    Corrupted0025 = "Corrupted=0.025",
-    Corrupted0035 = "Corrupted=0.035",
-    Corrupted005 = "Corrupted=0.05",
-    Empty = "",
-    Human0025 = "human=0.025",
-    Human0035 = "human=0.035",
-    Human005 = "human=0.05",
-    Lost0025 = "Lost=0.025",
-    Lost0035 = "Lost=0.035",
-    Lost005 = "Lost=0.05",
-}
+export type AffixStatDatumABSVitalsCategory = "" | "Ancient=0.025" | "Ancient=0.035" | "Ancient=0.05" | "AngryEarth=0.025" | "AngryEarth=0.035" | "AngryEarth=0.05" | "Beast=0.025" | "Beast=0.035" | "Beast=0.05" | "Corrupted=0.025" | "Corrupted=0.035" | "Corrupted=0.05" | "Lost=0.025" | "Lost=0.035" | "Lost=0.05" | "human=0.025" | "human=0.035" | "human=0.05";
 
-export enum AffixStatDatumDMGVitalsCategory {
-    Ancient005 = "Ancient=0.05",
-    Ancient008 = "Ancient=0.08",
-    Ancient011 = "Ancient=0.11",
-    Ancient015 = "Ancient=0.15",
-    AngryEarth005 = "AngryEarth=0.05",
-    AngryEarth008 = "AngryEarth=0.08",
-    AngryEarth011 = "AngryEarth=0.11",
-    AngryEarth015 = "AngryEarth=0.15",
-    Beast005 = "Beast=0.05",
-    Beast008 = "Beast=0.08",
-    Beast011 = "Beast=0.11",
-    Beast015 = "Beast=0.15",
-    Corrupted005 = "Corrupted=0.05",
-    Corrupted008 = "Corrupted=0.08",
-    Corrupted011 = "Corrupted=0.11",
-    Corrupted015 = "Corrupted=0.15",
-    Empty = "",
-    Human005 = "human=0.05",
-    Human008 = "human=0.08",
-    Human011 = "human=0.11",
-    Human015 = "human=0.15",
-    Lost005 = "Lost=0.05",
-    Lost008 = "Lost=0.08",
-    Lost011 = "Lost=0.11",
-    Lost015 = "Lost=0.15",
-}
+export type AffixStatDatumDMGVitalsCategory = "" | "Ancient=0.08" | "Ancient=0.11" | "Ancient=0.15" | "AngryEarth=0.08" | "AngryEarth=0.11" | "AngryEarth=0.15" | "Beast=0.08" | "Beast=0.11" | "Beast=0.15" | "Corrupted=0.08" | "Corrupted=0.11" | "Corrupted=0.15" | "Lost=0.08" | "Lost=0.11" | "Lost=0.15" | "human=0.08" | "human=0.11" | "human=0.15" | "Ancient=0.05" | "AngryEarth=0.05" | "Beast=0.05" | "Corrupted=0.05" | "Lost=0.05" | "human=0.05";
 
-export interface AfflictionData {
+export type AfflictionData = {
     AfflictionID:           string;
     IntID:                  number;
     StatusEffects:          string;
@@ -1200,7 +680,7 @@ export interface AfflictionData {
     AfflictedTooltipText:   string;
 }
 
-export interface AmmoItemDefinitions {
+export type AmmoItemDefinitions = {
     AmmoID:                string;
     AmmoType:              AmmoType;
     DamageModifier:        number;
@@ -1210,35 +690,19 @@ export interface AmmoItemDefinitions {
     MeshOverride:          string;
 }
 
-export enum AmmoType {
-    Arrow = "Arrow",
-    Empty = "",
-    Shot = "Shot",
-    Siege = "Siege",
-    Thrown = "Thrown",
-}
+export type AmmoType = "Arrow" | "Shot" | "Thrown" | "Siege" | "";
 
-export enum AmmoWhizByTrigger {
-    PlayArrowWhizzBys = "Play_Arrow_WhizzBys",
-    PlayBulletWizzBys = "Play_Bullet_WizzBys",
-}
+export type AmmoWhizByTrigger = "Play_Arrow_WhizzBys" | "Play_Bullet_WizzBys";
 
-export interface StaminaCostsPlayer {
+export type StaminaCostsPlayer = {
     CostID:      string;
     StaminaCost: number;
     Category:    AncientGuardianGreatswordIceVariantStaminaCostCategory;
 }
 
-export enum AncientGuardianGreatswordIceVariantStaminaCostCategory {
-    Blocking = "Blocking",
-    Combat = "Combat",
-    Dodging = "Dodging",
-    Empty = "",
-    Gathering = "Gathering",
-    Sprinting = "Sprinting",
-}
+export type AncientGuardianGreatswordIceVariantStaminaCostCategory = "Blocking" | "" | "Combat" | "Dodging" | "Sprinting" | "Gathering";
 
-export interface ArmorAppearanceDefinitions {
+export type ArmorAppearanceDefinitions = {
     ItemID:                   string;
     Name:                     ArmorAppearanceDefinitionName;
     Description:              string;
@@ -1301,315 +765,27 @@ export interface ArmorAppearanceDefinitions {
     IconCaptureGroup:         ArmorAppearanceDefinitionIconCaptureGroup;
 }
 
-export enum Gender {
-    Empty = "",
-    Female = "Female",
-    Male = "Male",
-}
+export type Gender = "Male" | "" | "Female";
 
-export enum HairChop {
-    Brim = "BRIM",
-    Empty = "",
-    Helmback = "HELMBACK",
-    Helmfront = "HELMFRONT",
-    Hood = "HOOD",
-    NoHat = "NO_HAT",
-    NoHelm = "NO_HELM",
-    None = "NONE",
-}
+export type HairChop = "HELMBACK" | "NONE" | "BRIM" | "HELMFRONT" | "NO_HAT" | "" | "NO_HELM" | "HOOD";
 
-export enum ArmorAppearanceDefinitionIconCaptureGroup {
-    Arms = "Arms",
-    Chest = "Chest",
-    Empty = "",
-    Feet = "Feet",
-    Head = "Head",
-    Legs = "Legs",
-}
+export type ArmorAppearanceDefinitionIconCaptureGroup = "Head" | "Chest" | "" | "Arms" | "Legs" | "Feet";
 
-export enum ArmorAppearanceDefinitionItemClass {
-    Empty = "",
-    EquippableChest = "EquippableChest",
-    EquippableChestArmorHeavy = "EquippableChest+Armor+Heavy",
-    EquippableChestArmorHeavyNamed = "EquippableChest+Armor+Heavy+Named",
-    EquippableChestArmorLight = "EquippableChest+Armor+Light",
-    EquippableChestArmorLightNamed = "EquippableChest+Armor+Light+Named",
-    EquippableChestArmorMedium = "EquippableChest+Armor+Medium",
-    EquippableChestArmorMediumNamed = "EquippableChest+Armor+Medium+Named",
-    EquippableChestHeavy = "EquippableChest+Heavy",
-    EquippableFeet = "EquippableFeet",
-    EquippableFeetArmorHeavy = "EquippableFeet+Armor+Heavy",
-    EquippableFeetArmorHeavyNamed = "EquippableFeet+Armor+Heavy+Named",
-    EquippableFeetArmorLight = "EquippableFeet+Armor+Light",
-    EquippableFeetArmorLightNamed = "EquippableFeet+Armor+Light+Named",
-    EquippableFeetArmorMedium = "EquippableFeet+Armor+Medium",
-    EquippableFeetArmorMediumNamed = "EquippableFeet+Armor+Medium+Named",
-    EquippableFeetHeavy = "EquippableFeet+Heavy",
-    EquippableHands = "EquippableHands",
-    EquippableHandsArmorHeavy = "EquippableHands+Armor+Heavy",
-    EquippableHandsArmorHeavyNamed = "EquippableHands+Armor+Heavy+Named",
-    EquippableHandsArmorLight = "EquippableHands+Armor+Light",
-    EquippableHandsArmorLightNamed = "EquippableHands+Armor+Light+Named",
-    EquippableHandsArmorMedium = "EquippableHands+Armor+Medium",
-    EquippableHandsArmorMediumNamed = "EquippableHands+Armor+Medium+Named",
-    EquippableHandsHeavy = "EquippableHands+Heavy",
-    EquippableHead = "EquippableHead",
-    EquippableHeadArmorHeavy = "EquippableHead+Armor+Heavy",
-    EquippableHeadArmorHeavyNamed = "EquippableHead+Armor+Heavy+Named",
-    EquippableHeadArmorLight = "EquippableHead+Armor+Light",
-    EquippableHeadArmorLightNamed = "EquippableHead+Armor+Light+Named",
-    EquippableHeadArmorMedium = "EquippableHead+Armor+Medium",
-    EquippableHeadArmorMediumNamed = "EquippableHead+Armor+Medium+Named",
-    EquippableHeadHeavy = "EquippableHead+Heavy",
-    EquippableLegs = "EquippableLegs",
-    EquippableLegsArmorHeavy = "EquippableLegs+Armor+Heavy",
-    EquippableLegsArmorHeavyNamed = "EquippableLegs+Armor+Heavy+Named",
-    EquippableLegsArmorLight = "EquippableLegs+Armor+Light",
-    EquippableLegsArmorLightNamed = "EquippableLegs+Armor+Light+Named",
-    EquippableLegsArmorMedium = "EquippableLegs+Armor+Medium",
-    EquippableLegsArmorMediumNamed = "EquippableLegs+Armor+Medium+Named",
-    EquippableLegsHeavy = "EquippableLegs+Heavy",
-}
+export type ArmorAppearanceDefinitionItemClass = "EquippableHead+Armor+Heavy" | "EquippableChest+Armor+Heavy" | "" | "EquippableHands+Armor+Heavy" | "EquippableLegs+Armor+Heavy" | "EquippableFeet+Armor+Heavy" | "EquippableHead+Armor+Light" | "EquippableChest+Armor+Light" | "EquippableHands+Armor+Light" | "EquippableLegs+Armor+Light" | "EquippableFeet+Armor+Light" | "EquippableHead+Armor+Medium" | "EquippableChest+Armor+Medium" | "EquippableHands+Armor+Medium" | "EquippableLegs+Armor+Medium" | "EquippableFeet+Armor+Medium" | "EquippableChest" | "EquippableHead" | "EquippableLegs" | "EquippableFeet" | "EquippableHands" | "EquippableHead+Armor+Light+Named" | "EquippableChest+Armor+Heavy+Named" | "EquippableChest+Armor+Light+Named" | "EquippableChest+Armor+Medium+Named" | "EquippableHead+Armor+Heavy+Named" | "EquippableLegs+Armor+Heavy+Named" | "EquippableFeet+Armor+Heavy+Named" | "EquippableHands+Armor+Heavy+Named" | "EquippableLegs+Armor+Light+Named" | "EquippableFeet+Armor+Light+Named" | "EquippableHands+Armor+Light+Named" | "EquippableLegs+Armor+Medium+Named" | "EquippableFeet+Armor+Medium+Named" | "EquippableHead+Armor+Medium+Named" | "EquippableHands+Armor+Medium+Named" | "EquippableChest+Heavy" | "EquippableHead+Heavy" | "EquippableLegs+Heavy" | "EquippableFeet+Heavy" | "EquippableHands+Heavy";
 
-export enum LeftOn {
-    Empty = "",
-    EnableMetalLightVoiceFX = "Enable_MetalLight_VoiceFX",
-    FLYClothLightArmL = "FLY_ClothLight_Arm_L",
-    FLYClothLightLegL = "FLY_ClothLight_Leg_L",
-    FLYLeatherLightArmL = "FLY_LeatherLight_Arm_L",
-    FLYLeatherLightLegL = "FLY_LeatherLight_Leg_L",
-    FLYMetalLightArmL = "FLY_MetalLight_Arm_L",
-    FLYMetalLightLegL = "FLY_MetalLight_Leg_L",
-    FLYMetalMedArmL = "FLY_MetalMed_Arm_L",
-    FLYMetalMedLegL = "FLY_MetalMed_Leg_L",
-    LeftOnFLYMetalMedArmL = "FLY_MetalMedArm_L",
-}
+export type LeftOn = "" | "FLY_MetalLight_Arm_L" | "FLY_ClothLight_Leg_L" | "FLY_MetalLight_Leg_L" | "Enable_MetalLight_VoiceFX" | "FLY_MetalMed_Arm_L" | "FLY_MetalMed_Leg_L" | "FLY_MetalMedArm_L" | "FLY_ClothLight_Arm_L" | "FLY_LeatherLight_Arm_L" | "FLY_LeatherLight_Leg_L";
 
-export enum ArmorAppearanceDefinitionMaskBColor {
-    A14Cd2 = "#a14cd2",
-    A4A3A3 = "#A4A3A3",
-    Aeaeae = "#aeaeae",
-    B3B3B3 = "#b3b3b3",
-    B67F58 = "#b67f58",
-    B8B8B10 = "#b8b8b10",
-    B8B8B11 = "#b8b8b11",
-    B8B8B12 = "#b8b8b12",
-    B8B8B8 = "#b8b8b8",
-    B8B8B9 = "#b8b8b9",
-    Ba9780 = "#ba9780",
-    C38D75 = "#c38d75",
-    C8Cac0 = "#c8cac0",
-    Cc815B = "#cc815b",
-    D3Bfda = "#d3bfda",
-    D4D4Ee = "#d4d4ee",
-    Eacd89 = "#eacd89",
-    Empty = "",
-    MaskBColor5F0006 = "#5F0006",
-    The000000 = "#000000",
-    The00E6Ff = "#00e6ff",
-    The08Cfbf = "#08cfbf",
-    The0Aedda = "#0aedda",
-    The0B1721 = "#0b1721",
-    The0C0C0C = "#0c0c0c",
-    The1A1A1A = "#1a1a1a",
-    The371B6F = "#371b6f",
-    The3C363A = "#3C363A",
-    The4893Ba = "#4893ba",
-    The4C462C = "#4c462c",
-    The4D4167 = "#4d4167",
-    The4F5263 = "#4F5263",
-    The4F5270 = "#4F5270",
-    The524A42 = "#524a42",
-    The53235D = "#53235d",
-    The54Ffff = "#54ffff",
-    The5E562F = "#5e562f",
-    The5F0006 = "#5f0006",
-    The6495F9 = "#6495f9",
-    The656565 = "#656565",
-    The656566 = "#656566",
-    The656567 = "#656567",
-    The656568 = "#656568",
-    The656569 = "#656569",
-    The656570 = "#656570",
-    The656571 = "#656571",
-    The656572 = "#656572",
-    The67534A = "#67534a",
-    The6C40C3 = "#6c40c3",
-    The7443A0 = "#7443a0",
-    The796546 = "#796546",
-    The849B6C = "#849b6c",
-    The868686 = "#868686",
-    The895B30 = "#895B30",
-    The8B8D8C = "#8b8d8c",
-    The8F4E11 = "#8f4e11",
-    The948968 = "#948968",
-    The97B2CA = "#97b2ca",
-    The9D0000 = "#9d0000",
-}
+export type ArmorAppearanceDefinitionMaskBColor = "#b8b8b8" | "#000000" | "#0b1721" | "#524a42" | "#1a1a1a" | "" | "#b8b8b9" | "#b8b8b10" | "#b8b8b11" | "#b8b8b12" | "#0c0c0c" | "#4F5270" | "#8f4e11" | "#b67f58" | "#4893ba" | "#9d0000" | "#d4d4ee" | "#54ffff" | "#0aedda" | "#849b6c" | "#b3b3b3" | "#cc815b" | "#a14cd2" | "#5f0006" | "#A4A3A3" | "#895B30" | "#656565" | "#656566" | "#656567" | "#656568" | "#656569" | "#656570" | "#656571" | "#656572" | "#d3bfda" | "#aeaeae" | "#4F5263" | "#3C363A" | "#5e562f" | "#67534a" | "#6c40c3" | "#c8cac0" | "#08cfbf" | "#53235d" | "#948968" | "#7443a0" | "#6495f9" | "#371b6f" | "#796546" | "#c38d75" | "#00e6ff" | "#8b8d8c" | "#868686" | "#97b2ca" | "#eacd89" | "#ba9780" | "#4d4167" | "#4c462c" | "#5F0006";
 
-export enum ArmorAppearanceDefinitionMaskGColor {
-    A35E00 = "#a35e00",
-    A3A7AC = "#A3A7AC",
-    Ae0000 = "#ae0000",
-    Afb645 = "#afb645",
-    B0924C = "#b0924c",
-    B49A9A = "#b49a9a",
-    B8B8B10 = "#b8b8b10",
-    B8B8B11 = "#b8b8b11",
-    B8B8B12 = "#b8b8b12",
-    B8B8B8 = "#b8b8b8",
-    B8B8B9 = "#b8b8b9",
-    Bfb4A2 = "#bfb4a2",
-    C16675 = "#C16675",
-    C327Ce = "#c327ce",
-    Daafdd = "#daafdd",
-    Empty = "",
-    Ffce3B = "#ffce3b",
-    Ffffff = "#ffffff",
-    MaskGColorB49A9A = "#B49A9A",
-    The000000 = "#000000",
-    The00Acdb = "#00acdb",
-    The00Ff55 = "#00ff55",
-    The030303 = "#030303",
-    The0D330B = "#0d330b",
-    The1788A4 = "#1788a4",
-    The2Fcce4 = "#2fcce4",
-    The332730 = "#332730",
-    The360000 = "#360000",
-    The3A085A = "#3a085a",
-    The3D4F89 = "#3d4f89",
-    The4D4167 = "#4d4167",
-    The55007F = "#55007f",
-    The5E3466 = "#5e3466",
-    The64876E = "#64876e",
-    The680A0A = "#680a0a",
-    The687C83 = "#687C83",
-    The688Bac = "#688bac",
-    The697D7F = "#697d7f",
-    The6E5217 = "#6e5217",
-    The78E0Cb = "#78e0cb",
-    The7D9388 = "#7d9388",
-    The80Eeb7 = "#80eeb7",
-    The826858 = "#826858",
-    The850000 = "#850000",
-    The858D5E = "#858d5e",
-    The86919C = "#86919c",
-    The873333 = "#873333",
-    The877965 = "#877965",
-    The87A197 = "#87a197",
-    The8C828B = "#8c828b",
-    The90A18E = "#90a18e",
-    The9377B9 = "#9377b9",
-    The939Ca4 = "#939ca4",
-    The95B61D = "#95b61d",
-    The999999 = "#999999",
-}
+export type ArmorAppearanceDefinitionMaskGColor = "#b8b8b8" | "#000000" | "#360000" | "#6e5217" | "#ffffff" | "#0d330b" | "" | "#b8b8b9" | "#b8b8b10" | "#b8b8b11" | "#b8b8b12" | "#877965" | "#030303" | "#939ca4" | "#afb645" | "#00acdb" | "#ae0000" | "#9377b9" | "#80eeb7" | "#c327ce" | "#A3A7AC" | "#a35e00" | "#2fcce4" | "#1788a4" | "#b49a9a" | "#999999" | "#b0924c" | "#688bac" | "#ffce3b" | "#687C83" | "#C16675" | "#858d5e" | "#87a197" | "#86919c" | "#873333" | "#64876e" | "#55007f" | "#95b61d" | "#697d7f" | "#332730" | "#78e0cb" | "#3a085a" | "#5e3466" | "#7d9388" | "#00ff55" | "#8c828b" | "#90a18e" | "#850000" | "#bfb4a2" | "#daafdd" | "#826858" | "#4d4167" | "#680a0a" | "#3d4f89" | "#B49A9A";
 
-export enum ArmorAppearanceDefinitionMaskRColor {
-    A38C76 = "#a38c76",
-    A69B90 = "#a69b90",
-    A6Dce8 = "#A6DCE8",
-    B7B9A4 = "#B7B9A4",
-    B8B8B10 = "#b8b8b10",
-    B8B8B11 = "#b8b8b11",
-    B8B8B12 = "#b8b8b12",
-    B8B8B8 = "#b8b8b8",
-    B8B8B9 = "#b8b8b9",
-    Baa66B = "#BAA66B",
-    C7F1F4 = "#c7f1f4",
-    Ca5A19 = "#ca5a19",
-    Ca5A20 = "#ca5a20",
-    Ca5A21 = "#ca5a21",
-    Ca5A22 = "#ca5a22",
-    Ca5A23 = "#ca5a23",
-    Ca5A24 = "#ca5a24",
-    Ca5A25 = "#ca5a25",
-    Ca5A26 = "#ca5a26",
-    E0C260 = "#E0C260",
-    Eed49D = "#eed49d",
-    Empty = "",
-    F6D7B6 = "#f6d7b6",
-    Ff0004 = "#ff0004",
-    Ffc800 = "#FFC800",
-    Ffff00 = "#ffff00",
-    MaskRColor2A1A18 = "#2A1A18",
-    The000000 = "#000000",
-    The00710D = "#00710d",
-    The007400 = "#007400",
-    The1278A3 = "#1278a3",
-    The1Bc7C2 = "#1bc7c2",
-    The1E3945 = "#1e3945",
-    The252525 = "#252525",
-    The26Acca = "#26acca",
-    The27Aabf = "#27aabf",
-    The2A1A18 = "#2a1a18",
-    The2B2925 = "#2b2925",
-    The3B3B3B = "#3B3B3B",
-    The3D393A = "#3d393a",
-    The424637 = "#424637",
-    The4B5F8E = "#4b5f8e",
-    The514D55 = "#514d55",
-    The532311 = "#532311",
-    The540000 = "#540000",
-    The583B87 = "#583b87",
-    The68540E = "#68540e",
-    The6C6F46 = "#6c6f46",
-    The6E5217 = "#6e5217",
-    The6F5A43 = "#6f5a43",
-    The71538B = "#71538b",
-    The736862 = "#736862",
-    The77568E = "#77568e",
-    The791618 = "#791618",
-    The808096 = "#808096",
-    The82737B = "#82737b",
-    The860000 = "#860000",
-    The878787 = "#878787",
-    The8B7A6A = "#8b7a6a",
-    The916E91 = "#916e91",
-    The996C29 = "#996c29",
-    The998D48 = "#998d48",
-    The9B7D72 = "#9b7d72",
-}
+export type ArmorAppearanceDefinitionMaskRColor = "#b8b8b8" | "#a69b90" | "#1e3945" | "#6e5217" | "" | "#b8b8b9" | "#b8b8b10" | "#b8b8b11" | "#b8b8b12" | "#2b2925" | "#000000" | "#878787" | "#808096" | "#998d48" | "#007400" | "#996c29" | "#860000" | "#1278a3" | "#1bc7c2" | "#26acca" | "#4b5f8e" | "#540000" | "#a38c76" | "#71538b" | "#2a1a18" | "#252525" | "#532311" | "#00710d" | "#77568e" | "#ca5a19" | "#ca5a20" | "#ca5a21" | "#ca5a22" | "#ca5a23" | "#ca5a24" | "#ca5a25" | "#ca5a26" | "#FFC800" | "#B7B9A4" | "#3B3B3B" | "#E0C260" | "#A6DCE8" | "#BAA66B" | "#424637" | "#6f5a43" | "#9b7d72" | "#82737b" | "#27aabf" | "#514d55" | "#3d393a" | "#eed49d" | "#8b7a6a" | "#791618" | "#6c6f46" | "#ff0004" | "#916e91" | "#736862" | "#c7f1f4" | "#f6d7b6" | "#583b87" | "#68540e" | "#2A1A18" | "#ffff00";
 
-export enum ArmorAppearanceDefinitionName {
-    Empty = "",
-    HistoricMedDarkHornsChestTransmogName = "@HistoricMedDarkHorns_chest_TransmogName",
-    HistoricMedDarkHornsFeetTransmogName = "@HistoricMedDarkHorns_feet_TransmogName",
-    HistoricMedDarkHornsGlovesTransmogName = "@HistoricMedDarkHorns_gloves_TransmogName",
-    HistoricMedDarkHornsHeadTransmogName = "@HistoricMedDarkHorns_head_TransmogName",
-    HistoricMedDarkHornsLegsTransmogName = "@HistoricMedDarkHorns_legs_TransmogName",
-    HistoricMedDragonWingsChestTransmogName = "@HistoricMedDragonWings_chest_TransmogName",
-    HistoricMedDragonWingsDirtyChestTransmogName = "@HistoricMedDragonWingsDirty_chest_TransmogName",
-    HistoricMedDragonWingsDirtyFeetTransmogName = "@HistoricMedDragonWingsDirty_feet_TransmogName",
-    HistoricMedDragonWingsDirtyGlovesTransmogName = "@HistoricMedDragonWingsDirty_gloves_TransmogName",
-    HistoricMedDragonWingsDirtyHeadTransmogName = "@HistoricMedDragonWingsDirty_head_TransmogName",
-    HistoricMedDragonWingsDirtyLegsTransmogName = "@HistoricMedDragonWingsDirty_legs_TransmogName",
-    HistoricMedDragonWingsFeetTransmogName = "@HistoricMedDragonWings_feet_TransmogName",
-    HistoricMedDragonWingsGlovesTransmogName = "@HistoricMedDragonWings_gloves_TransmogName",
-    HistoricMedDragonWingsHeadTransmogName = "@HistoricMedDragonWings_head_TransmogName",
-    HistoricMedDragonWingsLegsTransmogName = "@HistoricMedDragonWings_legs_TransmogName",
-    HistoricMedHounskullChestTransmogName = "@HistoricMedHounskull_chest_TransmogName",
-    HistoricMedHounskullFeetTransmogName = "@HistoricMedHounskull_feet_TransmogName",
-    HistoricMedHounskullGlovesTransmogName = "@HistoricMedHounskull_gloves_TransmogName",
-    HistoricMedHounskullHeadTransmogName = "@HistoricMedHounskull_head_TransmogName",
-    HistoricMedHounskullLegsTransmogName = "@HistoricMedHounskull_legs_TransmogName",
-}
+export type ArmorAppearanceDefinitionName = "" | "@HistoricMedDarkHorns_chest_TransmogName" | "@HistoricMedDarkHorns_head_TransmogName" | "@HistoricMedDarkHorns_legs_TransmogName" | "@HistoricMedDarkHorns_feet_TransmogName" | "@HistoricMedDarkHorns_gloves_TransmogName" | "@HistoricMedHounskull_chest_TransmogName" | "@HistoricMedHounskull_head_TransmogName" | "@HistoricMedHounskull_legs_TransmogName" | "@HistoricMedHounskull_feet_TransmogName" | "@HistoricMedHounskull_gloves_TransmogName" | "@HistoricMedDragonWings_chest_TransmogName" | "@HistoricMedDragonWings_head_TransmogName" | "@HistoricMedDragonWings_legs_TransmogName" | "@HistoricMedDragonWings_feet_TransmogName" | "@HistoricMedDragonWings_gloves_TransmogName" | "@HistoricMedDragonWingsDirty_chest_TransmogName" | "@HistoricMedDragonWingsDirty_head_TransmogName" | "@HistoricMedDragonWingsDirty_legs_TransmogName" | "@HistoricMedDragonWingsDirty_feet_TransmogName" | "@HistoricMedDragonWingsDirty_gloves_TransmogName";
 
-export enum RightOff {
-    DisableMetalLightVoiceFX = "Disable_MetalLight_VoiceFX",
-    Empty = "",
-    FLYClothLightArmR = "FLY_ClothLight_Arm_R",
-    FLYClothLightLegR = "FLY_ClothLight_Leg_R",
-    FLYLeatherLightArmR = "FLY_LeatherLight_Arm_R",
-    FLYLeatherLightLegR = "FLY_LeatherLight_Leg_R",
-    FLYMetalLightArmR = "FLY_MetalLight_Arm_R",
-    FLYMetalLightLegR = "FLY_MetalLight_Leg_R",
-    FLYMetalMedArmR = "FLY_MetalMed_Arm_R",
-    FLYMetalMedLegR = "FLY_MetalMed_Leg_R",
-    FLYMetalMedtArmR = "FLY_MetalMedt_Arm_R",
-}
+export type RightOff = "" | "FLY_MetalLight_Arm_R" | "FLY_ClothLight_Leg_R" | "FLY_MetalLight_Leg_R" | "Disable_MetalLight_VoiceFX" | "FLY_MetalMed_Arm_R" | "FLY_MetalMed_Leg_R" | "FLY_MetalMedt_Arm_R" | "FLY_ClothLight_Arm_R" | "FLY_LeatherLight_Arm_R" | "FLY_LeatherLight_Leg_R";
 
-export interface ArmorItemDefinitions {
+export type ArmorItemDefinitions = {
     WeaponID:                     string;
     Grit:                         number | null;
     PhysicalArmorSetScaleFactor:  number | null;
@@ -1702,13 +878,13 @@ export interface ArmorItemDefinitions {
     AFACurse:                     string;
 }
 
-export interface AttackTypes {
+export type AttackTypes = {
     TypeID:   string;
     IntID:    number;
     Category: string;
 }
 
-export interface AttributeDefinition {
+export type AttributeDefinition = {
     Level:             number;
     Health:            number;
     HealthRate:        number;
@@ -1743,41 +919,9 @@ export interface AttributeDefinition {
     HealScaling?:      number;
 }
 
-export enum EquipAbilities {
-    ConBonus100_1ConBonus100_2 = "Con_Bonus_100_1,Con_Bonus_100_2",
-    ConBonus150_1ConBonus150_2 = "Con_Bonus_150_1,Con_Bonus_150_2",
-    ConBonus200_1ConBonus200_2 = "Con_Bonus_200_1,Con_Bonus_200_2",
-    ConBonus250_1ConBonus250_2 = "Con_Bonus_250_1,Con_Bonus_250_2",
-    ConBonus300_1ConBonus300_2 = "Con_Bonus_300_1,Con_Bonus_300_2",
-    ConBonus50_1ConBonus50_2 = "Con_Bonus_50_1,Con_Bonus_50_2",
-    DexBonus100_1DexBonus100_2 = "Dex_Bonus_100_1,Dex_Bonus_100_2",
-    DexBonus150_1DexBonus150_2 = "Dex_Bonus_150_1,Dex_Bonus_150_2",
-    DexBonus200_1DexBonus200_2 = "Dex_Bonus_200_1,Dex_Bonus_200_2",
-    DexBonus250_1DexBonus250_2 = "Dex_Bonus_250_1,Dex_Bonus_250_2",
-    DexBonus300_1DexBonus300_2 = "Dex_Bonus_300_1,Dex_Bonus_300_2",
-    DexBonus50_1DexBonus50_2 = "Dex_Bonus_50_1,Dex_Bonus_50_2",
-    Empty = "",
-    FocBonus100_1FocBonus100_2 = "Foc_Bonus_100_1,Foc_Bonus_100_2",
-    FocBonus150_1FocBonus150_2 = "Foc_Bonus_150_1,Foc_Bonus_150_2",
-    FocBonus200_1FocBonus200_2 = "Foc_Bonus_200_1,Foc_Bonus_200_2",
-    FocBonus250_1FocBonus250_2 = "Foc_Bonus_250_1,Foc_Bonus_250_2",
-    FocBonus300_1FocBonus300_2 = "Foc_Bonus_300_1,Foc_Bonus_300_2",
-    FocBonus50_1FocBonus50_2 = "Foc_Bonus_50_1,Foc_Bonus_50_2",
-    IntBonus100_1IntBonus100_2 = "Int_Bonus_100_1,Int_Bonus_100_2",
-    IntBonus150_1IntBonus150_2 = "Int_Bonus_150_1,Int_Bonus_150_2",
-    IntBonus200_1IntBonus200_2 = "Int_Bonus_200_1,Int_Bonus_200_2",
-    IntBonus250_1IntBonus250_2 = "Int_Bonus_250_1,Int_Bonus_250_2",
-    IntBonus300_1IntBonus300_2 = "Int_Bonus_300_1,Int_Bonus_300_2",
-    IntBonus50_1IntBonus50_2 = "Int_Bonus_50_1,Int_Bonus_50_2",
-    StrBonus100_1StrBonus100_2 = "Str_Bonus_100_1,Str_Bonus_100_2",
-    StrBonus150_1StrBonus150_2 = "Str_Bonus_150_1,Str_Bonus_150_2",
-    StrBonus200_1StrBonus200_2 = "Str_Bonus_200_1,Str_Bonus_200_2",
-    StrBonus250_1StrBonus250_2 = "Str_Bonus_250_1,Str_Bonus_250_2",
-    StrBonus300_1StrBonus300_2 = "Str_Bonus_300_1,Str_Bonus_300_2",
-    StrBonus50_1StrBonus50_2 = "Str_Bonus_50_1,Str_Bonus_50_2",
-}
+export type EquipAbilities = "" | "Con_Bonus_50_1,Con_Bonus_50_2" | "Con_Bonus_100_1,Con_Bonus_100_2" | "Con_Bonus_150_1,Con_Bonus_150_2" | "Con_Bonus_200_1,Con_Bonus_200_2" | "Con_Bonus_250_1,Con_Bonus_250_2" | "Con_Bonus_300_1,Con_Bonus_300_2" | "Dex_Bonus_50_1,Dex_Bonus_50_2" | "Dex_Bonus_100_1,Dex_Bonus_100_2" | "Dex_Bonus_150_1,Dex_Bonus_150_2" | "Dex_Bonus_200_1,Dex_Bonus_200_2" | "Dex_Bonus_250_1,Dex_Bonus_250_2" | "Dex_Bonus_300_1,Dex_Bonus_300_2" | "Foc_Bonus_50_1,Foc_Bonus_50_2" | "Foc_Bonus_100_1,Foc_Bonus_100_2" | "Foc_Bonus_150_1,Foc_Bonus_150_2" | "Foc_Bonus_200_1,Foc_Bonus_200_2" | "Foc_Bonus_250_1,Foc_Bonus_250_2" | "Foc_Bonus_300_1,Foc_Bonus_300_2" | "Int_Bonus_50_1,Int_Bonus_50_2" | "Int_Bonus_100_1,Int_Bonus_100_2" | "Int_Bonus_150_1,Int_Bonus_150_2" | "Int_Bonus_200_1,Int_Bonus_200_2" | "Int_Bonus_250_1,Int_Bonus_250_2" | "Int_Bonus_300_1,Int_Bonus_300_2" | "Str_Bonus_50_1,Str_Bonus_50_2" | "Str_Bonus_100_1,Str_Bonus_100_2" | "Str_Bonus_150_1,Str_Bonus_150_2" | "Str_Bonus_200_1,Str_Bonus_200_2" | "Str_Bonus_250_1,Str_Bonus_250_2" | "Str_Bonus_300_1,Str_Bonus_300_2";
 
-export interface BackstoryDefinition {
+export type BackstoryDefinition = {
     BackstoryID:                string;
     BackstoryName:              string;
     "ReleaseVersion ":          ReleaseVersion;
@@ -1827,52 +971,17 @@ export interface BackstoryDefinition {
     InventoryItem:              string;
 }
 
-export enum BackstoryText {
-    Empty = "",
-    LoremIpsum = "Lorem Ipsum",
-}
+export type BackstoryText = "Lorem Ipsum" | "";
 
-export enum ConversationUnlockOverride {
-    Empty = "",
-    The0511_03_Stranger = "0511_03_Stranger",
-    The0602_05_Magistrate = "0602_05_magistrate",
-    The0907_08_Commander = "0907_08_Commander",
-    The0908_08_Alchemist = "0908_08_Alchemist",
-    The0909_08_Adjudicator = "0909_08_Adjudicator",
-    The9901_01_MSQYonas = "9901_01_MSQ_Yonas",
-}
+export type ConversationUnlockOverride = "" | "0909_08_Adjudicator" | "0907_08_Commander" | "0908_08_Alchemist" | "0602_05_magistrate" | "9901_01_MSQ_Yonas" | "0511_03_Stranger";
 
-export enum Faction {
-    Any = "Any",
-    Empty = "",
-    Faction1 = "Faction1",
-    Faction2 = "Faction2",
-    Faction3 = "Faction3",
-}
+export type Faction = "" | "Faction1" | "Faction2" | "Faction3" | "Any";
 
-export enum ReleaseVersion {
-    Empty = "",
-    EventSpringtideBloomPerm = "Event_SpringtideBloom_Perm",
-    FeatureHeartgems = "Feature_Heartgems",
-    FeatureHeartgemsBileBomb = "Feature_Heartgems_BileBomb",
-    FeatureHeartgemsFireStorm = "Feature_Heartgems_FireStorm",
-    FeatureMusicalPerformances = "Feature_MusicalPerformances",
-    FeatureRuneglass = "Feature_Runeglass",
-    QuestMSQ2Brightwood = "Quest_MSQ2_Brightwood",
-    QuestMSQ2WeaversFen = "Quest_MSQ2_WeaversFen",
-    Season1_Perm = "Season_1_Perm",
-    WeaponGreatSword = "Weapon_GreatSword",
-}
+export type ReleaseVersion = "" | "Weapon_GreatSword" | "Feature_Heartgems" | "Feature_Heartgems_BileBomb" | "Feature_Heartgems_FireStorm" | "Feature_MusicalPerformances" | "Season_1_Perm" | "Feature_Runeglass" | "Quest_MSQ2_Brightwood" | "Quest_MSQ2_WeaversFen" | "Event_SpringtideBloom_Perm";
 
-export enum RespawnPointTerritories {
-    Empty = "",
-    RespawnPointTerritories2345678910111213141516 = "2,3,4,5,6,7,8,9,10,11,12,13,14,15.16",
-    The23456789101112131415 = "2,3,4,5,6,7,8,9,10,11,12,13,14,15",
-    The2345678910111213141516 = "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16",
-    The234567891011121314151617 = "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17",
-}
+export type RespawnPointTerritories = "" | "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16" | "2,3,4,5,6,7,8,9,10,11,12,13,14,15" | "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17" | "2,3,4,5,6,7,8,9,10,11,12,13,14,15.16";
 
-export interface BeamData {
+export type BeamData = {
     BeamID:                            string;
     StartDelayMS:                      number;
     BeamAttackAimMode:                 string;
@@ -1919,7 +1028,7 @@ export interface BeamData {
     IgnoresTriggerBasedToggles:        boolean;
 }
 
-export interface BlueprintItemDefinitions {
+export type BlueprintItemDefinitions = {
     BlueprintID:               string;
     Name:                      string;
     DisplayClass:              string;
@@ -2018,96 +1127,27 @@ export interface BlueprintItemDefinitions {
     PlacementGroundCastFilter: PlacementGroundCastFilter;
 }
 
-export enum AttachmentCategories {
-    AbandonedMine = "AbandonedMine",
-    AncientLighthouse = "ancient_lighthouse",
-    AttachmentCategoriesFarm = "farm",
-    AttachmentCategoriesShipwreck = "shipwreck",
-    Brightwoods = "Brightwoods",
-    Campground = "Campground",
-    Damned = "Damned",
-    Empty = "",
-    Farm = "Farm",
-    GlowingSwamp = "GlowingSwamp",
-    HauntedVillage = "haunted_village",
-    Lookout = "lookout",
-    Lumbermill = "Lumbermill",
-    Mosquitoes = "Mosquitoes",
-    Shipwreck = "Shipwreck",
-    TropicalCave = "TropicalCave",
-    WolfDen = "wolf_den",
-}
+export type AttachmentCategories = "" | "Farm" | "AbandonedMine" | "TropicalCave" | "Shipwreck" | "farm" | "shipwreck" | "ancient_lighthouse" | "lookout" | "wolf_den" | "haunted_village" | "Lumbermill" | "Damned" | "GlowingSwamp" | "Mosquitoes" | "Brightwoods" | "Campground";
 
-export enum CompletionNotificationID {
-    CompleteTerritoryMarker = "Complete_Territory_Marker",
-    Empty = "",
-    PlaceCamp = "Place_Camp",
-}
+export type CompletionNotificationID = "Complete_Territory_Marker" | "" | "Place_Camp";
 
-export enum ContributionGameEventID {
-    BuidingContribute1 = "BuidingContribute1",
-    BuidingContribute2 = "BuidingContribute2",
-    BuidingContribute3 = "BuidingContribute3",
-    BuidingContribute4 = "BuidingContribute4",
-    BuidingContribute5 = "BuidingContribute5",
-    Empty = "",
-}
+export type ContributionGameEventID = "" | "BuidingContribute1" | "BuidingContribute2" | "BuidingContribute3" | "BuidingContribute4" | "BuidingContribute5";
 
-export enum CreationGameEventID {
-    BuildingFinish1 = "BuildingFinish1",
-    BuildingFinish2 = "BuildingFinish2",
-    BuildingFinish3 = "BuildingFinish3",
-    BuildingFinish4 = "BuildingFinish4",
-    BuildingFinish5 = "BuildingFinish5",
-    Empty = "",
-    MakeCamp = "MakeCamp",
-}
+export type CreationGameEventID = "" | "BuildingFinish1" | "BuildingFinish2" | "BuildingFinish3" | "BuildingFinish4" | "BuildingFinish5" | "MakeCamp";
 
-export enum FuelResource {
-    AzureT1 = "AzureT1",
-    Empty = "",
-}
+export type FuelResource = "AzureT1" | "";
 
-export enum PlacementGroundCastFilter {
-    Empty = "",
-    PlayerGroundCheck = "PlayerGroundCheck",
-}
+export type PlacementGroundCastFilter = "" | "PlayerGroundCheck";
 
-export enum PrivilegeID {
-    Empty = "",
-    FarmPlantSeed = "Farm_PlantSeed",
-}
+export type PrivilegeID = "" | "Farm_PlantSeed";
 
-export enum StructureCostIngredient3 {
-    AnimusT3 = "AnimusT3",
-    CompostT2 = "CompostT2",
-    Empty = "",
-}
+export type StructureCostIngredient3 = "" | "AnimusT3" | "CompostT2";
 
-export enum StructureHeightTag {
-    Empty = "",
-    High = "High",
-    Low = "Low",
-    Mid = "Mid",
-}
+export type StructureHeightTag = "Low" | "Mid" | "High" | "";
 
-export enum StructureSize {
-    Empty = "",
-    Invalid = "Invalid",
-    Large = "Large",
-    LargeLong = "Large_long",
-    LargeShort = "Large_short",
-    Medium = "Medium",
-    None = "None",
-    Small = "Small",
-    StructureSizeSmall = "Small ",
-    WHHitL1 = "WH_Hit_L1",
-    WHHitL2 = "WH_Hit_L2",
-    WHHitL3 = "WH_Hit_L3",
-    WHHitL4 = "WH_Hit_L4",
-}
+export type StructureSize = "Small" | "Medium" | "Large" | "" | "Large_short" | "WH_Hit_L1" | "WH_Hit_L2" | "Small " | "WH_Hit_L4" | "WH_Hit_L3" | "Large_long" | "Invalid" | "None";
 
-export interface BuffBucketData {
+export type BuffBucketData = {
     BuffBucketId: string;
     TableType:    TableType;
     MaxRoll:      number | null;
@@ -2131,21 +1171,11 @@ export interface BuffBucketData {
     BuffPotency6: number | null;
 }
 
-export enum BuffType {
-    Ability = "Ability",
-    BuffBucket = "BuffBucket",
-    Empty = "",
-    Promotion = "Promotion",
-    StatusEffect = "StatusEffect",
-}
+export type BuffType = "StatusEffect" | "" | "BuffBucket" | "Ability" | "Promotion";
 
-export enum TableType {
-    And = "AND",
-    Empty = "",
-    Or = "OR",
-}
+export type TableType = "AND" | "" | "OR";
 
-export interface CameraShakeData {
+export type CameraShakeData = {
     CameraShakeID:   string;
     ShakeShiftX:     number;
     ShakeShiftY:     number;
@@ -2165,7 +1195,7 @@ export interface CameraShakeData {
     IsSmooth:        number;
 }
 
-export interface CampSkinData {
+export type CampSkinData = {
     CampSkinID:            string;
     ItemId:                string;
     RequiredAchievementId: EdAchievementID;
@@ -2173,12 +1203,9 @@ export interface CampSkinData {
     IsEnabled:             boolean;
 }
 
-export enum EdAchievementID {
-    CampSkinUnlockCampSkinWinter01A = "CampSkin_Unlock_CampSkin_Winter01_A",
-    Empty = "",
-}
+export type EdAchievementID = "CampSkin_Unlock_CampSkin_Winter01_A" | "";
 
-export interface CategoricalProgressionData {
+export type CategoricalProgressionData = {
     CategoricalProgressionId: string;
     DisplayName:              string;
     MaxLevel:                 number;
@@ -2202,76 +1229,15 @@ export interface CategoricalProgressionData {
     EventId:                  EventID;
 }
 
-export enum AchievementIDOnMaxRank {
-    Empty = "",
-    FishHotspot40030_Charted = "fish_hotspot_40030_charted",
-}
+export type AchievementIDOnMaxRank = "" | "fish_hotspot_40030_charted";
 
-export enum DisplayDescription {
-    Empty = "",
-    OwgFactionUnlockTooltip = "@owg_faction_unlock_tooltip",
-    Season1 = "Season 1",
-    UIEventReputationDescription = "@ui_event_reputation_description",
-    UIUnlockCampingTooltip = "@ui_unlock_camping_tooltip",
-}
+export type DisplayDescription = "" | "@ui_unlock_camping_tooltip" | "@owg_faction_unlock_tooltip" | "@ui_event_reputation_description" | "Season 1";
 
-export enum EconomyTrackerType {
-    AzothGenerated = "AzothGenerated",
-    Empty = "",
-}
+export type EconomyTrackerType = "" | "AzothGenerated";
 
-export enum EventID {
-    Ammo = "Ammo",
-    ArcanaRefining = "ArcanaRefining",
-    Armor = "Armor",
-    Bags = "Bags",
-    BasicCooking = "BasicCooking",
-    Components = "Components",
-    Concoctions = "Concoctions",
-    Consumables = "Consumables",
-    CorruptedRefining = "CorruptedRefining",
-    CraftingQuestRecipe = "CraftingQuestRecipe",
-    CutGems = "CutGems",
-    CutStone = "CutStone",
-    DungeonNamedReplicas = "DungeonNamedReplicas",
-    DungeonReplicas = "DungeonReplicas",
-    Dyes = "Dyes",
-    Empty = "",
-    Faction = "Faction",
-    FlameCoreCasting = "FlameCoreCasting",
-    Foods = "Foods",
-    Furniture = "Furniture",
-    FuseGems = "FuseGems",
-    Glasswares = "Glasswares",
-    GypsumCasting = "GypsumCasting",
-    GypsumRefining = "GypsumRefining",
-    Instruments = "Instruments",
-    Keys = "Keys",
-    MagicStaves = "MagicStaves",
-    MaterialConversion = "MaterialConversion",
-    NightveilHallow = "NightveilHallow",
-    Pattern = "Pattern",
-    RefinedResources = "RefinedResources",
-    ResourceDowngrade = "ResourceDowngrade",
-    RuneglassFamily = "RuneglassFamily",
-    Salvage = "Salvage",
-    SalvageCreate = "SalvageCreate",
-    Scarab = "Scarab",
-    SpringtideBloom = "SpringtideBloom",
-    SummerMedleyfaire = "SummerMedleyfaire",
-    TerritoryContribution = "TerritoryContribution",
-    TimelessShardsCon = "TimelessShardsCon",
-    TimelessShardsDex = "TimelessShardsDex",
-    TimelessShardsFoc = "TimelessShardsFoc",
-    TimelessShardsInt = "TimelessShardsInt",
-    TimelessShardsStr = "TimelessShardsStr",
-    Tools = "Tools",
-    Trinkets = "Trinkets",
-    Weapons = "Weapons",
-    WinterConvergence = "WinterConvergence",
-}
+export type EventID = "" | "WinterConvergence" | "RefinedResources" | "ResourceDowngrade" | "CutStone" | "GypsumRefining" | "GypsumCasting" | "FlameCoreCasting" | "MaterialConversion" | "CutGems" | "FuseGems" | "Components" | "CorruptedRefining" | "Keys" | "Trinkets" | "TimelessShardsStr" | "TimelessShardsDex" | "TimelessShardsInt" | "TimelessShardsFoc" | "TimelessShardsCon" | "Scarab" | "Consumables" | "Weapons" | "DungeonNamedReplicas" | "DungeonReplicas" | "Tools" | "Ammo" | "Armor" | "Bags" | "Faction" | "MagicStaves" | "Concoctions" | "ArcanaRefining" | "BasicCooking" | "Foods" | "Dyes" | "Furniture" | "Instruments" | "CraftingQuestRecipe" | "NightveilHallow" | "SummerMedleyfaire" | "SpringtideBloom" | "Pattern" | "Salvage" | "SalvageCreate" | "TerritoryContribution" | "Glasswares" | "RuneglassFamily";
 
-export interface CategoricalProgressionRankData {
+export type CategoricalProgressionRankData = {
     Rank:                         number;
     DisplayName?:                 string;
     MaximumInfluence:             number;
@@ -2295,33 +1261,13 @@ export interface CategoricalProgressionRankData {
     AzothRespecCost?:             number;
 }
 
-export enum AvailableProgressionPoint {
-    Empty = "",
-    TBGainGatherRate = "TB_GainGatherRate",
-    TBGainStanding = "TB_GainStanding",
-    TBGainStorage = "TB_GainStorage",
-    TBGainXP = "TB_GainXP",
-    TBTaxProperty = "TB_TaxProperty",
-    TBTaxStations = "TB_TaxStations",
-    TBTaxTradingPost = "TB_TaxTradingPost",
-}
+export type AvailableProgressionPoint = "" | "TB_GainStanding" | "TB_TaxStations" | "TB_TaxTradingPost" | "TB_GainXP" | "TB_TaxProperty" | "TB_GainStorage" | "TB_GainGatherRate";
 
-export enum AvailableProgressionPoint2 {
-    Empty = "",
-    TBGainFactionRep = "TB_GainFactionRep",
-    TBGainHousePoints = "TB_GainHousePoints",
-    TBGainStorage = "TB_GainStorage",
-    TBGainXP = "TB_GainXP",
-    TBTaxStations = "TB_TaxStations",
-    TBTaxTradingPost = "TB_TaxTradingPost",
-}
+export type AvailableProgressionPoint2 = "" | "TB_GainXP" | "TB_TaxTradingPost" | "TB_TaxStations" | "TB_GainFactionRep" | "TB_GainHousePoints" | "TB_GainStorage";
 
-export enum AvailableProgressionPoint4 {
-    Empty = "",
-    TBPurchaseHouse = "TB_PurchaseHouse",
-}
+export type AvailableProgressionPoint4 = "" | "TB_PurchaseHouse";
 
-export interface CinematicVideoStaticData {
+export type CinematicVideoStaticData = {
     CinematicVideoId:       string;
     VideoPath:              string;
     Name:                   string;
@@ -2333,7 +1279,7 @@ export interface CinematicVideoStaticData {
     Comment:                string;
 }
 
-export interface CollectibleStaticData {
+export type CollectibleStaticData = {
     CollectibleId: string;
     DisplayName:   string;
     CategoricalId: string;
@@ -2342,12 +1288,12 @@ export interface CollectibleStaticData {
     TerritoryId:   number;
 }
 
-export interface CombatTextSettings {
+export type CombatTextSettings = {
     ValueID: string;
     Value:   string;
 }
 
-export interface ConsumableItemDefinitions {
+export type ConsumableItemDefinitions = {
     ConsumableID:                 string;
     AddStatusEffects:             string;
     StatusEffectMod:              number | null;
@@ -2379,32 +1325,11 @@ export interface ConsumableItemDefinitions {
     CooldownId:                   CooldownID;
 }
 
-export enum CooldownID {
-    AbsorbBoost = "AbsorbBoost",
-    AcidCurse = "AcidCurse",
-    Empty = "",
-    Gypsum = "Gypsum",
-    HuntersVision = "HuntersVision",
-    PotionCleanse = "PotionCleanse",
-    PotionEndurance = "PotionEndurance",
-    PotionHaste = "PotionHaste",
-    PotionHealth = "PotionHealth",
-    PotionMana = "PotionMana",
-    PotionRegen = "PotionRegen",
-}
+export type CooldownID = "" | "PotionHealth" | "PotionMana" | "PotionRegen" | "PotionCleanse" | "PotionHaste" | "AbsorbBoost" | "Gypsum" | "HuntersVision" | "PotionEndurance" | "AcidCurse";
 
-export enum ConsumableItemDefinitionMannequinTag {
-    Bandage = "Bandage",
-    Boost = "Boost",
-    Call = "Call",
-    Drink = "Drink",
-    Eat = "Eat",
-    Empty = "",
-    Potion = "Potion",
-    WeaponOil = "WeaponOil",
-}
+export type ConsumableItemDefinitionMannequinTag = "Drink" | "Eat" | "Potion" | "WeaponOil" | "Bandage" | "Call" | "" | "Boost";
 
-export interface ContributionData {
+export type ContributionData = {
     ContributionId: string;
     Category:       CardIDEnum;
     Value:          number;
@@ -2412,13 +1337,9 @@ export interface ContributionData {
     Expires:        boolean;
 }
 
-export enum CardIDEnum {
-    CategoryDefault = "Default",
-    Default = "default",
-    Interaction = "interaction",
-}
+export type CardIDEnum = "default" | "interaction" | "Default";
 
-export interface ConversationStateData {
+export type ConversationStateData = {
     ConversationStateId:         string;
     ConversationType:            ConversationType;
     IsInitialState:              boolean;
@@ -2459,125 +1380,31 @@ export interface ConversationStateData {
     Comment?:                    string;
 }
 
-export enum ConversationService1 {
-    Empty = "",
-    FactionBoard = "Faction_Board",
-    FactionSelection = "Faction_Selection",
-    Inn = "Inn",
-    Join3V3Arena = "Join_3v3_Arena",
-    JoinOutpostRush = "Join_Outpost_Rush",
-}
+export type ConversationService1 = "" | "Faction_Board" | "Inn" | "Join_Outpost_Rush" | "Join_3v3_Arena" | "Faction_Selection";
 
-export enum ConversationService2 {
-    Empty = "",
-    JoinOutpostRush = "Join_Outpost_Rush",
-    PVPGuide = "PvP_Guide",
-}
+export type ConversationService2 = "" | "Join_Outpost_Rush" | "PvP_Guide";
 
-export enum ConversationType {
-    Conversation = "Conversation",
-    LinearObjective = "Linear_Objective",
-}
+export type ConversationType = "Linear_Objective" | "Conversation";
 
-export enum LinearObjectiveId2 {
-    Empty = "",
-    The0699_0101_Barkimedes = "0699_0101_Barkimedes",
-    The0713_0101_Explorerift = "0713_0101_explorerift",
-    The0718_0102_Humble = "0718_0102_humble",
-    The0719_0101_Reflectionsmountainheart = "0719_0101_reflectionsmountainheart",
-    The1005_0102_LightningTest = "1005_0102_lightning_test",
-    The1010_0102_EternalMixes = "1010_0102_eternal_mixes",
-}
+export type LinearObjectiveId2 = "" | "0699_0101_Barkimedes" | "0713_0101_explorerift" | "0718_0102_humble" | "0719_0101_reflectionsmountainheart" | "1005_0102_lightning_test" | "1010_0102_eternal_mixes";
 
-export enum LinearObjectiveId3 {
-    Empty = "",
-    The0699_0102_Barkimedes2 = "0699_0102_Barkimedes2",
-    The0718_0101_Guardian = "0718_0101_guardian",
-    The0719_0201_Madakisstratagem = "0719_0201_madakisstratagem",
-}
+export type LinearObjectiveId3 = "" | "0699_0102_Barkimedes2" | "0718_0101_guardian" | "0719_0201_madakisstratagem";
 
-export enum LinearObjectiveId4 {
-    Empty = "",
-    The0718_0103_Ultimatedefense = "0718_0103_ultimatedefense",
-}
+export type LinearObjectiveId4 = "" | "0718_0103_ultimatedefense";
 
-export enum RequiredCompletedObjective {
-    Empty = "",
-    The7404_0101_Devworldredkillwitheredquest = "7404_0101_devworldredkillwitheredquest",
-    The7504_0101_Devworldbluekillwolfquest = "7504_0101_devworldbluekillwolfquest",
-}
+export type RequiredCompletedObjective = "" | "7404_0101_devworldredkillwitheredquest" | "7504_0101_devworldbluekillwolfquest";
 
-export enum RequiredFaction {
-    Any = "Any",
-    BattleToken = "Battle_Token",
-    Covenant = "Covenant",
-    Empty = "",
-    EventProgress = "EventProgress",
-    HalloweenEventProgress = "HalloweenEventProgress",
-    Marauder = "Marauder",
-    SpringEventProgress = "SpringEventProgress",
-    SummerEventProgress = "SummerEventProgress",
-    Syndicate = "Syndicate",
-}
+export type RequiredFaction = "" | "Marauder" | "Syndicate" | "Covenant" | "Any" | "Battle_Token" | "EventProgress" | "SummerEventProgress" | "HalloweenEventProgress" | "SpringEventProgress";
 
-export enum RequiredFactionCooldown {
-    Empty = "",
-    InCooldownMultipleDays = "InCooldownMultipleDays",
-    InCooldownSingleDay = "InCooldownSingleDay",
-}
+export type RequiredFactionCooldown = "" | "InCooldownMultipleDays" | "InCooldownSingleDay";
 
-export enum RequiredProgression {
-    BlunderbussAbilityTable190 = "BlunderbussAbilityTable 19 0",
-    BowAbilityTable190 = "BowAbilityTable 19 0",
-    BowAbilityTable90 = "BowAbilityTable 9 0",
-    Covenant03000 = "Covenant 0 3000",
-    Covenant111000 = "Covenant 1 11000",
-    Covenant226000 = "Covenant 2 26000",
-    Covenant349000 = "Covenant 3 49000",
-    Empty = "",
-    FireMagicAbilityTable190 = "FireMagicAbilityTable 19 0",
-    FireMagicAbilityTable90 = "FireMagicAbilityTable 9 0",
-    GreatAxeAbilityTable90 = "GreatAxeAbilityTable 9 0",
-    HatchetAbilityTable190 = "HatchetAbilityTable 19 0",
-    IceMagicAbilityTable190 = "IceMagicAbilityTable 19 0",
-    LifeMagicAbilityTable190 = "LifeMagicAbilityTable 19 0",
-    LifeMagicAbilityTable90 = "LifeMagicAbilityTable 9 0",
-    Marauder03000 = "Marauder 0 3000",
-    Marauder111000 = "Marauder 1 11000",
-    Marauder226000 = "Marauder 2 26000",
-    Marauder349000 = "Marauder 3 49000",
-    MusketAbilityTable190 = "MusketAbilityTable 19 0",
-    RapierAbilityTable190 = "RapierAbilityTable 19 0",
-    SpearAbilityTable190 = "SpearAbilityTable 19 0",
-    SwordAbilityTable190 = "SwordAbilityTable 19 0",
-    SwordAbilityTable90 = "SwordAbilityTable 9 0",
-    Syndicate03000 = "Syndicate 0 3000",
-    Syndicate111000 = "Syndicate 1 11000",
-    Syndicate226000 = "Syndicate 2 26000",
-    Syndicate349000 = "Syndicate 3 49000",
-    VoidGauntletAbilityTable190 = "VoidGauntletAbilityTable 19 0",
-    WarHammerAbilityTable190 = "WarHammerAbilityTable 19 0",
-}
+export type RequiredProgression = "" | "GreatAxeAbilityTable 9 0" | "LifeMagicAbilityTable 9 0" | "Syndicate 0 3000" | "Covenant 0 3000" | "Covenant 2 26000" | "WarHammerAbilityTable 19 0" | "FireMagicAbilityTable 19 0" | "LifeMagicAbilityTable 19 0" | "HatchetAbilityTable 19 0" | "IceMagicAbilityTable 19 0" | "VoidGauntletAbilityTable 19 0" | "Syndicate 3 49000" | "Covenant 3 49000" | "RapierAbilityTable 19 0" | "SpearAbilityTable 19 0" | "SwordAbilityTable 19 0" | "Marauder 3 49000" | "BlunderbussAbilityTable 19 0" | "SwordAbilityTable 9 0" | "Marauder 0 3000" | "Syndicate 2 26000" | "Marauder 1 11000" | "Syndicate 1 11000" | "Covenant 1 11000" | "FireMagicAbilityTable 9 0" | "BowAbilityTable 9 0" | "MusketAbilityTable 19 0" | "BowAbilityTable 19 0" | "Marauder 2 26000";
 
-export enum TopicId2 {
-    DungeonCutlassKeys00Scalleywag02 = "Dungeon_CutlassKeys00_Scalleywag_02",
-    Empty = "",
-    The0428_JonesTips = "0428_Jones_Tips",
-    Topic95_S0110_TalkToSkyeWrapJoke = "Topic_95_s01_10_TalkTo_Skye_WrapJoke",
-    Topic99BMorgenGraveBeautyCorrect = "Topic_99B_MorgenGrave_beauty_correct",
-    Topic99BMorgenGraveBeautyIncorrect = "Topic_99B_MorgenGrave_beauty_incorrect",
-}
+export type TopicId2 = "" | "0428_Jones_Tips" | "Dungeon_CutlassKeys00_Scalleywag_02" | "Topic_95_s01_10_TalkTo_Skye_WrapJoke" | "Topic_99B_MorgenGrave_beauty_correct" | "Topic_99B_MorgenGrave_beauty_incorrect";
 
-export enum TopicId3 {
-    DungeonCutlassKeys00Scalleywag03 = "Dungeon_CutlassKeys00_Scalleywag_03",
-    Empty = "",
-    The0428_JonesHouse = "0428_Jones_House",
-    Topic95_S0110_TalkToSkyeWrapFlirt = "Topic_95_s01_10_TalkTo_Skye_WrapFlirt",
-    Topic99BMorgenGraveHunterCorrect = "Topic_99B_MorgenGrave_hunter_correct",
-    Topic99BMorgenGraveHunterIncorrect = "Topic_99B_MorgenGrave_hunter_incorrect",
-}
+export type TopicId3 = "" | "0428_Jones_House" | "Dungeon_CutlassKeys00_Scalleywag_03" | "Topic_95_s01_10_TalkTo_Skye_WrapFlirt" | "Topic_99B_MorgenGrave_hunter_incorrect" | "Topic_99B_MorgenGrave_hunter_correct";
 
-export interface ConversationTopicData {
+export type ConversationTopicData = {
     ConversationTopicId:  string;
     PlayerPrompt:         string;
     NPCResponse:          string;
@@ -2588,21 +1415,21 @@ export interface ConversationTopicData {
     ProvidedTopics?:      string;
 }
 
-export interface CooldownsPlayer {
+export type CooldownsPlayer = {
     ID:        number;
     AbilityID: string;
     Time:      number;
     WeaponTag: WeaponTag;
 }
 
-export interface CraftingCategoryData {
+export type CraftingCategoryData = {
     CategoryID:  string;
     ImagePath:   string;
     DisplayText: string;
     Description: string;
 }
 
-export interface CraftingRecipeData {
+export type CraftingRecipeData = {
     RecipeID:                            string;
     FirstCraftAchievementId:             string;
     RecipeNameOverride:                  string;
@@ -2682,359 +1509,29 @@ export interface CraftingRecipeData {
     GemSlotCost:                         number | null;
 }
 
-export enum GearScoreBonus {
-    Empty = "",
-    The510152025 = "5,10,15,20,25",
-}
+export type GearScoreBonus = "" | "5,10,15,20,25";
 
-export enum GearScoreReduction {
-    Empty = "",
-    The510152025 = "-5,-10,-15,-20,-25",
-}
+export type GearScoreReduction = "" | "-5,-10,-15,-20,-25";
 
-export enum Ingredient7 {
-    AmberCutT4 = "AmberCutT4",
-    AmethystCutT2 = "AmethystCutT2",
-    AmethystCutT4 = "AmethystCutT4",
-    AquamarineCutT4 = "AquamarineCutT4",
-    BarbvineT1 = "BarbvineT1",
-    BarleyT1 = "BarleyT1",
-    BlisterweaveT1 = "BlisterweaveT1",
-    Blisterweavet1 = "Blisterweavet1",
-    BlueberryT1 = "BlueberryT1",
-    BrokenBladeT5 = "BrokenBladeT5",
-    ButterT1 = "ButterT1",
-    CarnelianCutT3 = "CarnelianCutT3",
-    CauliflowerT1 = "CauliflowerT1",
-    CinnabarT1 = "CinnabarT1",
-    CookingOilT1 = "CookingOilT1",
-    CornT1 = "CornT1",
-    DiamondCutT4 = "DiamondCutT4",
-    EggT1 = "EggT1",
-    EmeraldCutT3 = "EmeraldCutT3",
-    Empty = "",
-    FlameCore = "FlameCore",
-    GarlicT1 = "GarlicT1",
-    GingerT1 = "GingerT1",
-    GoldenScarab = "GoldenScarab",
-    InstrumentEbonyFingerboardT3 = "Instrument_EbonyFingerboardT3",
-    InstrumentHarmoniusReedT3 = "Instrument_HarmoniusReedT3",
-    InstrumentIridescentInlayT3 = "Instrument_IridescentInlayT3",
-    InstrumentPearlPlectrumT3 = "Instrument_PearlPlectrumT3",
-    InstrumentResonantHideT3 = "Instrument_ResonantHideT3",
-    JadeTalismanT1 = "JadeTalismanT1",
-    JasperCutT4 = "JasperCutT4",
-    MalachiteCutT4 = "MalachiteCutT4",
-    MoonstoneCutT4 = "MoonstoneCutT4",
-    NutmegT1 = "NutmegT1",
-    OnionT1 = "OnionT1",
-    OnyxCutT4 = "OnyxCutT4",
-    OpalCutT4 = "OpalCutT4",
-    OrangeT1 = "OrangeT1",
-    OreganoT1 = "OreganoT1",
-    ParsleyT1 = "ParsleyT1",
-    PastryCrustT1 = "PastryCrustT1",
-    PeppercornT1 = "PeppercornT1",
-    PotatoT1 = "PotatoT1",
-    RosemaryT1 = "RosemaryT1",
-    SageT1 = "SageT1",
-    SaltT1 = "SaltT1",
-    SapphireCutT3 = "SapphireCutT3",
-    SapphireCutT4 = "SapphireCutT4",
-    ScaleclothT1 = "ScaleclothT1",
-    ScarhideT1 = "ScarhideT1",
-    SeasoningBlendT1 = "SeasoningBlendT1",
-    SmolderhideT1 = "SmolderhideT1",
-    StringBeanT1 = "StringBeanT1",
-    TarragonT1 = "TarragonT1",
-    ThymeT1 = "ThymeT1",
-    TomatoT1 = "TomatoT1",
-    TopazCutT4 = "TopazCutT4",
-}
+export type Ingredient7 = "" | "GoldenScarab" | "OnyxCutT4" | "AmberCutT4" | "SmolderhideT1" | "OpalCutT4" | "CarnelianCutT3" | "AmethystCutT4" | "SapphireCutT4" | "ScarhideT1" | "AquamarineCutT4" | "JasperCutT4" | "BrokenBladeT5" | "JadeTalismanT1" | "SapphireCutT3" | "MalachiteCutT4" | "MoonstoneCutT4" | "AmethystCutT2" | "EmeraldCutT3" | "Blisterweavet1" | "TopazCutT4" | "BarbvineT1" | "CinnabarT1" | "BlisterweaveT1" | "ScaleclothT1" | "DiamondCutT4" | "TarragonT1" | "CauliflowerT1" | "GingerT1" | "StringBeanT1" | "BlueberryT1" | "OreganoT1" | "RosemaryT1" | "SeasoningBlendT1" | "ParsleyT1" | "GarlicT1" | "NutmegT1" | "OrangeT1" | "ThymeT1" | "EggT1" | "TomatoT1" | "SageT1" | "CookingOilT1" | "OnionT1" | "CornT1" | "PastryCrustT1" | "BarleyT1" | "SaltT1" | "PeppercornT1" | "PotatoT1" | "ButterT1" | "Instrument_HarmoniusReedT3" | "Instrument_ResonantHideT3" | "Instrument_PearlPlectrumT3" | "Instrument_IridescentInlayT3" | "Instrument_EbonyFingerboardT3" | "FlameCore";
 
-export enum ProceduralTierId1 {
-    BandageT2 = "BandageT2",
-    CoatingAeternianT2 = "CoatingAeternianT2",
-    CoatingAeternianT3 = "CoatingAeternianT3",
-    CoatingAeternianT4 = "CoatingAeternianT4",
-    CoatingAeternianT5 = "CoatingAeternianT5",
-    CoatingAncientT2 = "CoatingAncientT2",
-    CoatingAncientT3 = "CoatingAncientT3",
-    CoatingAncientT4 = "CoatingAncientT4",
-    CoatingAncientT5 = "CoatingAncientT5",
-    CoatingAngryEarthT2 = "CoatingAngryEarthT2",
-    CoatingAngryEarthT3 = "CoatingAngryEarthT3",
-    CoatingAngryEarthT4 = "CoatingAngryEarthT4",
-    CoatingAngryEarthT5 = "CoatingAngryEarthT5",
-    CoatingBeastT2 = "CoatingBeastT2",
-    CoatingBeastT3 = "CoatingBeastT3",
-    CoatingBeastT4 = "CoatingBeastT4",
-    CoatingBeastT5 = "CoatingBeastT5",
-    CoatingCorruptedT2 = "CoatingCorruptedT2",
-    CoatingCorruptedT3 = "CoatingCorruptedT3",
-    CoatingCorruptedT4 = "CoatingCorruptedT4",
-    CoatingCorruptedT5 = "CoatingCorruptedT5",
-    CoatingLostT2 = "CoatingLostT2",
-    CoatingLostT3 = "CoatingLostT3",
-    CoatingLostT4 = "CoatingLostT4",
-    CoatingLostT5 = "CoatingLostT5",
-    Empty = "",
-    FoodHealthRecoveryT1 = "FoodHealthRecoveryT1",
-    FoodManaT1 = "FoodManaT1",
-    LTIDBlockT2 = "[LTID]BlockT2",
-    LTIDBlockT3 = "[LTID]BlockT3",
-    LTIDBlockT4 = "[LTID]BlockT4",
-    LTIDClothT2 = "[LTID]ClothT2",
-    LTIDClothT3 = "[LTID]ClothT3",
-    LTIDClothT4 = "[LTID]ClothT4",
-    LTIDDEVFurniture = "[LTID]DEV_Furniture",
-    LTIDIngotT2 = "[LTID]IngotT2",
-    LTIDIngotT3 = "[LTID]IngotT3",
-    LTIDIngotT4 = "[LTID]IngotT4",
-    LTIDLeatherT2 = "[LTID]LeatherT2",
-    LTIDLeatherT3 = "[LTID]LeatherT3",
-    LTIDLeatherT4 = "[LTID]LeatherT4",
-    LTIDTimberT2 = "[LTID]TimberT2",
-    LTIDTimberT3 = "[LTID]TimberT3",
-    LTIDTimberT4 = "[LTID]TimberT4",
-    PotionBoostArcaneAbsT3 = "PotionBoostArcaneAbsT3",
-    PotionBoostArcaneAbsT4 = "PotionBoostArcaneAbsT4",
-    PotionBoostArcaneAbsT5 = "PotionBoostArcaneAbsT5",
-    PotionBoostFireAbsT3 = "PotionBoostFireAbsT3",
-    PotionBoostFireAbsT4 = "PotionBoostFireAbsT4",
-    PotionBoostFireAbsT5 = "PotionBoostFireAbsT5",
-    PotionBoostLightningAbsT3 = "PotionBoostLightningAbsT3",
-    PotionBoostLightningAbsT4 = "PotionBoostLightningAbsT4",
-    PotionBoostLightningAbsT5 = "PotionBoostLightningAbsT5",
-    PotionBoostVoidAbsT3 = "PotionBoostVoidAbsT3",
-    PotionBoostVoidAbsT4 = "PotionBoostVoidAbsT4",
-    PotionBoostVoidAbsT5 = "PotionBoostVoidAbsT5",
-    PotionCureBurningT1 = "PotionCureBurningT1",
-    PotionCureDiseaseT1 = "PotionCureDiseaseT1",
-    PotionCurePoisonT1 = "PotionCurePoisonT1",
-    PotionCureRendT1 = "PotionCureRendT1",
-    PotionCureShockT1 = "PotionCureShockT1",
-    PotionCureSilenceT1 = "PotionCureSilenceT1",
-    PotionCureSlowT1 = "PotionCureSlowT1",
-    PotionCureWeakenT1 = "PotionCureWeakenT1",
-    PotionEncumbranceT1 = "PotionEncumbranceT1",
-    PotionEncumbranceT2 = "PotionEncumbranceT2",
-    PotionEncumbranceT3 = "PotionEncumbranceT3",
-    PotionEnduranceT1 = "PotionEnduranceT1",
-    PotionEnduranceT2 = "PotionEnduranceT2",
-    PotionEnduranceT3 = "PotionEnduranceT3",
-    PotionFocusT1 = "PotionFocusT1",
-    PotionFocusT2 = "PotionFocusT2",
-    PotionFocusT3 = "PotionFocusT3",
-    PotionFocusT4 = "PotionFocusT4",
-    PotionHealthT1 = "PotionHealthT1",
-    PotionHealthT2 = "PotionHealthT2",
-    PotionHealthT3 = "PotionHealthT3",
-    PotionHealthT4 = "PotionHealthT4",
-    PotionHealthT5 = "PotionHealthT5",
-    PotionManaT1 = "PotionManaT1",
-    PotionManaT2 = "PotionManaT2",
-    PotionManaT3 = "PotionManaT3",
-    PotionManaT4 = "PotionManaT4",
-    PotionManaT5 = "PotionManaT5",
-    PotionRegenT1 = "PotionRegenT1",
-    PotionRegenT2 = "PotionRegenT2",
-    PotionRegenT3 = "PotionRegenT3",
-    PotionRegenT4 = "PotionRegenT4",
-    SalvageLargeClothT2 = "SalvageLarge_ClothT2",
-    SalvageLargeClothT3 = "SalvageLarge_ClothT3",
-    SalvageLargeClothT4 = "SalvageLarge_ClothT4",
-    SalvageLargeClothT5 = "SalvageLarge_ClothT5",
-    SalvageLargeLeatherT2 = "SalvageLarge_LeatherT2",
-    SalvageLargeLeatherT3 = "SalvageLarge_LeatherT3",
-    SalvageLargeLeatherT4 = "SalvageLarge_LeatherT4",
-    SalvageLargeLeatherT5 = "SalvageLarge_LeatherT5",
-    SalvageLargeMetalPreciousT2 = "SalvageLarge_MetalPreciousT2",
-    SalvageLargeMetalPreciousT3 = "SalvageLarge_MetalPreciousT3",
-    SalvageLargeMetalPreciousT4 = "SalvageLarge_MetalPreciousT4",
-    SalvageLargeMetalT2 = "SalvageLarge_MetalT2",
-    SalvageLargeMetalT3 = "SalvageLarge_MetalT3",
-    SalvageLargeMetalT4 = "SalvageLarge_MetalT4",
-    SalvageLargeMetalT5 = "SalvageLarge_MetalT5",
-    SalvageLargeTimberT1 = "SalvageLarge_TimberT1",
-    SalvageLargeTimberT2 = "SalvageLarge_TimberT2",
-    SalvageLargeTimberT3 = "SalvageLarge_TimberT3",
-    SalvageLargeTimberT4 = "SalvageLarge_TimberT4",
-    SalvageLargeTimberT5 = "SalvageLarge_TimberT5",
-    SalvageSmallClothT1 = "SalvageSmall_ClothT1",
-    SalvageSmallClothT2 = "SalvageSmall_ClothT2",
-    SalvageSmallClothT3 = "SalvageSmall_ClothT3",
-    SalvageSmallClothT4 = "SalvageSmall_ClothT4",
-    SalvageSmallClothT5 = "SalvageSmall_ClothT5",
-    SalvageSmallFlintT1 = "SalvageSmall_FlintT1",
-    SalvageSmallLeatherT2 = "SalvageSmall_LeatherT2",
-    SalvageSmallLeatherT3 = "SalvageSmall_LeatherT3",
-    SalvageSmallLeatherT4 = "SalvageSmall_LeatherT4",
-    SalvageSmallLeatherT5 = "SalvageSmall_LeatherT5",
-    SalvageSmallMetalPreciousT2 = "SalvageSmall_MetalPreciousT2",
-    SalvageSmallMetalPreciousT3 = "SalvageSmall_MetalPreciousT3",
-    SalvageSmallMetalPreciousT4 = "SalvageSmall_MetalPreciousT4",
-    SalvageSmallMetalT2 = "SalvageSmall_MetalT2",
-    SalvageSmallMetalT3 = "SalvageSmall_MetalT3",
-    SalvageSmallMetalT4 = "SalvageSmall_MetalT4",
-    SalvageSmallMetalT5 = "SalvageSmall_MetalT5",
-    SalvageSmallTimberT1 = "SalvageSmall_TimberT1",
-    SalvageSmallTimberT2 = "SalvageSmall_TimberT2",
-    SalvageSmallTimberT3 = "SalvageSmall_TimberT3",
-    SalvageSmallTimberT4 = "SalvageSmall_TimberT4",
-    SalvageSmallTimberT5 = "SalvageSmall_TimberT5",
-    The1HClubT2 = "1hClubT2",
-    TinctureBlightT2 = "TinctureBlightT2",
-    TinctureBlightT3 = "TinctureBlightT3",
-    TinctureBlightT4 = "TinctureBlightT4",
-    TinctureBlightT5 = "TinctureBlightT5",
-    TinctureCorruptionT2 = "TinctureCorruptionT2",
-    TinctureCorruptionT3 = "TinctureCorruptionT3",
-    TinctureCorruptionT4 = "TinctureCorruptionT4",
-    TinctureCorruptionT5 = "TinctureCorruptionT5",
-    TinctureFreezingT2 = "TinctureFreezingT2",
-    TinctureFreezingT3 = "TinctureFreezingT3",
-    TinctureFreezingT4 = "TinctureFreezingT4",
-    TinctureFreezingT5 = "TinctureFreezingT5",
-}
+export type ProceduralTierId1 = "" | "PotionHealthT1" | "PotionManaT1" | "PotionManaT2" | "PotionManaT3" | "PotionManaT4" | "PotionManaT5" | "PotionRegenT1" | "PotionRegenT2" | "PotionRegenT3" | "PotionRegenT4" | "PotionFocusT1" | "PotionFocusT2" | "PotionFocusT3" | "PotionFocusT4" | "FoodHealthRecoveryT1" | "FoodManaT1" | "SalvageSmall_TimberT1" | "1hClubT2" | "SalvageLarge_MetalT5" | "SalvageSmall_TimberT5" | "SalvageSmall_MetalT5" | "SalvageSmall_LeatherT5" | "SalvageLarge_LeatherT5" | "SalvageSmall_ClothT5" | "SalvageLarge_ClothT5" | "SalvageSmall_MetalT2" | "SalvageLarge_MetalT2" | "SalvageSmall_FlintT1" | "SalvageSmall_LeatherT2" | "SalvageSmall_LeatherT3" | "SalvageSmall_LeatherT4" | "SalvageLarge_LeatherT2" | "SalvageLarge_LeatherT3" | "SalvageLarge_LeatherT4" | "SalvageSmall_ClothT2" | "SalvageSmall_MetalT3" | "SalvageSmall_MetalT4" | "SalvageLarge_MetalT3" | "SalvageLarge_MetalT4" | "SalvageSmall_ClothT3" | "SalvageSmall_ClothT4" | "SalvageLarge_ClothT2" | "SalvageLarge_ClothT3" | "SalvageLarge_ClothT4" | "SalvageLarge_MetalPreciousT2" | "SalvageLarge_MetalPreciousT3" | "SalvageLarge_MetalPreciousT4" | "SalvageSmall_MetalPreciousT2" | "SalvageSmall_MetalPreciousT3" | "SalvageSmall_MetalPreciousT4" | "SalvageLarge_TimberT2" | "SalvageLarge_TimberT3" | "SalvageLarge_TimberT4" | "SalvageLarge_TimberT5" | "SalvageSmall_ClothT1" | "[LTID]LeatherT2" | "[LTID]LeatherT3" | "[LTID]LeatherT4" | "[LTID]BlockT2" | "[LTID]BlockT3" | "[LTID]BlockT4" | "[LTID]IngotT2" | "[LTID]IngotT3" | "[LTID]IngotT4" | "[LTID]TimberT2" | "[LTID]TimberT3" | "[LTID]TimberT4" | "[LTID]ClothT2" | "[LTID]ClothT3" | "[LTID]ClothT4" | "PotionHealthT2" | "PotionHealthT3" | "PotionHealthT4" | "PotionHealthT5" | "PotionEnduranceT1" | "PotionEnduranceT2" | "PotionEnduranceT3" | "PotionEncumbranceT1" | "PotionEncumbranceT2" | "PotionEncumbranceT3" | "CoatingBeastT2" | "CoatingBeastT3" | "CoatingBeastT4" | "CoatingBeastT5" | "CoatingLostT2" | "CoatingLostT3" | "CoatingLostT4" | "CoatingLostT5" | "CoatingCorruptedT2" | "CoatingCorruptedT3" | "CoatingCorruptedT4" | "CoatingCorruptedT5" | "CoatingAncientT2" | "CoatingAncientT3" | "CoatingAncientT4" | "CoatingAncientT5" | "CoatingAngryEarthT2" | "CoatingAngryEarthT3" | "CoatingAngryEarthT4" | "CoatingAngryEarthT5" | "CoatingAeternianT2" | "CoatingAeternianT3" | "CoatingAeternianT4" | "CoatingAeternianT5" | "TinctureCorruptionT2" | "TinctureCorruptionT3" | "TinctureCorruptionT4" | "TinctureCorruptionT5" | "TinctureBlightT2" | "TinctureBlightT3" | "TinctureBlightT4" | "TinctureBlightT5" | "TinctureFreezingT2" | "TinctureFreezingT3" | "TinctureFreezingT4" | "TinctureFreezingT5" | "BandageT2" | "PotionCurePoisonT1" | "PotionCureBurningT1" | "PotionCureShockT1" | "PotionCureDiseaseT1" | "PotionCureSlowT1" | "PotionCureSilenceT1" | "PotionCureRendT1" | "PotionCureWeakenT1" | "PotionBoostFireAbsT3" | "PotionBoostFireAbsT4" | "PotionBoostFireAbsT5" | "PotionBoostArcaneAbsT3" | "PotionBoostArcaneAbsT4" | "PotionBoostArcaneAbsT5" | "PotionBoostLightningAbsT3" | "PotionBoostLightningAbsT4" | "PotionBoostLightningAbsT5" | "PotionBoostVoidAbsT3" | "PotionBoostVoidAbsT4" | "PotionBoostVoidAbsT5" | "SalvageLarge_TimberT1" | "SalvageSmall_TimberT3" | "SalvageSmall_TimberT4" | "[LTID]DEV_Furniture" | "SalvageSmall_TimberT2";
 
-export enum RecipeTags {
-    Amulet = "Amulet",
-    Blunderbuss = "Blunderbuss",
-    Bow = "Bow",
-    ClothChest = "ClothChest",
-    ClothFeet = "ClothFeet",
-    ClothHands = "ClothHands",
-    ClothHead = "ClothHead",
-    ClothLegs = "ClothLegs",
-    DroppedBags = "DroppedBags",
-    Earring = "Earring",
-    Empty = "",
-    FishingPole = "FishingPole",
-    GauntletIce = "GauntletIce",
-    GauntletVoid = "GauntletVoid",
-    GreatSword = "GreatSword",
-    Greataxe = "Greataxe",
-    Greatsword = "Greatsword",
-    Hatchet = "Hatchet",
-    Kshield = "Kshield",
-    LeatherChest = "LeatherChest",
-    LeatherFeet = "LeatherFeet",
-    LeatherHands = "LeatherHands",
-    LeatherHead = "LeatherHead",
-    LeatherLegs = "LeatherLegs",
-    LoggingAxe = "LoggingAxe",
-    Longsword = "Longsword",
-    MiningPick = "MiningPick",
-    Musket = "Musket",
-    PlateChest = "PlateChest",
-    PlateFeet = "PlateFeet",
-    PlateHands = "PlateHands",
-    PlateHead = "PlateHead",
-    PlateLegs = "PlateLegs",
-    Rapier = "Rapier",
-    Ring = "Ring",
-    Rshield = "Rshield",
-    Sickle = "Sickle",
-    SkinningKnife = "SkinningKnife",
-    Spear = "Spear",
-    StaffFire = "StaffFire",
-    StaffLife = "StaffLife",
-    Warhammer = "Warhammer",
-}
+export type RecipeTags = "" | "Amulet" | "Ring" | "Earring" | "DroppedBags" | "LoggingAxe" | "MiningPick" | "SkinningKnife" | "Sickle" | "Longsword" | "Rapier" | "Warhammer" | "Greataxe" | "Rshield" | "Kshield" | "Greatsword" | "GreatSword" | "Spear" | "Hatchet" | "Bow" | "Musket" | "FishingPole" | "Blunderbuss" | "PlateHead" | "PlateChest" | "PlateHands" | "PlateLegs" | "PlateFeet" | "LeatherHead" | "LeatherChest" | "LeatherHands" | "LeatherLegs" | "LeatherFeet" | "ClothHead" | "ClothChest" | "ClothHands" | "ClothLegs" | "ClothFeet" | "StaffFire" | "StaffLife" | "GauntletIce" | "GauntletVoid";
 
-export enum SkipGrantItemsBody {
-    CRCampskinDesc = "@cr_campskin_desc",
-    Empty = "",
-    TerritoryStandingSuppliesT1SGIBody = "@TerritoryStandingSuppliesT1_SGIBody",
-    TerritoryStandingSuppliesT2SGIBody = "@TerritoryStandingSuppliesT2_SGIBody",
-    TerritoryStandingSuppliesT3SGIBody = "@TerritoryStandingSuppliesT3_SGIBody",
-    TerritoryStandingSuppliesT4SGIBody = "@TerritoryStandingSuppliesT4_SGIBody",
-}
+export type SkipGrantItemsBody = "" | "@cr_campskin_desc" | "@TerritoryStandingSuppliesT1_SGIBody" | "@TerritoryStandingSuppliesT2_SGIBody" | "@TerritoryStandingSuppliesT3_SGIBody" | "@TerritoryStandingSuppliesT4_SGIBody";
 
-export enum SkipGrantItemsDesc {
-    CRUnlockrecipeInfo = "@cr_unlockrecipe_info",
-    Empty = "",
-    TerritoryStandingSuppliesT1SGIDesc = "@TerritoryStandingSuppliesT1_SGIDesc",
-    TerritoryStandingSuppliesT2SGIDesc = "@TerritoryStandingSuppliesT2_SGIDesc",
-    TerritoryStandingSuppliesT3SGIDesc = "@TerritoryStandingSuppliesT3_SGIDesc",
-    TerritoryStandingSuppliesT4SGIDesc = "@TerritoryStandingSuppliesT4_SGIDesc",
-}
+export type SkipGrantItemsDesc = "" | "@cr_unlockrecipe_info" | "@TerritoryStandingSuppliesT1_SGIDesc" | "@TerritoryStandingSuppliesT2_SGIDesc" | "@TerritoryStandingSuppliesT3_SGIDesc" | "@TerritoryStandingSuppliesT4_SGIDesc";
 
-export enum SkipGrantItemsTitle {
-    CRCampskinTitle = "@cr_campskin_title",
-    Empty = "",
-    TerritoryStandingSuppliesT1SGITitle = "@TerritoryStandingSuppliesT1_SGITitle",
-    TerritoryStandingSuppliesT2SGITitle = "@TerritoryStandingSuppliesT2_SGITitle",
-    TerritoryStandingSuppliesT3SGITitle = "@TerritoryStandingSuppliesT3_SGITitle",
-    TerritoryStandingSuppliesT4SGITitle = "@TerritoryStandingSuppliesT4_SGITitle",
-}
+export type SkipGrantItemsTitle = "" | "@cr_campskin_title" | "@TerritoryStandingSuppliesT1_SGITitle" | "@TerritoryStandingSuppliesT2_SGITitle" | "@TerritoryStandingSuppliesT3_SGITitle" | "@TerritoryStandingSuppliesT4_SGITitle";
 
-export enum StationType1 {
-    Alchemy1 = "alchemy1",
-    Alchemy2 = "alchemy2",
-    Alchemy3 = "alchemy3",
-    Alchemy4 = "alchemy4",
-    Alchemy5 = "alchemy5",
-    Blacksmith2 = "blacksmith2",
-    Blacksmith3 = "blacksmith3",
-    Blacksmith4 = "blacksmith4",
-    Blacksmith5 = "blacksmith5",
-    Camp1 = "camp1",
-    Camp5 = "camp5",
-    Carpentry1 = "carpentry1",
-    Carpentry3 = "carpentry3",
-    Carpentry4 = "carpentry4",
-    Carpentry5 = "carpentry5",
-    Cooking1 = "cooking1",
-    Cooking2 = "cooking2",
-    Cooking3 = "cooking3",
-    Cooking4 = "cooking4",
-    Cooking5 = "cooking5",
-    Empty = "",
-    Engineering1 = "engineering1",
-    Engineering2 = "engineering2",
-    Engineering3 = "engineering3",
-    Engineering4 = "engineering4",
-    Engineering5 = "engineering5",
-    FlameCoreForge = "FlameCore_Forge",
-    Gypsumstation1 = "gypsumstation1",
-    Masonry3 = "masonry3",
-    Masonry4 = "masonry4",
-    Masonry5 = "masonry5",
-    Outfitting2 = "outfitting2",
-    Outfitting3 = "outfitting3",
-    Outfitting4 = "outfitting4",
-    Outfitting5 = "outfitting5",
-    Smelting3 = "smelting3",
-    Smelting4 = "smelting4",
-    Smelting5 = "smelting5",
-    Tanning3 = "tanning3",
-    Tanning4 = "tanning4",
-    Tanning5 = "tanning5",
-    Weaving3 = "weaving3",
-    Weaving4 = "weaving4",
-    Weaving5 = "weaving5",
-}
+export type StationType1 = "" | "smelting3" | "smelting4" | "smelting5" | "tanning3" | "tanning4" | "tanning5" | "weaving3" | "weaving4" | "weaving5" | "carpentry3" | "carpentry4" | "carpentry5" | "masonry3" | "masonry4" | "masonry5" | "gypsumstation1" | "FlameCore_Forge" | "outfitting2" | "outfitting5" | "engineering5" | "outfitting3" | "outfitting4" | "blacksmith2" | "blacksmith3" | "blacksmith4" | "blacksmith5" | "alchemy2" | "engineering2" | "engineering3" | "engineering4" | "alchemy3" | "alchemy4" | "alchemy5" | "camp5" | "cooking2" | "cooking3" | "cooking4" | "cooking5" | "camp1" | "carpentry1" | "engineering1" | "alchemy1" | "cooking1";
 
-export enum StationType2 {
-    Alchemy2 = "alchemy2",
-    Camp1 = "camp1",
-    Camp2 = "camp2",
-    Camp3 = "camp3",
-    Camp4 = "camp4",
-    Camp5 = "camp5",
-    Empty = "",
-}
+export type StationType2 = "" | "camp1" | "camp2" | "camp3" | "camp4" | "camp5" | "alchemy2";
 
-export enum Type1Enum {
-    CategoryOnly = "Category_Only",
-    Currency = "Currency",
-    Empty = "",
-    Item = "Item",
-}
+export type Type1Enum = "" | "Category_Only" | "Item" | "Currency";
 
-export interface CrestPartData {
+export type CrestPartData = {
     Index:         number;
     OldIndex:      number;
     isForeground:  boolean;
@@ -3049,22 +1546,9 @@ export interface CrestPartData {
     Intent:        Intent;
 }
 
-export enum Intent {
-    AnimalHead = "Animal Head",
-    CardSuite = "Card Suite",
-    Empty = "",
-    Gesture = "Gesture",
-    IntentAnimalHead = "Animal head",
-    LunarNewYear = "Lunar New Year",
-    Merriment = "Merriment",
-    PreOrder = "Pre-Order",
-    PrimeGaming = "Prime Gaming",
-    Smugglers = "Smugglers",
-    Twitch = "Twitch",
-    Weapons = "Weapons",
-}
+export type Intent = "" | "Animal Head" | "Merriment" | "Card Suite" | "Smugglers" | "Pre-Order" | "Prime Gaming" | "Animal head" | "Lunar New Year" | "Gesture" | "Weapons" | "Twitch";
 
-export interface CurrencyExchangeData {
+export type CurrencyExchangeData = {
     ConversionID:                         string;
     FromCurrencyId:                       string;
     FromCurrencyIsCategoricalProgression: boolean;
@@ -3074,7 +1558,7 @@ export interface CurrencyExchangeData {
     ToCurrencyQuantity:                   number;
 }
 
-export interface CurseMutationStaticData {
+export type CurseMutationStaticData = {
     CurseMutationId:  string;
     CurseMinor:       string;
     CurseMajor:       string;
@@ -3084,7 +1568,7 @@ export interface CurseMutationStaticData {
     IconPath:         string;
 }
 
-export interface CutsceneCameraStaticData {
+export type CutsceneCameraStaticData = {
     CutsceneCameraId:        string;
     CameraState:             string;
     CameraStateOrigin:       string;
@@ -3108,7 +1592,7 @@ export interface CutsceneCameraStaticData {
     BannerDescriptionText:   string;
 }
 
-export interface DamageData {
+export type DamageData = {
     DamageID:                     string;
     WeaponCategory:               string;
     IgnoreInvulnerable:           boolean | number | null | string;
@@ -3194,35 +1678,13 @@ export interface DamageData {
     EffectWhenNotBlocked?:        boolean | null;
 }
 
-export enum Affixes {
-    AIArcaneDMG10 = "AI_ArcaneDMG_10",
-    AIArcaneDMG25 = "AI_ArcaneDMG_25",
-    AICorruptionDMG25 = "AI_CorruptionDMG_25",
-    AICorruptionDMG50 = "AI_CorruptionDMG_50",
-    AICorruptionDMG75 = "AI_CorruptionDMG_75",
-    AIFireDMG100 = "AI_FireDMG_100",
-    AIFireDMG25 = "AI_FireDMG_25",
-    AIFireDMG50 = "AI_FireDMG_50",
-    AIFireDMG75 = "AI_FireDMG_75",
-    AILIghtningDMG75 = "AI_LIghtningDMG_75",
-    Empty = "",
-}
+export type Affixes = "" | "AI_ArcaneDMG_10" | "AI_FireDMG_100" | "AI_ArcaneDMG_25" | "AI_CorruptionDMG_50" | "AI_CorruptionDMG_25" | "AI_CorruptionDMG_75" | "AI_FireDMG_25" | "AI_FireDMG_50" | "AI_FireDMG_75" | "AI_LIghtningDMG_75";
 
-export enum Affliction {
-    AfflictionBleed = "AfflictionBleed",
-    AfflictionDisease = "AfflictionDisease",
-    AfflictionFrostbite = "AfflictionFrostbite",
-    Empty = "",
-}
+export type Affliction = "" | "AfflictionBleed" | "AfflictionFrostbite" | "AfflictionDisease";
 
-export enum DeflectDamageIDEnum {
-    Default = "Default",
-    DeflectDefault = "Deflect_Default",
-    Empty = "",
-    Unarmed = "Unarmed",
-}
+export type DeflectDamageIDEnum = "Deflect_Default" | "" | "Default" | "Unarmed";
 
-export interface DamageTypeData {
+export type DamageTypeData = {
     TypeID:                DamageTypes;
     IntID:                 number;
     DisplayName:           string;
@@ -3236,19 +1698,11 @@ export interface DamageTypeData {
     UseAllDamageModifiers: UseAllDamageModifiers;
 }
 
-export enum DamageTypeDatumCategory {
-    Elemental = "Elemental",
-    Physical = "Physical",
-    True = "True",
-}
+export type DamageTypeDatumCategory = "True" | "Physical" | "Elemental";
 
-export enum UseAllDamageModifiers {
-    Empty = "",
-    True = "TRUE",
-    UseAllDamageModifiers = "`",
-}
+export type UseAllDamageModifiers = "" | "TRUE" | "`";
 
-export interface DataPointData {
+export type DataPointData = {
     DataPointId:   string;
     Type:          string;
     Cycle:         Cycle;
@@ -3261,25 +1715,13 @@ export interface DataPointData {
     IsWin:         IsMajor;
 }
 
-export enum Cycle {
-    Monthly = "Monthly",
-    Weekly = "Weekly",
-    Yearly = "Yearly",
-}
+export type Cycle = "Monthly" | "Yearly" | "Weekly";
 
-export enum DungeonID {
-    BrimstoneSands = "BrimstoneSands",
-    Empty = "",
-}
+export type DungeonID = "BrimstoneSands" | "";
 
-export enum IsMajor {
-    Any = "ANY",
-    Empty = "",
-    No = "NO",
-    Yes = "YES",
-}
+export type IsMajor = "" | "NO" | "YES" | "ANY";
 
-export interface DivertedLootData {
+export type DivertedLootData = {
     Id:                         string;
     CountToNextLevel:           number;
     TimeframeSeconds:           number;
@@ -3292,7 +1734,7 @@ export interface DivertedLootData {
     RedNotificationLocTag:      string;
 }
 
-export interface DyeColorData {
+export type DyeColorData = {
     Index:          number;
     Name:           string;
     Color:          string;
@@ -3305,14 +1747,14 @@ export interface DyeColorData {
     MaskGlossShift: number;
 }
 
-export interface DyeItemDefinitions {
+export type DyeItemDefinitions = {
     DyeItemId:  string;
     ColorIndex: number;
     NameNote:   string;
     BoolNote:   string;
 }
 
-export interface EconomyTrackerData {
+export type EconomyTrackerData = {
     EconomyTrackerID: string;
     AlarmType:        AlarmType;
     ThresholdConfig1: string;
@@ -3323,12 +1765,9 @@ export interface EconomyTrackerData {
     EnableMetric2:    boolean | null;
 }
 
-export enum AlarmType {
-    OneTime = "OneTime",
-    PerHour = "PerHour",
-}
+export type AlarmType = "PerHour" | "OneTime";
 
-export interface ElementalMutationStaticData {
+export type ElementalMutationStaticData = {
     ElementalMutationId:     string;
     Name:                    string;
     Description:             string;
@@ -3343,7 +1782,7 @@ export interface ElementalMutationStaticData {
     BackgroundColor:         string;
 }
 
-export interface EmoteData {
+export type EmoteData = {
     UniqueTagID:           string;
     FragmentName:          string;
     DisplayName:           string;
@@ -3364,39 +1803,13 @@ export interface EmoteData {
     AttributionId:         AttributionID;
 }
 
-export enum AttributionID {
-    Empty = "",
-    HousingDynastySet2021 = "Housing_DynastySet_2021",
-    HousingLegionSet2022 = "Housing_LegionSet_2022",
-    HousingPirateSet2021 = "Housing_PirateSet_2021",
-    HousingSettlerSet2021 = "Housing_SettlerSet_2021",
-    NightveilHallow2022 = "NightveilHallow_2022",
-    RabbitSeason2023 = "RabbitSeason_2023",
-    Season1 = "Season_1",
-    SpringtideBloom2023 = "SpringtideBloom_2023",
-    SummerMedleyfaire2022 = "SummerMedleyfaire_2022",
-    TurkeyTerror2022 = "TurkeyTerror_2022",
-    WinterConvergence2021 = "WinterConvergence_2021",
-    WinterConvergence2022 = "WinterConvergence_2022",
-}
+export type AttributionID = "" | "WinterConvergence_2021" | "SummerMedleyfaire_2022" | "NightveilHallow_2022" | "WinterConvergence_2022" | "SpringtideBloom_2023" | "TurkeyTerror_2022" | "RabbitSeason_2023" | "Season_1" | "Housing_SettlerSet_2021" | "Housing_PirateSet_2021" | "Housing_DynastySet_2021" | "Housing_LegionSet_2022";
 
-export enum DisplayGroup {
-    Answer = "Answer",
-    Decisions = "Decisions",
-    Default = "Default",
-    Direction = "Direction",
-    Emotion = "Emotion",
-    Friendly = "Friendly",
-    Other = "Other",
-    Taunt = "Taunt",
-}
+export type DisplayGroup = "Default" | "Friendly" | "Taunt" | "Other" | "Direction" | "Answer" | "Decisions" | "Emotion";
 
-export enum GatherableTags {
-    Dance = "dance",
-    Empty = "",
-}
+export type GatherableTags = "" | "dance";
 
-export interface EncumbranceData {
+export type EncumbranceData = {
     ContainerTypeID:                                 string;
     EncumbranceBaseMax:                              number;
     EncumbranceWarningPercent:                       number;
@@ -3451,7 +1864,7 @@ export interface EncumbranceData {
     EquipLoadCCStatusEffectCategories:               string;
 }
 
-export interface EntitlementData {
+export type EntitlementData = {
     UniqueTagID:      string;
     EntitlementIndex: number;
     IsEnabled:        boolean;
@@ -3467,71 +1880,15 @@ export interface EntitlementData {
     Notes:            EntitlementDatumNotes;
 }
 
-export enum AchievementID {
-    Empty = "",
-    RewardClaimBFNW2Twitch = "RewardClaim_BFNW2_Twitch",
-    RewardClaimBfridayPrime = "RewardClaim_Bfriday_Prime",
-    RewardClaimCSMGContainer = "RewardClaim_CS_MGContainer",
-    RewardClaimDec2022Prime = "RewardClaim_Dec2022_Prime",
-    RewardClaimDevStreamersEvent = "RewardClaim_DevStreamers_Event",
-    RewardClaimDevStreamersEvent2 = "RewardClaim_DevStreamers_Event_2",
-    RewardClaimDevStreamersEvent3 = "RewardClaim_DevStreamers_Event_3",
-    RewardClaimFirelightPrime = "RewardClaim_Firelight_Prime",
-    RewardClaimHighwaymanPrime = "RewardClaim_Highwayman_Prime",
-    RewardClaimMakeGoodWinterDragonCache = "RewardClaim_MakeGood_WinterDragon_Cache",
-    RewardClaimMay2023Prime = "RewardClaim_May2023_Prime",
-    RewardClaimOct2022PrimeContainer2 = "RewardClaim_Oct2022Prime_Container_2",
-    RewardClaimOmensOfWinterPrime = "RewardClaim_OmensOfWinter_Prime",
-    RewardClaimTwitchConEUCache = "RewardClaim_TwitchConEU_Cache",
-    RewardClaimWinterDragonPrime = "RewardClaim_WinterDragon_Prime",
-}
+export type AchievementID = "" | "RewardClaim_DevStreamers_Event" | "RewardClaim_DevStreamers_Event_2" | "RewardClaim_DevStreamers_Event_3" | "RewardClaim_TwitchConEU_Cache" | "RewardClaim_BFNW2_Twitch" | "RewardClaim_Oct2022Prime_Container_2" | "RewardClaim_Bfriday_Prime" | "RewardClaim_Dec2022_Prime" | "RewardClaim_CS_MGContainer" | "RewardClaim_WinterDragon_Prime" | "RewardClaim_OmensOfWinter_Prime" | "RewardClaim_Firelight_Prime" | "RewardClaim_MakeGood_WinterDragon_Cache" | "RewardClaim_Highwayman_Prime" | "RewardClaim_May2023_Prime";
 
-export enum EntitlementDatumNotes {
-    BugBountyRetailUsage = "Bug Bounty Retail usage",
-    Empty = "",
-    Qa4 = "QA4",
-    RetailFRA = "Retail FRA",
-    RetailGRU = "Retail GRU",
-    RetailIAD = "Retail IAD",
-    RetailPDX = "Retail PDX",
-    Server1 = "Server-1",
-    Ux1 = "UX1",
-    Ux2 = "UX2",
-}
+export type EntitlementDatumNotes = "" | "QA4" | "UX1" | "UX2" | "Server-1" | "Retail FRA" | "Retail IAD" | "Retail PDX" | "Retail GRU" | "Bug Bounty Retail usage";
 
-export enum ItemTypeEnum {
-    CampSkin = "CampSkin",
-    Emote = "Emote",
-    Entitlement = "Entitlement",
-    FictionalCurrency = "FictionalCurrency",
-    GuildCrest = "GuildCrest",
-    HousingItem = "HousingItem",
-    InventoryItem = "InventoryItem",
-    ItemDye = "ItemDye",
-    ItemSkin = "ItemSkin",
-    Loadout = "Loadout",
-    Misc = "Misc",
-    PlayerTitle = "PlayerTitle",
-    SeasonsRewards = "SeasonsRewards",
-    Service = "Service",
-    StatusEffect = "StatusEffect",
-    WorldID = "WorldId",
-}
+export type ItemTypeEnum = "Entitlement" | "ItemSkin" | "Misc" | "FictionalCurrency" | "HousingItem" | "ItemDye" | "GuildCrest" | "Emote" | "PlayerTitle" | "InventoryItem" | "Service" | "CampSkin" | "Loadout" | "WorldId" | "StatusEffect" | "SeasonsRewards";
 
-export enum SourceType {
-    Empty = "",
-    Leaderboard = "Leaderboard",
-    Leaderboards = "Leaderboards",
-    Preorder = "Preorder",
-    Prime = "Prime",
-    SaltTrack = "SaltTrack",
-    SeasonJourney = "SeasonJourney",
-    SeasonRewardTrack = "SeasonRewardTrack",
-    Store = "Store",
-    Twitch = "Twitch",
-}
+export type SourceType = "Twitch" | "Preorder" | "Prime" | "Store" | "" | "SaltTrack" | "Leaderboard" | "Leaderboards" | "SeasonJourney" | "SeasonRewardTrack";
 
-export interface ExperienceData {
+export type ExperienceData = {
     "Level Number":              number;
     XPToLevel:                   number;
     XPAlarmThreshold1:           number;
@@ -3583,29 +1940,13 @@ export interface ExperienceData {
     HouseTrophySlots:            number;
 }
 
-export enum BlueprintID {
-    CampT1 = "CampT1",
-    CampT2 = "CampT2",
-    CampT3 = "CampT3",
-    CampT4 = "CampT4",
-    CampT5 = "CampT5",
-}
+export type BlueprintID = "CampT1" | "CampT2" | "CampT3" | "CampT4" | "CampT5";
 
-export enum EffectID {
-    CampRegenL0 = "CampRegenL0",
-}
+export type EffectID = "CampRegenL0";
 
-export enum GSLimitT1 {
-    The100100 = "100-100",
-    The100125 = "100-125",
-    The125150 = "125-150",
-    The150175 = "150-175",
-    The175190 = "175-190",
-    The180190 = "180-190",
-    The185190 = "185-190",
-}
+export type GSLimitT1 = "100-100" | "100-125" | "125-150" | "150-175" | "175-190" | "180-190" | "185-190";
 
-export interface FactionControlBuffDefinitions {
+export type FactionControlBuffDefinitions = {
     FactionControlBuffID: string;
     IsTerritoryBuff:      boolean;
     Value:                number;
@@ -3614,7 +1955,7 @@ export interface FactionControlBuffDefinitions {
     Comments:             string;
 }
 
-export interface FactionData {
+export type FactionData = {
     FactionType:                 string;
     DisplayName:                 string;
     DisplayDesc:                 string;
@@ -3626,7 +1967,7 @@ export interface FactionData {
     RequiredLegacyAchievementId: string;
 }
 
-export interface FishData {
+export type FishData = {
     FishId:    string;
     Size:      StructureSize;
     FishingXp: number;
@@ -3637,7 +1978,7 @@ export interface FishData {
     IsLarge:   boolean;
 }
 
-export interface FishingBaitData {
+export type FishingBaitData = {
     Id:                            string;
     FishRarityRollModifier:        number;
     FishSizeRollModifier:          number;
@@ -3651,24 +1992,17 @@ export interface FishingBaitData {
     TimeToNibbleSecondsMultiplier: number;
 }
 
-export enum FishingBaitDatumLootTableID {
-    Empty = "",
-    FishingSalmonSpecial = "FishingSalmonSpecial",
-}
+export type FishingBaitDatumLootTableID = "" | "FishingSalmonSpecial";
 
-export enum RequiredWaterTags {
-    Fresh = "Fresh",
-    FreshSalt = "Fresh,Salt",
-    Salt = "Salt",
-}
+export type RequiredWaterTags = "Fresh" | "Salt" | "Fresh,Salt";
 
-export interface FishingBehaviorsData {
+export type FishingBehaviorsData = {
     Id:                          string;
     FishBehaviorPattern:         number;
     FishBehaviorLocalizationKey: string;
 }
 
-export interface FishingCatchablesData {
+export type FishingCatchablesData = {
     Id:                                 string;
     FishSize:                           StructureSize;
     FishWeightRange:                    string;
@@ -3683,7 +2017,7 @@ export interface FishingCatchablesData {
     RewardGameEventId:                  string;
 }
 
-export interface FishingHotspotsData {
+export type FishingHotspotsData = {
     Id:                           string;
     DisplayName:                  string;
     FishRarityRollModifier:       number;
@@ -3696,25 +2030,15 @@ export interface FishingHotspotsData {
     TimeToBiteSecondsRange:       TimeToBiteSecondsRange;
 }
 
-export enum FishingHotspotsDatumLootTableID {
-    FishingHotspotLoot = "FishingHotspotLoot",
-}
+export type FishingHotspotsDatumLootTableID = "FishingHotspotLoot";
 
-export enum LootTag {
-    Broad = "Broad",
-    Rare = "Rare",
-    Secret = "Secret",
-}
+export type LootTag = "Broad" | "Rare" | "Secret";
 
-export enum TimeToBiteSecondsRange {
-    The115 = "1-1.5",
-}
+export type TimeToBiteSecondsRange = "1-1.5";
 
-export enum TimeToNibbleSecondsRange {
-    The36 = "3-6",
-}
+export type TimeToNibbleSecondsRange = "3-6";
 
-export interface FishingPolesData {
+export type FishingPolesData = {
     Id:                           string;
     CastDistanceRange:            string;
     FishRarityRollModifier:       number;
@@ -3725,13 +2049,13 @@ export interface FishingPolesData {
     LineTensionRecoverPerSecond:  number;
 }
 
-export interface FishingWaterData {
+export type FishingWaterData = {
     Id:                       string;
     TimeToNibbleSecondsRange: string;
     TimeToBiteSecondsRange:   TimeToBiteSecondsRange;
 }
 
-export interface GameEventData {
+export type GameEventData = {
     EventID:                                 string;
     GameEventType:                           GameEventType;
     Level:                                   number | null;
@@ -3778,193 +2102,33 @@ export interface GameEventData {
     SeasonsXp?:                              number | null;
 }
 
-export enum CreatureTypeEnum {
-    Arena3V3Win3_Round = "Arena3v3_Win_3_Round",
-    ArenaMyrkgard = "ArenaMyrkgard",
-    ArenaSpriggan = "ArenaSpriggan",
-    AwardDryadEvent = "AwardDryadEvent",
-    AwardLostEvent = "AwardLostEvent",
-    CMissionKill = "CMission_Kill-",
-    CMissionRaw = "CMission_raw-",
-    CMissionRefined = "CMission_refined-",
-    CmissionCraftingGear = "Cmission_CraftingGear-",
-    CmissionCraftingProvision = "Cmission_CraftingProvision-",
-    CmissionCraftingProvision45 = "Cmission_CraftingProvision&#45;-",
-    CmissionQuest = "Cmission_Quest",
-    DarknessMajor = "DarknessMajor",
-    DarknessMinor = "DarknessMinor",
-    DungeonBoss = "DungeonBoss",
-    DungeonMiniBoss = "DungeonMiniBoss",
-    Empty = "",
-    FluffyMission = "Mission++",
-    Mission = "Mission+",
-    MissionPVP = "MissionPvP",
-    Msq = "MSQ-",
-    Myrkgard = "Myrkgard",
-    OutpostRush = "OutpostRush",
-    PVPArenas = "PvPArenas",
-    Project = "Project-",
-    PurpleCMissionKill = "CMission_Kill+",
-    PurpleCMissionRaw = "CMission_raw+",
-    PurpleCMissionRefined = "CMission_refined+",
-    PurpleCmissionCraftingGear = "Cmission_CraftingGear+",
-    PurpleCmissionCraftingProvision = "Cmission_CraftingProvision+",
-    PurpleMSQ = "MSQ+",
-    PurpleMission = "Mission",
-    PurpleMissionPVP = "MissionPvP+",
-    PurpleProject = "Project+",
-    PurpleQuest = "Quest-",
-    Quest = "Quest",
-    Solo = "Solo",
-    TypeCMissionKill = "CMission_Kill",
-    TypeCMissionRaw = "CMission_raw",
-    TypeCMissionRefined = "CMission_refined",
-    TypeCmissionCraftingGear = "Cmission_CraftingGear",
-    TypeCmissionCraftingProvision = "Cmission_CraftingProvision",
-    TypeDarknessMajor = "DarknessMajor+",
-    TypeDarknessMinor = "DarknessMinor+",
-    TypeMSQ = "MSQ",
-    TypeMission = "Mission-",
-    TypeMissionPVP = "MissionPvP-",
-    TypeProject = "Project",
-    TypeQuest = "Quest+",
-    War = "War",
-}
+export type CreatureTypeEnum = "MSQ-" | "MSQ" | "Quest" | "Quest+" | "Quest-" | "" | "MSQ+" | "Mission+" | "Solo" | "Mission-" | "Mission" | "Mission++" | "MissionPvP" | "MissionPvP-" | "MissionPvP+" | "Project-" | "Project" | "Project+" | "CMission_raw-" | "CMission_raw" | "CMission_raw+" | "CMission_refined-" | "CMission_refined" | "CMission_refined+" | "CMission_Kill-" | "CMission_Kill" | "CMission_Kill+" | "Cmission_CraftingGear-" | "Cmission_CraftingGear" | "Cmission_CraftingGear+" | "Cmission_CraftingProvision&#45;-" | "Cmission_CraftingProvision-" | "Cmission_CraftingProvision" | "Cmission_CraftingProvision+" | "Cmission_Quest" | "DarknessMinor" | "DarknessMinor+" | "DarknessMajor" | "DarknessMajor+" | "ArenaSpriggan" | "AwardLostEvent" | "AwardDryadEvent" | "ArenaMyrkgard" | "Myrkgard" | "War" | "OutpostRush" | "PvPArenas" | "Arena3v3_Win_3_Round" | "DungeonBoss" | "DungeonMiniBoss";
 
-export enum EntitlementID {
-    Empty = "",
-    EntitlementSkinFeetTurkeyTerror = "EntitlementSkin_Feet_TurkeyTerror",
-    EntitlementSkinMaskRabbitSeason = "EntitlementSkin_Mask_RabbitSeason",
-    EntitlementTitleTurkeyTerror = "EntitlementTitle_TurkeyTerror",
-}
+export type EntitlementID = "" | "EntitlementSkin_Mask_RabbitSeason" | "EntitlementTitle_TurkeyTerror" | "EntitlementSkin_Feet_TurkeyTerror";
 
-export enum FactionInfluenceSrc {
-    Destinations = "Destinations",
-    Empty = "",
-    General = "General",
-    Leaderboard = "Leaderboard",
-    Missions = "Missions",
-    PVE = "PvE",
-    PVP = "PvP",
-    Progression = "Progression",
-    Quests = "Quests",
-}
+export type FactionInfluenceSrc = "" | "Missions" | "PvE" | "PvP" | "Quests" | "Progression" | "General" | "Destinations" | "Leaderboard";
 
-export enum GameEventType {
-    Arena = "Arena",
-    Crafting = "Crafting",
-    Darkness = "Darkness",
-    Empty = "",
-    EventEncounter = "EventEncounter",
-    Gathering = "Gathering",
-    Invasion = "Invasion",
-    OutpostRush = "OutpostRush",
-    PVPArenas = "PvPArenas",
-    PVPKill = "PvPKill",
-    War = "War",
-}
+export type GameEventType = "" | "PvPKill" | "Darkness" | "Arena" | "Invasion" | "War" | "OutpostRush" | "PvPArenas" | "Crafting" | "Gathering" | "EventEncounter";
 
-export enum LootLimitID {
-    Arena3V3Limit = "Arena3v3_Limit",
-    Empty = "",
-    PVPFortTakeoverLimit = "PvP_FortTakeover_Limit",
-    TagLegacyofCrassusTicker = "Tag_LegacyofCrassus_Ticker",
-}
+export type LootLimitID = "" | "Arena3v3_Limit" | "PvP_FortTakeover_Limit" | "Tag_LegacyofCrassus_Ticker";
 
-export enum LootLimitReachedGameEventID {
-    Arena3V3LossDailyLimitReached = "Arena3v3_Loss_DailyLimitReached",
-    Arena3V3Win1_RoundDailyLimitReached = "Arena3v3_Win_1_Round_DailyLimitReached",
-    Arena3V3Win2_RoundDailyLimitReached = "Arena3v3_Win_2_Round_DailyLimitReached",
-    Arena3V3Win3_RoundDailyLimitReached = "Arena3v3_Win_3_Round_DailyLimitReached",
-    Empty = "",
-    PVPFortTakeoverLimitReached = "PvP_FortTakeover_LimitReached",
-    WorldEventCrassusBonusBoxOverride = "WorldEvent_Crassus_BonusBox_Override",
-}
+export type LootLimitReachedGameEventID = "" | "Arena3v3_Loss_DailyLimitReached" | "Arena3v3_Win_3_Round_DailyLimitReached" | "Arena3v3_Win_2_Round_DailyLimitReached" | "Arena3v3_Win_1_Round_DailyLimitReached" | "PvP_FortTakeover_LimitReached" | "WorldEvent_Crassus_BonusBox_Override";
 
-export enum LootTags {
-    Empty = "",
-    EnemyLevel60 = "EnemyLevel:60",
-}
+export type LootTags = "" | "EnemyLevel:60";
 
-export enum GameEventDatumRemoveStatusEffectCategories {
-    Empty = "",
-    MusicBuff = "MusicBuff",
-}
+export type GameEventDatumRemoveStatusEffectCategories = "" | "MusicBuff";
 
-export enum RewardType {
-    Armor = "Armor",
-    Azoth = "Azoth",
-    Coins = "Coins",
-    Empty = "",
-    Exp = "Exp",
-    Mats = "Mats",
-    Named = "Named",
-    Standing = "Standing",
-    Weapons = "Weapons",
-}
+export type RewardType = "Exp" | "Named" | "" | "Mats" | "Azoth" | "Weapons" | "Standing" | "Coins" | "Armor";
 
-export enum RewardNote {
-    Dungeon = "Dungeon",
-    Empty = "",
-    Tokens = "Tokens",
-}
+export type RewardNote = "" | "Dungeon" | "Tokens";
 
-export enum RewardNotes {
-    BootsOfTheStallion = "Boots of the Stallion",
-    ContainsMaterialsForTrophy = "Contains materials for trophy",
-    ContainsSettlerTableLighting = "Contains Settler Table & Lighting",
-    DarkPheonix = "Dark Pheonix",
-    DeathRattle = "Death Rattle",
-    EdgeOfRebellion = "Edge of Rebellion ",
-    Empty = "",
-    FortunaChestplate = "Fortuna Chestplate",
-    InfinityCrystal = "Infinity Crystal",
-    JewelOfVengence = "Jewel of Vengence",
-    LavaforgedLegguards = "Lavaforged Legguards",
-    MoltenSCore = "Molten's Core",
-    SpiritOfOblivion = "Spirit of Oblivion ",
-    VengeanceBlast = "Vengeance Blast",
-    VictorSHelm = "Victor's Helm",
-}
+export type RewardNotes = "" | "Death Rattle" | "Jewel of Vengence" | "Dark Pheonix" | "Boots of the Stallion" | "Edge of Rebellion " | "Lavaforged Legguards" | "Molten's Core" | "Victor's Helm" | "Spirit of Oblivion " | "Infinity Crystal" | "Vengeance Blast" | "Fortuna Chestplate" | "Contains Settler Table & Lighting" | "Contains materials for trophy";
 
-export enum RewardsNotes {
-    Custom = "Custom",
-    Empty = "",
-    L65Dungeon = "L65 Dungeon",
-    LegendaryWeapon = "Legendary Weapon",
-    RepeatableNoItem = "Repeatable - no item",
-}
+export type RewardsNotes = "" | "Custom" | "Repeatable - no item" | "L65 Dungeon" | "Legendary Weapon";
 
-export enum StatusEffectID {
-    Empty = "",
-    MusicBuffGatheringLuckT1Bad = "MusicBuff_GatheringLuck_T1_Bad",
-    MusicBuffGatheringLuckT2Okay = "MusicBuff_GatheringLuck_T2_Okay",
-    MusicBuffGatheringLuckT3Great = "MusicBuff_GatheringLuck_T3_Great",
-    MusicBuffGatheringLuckT4Amazing = "MusicBuff_GatheringLuck_T4_Amazing",
-    MusicBuffGatheringSpeedT1Bad = "MusicBuff_GatheringSpeed_T1_Bad",
-    MusicBuffGatheringSpeedT2Okay = "MusicBuff_GatheringSpeed_T2_Okay",
-    MusicBuffGatheringSpeedT3Great = "MusicBuff_GatheringSpeed_T3_Great",
-    MusicBuffGatheringSpeedT4Amazing = "MusicBuff_GatheringSpeed_T4_Amazing",
-    MusicBuffGatheringYieldT1Bad = "MusicBuff_GatheringYield_T1_Bad",
-    MusicBuffGatheringYieldT2Okay = "MusicBuff_GatheringYield_T2_Okay",
-    MusicBuffGatheringYieldT3Great = "MusicBuff_GatheringYield_T3_Great",
-    MusicBuffGatheringYieldT4Amazing = "MusicBuff_GatheringYield_T4_Amazing",
-    MusicBuffGroupXPSharingT1Bad = "MusicBuff_GroupXPSharing_T1_Bad",
-    MusicBuffGroupXPSharingT2Okay = "MusicBuff_GroupXPSharing_T2_Okay",
-    MusicBuffGroupXPSharingT3Great = "MusicBuff_GroupXPSharing_T3_Great",
-    MusicBuffGroupXPSharingT4Amazing = "MusicBuff_GroupXPSharing_T4_Amazing",
-    MusicBuffPlayerEncumbranceT1Bad = "MusicBuff_PlayerEncumbrance_T1_Bad",
-    MusicBuffPlayerEncumbranceT2Okay = "MusicBuff_PlayerEncumbrance_T2_Okay",
-    MusicBuffPlayerEncumbranceT3Great = "MusicBuff_PlayerEncumbrance_T3_Great",
-    MusicBuffPlayerEncumbranceT4Amazing = "MusicBuff_PlayerEncumbrance_T4_Amazing",
-    MusicBuffTerritoryStandingT1Bad = "MusicBuff_TerritoryStanding_T1_Bad",
-    MusicBuffTerritoryStandingT2Okay = "MusicBuff_TerritoryStanding_T2_Okay",
-    MusicBuffTerritoryStandingT3Great = "MusicBuff_TerritoryStanding_T3_Great",
-    MusicBuffTerritoryStandingT4Amazing = "MusicBuff_TerritoryStanding_T4_Amazing",
-    MusicPerformanceAmazingCelebration = "MusicPerformance_Amazing_Celebration",
-}
+export type StatusEffectID = "" | "MusicBuff_PlayerEncumbrance_T4_Amazing" | "MusicBuff_PlayerEncumbrance_T3_Great" | "MusicBuff_PlayerEncumbrance_T2_Okay" | "MusicBuff_PlayerEncumbrance_T1_Bad" | "MusicBuff_TerritoryStanding_T4_Amazing" | "MusicBuff_TerritoryStanding_T3_Great" | "MusicBuff_TerritoryStanding_T2_Okay" | "MusicBuff_TerritoryStanding_T1_Bad" | "MusicBuff_GroupXPSharing_T4_Amazing" | "MusicBuff_GroupXPSharing_T3_Great" | "MusicBuff_GroupXPSharing_T2_Okay" | "MusicBuff_GroupXPSharing_T1_Bad" | "MusicBuff_GatheringYield_T4_Amazing" | "MusicBuff_GatheringYield_T3_Great" | "MusicBuff_GatheringYield_T2_Okay" | "MusicBuff_GatheringYield_T1_Bad" | "MusicBuff_GatheringLuck_T4_Amazing" | "MusicBuff_GatheringLuck_T3_Great" | "MusicBuff_GatheringLuck_T2_Okay" | "MusicBuff_GatheringLuck_T1_Bad" | "MusicBuff_GatheringSpeed_T4_Amazing" | "MusicBuff_GatheringSpeed_T3_Great" | "MusicBuff_GatheringSpeed_T2_Okay" | "MusicBuff_GatheringSpeed_T1_Bad" | "MusicPerformance_Amazing_Celebration";
 
-export interface GameModeData {
+export type GameModeData = {
     GameModeId:                             GameModeID;
     ScriptName:                             GameModeID;
     SlicePath:                              string;
@@ -4064,153 +2228,45 @@ export interface GameModeData {
     RespawnTypeToUseForUnstuck:             RespawnTypeToUseForUnstuck;
 }
 
-export enum AIDespawnRadius {
-    Empty = "",
-    OpenWorld = "OpenWorld",
-}
+export type AIDespawnRadius = "" | "OpenWorld";
 
-export enum CannotFastTravelTextID {
-    Empty = "",
-    UICannotTravelOutpostRush = "\"@ui_cannot_travel_outpost_rush\"",
-    UICannotTravelPvpArena = "\"@ui_cannot_travel_pvp_arena\"",
-    UICannotTravelSoloArena = "\"@ui_cannot_travel_solo_arena\"",
-}
+export type CannotFastTravelTextID = "" | "\"@ui_cannot_travel_outpost_rush\"" | "\"@ui_cannot_travel_pvp_arena\"" | "\"@ui_cannot_travel_solo_arena\"";
 
-export enum DisabledItemClasses {
-    Empty = "",
-    NoPVPArenas = "NoPvPArenas",
-}
+export type DisabledItemClasses = "" | "NoPvPArenas";
 
-export enum FailGroupPenaltyTextID {
-    Empty = "",
-    UIOutpostRushSignupFailgrouppenalty = "@ui_outpost_rush_signup_failgrouppenalty",
-    UIPvparenasFailgrouppenalty = "@ui_pvparenas_failgrouppenalty",
-}
+export type FailGroupPenaltyTextID = "" | "@ui_outpost_rush_signup_failgrouppenalty" | "@ui_pvparenas_failgrouppenalty";
 
-export enum GameModeID {
-    Arena3V3 = "Arena3v3",
-    Duel = "Duel",
-    DungeonAmrine = "DungeonAmrine",
-    DungeonBrimstoneSands00 = "DungeonBrimstoneSands00",
-    DungeonCutlassKeys00 = "DungeonCutlassKeys00",
-    DungeonEbonscale00 = "DungeonEbonscale00",
-    DungeonEdengrove00 = "DungeonEdengrove00",
-    DungeonGreatCleave01 = "DungeonGreatCleave01",
-    DungeonReekwater00 = "DungeonReekwater00",
-    DungeonRestlessShores01 = "DungeonRestlessShores01",
-    DungeonShatterMtn00 = "DungeonShatterMtn00",
-    DungeonShatteredObelisk = "DungeonShatteredObelisk",
-    Empty = "",
-    GameModeTest = "GameModeTest",
-    OutpostRush = "OutpostRush",
-    QuestApophis = "QuestApophis",
-    QuestCaerDun = "QuestCaerDun",
-    TestMode1 = "TestMode1",
-    TestMode2 = "TestMode2",
-}
+export type GameModeID = "" | "DungeonShatteredObelisk" | "Arena3v3" | "DungeonAmrine" | "DungeonReekwater00" | "DungeonEdengrove00" | "DungeonShatterMtn00" | "DungeonEbonscale00" | "DungeonCutlassKeys00" | "DungeonRestlessShores01" | "QuestApophis" | "DungeonBrimstoneSands00" | "DungeonGreatCleave01" | "QuestCaerDun" | "TestMode1" | "TestMode2" | "Duel" | "OutpostRush" | "GameModeTest";
 
-export enum ItemClassesToRemoveOnExit {
-    ArenaConsumable = "ArenaConsumable",
-    DungeonItem = "DungeonItem",
-    Empty = "",
-    OutpostRushOnly = "OutpostRushOnly",
-}
+export type ItemClassesToRemoveOnExit = "" | "OutpostRushOnly" | "DungeonItem" | "ArenaConsumable";
 
-export enum JoinButtonTextID {
-    Empty = "",
-    UIOutpostRushSignupJoinsolo = "@ui_outpost_rush_signup_joinsolo",
-}
+export type JoinButtonTextID = "" | "@ui_outpost_rush_signup_joinsolo";
 
-export enum LeaveDescTextID {
-    Empty = "",
-    UIOutpostRushLeaveDesc = "\"@ui_outpost_rush_leave_desc\"",
-    UIPvpArenaLeaveDesc = "\"@ui_pvp_arena_leave_desc\"",
-    UISoloArenaLeaveDesc = "\"@ui_solo_arena_leave_desc\"",
-}
+export type LeaveDescTextID = "" | "\"@ui_outpost_rush_leave_desc\"" | "\"@ui_pvp_arena_leave_desc\"" | "\"@ui_solo_arena_leave_desc\"";
 
-export enum LeaveQueueDescriptionTextID {
-    Empty = "",
-    UIOutpostRushLeaveQueueDesc = "@ui_outpost_rush_leave_queue_desc",
-    UIPvparenasLeaveQueueDesc = "@ui_pvparenas_leave_queue_desc",
-}
+export type LeaveQueueDescriptionTextID = "" | "@ui_outpost_rush_leave_queue_desc" | "@ui_pvparenas_leave_queue_desc";
 
-export enum LeaveQueueTitleTextID {
-    Empty = "",
-    UIOutpostRushLeaveQueueTitle = "@ui_outpost_rush_leave_queue_title",
-    UIPvparenasLeaveQueueTitle = "@ui_pvparenas_leave_queue_title",
-}
+export type LeaveQueueTitleTextID = "" | "@ui_outpost_rush_leave_queue_title" | "@ui_pvparenas_leave_queue_title";
 
-export enum LeaveTimeDescTextID {
-    Empty = "",
-    UIOutpostRushLeaveDescTime = "\"@ui_outpost_rush_leave_desc_time\"",
-    UIPvpArenaLeaveDescTime = "\"@ui_pvp_arena_leave_desc_time\"",
-    UISoloArenaLeaveDescTime = "\"@ui_solo_arena_leave_desc_time\"",
-}
+export type LeaveTimeDescTextID = "" | "\"@ui_outpost_rush_leave_desc_time\"" | "\"@ui_pvp_arena_leave_desc_time\"" | "\"@ui_solo_arena_leave_desc_time\"";
 
-export enum LeaveTitleTextID {
-    Empty = "",
-    UIOutpostRushLeaveTitle = "\"@ui_outpost_rush_leave_title\"",
-    UIPvpArenaLeaveTitle = "\"@ui_pvp_arena_leave_title\"",
-    UISoloArenaLeaveTitle = "\"@ui_solo_arena_leave_title\"",
-}
+export type LeaveTitleTextID = "" | "\"@ui_outpost_rush_leave_title\"" | "\"@ui_pvp_arena_leave_title\"" | "\"@ui_solo_arena_leave_title\"";
 
-export enum ModeNameLOCStringIDEnum {
-    Empty = "",
-    UIOutpostRushTitle = "@ui_outpost_rush_title",
-    UIPvp3V3ArenaSignupTitle = "@ui_pvp_3v3_arena_signup_title",
-}
+export type ModeNameLOCStringIDEnum = "" | "@ui_outpost_rush_title" | "@ui_pvp_3v3_arena_signup_title";
 
-export enum MutLootTagsOverride {
-    Ebonscale00MutCorruptedGypsumBlue = "Ebonscale00_Mut,Corrupted,GypsumBlue",
-    Empty = "",
-    Restless01MutCorruptedGypsumBlue = "Restless01_Mut,Corrupted,GypsumBlue",
-    ShatteredObeliskMutAncientGypsumBlue = "ShatteredObelisk_Mut,Ancient,GypsumBlue",
-}
+export type MutLootTagsOverride = "" | "ShatteredObelisk_Mut,Ancient,GypsumBlue" | "Restless01_Mut,Corrupted,GypsumBlue" | "Ebonscale00_Mut,Corrupted,GypsumBlue";
 
-export enum QueueLevelBuckets {
-    Empty = "",
-    The2030405060 = "20,30,40,50,60",
-}
+export type QueueLevelBuckets = "" | "20,30,40,50,60";
 
-export enum QuitButtonTextID {
-    Empty = "",
-    UIOutpostRushLeave = "\"@ui_outpost_rush_leave\"",
-    UIPvpArenaLeave = "\"@ui_pvp_arena_leave\"",
-    UISoloArenaLeave = "\"@ui_solo_arena_leave\"",
-}
+export type QuitButtonTextID = "" | "\"@ui_outpost_rush_leave\"" | "\"@ui_pvp_arena_leave\"" | "\"@ui_solo_arena_leave\"";
 
-export enum RespawnTypeToUseForUnstuck {
-    Control = "Control",
-    Courier = "Courier",
-    Craft = "Craft",
-    Empty = "",
-    Espionage = "Espionage",
-    Explore = "Explore",
-    Gather = "Gather",
-    Harvest = "Harvest",
-    Hunt = "Hunt",
-    Intercept = "Intercept",
-    Kill = "Kill",
-    Log = "Log",
-    Loot = "Loot",
-    Mine = "Mine",
-    Poach = "Poach",
-    RAID = "Raid",
-}
+export type RespawnTypeToUseForUnstuck = "" | "Raid" | "Hunt" | "Loot" | "Espionage" | "Control" | "Intercept" | "Poach" | "Kill" | "Explore" | "Courier" | "Log" | "Harvest" | "Mine" | "Craft" | "Gather";
 
-export enum ScreenHeaderTextID {
-    Empty = "",
-    TopicPromptJoinOutpostRush = "@Topic_Prompt_Join_Outpost_Rush",
-    UIPvparenasTitleJoin = "@ui_pvparenas_title_join",
-}
+export type ScreenHeaderTextID = "" | "@Topic_Prompt_Join_Outpost_Rush" | "@ui_pvparenas_title_join";
 
-export enum WarBoardStatDefinitions {
-    Empty = "",
-    ORWarboardStatDefinitions = "ORWarboardStatDefinitions",
-    PVPArenaWarboardStatDefinitions = "PvPArenaWarboardStatDefinitions",
-}
+export type WarBoardStatDefinitions = "" | "ORWarboardStatDefinitions" | "PvPArenaWarboardStatDefinitions";
 
-export interface GatherableData {
+export type GatherableData = {
     GatherableID:                    string;
     DisplayName:                     string;
     GatheringAction:                 Gathering;
@@ -4252,103 +2308,25 @@ export interface GatherableData {
     RequiredWhisperId:               RequiredWhisperID;
 }
 
-export enum EdStatusEffect {
-    AITorsoBossArcaneORB = "AI_Torso_Boss_ArcaneOrb",
-    DungeonAdmiralCannonBall = "Dungeon_AdmiralCannonBall",
-    DungeonArcaneBarrierProtection = "Dungeon_ArcaneBarrierProtection",
-    DungeonPurifyingFlame = "Dungeon_PurifyingFlame",
-    DungeonRelicBubble = "Dungeon_RelicBubble",
-    DungeonSirenOffering = "Dungeon_SirenOffering",
-    Empty = "",
-    Season01_EventDamageBoostEffect = "Season_01_Event_DamageBoostEffect",
-    ShrineMothersLove = "Shrine_MothersLove",
-}
+export type EdStatusEffect = "" | "AI_Torso_Boss_ArcaneOrb" | "Dungeon_AdmiralCannonBall" | "Dungeon_PurifyingFlame" | "Dungeon_ArcaneBarrierProtection" | "Dungeon_RelicBubble" | "Dungeon_SirenOffering" | "Shrine_MothersLove" | "Season_01_Event_DamageBoostEffect";
 
-export enum Gathering {
-    AzothStaff = "AzothStaff",
-    AzothStaffCreate = "AzothStaffCreate",
-    AzothStaffHigh = "AzothStaffHigh",
-    AzothStaffLow = "AzothStaffLow",
-    Chopping = "Chopping",
-    ChoppingVertical = "ChoppingVertical",
-    Crafting = "Crafting",
-    Cutting = "Cutting",
-    Dressing = "Dressing",
-    Etching = "Etching",
-    Fishing = "Fishing",
-    Handcrafting = "Handcrafting",
-    Kicking = "Kicking",
-    LootContainer = "LootContainer",
-    MSQTheRitual = "MSQTheRitual",
-    Mining = "Mining",
-    None = "None",
-    Welling = "Welling",
-}
+export type Gathering = "Chopping" | "ChoppingVertical" | "None" | "Cutting" | "Mining" | "Dressing" | "Fishing" | "Handcrafting" | "LootContainer" | "AzothStaffLow" | "AzothStaffHigh" | "Etching" | "Welling" | "Crafting" | "AzothStaffCreate" | "MSQTheRitual" | "Kicking" | "AzothStaff";
 
-export enum GatheringFragment {
-    CraftingInteraction = "Crafting_Interaction",
-    EmoteBeckon = "Emote_Beckon",
-    EmoteBow = "Emote_Bow",
-    EmoteHi = "Emote_Hi",
-    EmotePondering = "Emote_Pondering",
-    EmoteWave = "Emote_Wave",
-    Empty = "",
-    InteractBlacksmithLoop = "Interact_BlacksmithLoop",
-    InteractBoxFTUE = "Interact_Box_FTUE",
-    InteractCarpentry = "Interact_Carpentry",
-    InteractPlayFlute = "Interact_Play_Flute",
-    InteractPlayFluteWindsofAutumn = "Interact_PlayFlute_WindsofAutumn",
-    InteractPlayGuitar = "Interact_Play_Guitar",
-    InteractPlayMandolin = "Interact_Play_Mandolin",
-    InteractPlayURBass = "Interact_Play_URBass",
-}
+export type GatheringFragment = "" | "Interact_Box_FTUE" | "Emote_Pondering" | "Emote_Bow" | "Emote_Beckon" | "Emote_Hi" | "Emote_Wave" | "Interact_Play_Mandolin" | "Interact_Play_Guitar" | "Interact_Play_URBass" | "Interact_Play_Flute" | "Interact_PlayFlute_WindsofAutumn" | "Interact_Carpentry" | "Interact_BlacksmithLoop" | "Crafting_Interaction";
 
-export enum RequiredWhisperID {
-    Empty = "",
-    The01_WatcherFTUE01 = "01_Watcher_FTUE_01",
-    The01_WhisperBeach01 = "01_Whisper_Beach_01",
-    The01_WhisperBeach02 = "01_Whisper_Beach_02",
-    The01_WhisperBeach03 = "01_Whisper_Beach_03",
-    The01_WhisperBeach04 = "01_Whisper_Beach_04",
-    The01_WhisperBeach05 = "01_Whisper_Beach_05",
-    The01_WhisperBeach06 = "01_Whisper_Beach_06",
-    The01_WhisperBeach07 = "01_Whisper_Beach_07",
-    The01_WhisperFTUE01 = "01_Whisper_FTUE_01",
-    The01_WhisperFTUE02 = "01_Whisper_FTUE_02",
-    The01_WhisperFTUE03 = "01_Whisper_FTUE_03",
-    The01_WhisperFTUE04 = "01_Whisper_FTUE_04",
-    The01_WhisperFTUE05 = "01_Whisper_FTUE_05",
-    The12AMBWhisper01 = "12A_MB_Whisper_01",
-    The12AMBWhisper02 = "12A_MB_Whisper_02",
-    The12AMBWhisper03 = "12A_MB_Whisper_03",
-    The12AMBWhisper04 = "12A_MB_Whisper_04",
-    The98_CovenantWhisper01 = "98_Covenant_Whisper_01",
-    The98_MaraudersWhisper01 = "98_Marauders_Whisper_01",
-    The98_SyndicateWhisper01 = "98_Syndicate_Whisper_01",
-    WhisperTest01 = "whisper_test_01",
-    WhisperTest02 = "whisper_test_02",
-    WhisperTest03 = "whisper_test_03",
-}
+export type RequiredWhisperID = "" | "whisper_test_01" | "whisper_test_02" | "whisper_test_03" | "01_Whisper_FTUE_01" | "01_Whisper_FTUE_02" | "01_Whisper_FTUE_03" | "01_Whisper_FTUE_04" | "01_Whisper_FTUE_05" | "01_Whisper_Beach_01" | "01_Whisper_Beach_02" | "01_Whisper_Beach_03" | "01_Whisper_Beach_04" | "01_Whisper_Beach_05" | "01_Whisper_Beach_06" | "01_Whisper_Beach_07" | "12A_MB_Whisper_01" | "12A_MB_Whisper_02" | "12A_MB_Whisper_03" | "12A_MB_Whisper_04" | "98_Covenant_Whisper_01" | "98_Marauders_Whisper_01" | "98_Syndicate_Whisper_01" | "01_Watcher_FTUE_01";
 
-export enum Restriction {
-    ItemRequired = "ItemRequired",
-    NoToolNecessary = "NoToolNecessary",
-    ToolOptional = "ToolOptional",
-    ToolRequired = "ToolRequired",
-    WhisperRequired = "WhisperRequired",
-}
+export type Restriction = "ToolRequired" | "NoToolNecessary" | "ItemRequired" | "ToolOptional" | "WhisperRequired";
 
-export interface GearScoreUpgradeDefinition {
+export type GearScoreUpgradeDefinition = {
     Level:                number;
     RequiredItemId:       GearScoreUpgradeDefinitionRequiredItemID;
     RequiredItemQuantity: number;
 }
 
-export enum GearScoreUpgradeDefinitionRequiredItemID {
-    UmbralShardT1 = "UmbralShardT1",
-}
+export type GearScoreUpgradeDefinitionRequiredItemID = "UmbralShardT1";
 
-export interface GeneratorRecipes {
+export type GeneratorRecipes = {
     StructureID:             string;
     Tickrate:                number;
     OutputItem:              string;
@@ -4358,7 +2336,7 @@ export interface GeneratorRecipes {
     TickrateProximityFactor: number | null;
 }
 
-export interface GenericInviteData {
+export type GenericInviteData = {
     ActivityCrc:           string;
     ActivityType:          number;
     DurationSec:           number;
@@ -4377,7 +2355,7 @@ export interface GenericInviteData {
     DisallowedWaterDepths: string;
 }
 
-export interface HighWaterMarkRankData {
+export type HighWaterMarkRankData = {
     Rank:                  number;
     ExceedMin0:            number;
     ExceedMax0:            number;
@@ -4397,7 +2375,7 @@ export interface HighWaterMarkRankData {
     ChanceToExceed1:       number;
 }
 
-export interface HouseTypeData {
+export type HouseTypeData = {
     HouseTypeID:                                      string;
     Cost:                                             number;
     "Fast Travel Cooldown Time (Minutes)":            number;
@@ -4407,13 +2385,13 @@ export interface HouseTypeData {
     "Housing Tag Limits":                             string;
 }
 
-export interface HunterSightData {
+export type HunterSightData = {
     SightID:                 string;
     StatusEffectToListenFor: string;
     SightCategoryFlag:       string;
 }
 
-export interface ImpactSurfaceAlignmentTable {
+export type ImpactSurfaceAlignmentTable = {
     Name:                     string;
     Filter:                   string;
     VerticalCastDist:         number;
@@ -4423,7 +2401,7 @@ export interface ImpactSurfaceAlignmentTable {
     AlignToDamageableTargets: boolean;
 }
 
-export interface InteractionAnimationData {
+export type InteractionAnimationData = {
     InteractionAnimationID:                  InteractionAnimationID;
     PlayerMannequinFragmentStartInteraction: string;
     InteractableTimelineStartInteraction:    InteractableTimelineStartInteraction;
@@ -4431,44 +2409,13 @@ export interface InteractionAnimationData {
     Notes:                                   string;
 }
 
-export enum InteractableTimelineEndInteraction {
-    InteractEnd = "Interact_End",
-}
+export type InteractableTimelineEndInteraction = "Interact_End";
 
-export enum InteractableTimelineStartInteraction {
-    InteractStart = "Interact_Start",
-}
+export type InteractableTimelineStartInteraction = "Interact_Start";
 
-export enum InteractionAnimationID {
-    Empty = "",
-    HousingItemCheerYeti = "HousingItemCheerYeti",
-    HousingItemFeedBird = "HousingItemFeedBird",
-    HousingItemLieOnBed = "HousingItemLieOnBed",
-    HousingItemLieOnBedMirror = "HousingItemLieOnBedMirror",
-    HousingItemLieOnRug = "HousingItemLieOnRug",
-    HousingItemPetBird = "HousingItemPetBird",
-    HousingItemPetBobcat = "HousingItemPetBobcat",
-    HousingItemPetCat = "HousingItemPetCat",
-    HousingItemPetDeer = "HousingItemPetDeer",
-    HousingItemPetDog = "HousingItemPetDog",
-    HousingItemPetHare = "HousingItemPetHare",
-    HousingItemPetPig = "HousingItemPetPig",
-    HousingItemPetRabbit = "HousingItemPetRabbit",
-    HousingItemPetTiger = "HousingItemPetTiger",
-    HousingItemPetWolf = "HousingItemPetWolf",
-    HousingItemSitOnChair = "HousingItemSitOnChair",
-    HousingItemSitOnChairSnapped = "HousingItemSitOnChair_Snapped",
-    HousingItemSpiderTricks = "HousingItemSpiderTricks",
-    HousingItemSpookyBook = "HousingItemSpookyBook",
-    HousingItemStandingInteract = "HousingItemStandingInteract",
-    HousingItemStirPot = "HousingItemStirPot",
-    HousingItemTouchMimic = "HousingItemTouchMimic",
-    HousingItemWatering = "HousingItemWatering",
-    QuestAnimAzothStaffCreate = "QuestAnim_AzothStaff_Create",
-    QuestAnimMSQTheRitual = "QuestAnim_MSQ_TheRitual",
-}
+export type InteractionAnimationID = "" | "HousingItemSitOnChair" | "HousingItemFeedBird" | "HousingItemStandingInteract" | "HousingItemStirPot" | "HousingItemPetBobcat" | "HousingItemPetDeer" | "HousingItemPetTiger" | "HousingItemLieOnBed" | "HousingItemLieOnRug" | "HousingItemPetRabbit" | "HousingItemPetPig" | "HousingItemTouchMimic" | "HousingItemPetBird" | "HousingItemSpookyBook" | "HousingItemSpiderTricks" | "HousingItemPetCat" | "HousingItemPetDog" | "HousingItemPetWolf" | "HousingItemCheerYeti" | "HousingItemWatering" | "HousingItemLieOnBedMirror" | "HousingItemPetHare" | "HousingItemSitOnChair_Snapped" | "QuestAnim_AzothStaff_Create" | "QuestAnim_MSQ_TheRitual";
 
-export interface ItemCurrencyConversionData {
+export type ItemCurrencyConversionData = {
     ConversionID:                       string;
     ItemID:                             string;
     EntitlementId:                      string;
@@ -4494,38 +2441,18 @@ export interface ItemCurrencyConversionData {
     InContracts:                        boolean | null;
 }
 
-export enum BuyCurrencyItemName {
-    Empty = "",
-    NightveilHallowToken = "NightveilHallow_Token",
-    OutpostRushAzothEssence = "OutpostRushAzothEssence",
-    SpringtidePremiumToken = "Springtide_PremiumToken",
-    SpringtideToken = "Springtide_Token",
-    SummerMedleyPremiumToken = "SummerMedley_PremiumToken",
-    SummerMedleyToken = "SummerMedley_Token",
-    WCPToken = "WCPToken",
-    WCToken = "WCToken",
-}
+export type BuyCurrencyItemName = "" | "OutpostRushAzothEssence" | "WCToken" | "WCPToken" | "SummerMedley_Token" | "SummerMedley_PremiumToken" | "NightveilHallow_Token" | "Springtide_Token" | "Springtide_PremiumToken";
 
-export enum ItemCurrencyConversionDatumCategoricalProgressionID {
-    BattleToken = "Battle_Token",
-    CovenantTokens = "CovenantTokens",
-    Empty = "",
-    EventProgress = "EventProgress",
-    HalloweenEventProgress = "HalloweenEventProgress",
-    MarauderTokens = "MarauderTokens",
-    SpringEventProgress = "SpringEventProgress",
-    SummerEventProgress = "SummerEventProgress",
-    SyndicateTokens = "SyndicateTokens",
-}
+export type ItemCurrencyConversionDatumCategoricalProgressionID = "MarauderTokens" | "CovenantTokens" | "SyndicateTokens" | "Battle_Token" | "" | "EventProgress" | "SummerEventProgress" | "HalloweenEventProgress" | "SpringEventProgress";
 
-export interface ItemPerkSwapData {
+export type ItemPerkSwapData = {
     Key:     string;
     KeyType: string;
     OldPerk: string;
     NewPerk: string;
 }
 
-export interface ItemSkinData {
+export type ItemSkinData = {
     ItemSkinID:      string;
     IndexID:         number;
     IsEntitlement:   number;
@@ -4538,52 +2465,11 @@ export interface ItemSkinData {
     IsTemporarySkin: boolean;
 }
 
-export enum NeedsOneClasses {
-    EquippableChest = "EquippableChest",
-    EquippableFeet = "EquippableFeet",
-    EquippableHands = "EquippableHands",
-    EquippableHead = "EquippableHead",
-    EquippableLegs = "EquippableLegs",
-    EquippableMainHand = "EquippableMainHand",
-    EquippableOffHand = "EquippableOffHand",
-    EquippableTool = "EquippableTool",
-    EquippableTwoHand = "EquippableTwoHand",
-}
+export type NeedsOneClasses = "EquippableHead" | "EquippableChest" | "EquippableHands" | "EquippableLegs" | "EquippableFeet" | "EquippableMainHand" | "EquippableOffHand" | "EquippableTwoHand" | "EquippableTool";
 
-export enum RequiredClasses {
-    AzothStaff = "AzothStaff",
-    Blunderbuss = "Blunderbuss",
-    Bow = "Bow",
-    Empty = "",
-    FireStaff = "FireStaff",
-    FishingPole = "FishingPole",
-    GreatSword = "GreatSword",
-    Hatchet = "Hatchet",
-    IceMagic = "IceMagic",
-    InstrumentDrums = "InstrumentDrums",
-    InstrumentFlute = "InstrumentFlute",
-    InstrumentGuitar = "InstrumentGuitar",
-    InstrumentMandolin = "InstrumentMandolin",
-    InstrumentUprightBass = "InstrumentUprightBass",
-    LifeStaff = "LifeStaff",
-    LoggingAxe = "LoggingAxe",
-    Musket = "Musket",
-    Pickaxe = "Pickaxe",
-    Rapier = "Rapier",
-    Shield = "Shield",
-    ShieldK = "ShieldK",
-    ShieldR = "ShieldR",
-    ShieldT = "ShieldT",
-    Sickle = "Sickle",
-    SkinningKnife = "SkinningKnife",
-    Spear = "Spear",
-    Sword = "Sword",
-    The2HAxe = "2HAxe",
-    The2HHammer = "2HHammer",
-    VoidGauntlet = "VoidGauntlet",
-}
+export type RequiredClasses = "" | "Hatchet" | "Sword" | "Shield" | "2HHammer" | "FireStaff" | "2HAxe" | "Rapier" | "Spear" | "Bow" | "IceMagic" | "LifeStaff" | "Musket" | "VoidGauntlet" | "SkinningKnife" | "Sickle" | "Pickaxe" | "LoggingAxe" | "FishingPole" | "AzothStaff" | "Blunderbuss" | "InstrumentFlute" | "InstrumentDrums" | "InstrumentGuitar" | "InstrumentUprightBass" | "InstrumentMandolin" | "GreatSword" | "ShieldK" | "ShieldR" | "ShieldT";
 
-export interface ItemSoundEvents {
+export type ItemSoundEvents = {
     ItemSoundID:  ItemSoundIDEnum;
     Sheathe:      string;
     Unsheathe:    string;
@@ -4592,63 +2478,13 @@ export interface ItemSoundEvents {
     Defense:      Defense;
 }
 
-export enum Defense {
-    Empty = "",
-    Play1HMeleeBlock = "Play_1H_Melee_Block",
-    Play1HShieldAMetalDefense = "Play_1H_ShieldA_Metal_Defense",
-    Play1HShieldAWoodDefense = "Play_1H_ShieldA_Wood_Defense",
-}
+export type Defense = "Play_1H_Melee_Block" | "Play_1H_ShieldA_Metal_Defense" | "Play_1H_ShieldA_Wood_Defense" | "";
 
-export enum ItemSoundIDEnum {
-    Default = "default",
-    Empty = "",
-    GauntletIce = "Gauntlet_Ice",
-    GauntletVoid = "Gauntlet_Void",
-    ID1HAxe = "1h_axe",
-    IDStaffFire = "Staff_fire",
-    MXMIDrums = "MXMI_Drums",
-    MXMIFlute = "MXMI_Flute",
-    MXMIGuitar = "MXMI_Guitar",
-    MXMIMandolin = "MXMI_Mandolin",
-    MXMIUprightBass = "MXMI_UprightBass",
-    MagicStaff = "MagicStaff",
-    StaffFire = "Staff_Fire",
-    StaffLife = "Staff_Life",
-    The1HAxe = "1H_Axe",
-    The1HClub = "1H_Club",
-    The1HKnife = "1H_Knife",
-    The1HMeleeDefault = "1H_Melee_Default",
-    The1HPick = "1H_Pick",
-    The1HPistol = "1H_Pistol",
-    The1HRapier = "1H_Rapier",
-    The1HShieldAMetal = "1H_ShieldA_metal",
-    The1HShieldAWood = "1H_ShieldA_wood",
-    The1HSickle = "1H_Sickle",
-    The1HSword = "1H_Sword",
-    The1HTorch = "1H_Torch",
-    The2HAxe = "2H_Axe",
-    The2HBlunderbuss = "2H_Blunderbuss",
-    The2HBow = "2H_Bow",
-    The2HClub = "2H_Club",
-    The2HGreatAxe = "2H_GreatAxe",
-    The2HGreatSword = "2H_GreatSword",
-    The2HGreatsword = "2H_Greatsword",
-    The2HMeleeDefault = "2H_Melee_Default",
-    The2HPick = "2H_Pick",
-    The2HRifle = "2H_Rifle",
-    The2HSpear = "2H_Spear",
-    The2HWarHammer = "2H_WarHammer",
-}
+export type ItemSoundIDEnum = "" | "1H_ShieldA_metal" | "2H_Spear" | "1H_Rapier" | "2H_Blunderbuss" | "1H_Sword" | "1H_ShieldA_wood" | "1H_Axe" | "2H_GreatSword" | "2H_WarHammer" | "2H_GreatAxe" | "2H_Bow" | "2H_Rifle" | "Staff_Fire" | "Staff_Life" | "Gauntlet_Ice" | "1H_Knife" | "1H_Sickle" | "2H_Axe" | "1H_Pick" | "2H_Pick" | "MXMI_Flute" | "MXMI_Drums" | "MXMI_Guitar" | "MXMI_UprightBass" | "MXMI_Mandolin" | "MagicStaff" | "Gauntlet_Void" | "2H_Greatsword" | "Staff_fire" | "1h_axe" | "default" | "1H_Club" | "1H_Melee_Default" | "1H_Pistol" | "1H_Torch" | "2H_Club" | "2H_Melee_Default";
 
-export enum UnsheatheFLY {
-    Empty = "",
-    Play1HShieldAMetalFLYUnsheathed = "Play_1H_ShieldA_Metal_FLY_Unsheathed",
-    Play1HShieldAWoodFLYUnsheathed = "Play_1H_ShieldA_Wood_FLY_Unsheathed",
-    Play2HRifleFLYUnsheathed = "Play_2HRifle_FLY_Unsheathed",
-    PlayBlunderbussFLYUnsheathed = "Play_Blunderbuss_FLY_Unsheathed",
-}
+export type UnsheatheFLY = "" | "Play_1H_ShieldA_Metal_FLY_Unsheathed" | "Play_1H_ShieldA_Wood_FLY_Unsheathed" | "Play_2HRifle_FLY_Unsheathed" | "Play_Blunderbuss_FLY_Unsheathed";
 
-export interface ItemTooltipLayout {
+export type ItemTooltipLayout = {
     ItemID:                 string;
     "Loc Note":             string;
     DerivedFromText:        string;
@@ -4684,13 +2520,13 @@ export interface ItemTooltipLayout {
     ResourcesHeaderIcon:    string;
 }
 
-export interface ItemTransform {
+export type ItemTransform = {
     FromItemId: string;
     ToItemId:   string;
     KeepPerks:  boolean;
 }
 
-export interface JointAlias {
+export type JointAlias = {
     SkeletonName:  string;
     Xform:         Xform;
     Head:          string;
@@ -4706,25 +2542,17 @@ export interface JointAlias {
     LeftUpperArm:  string;
 }
 
-export enum Xform {
-    BindXform = "bind_xform",
-    Xform = "Xform",
-    XformC00_Jnt = "xform_C0_0_jnt",
-    XformXform = "xform",
-}
+export type Xform = "Xform" | "bind_xform" | "xform_C0_0_jnt" | "xform";
 
-export interface KitItemDefinitions {
+export type KitItemDefinitions = {
     ItemID:       string;
     KitType:      KitType;
     StationTypes: string;
 }
 
-export enum KitType {
-    Crafting = "Crafting",
-    Repair = "Repair",
-}
+export type KitType = "Crafting" | "Repair";
 
-export interface LeaderboardData {
+export type LeaderboardData = {
     LeaderboardId:                  string;
     IsEnabled:                      boolean;
     Namespace:                      Namespace;
@@ -4755,69 +2583,21 @@ export interface LeaderboardData {
     ValueString:                    ValueString;
 }
 
-export enum CategoryAdditionalHeader {
-    Empty = "",
-    UILeaderboardWithGold = "@ui_leaderboard_with_gold",
-}
+export type CategoryAdditionalHeader = "" | "@ui_leaderboard_with_gold";
 
-export enum CategoryDescription {
-    Empty = "",
-    UILeaderboardTipDarknessScore = "@ui_leaderboard_tip_darkness_score",
-    UILeaderboardTipInvWarWINS = "@ui_leaderboard_tip_inv_war_wins",
-    UILeaderboardTipInvasionScore = "@ui_leaderboard_tip_invasion_score",
-    UILeaderboardTipOutpostrushScore = "@ui_leaderboard_tip_outpostrush_score",
-    UILeaderboardTipWarScore = "@ui_leaderboard_tip_war_score",
-}
+export type CategoryDescription = "@ui_leaderboard_tip_war_score" | "" | "@ui_leaderboard_tip_inv_war_wins" | "@ui_leaderboard_tip_invasion_score" | "@ui_leaderboard_tip_outpostrush_score" | "@ui_leaderboard_tip_darkness_score";
 
-export enum DataSheetCategory {
-    DarknessBreaches = "Darkness Breaches",
-    Expeditions = "Expeditions",
-    Invasion = "Invasion",
-    OpenWorldPVP = "Open World PVP",
-    OutpostRush = "Outpost Rush",
-    PVPArenas = "PVP Arenas",
-    TerritoryControl = "Territory Control",
-    Tradeskills = "Tradeskills",
-    Trials = "Trials",
-    War = "War",
-}
+export type DataSheetCategory = "War" | "Invasion" | "Outpost Rush" | "Darkness Breaches" | "Open World PVP" | "Expeditions" | "Trials" | "Territory Control" | "PVP Arenas" | "Tradeskills";
 
-export enum FirstLevelCategory {
-    FactionWar = "Faction War",
-    MutatedExpeditions = "Mutated Expeditions",
-    TradeSkills = "Trade Skills",
-    VsEnvironment = "Vs. Environment",
-    VsPlayers = "Vs. Players",
-}
+export type FirstLevelCategory = "Faction War" | "Vs. Environment" | "Vs. Players" | "Mutated Expeditions" | "Trade Skills";
 
-export enum Namespace {
-    PC = "pc",
-}
+export type Namespace = "pc";
 
-export enum Rotation {
-    Month = "Month",
-    Season = "Season",
-    Week = "Week",
-}
+export type Rotation = "Month" | "Season" | "Week";
 
-export enum ValueString {
-    UILeaderboardColumnCaptured = "@ui_leaderboard_column_captured",
-    UILeaderboardColumnCaught = "@ui_leaderboard_column_caught",
-    UILeaderboardColumnCompleted = "@ui_leaderboard_column_completed",
-    UILeaderboardColumnContributed = "@ui_leaderboard_column_contributed",
-    UILeaderboardColumnCrafted = "@ui_leaderboard_column_crafted",
-    UILeaderboardColumnDamage = "@ui_leaderboard_column_damage",
-    UILeaderboardColumnDays = "@ui_leaderboard_column_days",
-    UILeaderboardColumnHeals = "@ui_leaderboard_column_heals",
-    UILeaderboardColumnInfluence = "@ui_leaderboard_column_influence",
-    UILeaderboardColumnKills = "@ui_leaderboard_column_kills",
-    UILeaderboardColumnRatio = "@ui_leaderboard_column_ratio",
-    UILeaderboardColumnScore = "@ui_leaderboard_column_score",
-    UILeaderboardColumnTime = "@ui_leaderboard_column_time",
-    UILeaderboardColumnWINS = "@ui_leaderboard_column_wins",
-}
+export type ValueString = "@ui_leaderboard_column_score" | "@ui_leaderboard_column_damage" | "@ui_leaderboard_column_heals" | "@ui_leaderboard_column_kills" | "@ui_leaderboard_column_wins" | "@ui_leaderboard_column_ratio" | "@ui_leaderboard_column_contributed" | "@ui_leaderboard_column_influence" | "@ui_leaderboard_column_captured" | "@ui_leaderboard_column_time" | "@ui_leaderboard_column_completed" | "@ui_leaderboard_column_days" | "@ui_leaderboard_column_crafted" | "@ui_leaderboard_column_caught";
 
-export interface LeaderboardStatData {
+export type LeaderboardStatData = {
     LeaderboardStatId:        string;
     Notes:                    LeaderboardStatDatumNotes;
     Namespace:                Namespace;
@@ -4831,51 +2611,15 @@ export interface LeaderboardStatData {
     PersonalBest:             string;
 }
 
-export enum Aggregation {
-    Max = "Max",
-    Min = "Min",
-    Sum = "Sum",
-}
+export type Aggregation = "Max" | "Sum" | "Min";
 
-export enum GameMode {
-    Arena3V3 = "Arena3v3",
-    ArenaLostSirenReekwater = "Arena_LostSiren_Reekwater",
-    ArenaSprigganAngryEarthT1 = "Arena_Spriggan_AngryEarth_T1",
-    ArenaSwampBeastReekwater = "Arena_SwampBeast_Reekwater",
-    Darkness = "Darkness",
-    DungeonGreatCleave01 = "DungeonGreatCleave01",
-    Empty = "",
-    Expedition = "Expedition",
-    Invasion = "Invasion",
-    OpenWorldPvp = "OpenWorldPvp",
-    OutpostRush = "OutpostRush",
-    War = "War",
-}
+export type GameMode = "War" | "OutpostRush" | "Invasion" | "Darkness" | "" | "OpenWorldPvp" | "Arena_LostSiren_Reekwater" | "Arena_Spriggan_AngryEarth_T1" | "Arena_SwampBeast_Reekwater" | "Arena3v3" | "Expedition" | "DungeonGreatCleave01";
 
-export enum LeaderboardStatDatumNotes {
-    Brightwood = "Brightwood",
-    BrimstoneSands = "Brimstone Sands",
-    CutlassKeys = "CutlassKeys",
-    Ebonscale = "Ebonscale",
-    Empty = "",
-    Everfall = "Everfall",
-    FirstLight = "First Light",
-    MonarchsBluffs = "Monarchs Bluffs",
-    Mourningdale = "Mourningdale",
-    Reekwater = "Reekwater",
-    RestlessShore = "Restless Shore",
-    WeaversFen = "WeaversFen",
-    Windsward = "Windsward",
-}
+export type LeaderboardStatDatumNotes = "" | "Brightwood" | "Everfall" | "Reekwater" | "Windsward" | "Ebonscale" | "First Light" | "CutlassKeys" | "Mourningdale" | "Monarchs Bluffs" | "WeaversFen" | "Restless Shore" | "Brimstone Sands";
 
-export enum Scope {
-    Character = "Character",
-    Company = "Company",
-    Global = "Global",
-    Group = "Group",
-}
+export type Scope = "Character" | "Company" | "Global" | "Group";
 
-export interface LevelDisparityData {
+export type LevelDisparityData = {
     LevelDisparity:               number;
     DamageModifier:               number;
     PhysicalArmorRatingModifier:  number;
@@ -4892,12 +2636,9 @@ export interface LevelDisparityData {
     EventExpModifier:             number;
 }
 
-export enum AdjustPowerLevel {
-    False = "FALSE",
-    True = "TRUE",
-}
+export type AdjustPowerLevel = "FALSE" | "TRUE";
 
-export interface LootLimitData {
+export type LootLimitData = {
     LootLimitID:                 string;
     IsReplicated:                boolean;
     MinLimitSeconds:             number;
@@ -4911,13 +2652,9 @@ export interface LootLimitData {
     LimitNotificationLocTag:     LimitNotificationLOCTag;
 }
 
-export enum LimitNotificationLOCTag {
-    Empty = "",
-    UIReachedMaxDailyPvpArenaReward = "@ui_reached_max_daily_pvp_arena_reward",
-    UIReachedMaxFortTakeoverRewards = "@ui_reached_max_fort_takeover_rewards",
-}
+export type LimitNotificationLOCTag = "" | "@ui_reached_max_fort_takeover_rewards" | "@ui_reached_max_daily_pvp_arena_reward";
 
-export interface LootTablesData {
+export type LootTablesData = {
     LootTableID:            string;
     "AND/OR":               TableType;
     RollBonusSetting:       RollBonusSetting;
@@ -5036,178 +2773,52 @@ export interface LootTablesData {
     PerkOverrides35?:       string;
 }
 
-export enum Conditions {
-    Amrine = "Amrine",
-    BossTrophyArtifact = "BossTrophyArtifact",
-    BrimstoneSands00 = "BrimstoneSands00",
-    Common = "Common",
-    CutlassKeys00 = "CutlassKeys00",
-    Diospolis = "Diospolis",
-    Ebonscale00 = "Ebonscale00",
-    Ebonscale00Mut = "Ebonscale00_Mut",
-    Edengrove00 = "Edengrove00",
-    Elite = "Elite",
-    Empty = "",
-    EnemyLevel = "EnemyLevel",
-    EnemyLevelElite = "EnemyLevel,Elite",
-    Fire = "Fire",
-    FishSize = "FishSize",
-    FreshFishRarity = "Fresh,FishRarity",
-    GlobalMod = "GlobalMod",
-    Goblin = "Goblin",
-    GreatCleave01 = "GreatCleave01",
-    GypsumBlack = "GypsumBlack",
-    GypsumBlue = "GypsumBlue",
-    GypsumYellow = "GypsumYellow",
-    Hermopolis = "Hermopolis",
-    Ice = "Ice",
-    LIMTagS1EventPityTicker = "[LIM]Tag_S1Event_PityTicker",
-    LegionHQ = "LegionHQ",
-    Level = "Level",
-    LootTableDiverted = "LootTableDiverted",
-    MinContLevel = "MinContLevel",
-    MinContLevelGreatCleave01 = "MinContLevel,GreatCleave01",
-    MinContLevelVarangian = "MinContLevel,Varangian",
-    MinContLevelVarangianPOI = "MinContLevel,VarangianPOI",
-    MinPOIContLevel = "MinPOIContLevel",
-    MutDiff = "MutDiff",
-    Named = "Named",
-    Nature = "Nature",
-    PyramidObservatory = "PyramidObservatory",
-    PyramidTemple = "PyramidTemple",
-    Reekwater00 = "Reekwater00",
-    Restless01Mut = "Restless01_Mut",
-    RestlessShores01 = "RestlessShores01",
-    SaltFishRarity = "Salt,FishRarity",
-    SalvageItemGearScore = "SalvageItemGearScore",
-    SalvageItemRarity = "SalvageItemRarity",
-    SalvageItemTier = "SalvageItemTier",
-    ScorpionLair = "ScorpionLair",
-    ScorpionNest = "ScorpionNest",
-    SerpentsPass = "SerpentsPass",
-    ShatterMtn00 = "ShatterMtn00",
-    ShatteredObelisk = "ShatteredObelisk",
-    ShatteredObeliskMut = "ShatteredObelisk_Mut",
-    Sutekh = "Sutekh",
-    ToolMoteAir = "ToolMoteAir",
-    ToolMoteDeath = "ToolMoteDeath",
-    ToolMoteEarth = "ToolMoteEarth",
-    ToolMoteFire = "ToolMoteFire",
-    ToolMoteLife = "ToolMoteLife",
-    ToolMoteSpirit = "ToolMoteSpirit",
-    ToolMoteWater = "ToolMoteWater",
-    TurkeyKnife = "TurkeyKnife",
-    VarangianNamed = "Varangian,Named",
-    VarangianPOI = "VarangianPOI",
-    Victualis = "Victualis",
-    Void = "Void",
-    Wadi = "Wadi",
-    Westwall = "Westwall",
-}
+export type Conditions = "" | "EnemyLevel" | "EnemyLevel,Elite" | "MinPOIContLevel" | "MinContLevel,Varangian" | "MinContLevel,VarangianPOI" | "VarangianPOI" | "MinContLevel,GreatCleave01" | "GreatCleave01" | "Level" | "GlobalMod" | "LootTableDiverted" | "Fresh,FishRarity" | "FishSize" | "Salt,FishRarity" | "Elite" | "Named" | "Common" | "BossTrophyArtifact" | "GypsumYellow" | "GypsumBlue" | "GypsumBlack" | "MinContLevel" | "Amrine" | "ShatteredObelisk" | "ShatteredObelisk_Mut" | "Reekwater00" | "Edengrove00" | "Ebonscale00" | "Ebonscale00_Mut" | "RestlessShores01" | "Restless01_Mut" | "ShatterMtn00" | "CutlassKeys00" | "BrimstoneSands00" | "Fire" | "Ice" | "Nature" | "Void" | "MutDiff" | "Goblin" | "ToolMoteFire" | "ToolMoteEarth" | "ToolMoteAir" | "ToolMoteWater" | "ToolMoteSpirit" | "ToolMoteLife" | "ToolMoteDeath" | "SerpentsPass" | "Hermopolis" | "PyramidTemple" | "Victualis" | "PyramidObservatory" | "Westwall" | "ScorpionNest" | "Diospolis" | "Wadi" | "ScorpionLair" | "Sutekh" | "LegionHQ" | "SalvageItemTier" | "SalvageItemRarity" | "SalvageItemGearScore" | "[LIM]Tag_S1Event_PityTicker" | "Varangian,Named" | "TurkeyKnife";
 
-export enum GearScoreRange10 {
-    Empty = "",
-    The300335 = "300-335",
-}
+export type GearScoreRange10 = "" | "300-335";
 
-export enum GearScoreRange11 {
-    Empty = "",
-    The300345 = "300-345",
-}
+export type GearScoreRange11 = "" | "300-345";
 
-export enum GearScoreRange12 {
-    Empty = "",
-    The300355 = "300-355",
-}
+export type GearScoreRange12 = "" | "300-355";
 
-export enum GearScoreRange13 {
-    Empty = "",
-    The300365 = "300-365",
-}
+export type GearScoreRange13 = "" | "300-365";
 
-export enum GearScoreRange14 {
-    Empty = "",
-    The300375 = "300-375",
-}
+export type GearScoreRange14 = "" | "300-375";
 
-export enum GearScoreRange15 {
-    Empty = "",
-    The300385 = "300-385",
-}
+export type GearScoreRange15 = "" | "300-385";
 
-export enum GearScoreRange1 {
-    Empty = "",
-    The300395 = "300-395",
-}
+export type GearScoreRange1 = "" | "300-395";
 
-export enum GearScoreRange18 {
-    Empty = "",
-    The400415 = "400-415",
-}
+export type GearScoreRange18 = "" | "400-415";
 
-export enum GearScoreRange19 {
-    Empty = "",
-    The400425 = "400-425",
-}
+export type GearScoreRange19 = "" | "400-425";
 
-export enum GearScoreRange20 {
-    Empty = "",
-    The400435 = "400-435",
-}
+export type GearScoreRange20 = "" | "400-435";
 
-export enum GearScoreRange21 {
-    Empty = "",
-    The400445 = "400-445",
-}
+export type GearScoreRange21 = "" | "400-445";
 
-export enum GearScoreRange22 {
-    Empty = "",
-    The400455 = "400-455",
-}
+export type GearScoreRange22 = "" | "400-455";
 
-export enum GearScoreRange23 {
-    Empty = "",
-    The400465 = "400-465",
-}
+export type GearScoreRange23 = "" | "400-465";
 
-export enum GearScoreRange24 {
-    Empty = "",
-    The400475 = "400-475",
-}
+export type GearScoreRange24 = "" | "400-475";
 
-export enum GearScoreRange25 {
-    Empty = "",
-    The400485 = "400-485",
-}
+export type GearScoreRange25 = "" | "400-485";
 
-export enum GearScoreRange2 {
-    Empty = "",
-    The400495 = "400-495",
-}
+export type GearScoreRange2 = "" | "400-495";
 
-export enum GearScoreRange28 {
-    Empty = "",
-    The500515 = "500-515",
-}
+export type GearScoreRange28 = "" | "500-515";
 
-export enum PerkBucketOverrides2 {
-    Empty = "",
-    GlobalAttributeBucketT5GlobalBucketGlobalGemSlotChanceT5 = "GlobalAttributeBucketT5,GlobalBucket,GlobalGemSlotChanceT5",
-}
+export type PerkBucketOverrides2 = "" | "GlobalAttributeBucketT5,GlobalBucket,GlobalGemSlotChanceT5";
 
-export enum RollBonusSetting {
-    AddToRoll = "AddToRoll",
-    ClampMax = "ClampMax",
-    Empty = "",
-    IgnoreBonus = "IgnoreBonus",
-}
+export type RollBonusSetting = "AddToRoll" | "" | "ClampMax" | "IgnoreBonus";
 
-export interface LootTagPresetData {
+export type LootTagPresetData = {
     LootTagPresetID: string;
     LootTags:        string;
 }
 
-export interface LoreData {
+export type LoreData = {
     LoreID:            string;
     Type:              LoreDatumType;
     Title:             string;
@@ -5226,96 +2837,31 @@ export interface LoreData {
     LoreNotesLocation: string;
 }
 
-export enum AssociatedQuest {
-    AmateurAdventurer = "Amateur Adventurer",
-    AnAntiquarianSDream = "An Antiquarian's Dream",
-    Empty = "",
-    EndOfMSQ = "End of MSQ",
-    FactionIntroCovenant02 = "FactionIntro_Covenant_02",
-    The06AIR01_FindCreed = "06A_IR_01_FindCreed",
-    The06AMSQ08_DefeatCommander = "06A_MSQ_08_DefeatCommander",
-    The06AMSQ10_LootPirateCrates = "06A_MSQ_10_LootPirateCrates",
-    The06AZ01_GetBisonNotes = "06A_Z_01_GetBisonNotes",
-    The99AMSQ01BLearnSoulwardens = "99A_MSQ_01B_LearnSoulwardens",
-    The99AMSQ01_LearnSoulwardens = "99A_MSQ_01_LearnSoulwardens",
-    The99BMSQ01_Searchwalsham = "99B_MSQ_01_searchwalsham",
-    The99BMSQ02_Meetgalahad = "99B_MSQ_02_meetgalahad",
-    The99BMSQ03_Lostvillages = "99B_MSQ_03_lostvillages",
-    The99BMSQ06_Lostcathedral = "99B_MSQ_06_lostcathedral",
-    The99BMSQ07_Cursedcemetery = "99B_MSQ_07_cursedcemetery",
-    The99CMSQ01_Periville = "99C_MSQ_01_Periville",
-    The99CMSQ03_AncientBridge = "99C_MSQ_03_AncientBridge",
-    TheCharmedChild = "The Charmed Child",
-}
+export type AssociatedQuest = "" | "An Antiquarian's Dream" | "Amateur Adventurer" | "End of MSQ" | "FactionIntro_Covenant_02" | "99A_MSQ_01_LearnSoulwardens" | "99A_MSQ_01B_LearnSoulwardens" | "06A_MSQ_08_DefeatCommander" | "06A_MSQ_10_LootPirateCrates" | "06A_Z_01_GetBisonNotes" | "06A_IR_01_FindCreed" | "99B_MSQ_01_searchwalsham" | "99B_MSQ_02_meetgalahad" | "99B_MSQ_03_lostvillages" | "99B_MSQ_06_lostcathedral" | "99B_MSQ_07_cursedcemetery" | "99C_MSQ_01_Periville" | "99C_MSQ_03_AncientBridge" | "The Charmed Child";
 
-export enum LocationName {
-    Empty = "",
-    FTUELocationLore1A = "@FTUE_Location_lore1a",
-    LoreTitleOutpostAuroraAeternae = "@Lore_Title_Outpost_AuroraAeternae",
-    LoreTitleOutpostFirstLight = "@Lore_Title_Outpost_FirstLight",
-    LoreTitleOutpostLordEveretts = "@Lore_Title_Outpost_LordEveretts",
-    LoreTitleOutpostMonarchStation = "@Lore_Title_Outpost_MonarchStation",
-    LoreTitleOutpostTrueDuncansWatch = "@Lore_Title_Outpost_TrueDuncansWatch",
-    LoreTitleOutpostWeaversPeak = "@Lore_Title_Outpost_WeaversPeak",
-    LoreTitleOutpostWeaversPost = "@Lore_Title_Outpost_WeaversPost",
-    LoreTitleOutpostWeaversStation = "@Lore_Title_Outpost_WeaversStation",
-}
+export type LocationName = "" | "@FTUE_Location_lore1a" | "@Lore_Title_Outpost_LordEveretts" | "@Lore_Title_Outpost_TrueDuncansWatch" | "@Lore_Title_Outpost_AuroraAeternae" | "@Lore_Title_Outpost_FirstLight" | "@Lore_Title_Outpost_WeaversStation" | "@Lore_Title_Outpost_WeaversPost" | "@Lore_Title_Outpost_WeaversPeak" | "@Lore_Title_Outpost_MonarchStation";
 
-export enum LocationXY {
-    Empty = "",
-    The109000254266920 = "10900.025,4266.920",
-    The111830325123895 = "11183.032,5123.895",
-    The123637085760285 = "12363.708,5760.285",
-    The77567032911032 = "7756.703,2911.032",
-    The78370365530253 = "7837.036,5530.253",
-    The80391022196508 = "8039.102,2196.508",
-    The91246503782668 = "9124.650,3782.668",
-    The91926712803025 = "9192.671,2803.025",
-}
+export type LocationXY = "" | "7756.703,2911.032" | "9192.671,2803.025" | "9124.650,3782.668" | "8039.102,2196.508" | "11183.032,5123.895" | "12363.708,5760.285" | "10900.025,4266.920" | "7837.036,5530.253";
 
-export enum RecordingStatus {
-    Empty = "",
-    NotRecorded = "Not Recorded",
-}
+export type RecordingStatus = "" | "Not Recorded";
 
-export enum LoreDatumType {
-    Chapter = "Chapter",
-    Default = "Default",
-    Topic = "Topic",
-}
+export type LoreDatumType = "Default" | "Chapter" | "Topic";
 
-export enum Writer {
-    BenjaminBarker = "Benjamin Barker",
-    CarrieBerg = "Carrie Berg",
-    DanielJacobs = "Daniel Jacobs",
-    DavidDunne = "David Dunne",
-    DavidMcKenzie = "David McKenzie",
-    Divya = "Divya",
-    Empty = "",
-    GraceLi = "Grace Li",
-    HiraiHarunobu = "Hirai Harunobu",
-    JamesHuang = "James Huang",
-    JanJaansen = "Jan Jaansen",
-    JenniferKlasing = "Jennifer Klasing",
-    LeratoMolefe = "Lerato Molefe",
-    PierreAuguste = "Pierre Auguste",
-    RobChestney = "Rob Chestney",
-    WriterPierreAuguste = "Pierre-Auguste",
-}
+export type Writer = "" | "Grace Li" | "Pierre Auguste" | "Pierre-Auguste" | "Lerato Molefe" | "Hirai Harunobu" | "Jan Jaansen" | "Jennifer Klasing" | "Carrie Berg" | "Daniel Jacobs" | "Benjamin Barker" | "James Huang" | "David McKenzie" | "Rob Chestney" | "Divya" | "David Dunne";
 
-export interface LoreItemDefinitions {
+export type LoreItemDefinitions = {
     LoreItemId: string;
     LoreId:     string;
 }
 
-export interface ManaCostsPlayer {
+export type ManaCostsPlayer = {
     ID:        number;
     CostID:    string;
     ManaCost:  number;
     WeaponTag: WeaponTag;
 }
 
-export interface MasterItemDefinitions {
+export type MasterItemDefinitions = {
     ItemID:                          string;
     Name:                            string;
     ItemType:                        ItemType;
@@ -5420,1251 +2966,55 @@ export interface MasterItemDefinitions {
     IgnoreParentColumns_DVT?:        IgnoreParentColumnsDVT;
 }
 
-export enum AudioPickup {
-    Empty = "",
-    PlayUIDropBlueprint = "Play_UI_Drop_Blueprint",
-    PlayUIPickupArmour = "Play_UI_Pickup_Armour",
-    PlayUIPickupArrow = "Play_UI_Pickup_Arrow",
-    PlayUIPickupAxe = "Play_UI_Pickup_Axe",
-    PlayUIPickupBlueprint = "Play_UI_Pickup_Blueprint",
-    PlayUIPickupBow = "Play_UI_Pickup_Bow",
-    PlayUIPickupBullet = "Play_UI_Pickup_Bullet",
-    PlayUIPickupCloth = "Play_UI_Pickup_Cloth",
-    PlayUIPickupCoin = "Play_UI_Pickup_Coin",
-    PlayUIPickupFirearm = "Play_UI_Pickup_Firearm",
-    PlayUIPickupFoliage = "Play_UI_Pickup_Foliage",
-    PlayUIPickupGeneric = "Play_UI_Pickup_Generic",
-    PlayUIPickupGrass = "Play_UI_Pickup_Grass",
-    PlayUIPickupKnife = "Play_UI_Pickup_Knife",
-    PlayUIPickupLeather = "Play_UI_Pickup_Leather",
-    PlayUIPickupLiquid = "Play_UI_Pickup_Liquid",
-    PlayUIPickupMeat = "Play_UI_Pickup_Meat",
-    PlayUIPickupMetal = "Play_UI_Pickup_Metal",
-    PlayUIPickupMetalWeapon = "Play_UI_Pickup_Metal_Weapon",
-    PlayUIPickupPaper = "Play_UI_Pickup_Paper",
-    PlayUIPickupSlimy = "Play_UI_Pickup_Slimy",
-    PlayUIPickupStone = "Play_UI_Pickup_Stone",
-    PlayUIPickupStoneTool = "Play_UI_Pickup_Stone_Tool",
-    PlayUIPickupSword = "Play_UI_Pickup_Sword",
-    PlayUIPickupWood = "Play_UI_Pickup_Wood",
-}
+export type AudioPickup = "" | "Play_UI_Pickup_Blueprint" | "Play_UI_Pickup_Generic" | "Play_UI_Pickup_Firearm" | "Play_UI_Pickup_Wood" | "Play_UI_Pickup_Bow" | "Play_UI_Pickup_Stone_Tool" | "Play_UI_Pickup_Sword" | "Play_UI_Pickup_Axe" | "Play_UI_Pickup_Knife" | "Play_UI_Pickup_Arrow" | "Play_UI_Pickup_Liquid" | "Play_UI_Pickup_Armour" | "Play_UI_Pickup_Leather" | "Play_UI_Pickup_Metal_Weapon" | "Play_UI_Pickup_Cloth" | "Play_UI_Pickup_Bullet" | "Play_UI_Pickup_Coin" | "Play_UI_Pickup_Slimy" | "Play_UI_Pickup_Paper" | "Play_UI_Pickup_Stone" | "Play_UI_Pickup_Metal" | "Play_UI_Pickup_Foliage" | "Play_UI_Pickup_Grass" | "Play_UI_Pickup_Meat" | "Play_UI_Drop_Blueprint";
 
-export enum AudioCreated {
-    Empty = "",
-    PlayUICreatedArmour = "Play_UI_Created_Armour",
-    PlayUICreatedArrow = "Play_UI_Created_Arrow",
-    PlayUICreatedAxe = "Play_UI_Created_Axe",
-    PlayUICreatedBlueprint = "Play_UI_Created_Blueprint",
-    PlayUICreatedBow = "Play_UI_Created_Bow",
-    PlayUICreatedBullet = "Play_UI_Created_Bullet",
-    PlayUICreatedCloth = "Play_UI_Created_Cloth",
-    PlayUICreatedCoin = "Play_UI_Created_Coin",
-    PlayUICreatedFirearm = "Play_UI_Created_Firearm",
-    PlayUICreatedFoliage = "Play_UI_Created_Foliage",
-    PlayUICreatedGeneric = "Play_UI_Created_Generic",
-    PlayUICreatedGrass = "Play_UI_Created_Grass",
-    PlayUICreatedKnife = "Play_UI_Created_Knife",
-    PlayUICreatedLeather = "Play_UI_Created_Leather",
-    PlayUICreatedLiquid = "Play_UI_Created_Liquid",
-    PlayUICreatedMeat = "Play_UI_Created_Meat",
-    PlayUICreatedMetal = "Play_UI_Created_Metal",
-    PlayUICreatedMetalWeapon = "Play_UI_Created_Metal_Weapon",
-    PlayUICreatedPaper = "Play_UI_Created_Paper",
-    PlayUICreatedSlimy = "Play_UI_Created_Slimy",
-    PlayUICreatedStone = "Play_UI_Created_Stone",
-    PlayUICreatedStoneTool = "Play_UI_Created_Stone_Tool",
-    PlayUICreatedSword = "Play_UI_Created_Sword",
-    PlayUICreatedWood = "Play_UI_Created_Wood",
-}
+export type AudioCreated = "Play_UI_Created_Generic" | "Play_UI_Created_Firearm" | "Play_UI_Created_Wood" | "Play_UI_Created_Bow" | "Play_UI_Created_Stone_Tool" | "Play_UI_Created_Sword" | "Play_UI_Created_Axe" | "Play_UI_Created_Knife" | "Play_UI_Created_Arrow" | "Play_UI_Created_Liquid" | "Play_UI_Created_Armour" | "Play_UI_Created_Leather" | "Play_UI_Created_Metal_Weapon" | "Play_UI_Created_Cloth" | "" | "Play_UI_Created_Bullet" | "Play_UI_Created_Blueprint" | "Play_UI_Created_Coin" | "Play_UI_Created_Slimy" | "Play_UI_Created_Paper" | "Play_UI_Created_Stone" | "Play_UI_Created_Metal" | "Play_UI_Created_Foliage" | "Play_UI_Created_Grass" | "Play_UI_Created_Meat";
 
-export enum AudioDestroyed {
-    Empty = "",
-    PlayUIItemBroken = "Play_UI_item_broken",
-}
+export type AudioDestroyed = "Play_UI_item_broken" | "";
 
-export enum MasterItemDefinitionAudioPlace {
-    Empty = "",
-    PlayUIAncientAxe = "Play_UI_Ancient_Axe",
-    PlayUIAngryEarthAxe = "Play_UI_AngryEarth_Axe",
-    PlayUICorruptedAxe = "Play_UI_Corrupted_Axe",
-    PlayUIDropArmour = "Play_UI_Drop_Armour",
-    PlayUIDropArrow = "Play_UI_Drop_Arrow",
-    PlayUIDropAxe = "Play_UI_Drop_Axe",
-    PlayUIDropBlueprint = "Play_UI_Drop_Blueprint",
-    PlayUIDropBow = "Play_UI_Drop_Bow",
-    PlayUIDropBullet = "Play_UI_Drop_Bullet",
-    PlayUIDropCloth = "Play_UI_Drop_Cloth",
-    PlayUIDropCoin = "Play_UI_Drop_Coin",
-    PlayUIDropFirearm = "Play_UI_Drop_Firearm",
-    PlayUIDropFoliage = "Play_UI_Drop_Foliage",
-    PlayUIDropGeneric = "Play_UI_Drop_Generic",
-    PlayUIDropGrass = "Play_UI_Drop_Grass",
-    PlayUIDropKnife = "Play_UI_Drop_Knife",
-    PlayUIDropLeather = "Play_UI_Drop_Leather",
-    PlayUIDropLiquid = "Play_UI_Drop_Liquid",
-    PlayUIDropMeat = "Play_UI_Drop_Meat",
-    PlayUIDropMetal = "Play_UI_Drop_Metal",
-    PlayUIDropMetalWeapon = "Play_UI_Drop_Metal_Weapon",
-    PlayUIDropPaper = "Play_UI_Drop_Paper",
-    PlayUIDropSlimy = "Play_UI_Drop_Slimy",
-    PlayUIDropStone = "Play_UI_Drop_Stone",
-    PlayUIDropStoneTool = "Play_UI_Drop_Stone_Tool",
-    PlayUIDropSword = "Play_UI_Drop_Sword",
-    PlayUIDropWood = "Play_UI_Drop_Wood",
-    PlayUIDrownedAxe = "Play_UI_Drowned_Axe",
-    PlayUIDynastyAxe = "Play_UI_Dynasty_Axe",
-    PlayUIGraverobberAxe = "Play_UI_Graverobber_Axe",
-    PlayUILegionAxe = "Play_UI_Legion_Axe",
-    PlayUILostAxe = "Play_UI_Lost_Axe",
-    PlayUIMXMIAGEquipInventory = "Play_UI_MXMI_AG_Equip_Inventory",
-    PlayUIMXMIAZFEquipInventory = "Play_UI_MXMI_AZF_Equip_Inventory",
-    PlayUIMXMIDRMEquipInventory = "Play_UI_MXMI_DRM_Equip_Inventory",
-    PlayUIMXMIMANEquipInventory = "Play_UI_MXMI_MAN_Equip_Inventory",
-    PlayUIMXMIURBEquipInventory = "Play_UI_MXMI_URB_Equip_Inventory",
-    PlayUIUseBlueprint = "Play_UI_Use_Blueprint",
-}
+export type MasterItemDefinitionAudioPlace = "Play_UI_Drop_Generic" | "Play_UI_Drop_Firearm" | "Play_UI_Drop_Wood" | "Play_UI_Drop_Bow" | "Play_UI_Drop_Stone_Tool" | "Play_UI_Drop_Sword" | "Play_UI_Drop_Axe" | "Play_UI_Drop_Knife" | "Play_UI_Drop_Arrow" | "Play_UI_Drop_Liquid" | "Play_UI_Legion_Axe" | "Play_UI_Drop_Armour" | "Play_UI_Drop_Leather" | "Play_UI_Drop_Metal_Weapon" | "Play_UI_Drop_Cloth" | "" | "Play_UI_Drop_Bullet" | "Play_UI_Drop_Blueprint" | "Play_UI_Drop_Coin" | "Play_UI_Drop_Slimy" | "Play_UI_Drop_Paper" | "Play_UI_Drop_Stone" | "Play_UI_Drop_Metal" | "Play_UI_Drop_Foliage" | "Play_UI_Drop_Grass" | "Play_UI_Drop_Meat" | "Play_UI_MXMI_AZF_Equip_Inventory" | "Play_UI_MXMI_DRM_Equip_Inventory" | "Play_UI_MXMI_AG_Equip_Inventory" | "Play_UI_MXMI_URB_Equip_Inventory" | "Play_UI_MXMI_MAN_Equip_Inventory" | "Play_UI_Corrupted_Axe" | "Play_UI_Lost_Axe" | "Play_UI_Ancient_Axe" | "Play_UI_AngryEarth_Axe" | "Play_UI_Drowned_Axe" | "Play_UI_Dynasty_Axe" | "Play_UI_Graverobber_Axe" | "Play_UI_Use_Blueprint";
 
-export enum AudioUse {
-    Empty = "",
-    PlayTurkeyVoxAlertcall = "play_turkey_vox_alertcall",
-    PlayUICreatedBlueprint = "Play_UI_Created_Blueprint",
-    PlayUIUseArmour = "Play_UI_Use_Armour",
-    PlayUIUseArrow = "Play_UI_Use_Arrow",
-    PlayUIUseAxe = "Play_UI_Use_Axe",
-    PlayUIUseBlueprint = "Play_UI_Use_Blueprint",
-    PlayUIUseBow = "Play_UI_Use_Bow",
-    PlayUIUseBullet = "Play_UI_Use_Bullet",
-    PlayUIUseCloth = "Play_UI_Use_Cloth",
-    PlayUIUseCoin = "Play_UI_Use_Coin",
-    PlayUIUseFirearm = "Play_UI_Use_Firearm",
-    PlayUIUseFoliage = "Play_UI_Use_Foliage",
-    PlayUIUseGeneric = "Play_UI_Use_Generic",
-    PlayUIUseGrass = "Play_UI_Use_Grass",
-    PlayUIUseKnife = "Play_UI_Use_Knife",
-    PlayUIUseLeather = "Play_UI_Use_Leather",
-    PlayUIUseLiquid = "Play_UI_Use_Liquid",
-    PlayUIUseMeat = "Play_UI_Use_Meat",
-    PlayUIUseMetal = "Play_UI_Use_Metal",
-    PlayUIUseMetalWeapon = "Play_UI_Use_Metal_Weapon",
-    PlayUIUsePaper = "Play_UI_Use_Paper",
-    PlayUIUseSlimy = "Play_UI_Use_Slimy",
-    PlayUIUseStone = "Play_UI_Use_Stone",
-    PlayUIUseStoneTool = "Play_UI_Use_Stone_Tool",
-    PlayUIUseSword = "Play_UI_Use_Sword",
-    PlayUIUseWood = "Play_UI_Use_Wood",
-}
+export type AudioUse = "Play_UI_Use_Generic" | "Play_UI_Use_Firearm" | "Play_UI_Use_Wood" | "Play_UI_Use_Bow" | "Play_UI_Use_Stone_Tool" | "Play_UI_Use_Sword" | "Play_UI_Use_Axe" | "Play_UI_Use_Knife" | "Play_UI_Use_Arrow" | "play_turkey_vox_alertcall" | "Play_UI_Use_Liquid" | "Play_UI_Use_Armour" | "Play_UI_Use_Leather" | "Play_UI_Use_Metal_Weapon" | "Play_UI_Use_Cloth" | "" | "Play_UI_Use_Bullet" | "Play_UI_Use_Blueprint" | "Play_UI_Use_Coin" | "Play_UI_Use_Slimy" | "Play_UI_Use_Paper" | "Play_UI_Use_Stone" | "Play_UI_Use_Metal" | "Play_UI_Use_Foliage" | "Play_UI_Use_Grass" | "Play_UI_Use_Meat" | "Play_UI_Created_Blueprint";
 
-export enum HeartgemRuneTooltipTitle {
-    Empty = "",
-    UIItemtooltiptitleHeartgemRuneBileBomb = "@ui_itemtooltiptitle_heartgem_rune_bile_bomb",
-    UIItemtooltiptitleHeartgemRuneCannonBlast = "@ui_itemtooltiptitle_heartgem_rune_cannon_blast",
-    UIItemtooltiptitleHeartgemRuneDetonate = "@ui_itemtooltiptitle_heartgem_rune_detonate",
-    UIItemtooltiptitleHeartgemRuneFireStorm = "@ui_itemtooltiptitle_heartgem_rune_fire_storm",
-    UIItemtooltiptitleHeartgemRuneGraspingVines = "@ui_itemtooltiptitle_heartgem_rune_grasping_vines",
-    UIItemtooltiptitleHeartgemRuneHereticsFall = "@ui_itemtooltiptitle_heartgem_rune_heretics_fall",
-    UIItemtooltiptitleHeartgemRuneStoneForm = "@ui_itemtooltiptitle_heartgem_rune_stone_form",
-}
+export type HeartgemRuneTooltipTitle = "" | "@ui_itemtooltiptitle_heartgem_rune_stone_form" | "@ui_itemtooltiptitle_heartgem_rune_detonate" | "@ui_itemtooltiptitle_heartgem_rune_grasping_vines" | "@ui_itemtooltiptitle_heartgem_rune_heretics_fall" | "@ui_itemtooltiptitle_heartgem_rune_cannon_blast" | "@ui_itemtooltiptitle_heartgem_rune_bile_bomb" | "@ui_itemtooltiptitle_heartgem_rune_fire_storm";
 
-export enum HeartgemTooltipBackgroundImage {
-    Empty = "",
-    LyshineuiImagesTooltipimagesRuneFireStormtooltipDds = "lyshineui/images/tooltipimages/runeFireStormtooltip.dds",
-    LyshineuiImagesTooltipimagesRunebilebombtooltipDds = "lyshineui/images/tooltipimages/runebilebombtooltip.dds",
-    LyshineuiImagesTooltipimagesRunecannonblasttooltipDds = "lyshineui/images/tooltipimages/runecannonblasttooltip.dds",
-    LyshineuiImagesTooltipimagesRunedetonatetooltipDds = "lyshineui/images/tooltipimages/runedetonatetooltip.dds",
-    LyshineuiImagesTooltipimagesRunegraspingvinestooltipDds = "lyshineui/images/tooltipimages/runegraspingvinestooltip.dds",
-    LyshineuiImagesTooltipimagesRunehereticsfalltooltipDds = "lyshineui/images/tooltipimages/runehereticsfalltooltip.dds",
-    LyshineuiImagesTooltipimagesRunestoneformtooltipDds = "lyshineui/images/tooltipimages/runestoneformtooltip.dds",
-}
+export type HeartgemTooltipBackgroundImage = "" | "lyshineui/images/tooltipimages/runestoneformtooltip.dds" | "lyshineui/images/tooltipimages/runedetonatetooltip.dds" | "lyshineui/images/tooltipimages/runegraspingvinestooltip.dds" | "lyshineui/images/tooltipimages/runehereticsfalltooltip.dds" | "lyshineui/images/tooltipimages/runecannonblasttooltip.dds" | "lyshineui/images/tooltipimages/runebilebombtooltip.dds" | "lyshineui/images/tooltipimages/runeFireStormtooltip.dds";
 
-export enum IgnoreParentColumnsDVT {
-    Empty = "",
-    ForceRarityGearScoreOverrideCanRollPerkOnUpgrade = "ForceRarity,GearScoreOverride,CanRollPerkOnUpgrade",
-    GearScoreOverrideSalvageResourcesGrantsHWMBump = "GearScoreOverride,SalvageResources,GrantsHWMBump",
-    Perk5ForceRarityGearScoreOverrideCanRollPerkOnUpgrade = "Perk5,ForceRarity,GearScoreOverride,CanRollPerkOnUpgrade",
-}
+export type IgnoreParentColumnsDVT = "GearScoreOverride,SalvageResources,GrantsHWMBump" | "ForceRarity,GearScoreOverride,CanRollPerkOnUpgrade" | "Perk5,ForceRarity,GearScoreOverride,CanRollPerkOnUpgrade" | "";
 
-export enum ItemType {
-    Ammo = "Ammo",
-    Armor = "Armor",
-    Blueprint = "Blueprint",
-    Consumable = "Consumable",
-    Currency = "Currency",
-    Dye = "Dye",
-    Empty = "",
-    Lore = "Lore",
-    Resource = "Resource",
-    ThrowableItem = "ThrowableItem",
-    Weapon = "Weapon",
-}
+export type ItemType = "Weapon" | "Resource" | "Ammo" | "Consumable" | "Armor" | "Dye" | "Blueprint" | "Currency" | "Lore" | "ThrowableItem" | "";
 
-export enum ItemTypeDisplayName {
-    DungeonCutlassKeys00CannonBallMasterName = "@DungeonCutlassKeys00_CannonBall_MasterName",
-    Empty = "",
-    ItemTypeDisplayNameUIItemtypedescriptionHeavyHeadSlot = "@ui_itemtypedescription_Heavy_head_slot",
-    ItemTypeDisplayNameUIItemtypedescriptionNormalChestSlot = "@ui_itemtypedescription_Normal_chest_slot",
-    ItemTypeDisplayNameUIItemtypedescriptionNormalFeetSlot = "@ui_itemtypedescription_Normal_feet_slot",
-    ItemTypeDisplayNameUIItemtypedescriptionNormalGloveSlot = "@ui_itemtypedescription_Normal_glove_slot",
-    ItemTypeDisplayNameUIItemtypedescriptionNormalHeadSlot = "@ui_itemtypedescription_Normal_head_slot",
-    ItemTypeDisplayNameUIItemtypedescriptionNormalLegsSlot = "@ui_itemtypedescription_Normal_legs_slot",
-    RewardTypeApparelskinChestSlot = "@reward_type_Apparelskin_chest_slot",
-    RewardTypeApparelskinFeetSlot = "@reward_type_Apparelskin_feet_slot",
-    RewardTypeApparelskinHandsSlot = "@reward_type_Apparelskin_hands_slot",
-    RewardTypeApparelskinHeadSlot = "@reward_type_Apparelskin_head_slot",
-    RewardTypeApparelskinLegsSlot = "@reward_type_Apparelskin_legs_slot",
-    RewardTypeApparelskinSet = "@reward_type_Apparelskin_Set",
-    RewardTypeCampskin = "@reward_type_campskin",
-    RewardTypeEmote = "@reward_type_emote",
-    RewardTypeGuildcrestPack = "@reward_type_guildcrest_pack",
-    RewardTypeHousePet = "@reward_type_house_pet",
-    RewardTypeHousingItem = "@reward_type_housing_item",
-    RewardTypeLoadout = "@reward_type_loadout",
-    RewardTypeMarksOfFortune = "@reward_type_marks_of_fortune",
-    RewardTypePlayerTitle = "@reward_type_player_title",
-    RewardTypeStatuseffect = "@reward_type_statuseffect",
-    RewardTypeToolskinAzothstaff = "@reward_type_Toolskin_azothstaff",
-    RewardTypeToolskinFishingpole = "@reward_type_Toolskin_fishingpole",
-    RewardTypeToolskinHarvestingsickle = "@reward_type_Toolskin_harvestingsickle",
-    RewardTypeToolskinLoggingaxe = "@reward_type_Toolskin_loggingaxe",
-    RewardTypeToolskinMiningpick = "@reward_type_Toolskin_miningpick",
-    RewardTypeToolskinSkinningknife = "@reward_type_Toolskin_skinningknife",
-    RewardTypeWeaponskinBow = "@reward_type_Weaponskin_Bow",
-    RewardTypeWeaponskinFireStaff = "@reward_type_Weaponskin_FireStaff",
-    RewardTypeWeaponskinGreatAxe = "@reward_type_Weaponskin_GreatAxe",
-    RewardTypeWeaponskinHatchet = "@reward_type_Weaponskin_Hatchet",
-    RewardTypeWeaponskinIceGauntlet = "@reward_type_Weaponskin_IceGauntlet",
-    RewardTypeWeaponskinKiteshield = "@reward_type_Weaponskin_kiteshield",
-    RewardTypeWeaponskinMusket = "@reward_type_Weaponskin_Musket",
-    RewardTypeWeaponskinSpear = "@reward_type_Weaponskin_Spear",
-    RewardTypeWeaponskinSword = "@reward_type_Weaponskin_Sword",
-    UIItemtypedescriptionAmmo = "@ui_itemtypedescription_ammo",
-    UIItemtypedescriptionAmuletjewelry = "@ui_itemtypedescription_amuletjewelry",
-    UIItemtypedescriptionAxe = "@ui_itemtypedescription_axe",
-    UIItemtypedescriptionBag = "@ui_itemtypedescription_bag",
-    UIItemtypedescriptionBait = "@ui_itemtypedescription_bait",
-    UIItemtypedescriptionBlunderbuss = "@ui_itemtypedescription_blunderbuss",
-    UIItemtypedescriptionBow = "@ui_itemtypedescription_bow",
-    UIItemtypedescriptionConsumable = "@ui_itemtypedescription_consumable",
-    UIItemtypedescriptionDye = "@ui_itemtypedescription_dye",
-    UIItemtypedescriptionEarringjewelry = "@ui_itemtypedescription_earringjewelry",
-    UIItemtypedescriptionFirestaff = "@ui_itemtypedescription_firestaff",
-    UIItemtypedescriptionFurniture = "@ui_itemtypedescription_furniture",
-    UIItemtypedescriptionGreatsword = "@ui_itemtypedescription_greatsword",
-    UIItemtypedescriptionHatchet = "@ui_itemtypedescription_hatchet",
-    UIItemtypedescriptionHeartgemRune = "@ui_itemtypedescription_heartgem_rune",
-    UIItemtypedescriptionHeavyChestSlot = "@ui_itemtypedescription_heavy_chest_slot",
-    UIItemtypedescriptionHeavyFeetSlot = "@ui_itemtypedescription_heavy_feet_slot",
-    UIItemtypedescriptionHeavyGloveSlot = "@ui_itemtypedescription_heavy_glove_slot",
-    UIItemtypedescriptionHeavyHeadSlot = "@ui_itemtypedescription_heavy_head_slot",
-    UIItemtypedescriptionHeavyLegsSlot = "@ui_itemtypedescription_heavy_legs_slot",
-    UIItemtypedescriptionHousingitem = "@ui_itemtypedescription_housingitem",
-    UIItemtypedescriptionIcegauntlet = "@ui_itemtypedescription_icegauntlet",
-    UIItemtypedescriptionInstrument = "@ui_itemtypedescription_instrument",
-    UIItemtypedescriptionKeyItem = "@ui_itemtypedescription_Key_item",
-    UIItemtypedescriptionKiteshield = "@ui_itemtypedescription_kiteshield",
-    UIItemtypedescriptionLifestaff = "@ui_itemtypedescription_lifestaff",
-    UIItemtypedescriptionLightChestSlot = "@ui_itemtypedescription_light_chest_slot",
-    UIItemtypedescriptionLightFeetSlot = "@ui_itemtypedescription_light_feet_slot",
-    UIItemtypedescriptionLightGloveSlot = "@ui_itemtypedescription_light_glove_slot",
-    UIItemtypedescriptionLightHeadSlot = "@ui_itemtypedescription_light_head_slot",
-    UIItemtypedescriptionLightLegsSlot = "@ui_itemtypedescription_light_legs_slot",
-    UIItemtypedescriptionMediumChestSlot = "@ui_itemtypedescription_medium_chest_slot",
-    UIItemtypedescriptionMediumFeetSlot = "@ui_itemtypedescription_medium_feet_slot",
-    UIItemtypedescriptionMusket = "@ui_itemtypedescription_musket",
-    UIItemtypedescriptionNormalChestSlot = "@ui_itemtypedescription_normal_chest_slot",
-    UIItemtypedescriptionNormalFeetSlot = "@ui_itemtypedescription_normal_feet_slot",
-    UIItemtypedescriptionNormalGloveSlot = "@ui_itemtypedescription_normal_glove_slot",
-    UIItemtypedescriptionNormalHeadSlot = "@ui_itemtypedescription_normal_head_slot",
-    UIItemtypedescriptionNormalLegsSlot = "@ui_itemtypedescription_normal_legs_slot",
-    UIItemtypedescriptionOutpostrush = "@ui_itemtypedescription_outpostrush",
-    UIItemtypedescriptionQuestItem = "@ui_itemtypedescription_quest_item",
-    UIItemtypedescriptionRapier = "@ui_itemtypedescription_rapier",
-    UIItemtypedescriptionRecipe = "@ui_itemtypedescription_recipe",
-    UIItemtypedescriptionResource = "@ui_itemtypedescription_resource",
-    UIItemtypedescriptionRingjewelry = "@ui_itemtypedescription_ringjewelry",
-    UIItemtypedescriptionRoundshield = "@ui_itemtypedescription_roundshield",
-    UIItemtypedescriptionSpear = "@ui_itemtypedescription_spear",
-    UIItemtypedescriptionSword = "@ui_itemtypedescription_sword",
-    UIItemtypedescriptionTool = "@ui_itemtypedescription_tool",
-    UIItemtypedescriptionTowershield = "@ui_itemtypedescription_towershield",
-    UIItemtypedescriptionVoidgauntlet = "@ui_itemtypedescription_voidgauntlet",
-    UIItemtypedescriptionWarhammer = "@ui_itemtypedescription_warhammer",
-    UIItemtypedescriptionWeapon = "@ui_itemtypedescription_weapon",
-}
+export type ItemTypeDisplayName = "" | "@ui_itemtypedescription_tool" | "@DungeonCutlassKeys00_CannonBall_MasterName" | "@ui_itemtypedescription_ammo" | "@ui_itemtypedescription_consumable" | "@ui_itemtypedescription_resource" | "@ui_itemtypedescription_dye" | "@ui_itemtypedescription_axe" | "@ui_itemtypedescription_greatsword" | "@ui_itemtypedescription_bow" | "@ui_itemtypedescription_firestaff" | "@ui_itemtypedescription_heavy_chest_slot" | "@ui_itemtypedescription_heavy_glove_slot" | "@ui_itemtypedescription_normal_head_slot" | "@ui_itemtypedescription_normal_feet_slot" | "@ui_itemtypedescription_sword" | "@ui_itemtypedescription_hatchet" | "@ui_itemtypedescription_warhammer" | "@ui_itemtypedescription_musket" | "@ui_itemtypedescription_roundshield" | "@ui_itemtypedescription_kiteshield" | "@ui_itemtypedescription_towershield" | "@ui_itemtypedescription_lifestaff" | "@ui_itemtypedescription_spear" | "@ui_itemtypedescription_rapier" | "@ui_itemtypedescription_icegauntlet" | "@ui_itemtypedescription_voidgauntlet" | "@ui_itemtypedescription_blunderbuss" | "@ui_itemtypedescription_heavy_head_slot" | "@ui_itemtypedescription_heavy_legs_slot" | "@ui_itemtypedescription_heavy_feet_slot" | "@ui_itemtypedescription_normal_chest_slot" | "@ui_itemtypedescription_normal_glove_slot" | "@ui_itemtypedescription_normal_legs_slot" | "@ui_itemtypedescription_light_head_slot" | "@ui_itemtypedescription_light_chest_slot" | "@ui_itemtypedescription_light_glove_slot" | "@ui_itemtypedescription_light_legs_slot" | "@ui_itemtypedescription_light_feet_slot" | "@ui_itemtypedescription_bag" | "@ui_itemtypedescription_Normal_head_slot" | "@ui_itemtypedescription_Normal_chest_slot" | "@ui_itemtypedescription_Normal_glove_slot" | "@ui_itemtypedescription_Normal_legs_slot" | "@ui_itemtypedescription_Normal_feet_slot" | "@ui_itemtypedescription_Key_item" | "@ui_itemtypedescription_furniture" | "@ui_itemtypedescription_recipe" | "@ui_itemtypedescription_bait" | "@ui_itemtypedescription_instrument" | "@ui_itemtypedescription_weapon" | "@ui_itemtypedescription_amuletjewelry" | "@ui_itemtypedescription_ringjewelry" | "@ui_itemtypedescription_earringjewelry" | "@ui_itemtypedescription_heartgem_rune" | "@ui_itemtypedescription_outpostrush" | "@ui_itemtypedescription_Heavy_head_slot" | "@ui_itemtypedescription_medium_chest_slot" | "@ui_itemtypedescription_medium_feet_slot" | "@ui_itemtypedescription_quest_item" | "@reward_type_marks_of_fortune" | "@reward_type_statuseffect" | "@reward_type_player_title" | "@reward_type_Apparelskin_legs_slot" | "@reward_type_Apparelskin_feet_slot" | "@reward_type_Apparelskin_chest_slot" | "@reward_type_Apparelskin_hands_slot" | "@reward_type_Apparelskin_head_slot" | "@reward_type_house_pet" | "@reward_type_loadout" | "@reward_type_emote" | "@reward_type_campskin" | "@reward_type_guildcrest_pack" | "@reward_type_Toolskin_miningpick" | "@reward_type_Toolskin_azothstaff" | "@reward_type_Toolskin_harvestingsickle" | "@reward_type_Toolskin_skinningknife" | "@reward_type_Toolskin_fishingpole" | "@reward_type_Toolskin_loggingaxe" | "@reward_type_Weaponskin_GreatAxe" | "@reward_type_Weaponskin_FireStaff" | "@reward_type_Weaponskin_Musket" | "@reward_type_Weaponskin_Spear" | "@reward_type_Weaponskin_IceGauntlet" | "@reward_type_Weaponskin_Hatchet" | "@reward_type_Weaponskin_kiteshield" | "@reward_type_Weaponskin_Sword" | "@reward_type_Weaponskin_Bow" | "@reward_type_Apparelskin_Set" | "@reward_type_housing_item" | "@ui_itemtypedescription_housingitem";
 
-export enum MasterItemDefinitionMannequinTag {
-    DebugOil = "DebugOil",
-    Empty = "",
-    HolyOil = "HolyOil",
-    The2HRifle = "2H_Rifle",
-}
+export type MasterItemDefinitionMannequinTag = "" | "DebugOil" | "HolyOil" | "2H_Rifle";
 
-export enum ObtainableReleaseVersion {
-    Empty = "",
-    FeatureRabbitSeason = "Feature_RabbitSeason",
-}
+export type ObtainableReleaseVersion = "" | "Feature_RabbitSeason";
 
-export enum Perk1 {
-    Empty = "",
-    FishDurability3 = "FishDurability3",
-    FishLineStrengthFresh3 = "FishLineStrengthFresh3",
-    FishLineStrengthSalt3 = "FishLineStrengthSalt3",
-    FishLuckDay1 = "FishLuckDay1",
-    FishLuckDay2 = "FishLuckDay2",
-    FishLuckDay3 = "FishLuckDay3",
-    FishLuckNight3 = "FishLuckNight3",
-    PerkIDArmorDefAeternian = "PerkID_Armor_DefAeternian",
-    PerkIDArmorHarvestingLuck = "PerkID_Armor_HarvestingLuck",
-    PerkIDArmorMiningLuck = "PerkID_Armor_MiningLuck",
-    PerkIDBagsWeightAdd = "PerkID_Bags_WeightAdd",
-    PerkIDEarringWeaponsmith = "PerkID_Earring_Weaponsmith",
-    PerkIDHeartgemRuneBileBombMajor = "PerkID_HeartgemRune_BileBomb_Major",
-    PerkIDHeartgemRuneCannonBlastMajor = "PerkID_HeartgemRune_CannonBlast_Major",
-    PerkIDHeartgemRuneDetonateMajor = "PerkID_HeartgemRune_Detonate_Major",
-    PerkIDHeartgemRuneFireStormMajor = "PerkID_HeartgemRune_FireStorm_Major",
-    PerkIDHeartgemRuneGraspingVinesMajor = "PerkID_HeartgemRune_GraspingVines_Major",
-    PerkIDHeartgemRuneHereticsFallMajor = "PerkID_HeartgemRune_HereticsFall_Major",
-    PerkIDHeartgemRuneStoneFormMajor = "PerkID_HeartgemRune_StoneForm_Major",
-    PerkIDStatArmorArtificer = "PerkID_Stat_ArmorArtificer",
-    PerkIDStatArmorAssassin = "PerkID_Stat_ArmorAssassin",
-    PerkIDStatArmorBarbarian = "PerkID_Stat_ArmorBarbarian",
-    PerkIDStatArmorBattlemage = "PerkID_Stat_ArmorBattlemage",
-    PerkIDStatArmorBrigand = "PerkID_Stat_ArmorBrigand",
-    PerkIDStatArmorCavalier = "PerkID_Stat_ArmorCavalier",
-    PerkIDStatArmorCleric = "PerkID_Stat_ArmorCleric",
-    PerkIDStatArmorDruid = "PerkID_Stat_ArmorDruid",
-    PerkIDStatArmorDuelist = "PerkID_Stat_ArmorDuelist",
-    PerkIDStatArmorFighter = "PerkID_Stat_ArmorFighter",
-    PerkIDStatArmorKnight = "PerkID_Stat_ArmorKnight",
-    PerkIDStatArmorMage = "PerkID_Stat_ArmorMage",
-    PerkIDStatArmorMonk = "PerkID_Stat_ArmorMonk",
-    PerkIDStatArmorNomad = "PerkID_Stat_ArmorNomad",
-    PerkIDStatArmorOccultist = "PerkID_Stat_ArmorOccultist",
-    PerkIDStatArmorPriest = "PerkID_Stat_ArmorPriest",
-    PerkIDStatArmorRanger = "PerkID_Stat_ArmorRanger",
-    PerkIDStatArmorSage = "PerkID_Stat_ArmorSage",
-    PerkIDStatArmorScholar = "PerkID_Stat_ArmorScholar",
-    PerkIDStatArmorSentry = "PerkID_Stat_ArmorSentry",
-    PerkIDStatArmorSoldier = "PerkID_Stat_ArmorSoldier",
-    PerkIDStatArmorSpellsword = "PerkID_Stat_ArmorSpellsword",
-    PerkIDStatArmorTrickster = "PerkID_Stat_ArmorTrickster",
-    PerkIDStatArmorWarden = "PerkID_Stat_ArmorWarden",
-    PerkIDStatArmorZealot = "PerkID_Stat_ArmorZealot",
-    PerkIDStatOneHandAssassin = "PerkID_Stat_OneHandAssassin",
-    PerkIDStatOneHandBarbarian = "PerkID_Stat_OneHandBarbarian",
-    PerkIDStatOneHandBattlemage = "PerkID_Stat_OneHandBattlemage",
-    PerkIDStatOneHandBrigand = "PerkID_Stat_OneHandBrigand",
-    PerkIDStatOneHandCavalier = "PerkID_Stat_OneHandCavalier",
-    PerkIDStatOneHandCleric = "PerkID_Stat_OneHandCleric",
-    PerkIDStatOneHandDruid = "PerkID_Stat_OneHandDruid",
-    PerkIDStatOneHandFighter = "PerkID_Stat_OneHandFighter",
-    PerkIDStatOneHandKnight = "PerkID_Stat_OneHandKnight",
-    PerkIDStatOneHandMonk = "PerkID_Stat_OneHandMonk",
-    PerkIDStatOneHandNomad = "PerkID_Stat_OneHandNomad",
-    PerkIDStatOneHandRanger = "PerkID_Stat_OneHandRanger",
-    PerkIDStatOneHandSage = "PerkID_Stat_OneHandSage",
-    PerkIDStatOneHandScholar = "PerkID_Stat_OneHandScholar",
-    PerkIDStatOneHandSentry = "PerkID_Stat_OneHandSentry",
-    PerkIDStatOneHandSoldier = "PerkID_Stat_OneHandSoldier",
-    PerkIDStatOneHandSpellsword = "PerkID_Stat_OneHandSpellsword",
-    PerkIDStatOneHandWarden = "PerkID_Stat_OneHandWarden",
-    PerkIDStatOneHandZealot = "PerkID_Stat_OneHandZealot",
-    PerkIDStatTwoHandArtificer = "PerkID_Stat_TwoHandArtificer",
-    PerkIDStatTwoHandAssassin = "PerkID_Stat_TwoHandAssassin",
-    PerkIDStatTwoHandBarbarian = "PerkID_Stat_TwoHandBarbarian",
-    PerkIDStatTwoHandBattleMage = "PerkID_Stat_TwoHandBattleMage",
-    PerkIDStatTwoHandBattlemage = "PerkID_Stat_TwoHandBattlemage",
-    PerkIDStatTwoHandBrigand = "PerkID_Stat_TwoHandBrigand",
-    PerkIDStatTwoHandCavalier = "PerkID_Stat_TwoHandCavalier",
-    PerkIDStatTwoHandCleric = "PerkID_Stat_TwoHandCleric",
-    PerkIDStatTwoHandDruid = "PerkID_Stat_TwoHandDruid",
-    PerkIDStatTwoHandDuelist = "PerkID_Stat_TwoHandDuelist",
-    PerkIDStatTwoHandFighter = "PerkID_Stat_TwoHandFighter",
-    PerkIDStatTwoHandKnight = "PerkID_Stat_TwoHandKnight",
-    PerkIDStatTwoHandMage = "PerkID_Stat_TwoHandMage",
-    PerkIDStatTwoHandMonk = "PerkID_Stat_TwoHandMonk",
-    PerkIDStatTwoHandNomad = "PerkID_Stat_TwoHandNomad",
-    PerkIDStatTwoHandOccultist = "PerkID_Stat_TwoHandOccultist",
-    PerkIDStatTwoHandPriest = "PerkID_Stat_TwoHandPriest",
-    PerkIDStatTwoHandRanger = "PerkID_Stat_TwoHandRanger",
-    PerkIDStatTwoHandSage = "PerkID_Stat_TwoHandSage",
-    PerkIDStatTwoHandScholar = "PerkID_Stat_TwoHandScholar",
-    PerkIDStatTwoHandSentry = "PerkID_Stat_TwoHandSentry",
-    PerkIDStatTwoHandSoldier = "PerkID_Stat_TwoHandSoldier",
-    PerkIDStatTwoHandSpellsword = "PerkID_Stat_TwoHandSpellsword",
-    PerkIDStatTwoHandTrickster = "PerkID_Stat_TwoHandTrickster",
-    PerkIDStatTwoHandWarden = "PerkID_Stat_TwoHandWarden",
-    PerkIDStatTwoHandZealot = "PerkID_Stat_TwoHandZealot",
-    PerkIDToolsDurability = "PerkID_Tools_Durability",
-    PerkIDWeaponDmgAeternian = "PerkID_Weapon_DmgAeternian",
-    PerkidStatArmorassassin = "perkid_stat_armorassassin",
-    PerkidStatArmordruid = "perkid_stat_armordruid",
-    PerkidStatArmoroccultist = "perkid_stat_armoroccultist",
-    PerkidStatArmorpriest = "perkid_stat_armorpriest",
-    PerkidStatArmorsentry = "perkid_stat_armorsentry",
-    PerkidStatArmorsoldier = "perkid_stat_armorsoldier",
-    PerkidStatArmorwarden = "perkid_stat_armorwarden",
-    PerkidStatOnehandbarbarian = "perkid_stat_onehandbarbarian",
-    PerkidStatOnehandknight = "perkid_stat_onehandknight",
-    PerkidStatTwohandbarbarian = "perkid_stat_twohandbarbarian",
-    PerkidStatTwohandfighter = "perkid_stat_twohandfighter",
-    PerkidStatTwohandknight = "perkid_stat_twohandknight",
-    PerkidStatTwohandmage = "perkid_stat_twohandmage",
-    PerkidStatTwohandoccultist = "perkid_stat_twohandoccultist",
-    PerkidStatTwohandranger = "perkid_stat_twohandranger",
-    PerkidStatTwohandscholar = "perkid_stat_twohandscholar",
-    PerkidStatTwohandsoldier = "perkid_stat_twohandsoldier",
-}
+export type Perk1 = "" | "PerkID_Stat_TwoHandSoldier" | "PerkID_Stat_TwoHandRanger" | "PerkID_Stat_TwoHandScholar" | "PerkID_Stat_ArmorSoldier" | "PerkID_Stat_ArmorSentry" | "PerkID_Stat_ArmorRanger" | "PerkID_Stat_ArmorScholar" | "PerkID_Stat_ArmorSage" | "PerkID_Stat_ArmorCleric" | "PerkID_Stat_ArmorBarbarian" | "PerkID_Stat_ArmorBrigand" | "PerkID_Stat_ArmorOccultist" | "PerkID_Stat_ArmorMonk" | "PerkID_Stat_ArmorDuelist" | "PerkID_Stat_ArmorMage" | "PerkID_Stat_OneHandBarbarian" | "PerkID_Stat_TwoHandMage" | "PerkID_Stat_TwoHandSage" | "PerkID_Stat_TwoHandWarden" | "PerkID_Stat_ArmorPriest" | "FishLineStrengthSalt3" | "FishLuckDay3" | "FishLineStrengthFresh3" | "FishLuckNight3" | "FishLuckDay1" | "FishLuckDay2" | "PerkID_Stat_OneHandFighter" | "PerkID_Stat_TwoHandFighter" | "PerkID_Stat_TwoHandAssassin" | "PerkID_Stat_TwoHandCavalier" | "PerkID_Stat_ArmorFighter" | "PerkID_Stat_OneHandSoldier" | "PerkID_Weapon_DmgAeternian" | "PerkID_Armor_DefAeternian" | "PerkID_Stat_OneHandRanger" | "PerkID_Stat_OneHandScholar" | "PerkID_Stat_OneHandSage" | "PerkID_Stat_OneHandSentry" | "PerkID_Stat_TwoHandSentry" | "PerkID_HeartgemRune_StoneForm_Major" | "PerkID_HeartgemRune_Detonate_Major" | "PerkID_HeartgemRune_GraspingVines_Major" | "PerkID_HeartgemRune_HereticsFall_Major" | "PerkID_HeartgemRune_CannonBlast_Major" | "PerkID_HeartgemRune_BileBomb_Major" | "PerkID_HeartgemRune_FireStorm_Major" | "PerkID_Stat_TwoHandBrigand" | "PerkID_Stat_TwoHandBarbarian" | "PerkID_Stat_TwoHandOccultist" | "PerkID_Stat_TwoHandCleric" | "PerkID_Stat_TwoHandPriest" | "PerkID_Stat_TwoHandTrickster" | "PerkID_Stat_OneHandKnight" | "PerkID_Stat_OneHandCavalier" | "PerkID_Stat_OneHandNomad" | "PerkID_Stat_OneHandWarden" | "PerkID_Stat_OneHandBrigand" | "PerkID_Stat_TwoHandKnight" | "PerkID_Stat_ArmorCavalier" | "PerkID_Stat_ArmorSpellsword" | "PerkID_Stat_ArmorKnight" | "PerkID_Stat_ArmorZealot" | "PerkID_Stat_ArmorNomad" | "PerkID_Stat_ArmorWarden" | "PerkID_Stat_ArmorDruid" | "PerkID_Stat_ArmorAssassin" | "PerkID_Stat_ArmorBattlemage" | "PerkID_Stat_ArmorTrickster" | "PerkID_Stat_TwoHandSpellsword" | "perkid_stat_twohandbarbarian" | "perkid_stat_onehandknight" | "perkid_stat_twohandoccultist" | "PerkID_Stat_OneHandSpellsword" | "PerkID_Stat_OneHandMonk" | "PerkID_Stat_OneHandZealot" | "PerkID_Stat_OneHandCleric" | "PerkID_Stat_OneHandDruid" | "PerkID_Stat_OneHandBattlemage" | "PerkID_Stat_OneHandAssassin" | "PerkID_Stat_TwoHandMonk" | "PerkID_Stat_TwoHandDuelist" | "PerkID_Stat_TwoHandArtificer" | "PerkID_Stat_TwoHandBattlemage" | "PerkID_Stat_TwoHandZealot" | "PerkID_Stat_TwoHandBattleMage" | "PerkID_Stat_TwoHandDruid" | "PerkID_Stat_TwoHandNomad" | "PerkID_Bags_WeightAdd" | "PerkID_Tools_Durability" | "FishDurability3" | "perkid_stat_twohandfighter" | "perkid_stat_armorsentry" | "perkid_stat_armoroccultist" | "perkid_stat_twohandmage" | "perkid_stat_armorsoldier" | "perkid_stat_onehandbarbarian" | "PerkID_Earring_Weaponsmith" | "perkid_stat_armordruid" | "PerkID_Stat_ArmorArtificer" | "PerkID_Armor_MiningLuck" | "PerkID_Armor_HarvestingLuck" | "perkid_stat_armorpriest" | "perkid_stat_twohandscholar" | "perkid_stat_twohandknight" | "perkid_stat_armorwarden" | "perkid_stat_twohandranger" | "perkid_stat_twohandsoldier" | "perkid_stat_armorassassin";
 
-export enum PerkBucket1 {
-    AttributeBlunderbussT2 = "AttributeBlunderbussT2",
-    AttributeBlunderbussT3 = "AttributeBlunderbussT3",
-    AttributeBlunderbussT4 = "AttributeBlunderbussT4",
-    AttributeBlunderbussT5 = "AttributeBlunderbussT5",
-    AttributeBowT2 = "AttributeBowT2",
-    AttributeBowT3 = "AttributeBowT3",
-    AttributeBowT4 = "AttributeBowT4",
-    AttributeBowT5 = "AttributeBowT5",
-    AttributeFireStaffT2 = "AttributeFireStaffT2",
-    AttributeFireStaffT3 = "AttributeFireStaffT3",
-    AttributeFireStaffT4 = "AttributeFireStaffT4",
-    AttributeFireStaffT5 = "AttributeFireStaffT5",
-    AttributeGreatAxeT2 = "AttributeGreatAxeT2",
-    AttributeGreatAxeT3 = "AttributeGreatAxeT3",
-    AttributeGreatAxeT4 = "AttributeGreatAxeT4",
-    AttributeGreatAxeT5 = "AttributeGreatAxeT5",
-    AttributeGreatSwordT2 = "AttributeGreatSwordT2",
-    AttributeGreatSwordT3 = "AttributeGreatSwordT3",
-    AttributeGreatSwordT4 = "AttributeGreatSwordT4",
-    AttributeGreatSwordT5 = "AttributeGreatSwordT5",
-    AttributeGreatswordT4 = "AttributeGreatswordT4",
-    AttributeGreatswordT5 = "AttributeGreatswordT5",
-    AttributeHatchetT2 = "AttributeHatchetT2",
-    AttributeHatchetT3 = "AttributeHatchetT3",
-    AttributeHatchetT4 = "AttributeHatchetT4",
-    AttributeHatchetT5 = "AttributeHatchetT5",
-    AttributeLifeStaffT2 = "AttributeLifeStaffT2",
-    AttributeLifeStaffT3 = "AttributeLifeStaffT3",
-    AttributeLifeStaffT4 = "AttributeLifeStaffT4",
-    AttributeLifeStaffT5 = "AttributeLifeStaffT5",
-    AttributeMusketT2 = "AttributeMusketT2",
-    AttributeMusketT3 = "AttributeMusketT3",
-    AttributeMusketT4 = "AttributeMusketT4",
-    AttributeMusketT5 = "AttributeMusketT5",
-    AttributeRapierT2 = "AttributeRapierT2",
-    AttributeRapierT3 = "AttributeRapierT3",
-    AttributeRapierT4 = "AttributeRapierT4",
-    AttributeRapierT5 = "AttributeRapierT5",
-    AttributeShieldT2 = "AttributeShieldT2",
-    AttributeShieldT3 = "AttributeShieldT3",
-    AttributeShieldT4 = "AttributeShieldT4",
-    AttributeShieldT5 = "AttributeShieldT5",
-    AttributeSpearT2 = "AttributeSpearT2",
-    AttributeSpearT3 = "AttributeSpearT3",
-    AttributeSpearT4 = "AttributeSpearT4",
-    AttributeSpearT5 = "AttributeSpearT5",
-    AttributeSwordT2 = "AttributeSwordT2",
-    AttributeSwordT3 = "AttributeSwordT3",
-    AttributeSwordT4 = "AttributeSwordT4",
-    AttributeSwordT5 = "AttributeSwordT5",
-    AttributeVoidGauntletT2 = "AttributeVoidGauntletT2",
-    AttributeVoidGauntletT3 = "AttributeVoidGauntletT3",
-    AttributeVoidGauntletT4 = "AttributeVoidGauntletT4",
-    AttributeVoidGauntletT5 = "AttributeVoidGauntletT5",
-    AttributeWarhammerT2 = "AttributeWarhammerT2",
-    AttributeWarhammerT3 = "AttributeWarhammerT3",
-    AttributeWarhammerT4 = "AttributeWarhammerT4",
-    AttributeWarhammerT5 = "AttributeWarhammerT5",
-    CastAttributeBlunderbussT5 = "CastAttributeBlunderbussT5",
-    CastAttributeBowT5 = "CastAttributeBowT5",
-    CastAttributeBucketChanceT5 = "CastAttributeBucketChanceT5",
-    CastAttributeBucketT5 = "CastAttributeBucketT5",
-    CastAttributeFireStaffT5 = "CastAttributeFireStaffT5",
-    CastAttributeGreatAxeT5 = "CastAttributeGreatAxeT5",
-    CastAttributeGreatSwordT5 = "CastAttributeGreatSwordT5",
-    CastAttributeHatchetT5 = "CastAttributeHatchetT5",
-    CastAttributeLifeStaffT5 = "CastAttributeLifeStaffT5",
-    CastAttributeMusketT5 = "CastAttributeMusketT5",
-    CastAttributeRapierT5 = "CastAttributeRapierT5",
-    CastAttributeShieldT5 = "CastAttributeShieldT5",
-    CastAttributeSpearT5 = "CastAttributeSpearT5",
-    CastAttributeSwordT5 = "CastAttributeSwordT5",
-    CastAttributeVoidGauntletT5 = "CastAttributeVoidGauntletT5",
-    CastAttributeWarhammerT5 = "CastAttributeWarhammerT5",
-    CraftingAttributeBucketT2 = "CraftingAttributeBucketT2",
-    CraftingAttributeBucketT3 = "CraftingAttributeBucketT3",
-    CraftingAttributeBucketT4 = "CraftingAttributeBucketT4",
-    CraftingAttributeBucketT5 = "CraftingAttributeBucketT5",
-    Empty = "",
-    FishingArmorT2Bucket = "FishingArmorT2Bucket",
-    FishingArmorT3Bucket = "FishingArmorT3Bucket",
-    FishingArmorT4Bucket = "FishingArmorT4Bucket",
-    FishingArmorT5Bucket = "FishingArmorT5Bucket",
-    FishingItemT1BucketChance = "FishingItemT1BucketChance",
-    FishingItemT2BucketChance = "FishingItemT2BucketChance",
-    FishingItemT3BucketChance = "FishingItemT3BucketChance",
-    FlameCoreAttributeBlunderbussT5 = "FlameCoreAttributeBlunderbussT5",
-    FlameCoreAttributeBowT5 = "FlameCoreAttributeBowT5",
-    FlameCoreAttributeFireStaffT5 = "FlameCoreAttributeFireStaffT5",
-    FlameCoreAttributeGreatAxeT5 = "FlameCoreAttributeGreatAxeT5",
-    FlameCoreAttributeGreatSwordT5 = "FlameCoreAttributeGreatSwordT5",
-    FlameCoreAttributeHatchetT5 = "FlameCoreAttributeHatchetT5",
-    FlameCoreAttributeLifeStaffT5 = "FlameCoreAttributeLifeStaffT5",
-    FlameCoreAttributeMusketT5 = "FlameCoreAttributeMusketT5",
-    FlameCoreAttributeRapierT5 = "FlameCoreAttributeRapierT5",
-    FlameCoreAttributeShieldT5 = "FlameCoreAttributeShieldT5",
-    FlameCoreAttributeSpearT5 = "FlameCoreAttributeSpearT5",
-    FlameCoreAttributeSwordT5 = "FlameCoreAttributeSwordT5",
-    FlameCoreAttributeVoidGauntletT5 = "FlameCoreAttributeVoidGauntletT5",
-    FlameCoreAttributeWarhammerT5 = "FlameCoreAttributeWarhammerT5",
-    GlobalAttributeBucket = "GlobalAttributeBucket",
-    GlobalAttributeBucketChanceT2 = "GlobalAttributeBucketChanceT2",
-    GlobalAttributeBucketChanceT3 = "GlobalAttributeBucketChanceT3",
-    GlobalAttributeBucketChanceT4 = "GlobalAttributeBucketChanceT4",
-    GlobalAttributeBucketChanceT5 = "GlobalAttributeBucketChanceT5",
-    GlobalAttributeBucketT2 = "GlobalAttributeBucketT2",
-    GlobalAttributeBucketT3 = "GlobalAttributeBucketT3",
-    GlobalAttributeBucketT4 = "GlobalAttributeBucketT4",
-    GlobalAttributeBucketT5 = "GlobalAttributeBucketT5",
-    PerkBucketCraftedPerkBucketRollT2 = "PerkBucket_CraftedPerkBucketRollT2",
-    PerkBucketCraftedPerkBucketRollT3 = "PerkBucket_CraftedPerkBucketRollT3",
-    PerkBucketCraftedPerkBucketRollT4Bucket3 = "PerkBucket_CraftedPerkBucketRollT4Bucket3",
-    PerkBucketCraftedPerkBucketRollT5Bucket3 = "PerkBucket_CraftedPerkBucketRollT5Bucket3",
-    PerkBucketFlameCoreSingleStatArmor = "PerkBucket_FlameCore_SingleStat_Armor",
-    PerkBucketHarvestingItemT1BucketChance = "PerkBucket_HarvestingItemT1BucketChance",
-    PerkBucketHarvestingItemT2BucketChance = "PerkBucket_HarvestingItemT2BucketChance",
-    PerkBucketHarvestingItemT3BucketChance = "PerkBucket_HarvestingItemT3BucketChance",
-    PerkBucketInstrumentsT2Chance = "PerkBucket_InstrumentsT2Chance",
-    PerkBucketInstrumentsT3Chance = "PerkBucket_InstrumentsT3Chance",
-    PerkBucketInstrumentsT4Chance = "PerkBucket_InstrumentsT4Chance",
-    PerkBucketInstrumentsT5Chance = "PerkBucket_InstrumentsT5Chance",
-    PerkBucketLoggingItemT1BucketChance = "PerkBucket_LoggingItemT1BucketChance",
-    PerkBucketLoggingItemT2BucketChance = "PerkBucket_LoggingItemT2BucketChance",
-    PerkBucketLoggingItemT3BucketChance = "PerkBucket_LoggingItemT3BucketChance",
-    PerkBucketMiningItemT1BucketChance = "PerkBucket_MiningItemT1BucketChance",
-    PerkBucketMiningItemT2BucketChance = "PerkBucket_MiningItemT2BucketChance",
-    PerkBucketMiningItemT3BucketChance = "PerkBucket_MiningItemT3BucketChance",
-    PerkBucketSkinningItemT1BucketChance = "PerkBucket_SkinningItemT1BucketChance",
-    PerkBucketSkinningItemT2BucketChance = "PerkBucket_SkinningItemT2BucketChance",
-    PerkBucketSkinningItemT3BucketChance = "PerkBucket_SkinningItemT3BucketChance",
-    SingleStatAttributesT5 = "SingleStat_AttributesT5",
-    SingleStatAttributesT5HeavyAlways = "SingleStat_AttributesT5_Heavy_Always",
-    SingleStatAttributesT5LightAlways = "SingleStat_AttributesT5_Light_Always",
-    SingleStatAttributesT5MediumAlways = "SingleStat_AttributesT5_Medium_Always",
-    SingleStatPVPRTAttributesAcc = "SingleStatPVPRT_Attributes_Acc",
-    SingleStatPVPRTAttributesT2Heavy = "SingleStatPVPRT_AttributesT2_Heavy",
-    SingleStatPVPRTAttributesT2Light = "SingleStatPVPRT_AttributesT2_Light",
-    SingleStatPVPRTAttributesT2Medium = "SingleStatPVPRT_AttributesT2_Medium",
-    SingleStatPVPRTAttributesT3Heavy = "SingleStatPVPRT_AttributesT3_Heavy",
-    SingleStatPVPRTAttributesT3Light = "SingleStatPVPRT_AttributesT3_Light",
-    SingleStatPVPRTAttributesT3Medium = "SingleStatPVPRT_AttributesT3_Medium",
-    SingleStatPVPRTAttributesT4Heavy = "SingleStatPVPRT_AttributesT4_Heavy",
-    SingleStatPVPRTAttributesT4Light = "SingleStatPVPRT_AttributesT4_Light",
-    SingleStatPVPRTAttributesT4Medium = "SingleStatPVPRT_AttributesT4_Medium",
-    SingleStatPVPRTAttributesT5Heavy = "SingleStatPVPRT_AttributesT5_Heavy",
-    SingleStatPVPRTAttributesT5Light = "SingleStatPVPRT_AttributesT5_Light",
-    SingleStatPVPRTAttributesT5Medium = "SingleStatPVPRT_AttributesT5_Medium",
-}
+export type PerkBucket1 = "" | "CraftingAttributeBucketT5" | "AttributeSwordT5" | "AttributeHatchetT5" | "AttributeWarhammerT5" | "AttributeGreatAxeT5" | "AttributeBowT5" | "AttributeMusketT5" | "AttributeShieldT5" | "AttributeFireStaffT5" | "AttributeLifeStaffT5" | "AttributeSpearT5" | "AttributeRapierT5" | "AttributeVoidGauntletT5" | "AttributeBlunderbussT5" | "AttributeGreatSwordT5" | "GlobalAttributeBucketT5" | "GlobalAttributeBucket" | "CraftingAttributeBucketT2" | "CraftingAttributeBucketT3" | "CraftingAttributeBucketT4" | "GlobalAttributeBucketChanceT5" | "PerkBucket_SkinningItemT1BucketChance" | "PerkBucket_SkinningItemT2BucketChance" | "PerkBucket_SkinningItemT3BucketChance" | "PerkBucket_HarvestingItemT1BucketChance" | "PerkBucket_HarvestingItemT2BucketChance" | "PerkBucket_HarvestingItemT3BucketChance" | "PerkBucket_LoggingItemT1BucketChance" | "PerkBucket_LoggingItemT2BucketChance" | "PerkBucket_LoggingItemT3BucketChance" | "PerkBucket_MiningItemT1BucketChance" | "PerkBucket_MiningItemT2BucketChance" | "PerkBucket_MiningItemT3BucketChance" | "FishingItemT1BucketChance" | "FishingItemT2BucketChance" | "FishingItemT3BucketChance" | "PerkBucket_InstrumentsT2Chance" | "PerkBucket_InstrumentsT3Chance" | "PerkBucket_InstrumentsT4Chance" | "PerkBucket_InstrumentsT5Chance" | "AttributeSwordT2" | "AttributeSwordT3" | "AttributeSwordT4" | "AttributeRapierT2" | "AttributeRapierT3" | "AttributeRapierT4" | "AttributeHatchetT2" | "AttributeHatchetT3" | "AttributeHatchetT4" | "AttributeGreatSwordT2" | "AttributeGreatSwordT3" | "AttributeGreatSwordT4" | "AttributeWarhammerT2" | "AttributeWarhammerT3" | "AttributeWarhammerT4" | "AttributeGreatAxeT2" | "AttributeGreatAxeT3" | "AttributeGreatAxeT4" | "AttributeSpearT2" | "AttributeSpearT3" | "AttributeSpearT4" | "AttributeBowT2" | "AttributeBowT3" | "AttributeBowT4" | "AttributeMusketT2" | "AttributeMusketT3" | "AttributeMusketT4" | "AttributeBlunderbussT2" | "AttributeBlunderbussT3" | "AttributeBlunderbussT4" | "AttributeFireStaffT2" | "AttributeFireStaffT3" | "AttributeFireStaffT4" | "AttributeLifeStaffT2" | "AttributeLifeStaffT3" | "AttributeLifeStaffT4" | "AttributeShieldT2" | "AttributeShieldT3" | "AttributeShieldT4" | "AttributeVoidGauntletT2" | "AttributeVoidGauntletT3" | "AttributeVoidGauntletT4" | "GlobalAttributeBucketT2" | "GlobalAttributeBucketT3" | "GlobalAttributeBucketT4" | "PerkBucket_CraftedPerkBucketRollT2" | "PerkBucket_CraftedPerkBucketRollT3" | "PerkBucket_CraftedPerkBucketRollT4Bucket3" | "PerkBucket_CraftedPerkBucketRollT5Bucket3" | "SingleStat_AttributesT5" | "CastAttributeSwordT5" | "CastAttributeHatchetT5" | "CastAttributeWarhammerT5" | "CastAttributeBowT5" | "CastAttributeMusketT5" | "CastAttributeBlunderbussT5" | "CastAttributeFireStaffT5" | "CastAttributeLifeStaffT5" | "CastAttributeSpearT5" | "CastAttributeGreatAxeT5" | "CastAttributeGreatSwordT5" | "CastAttributeRapierT5" | "CastAttributeVoidGauntletT5" | "CastAttributeShieldT5" | "CastAttributeBucketChanceT5" | "CastAttributeBucketT5" | "FlameCoreAttributeSwordT5" | "FlameCoreAttributeHatchetT5" | "FlameCoreAttributeWarhammerT5" | "FlameCoreAttributeBowT5" | "FlameCoreAttributeMusketT5" | "FlameCoreAttributeBlunderbussT5" | "FlameCoreAttributeFireStaffT5" | "FlameCoreAttributeLifeStaffT5" | "FlameCoreAttributeSpearT5" | "FlameCoreAttributeGreatAxeT5" | "FlameCoreAttributeGreatSwordT5" | "FlameCoreAttributeRapierT5" | "FlameCoreAttributeVoidGauntletT5" | "FlameCoreAttributeShieldT5" | "PerkBucket_FlameCore_SingleStat_Armor" | "GlobalAttributeBucketChanceT2" | "GlobalAttributeBucketChanceT3" | "GlobalAttributeBucketChanceT4" | "FishingArmorT2Bucket" | "FishingArmorT3Bucket" | "FishingArmorT4Bucket" | "FishingArmorT5Bucket" | "AttributeGreatswordT4" | "AttributeGreatswordT5" | "SingleStatPVPRT_AttributesT2_Heavy" | "SingleStatPVPRT_AttributesT3_Heavy" | "SingleStatPVPRT_AttributesT4_Heavy" | "SingleStatPVPRT_AttributesT5_Heavy" | "SingleStatPVPRT_AttributesT2_Medium" | "SingleStatPVPRT_AttributesT3_Medium" | "SingleStatPVPRT_AttributesT4_Medium" | "SingleStatPVPRT_AttributesT5_Medium" | "SingleStatPVPRT_AttributesT2_Light" | "SingleStatPVPRT_AttributesT3_Light" | "SingleStatPVPRT_AttributesT4_Light" | "SingleStatPVPRT_AttributesT5_Light" | "SingleStatPVPRT_Attributes_Acc" | "SingleStat_AttributesT5_Light_Always" | "SingleStat_AttributesT5_Medium_Always" | "SingleStat_AttributesT5_Heavy_Always";
 
-export enum PerkBucket2 {
-    CastGemSlotChanceT5Bucket2 = "CastGemSlotChanceT5Bucket2",
-    CastGemSlotChanceT5Bucket3 = "CastGemSlotChanceT5Bucket3",
-    CraftingGemSlotChanceT2 = "CraftingGemSlotChanceT2",
-    CraftingGemSlotChanceT3 = "CraftingGemSlotChanceT3",
-    CraftingGemSlotChanceT4 = "CraftingGemSlotChanceT4",
-    CraftingGemSlotChanceT5 = "CraftingGemSlotChanceT5",
-    Empty = "",
-    FishingItemT1BucketChance = "FishingItemT1BucketChance",
-    FishingItemT2BucketChance = "FishingItemT2BucketChance",
-    FishingItemT3BucketChance = "FishingItemT3BucketChance",
-    GlobalAttributeBucketT2 = "GlobalAttributeBucketT2",
-    GlobalAttributeBucketT3 = "GlobalAttributeBucketT3",
-    GlobalAttributeBucketT4 = "GlobalAttributeBucketT4",
-    GlobalAttributeBucketT5 = "GlobalAttributeBucketT5",
-    GlobalGemSlotChanceT2 = "GlobalGemSlotChanceT2",
-    GlobalGemSlotChanceT3 = "GlobalGemSlotChanceT3",
-    GlobalGemSlotChanceT5 = "GlobalGemSlotChanceT5",
-    GlobalGemSlotT5 = "GlobalGemSlotT5",
-    PerkBucketAmrineBucket = "PerkBucket_AmrineBucket",
-    PerkBucketAncientBucket = "PerkBucket_AncientBucket",
-    PerkBucketAncientBucketChanceT2 = "PerkBucket_AncientBucketChanceT2",
-    PerkBucketAncientBucketChanceT3 = "PerkBucket_AncientBucketChanceT3",
-    PerkBucketAncientBucketChanceT4Bucket3 = "PerkBucket_AncientBucketChanceT4Bucket3",
-    PerkBucketAncientBucketChanceT5Bucket3 = "PerkBucket_AncientBucketChanceT5Bucket3",
-    PerkBucketAngryEarthBucket = "PerkBucket_AngryEarthBucket",
-    PerkBucketAngryEarthBucketChanceT2 = "PerkBucket_AngryEarthBucketChanceT2",
-    PerkBucketAngryEarthBucketChanceT3 = "PerkBucket_AngryEarthBucketChanceT3",
-    PerkBucketAngryEarthBucketChanceT4Bucket3 = "PerkBucket_AngryEarthBucketChanceT4Bucket3",
-    PerkBucketAngryEarthBucketChanceT5Bucket3 = "PerkBucket_AngryEarthBucketChanceT5Bucket3",
-    PerkBucketBarnaclesBucket = "PerkBucket_BarnaclesBucket",
-    PerkBucketBreachBucket = "PerkBucket_BreachBucket",
-    PerkBucketBreachFamilyT3Chance = "PerkBucket_BreachFamily_T3Chance",
-    PerkBucketBreachFamilyT4Chance = "PerkBucket_BreachFamily_T4Chance",
-    PerkBucketBreachFamilyT5Chance = "PerkBucket_BreachFamily_T5Chance",
-    PerkBucketCastPerkBucketRollT5Bucket2 = "PerkBucket_CastPerkBucketRollT5Bucket2",
-    PerkBucketCastPerkBucketRollT5Bucket3 = "PerkBucket_CastPerkBucketRollT5Bucket3",
-    PerkBucketCorruptedBucket = "PerkBucket_CorruptedBucket",
-    PerkBucketCorruptedBucketChanceT2 = "PerkBucket_CorruptedBucketChanceT2",
-    PerkBucketCorruptedBucketChanceT3 = "PerkBucket_CorruptedBucketChanceT3",
-    PerkBucketCorruptedBucketChanceT4Bucket3 = "PerkBucket_CorruptedBucketChanceT4Bucket3",
-    PerkBucketCorruptedBucketChanceT5Bucket3 = "PerkBucket_CorruptedBucketChanceT5Bucket3",
-    PerkBucketCraftedPerkBucketRollT2 = "PerkBucket_CraftedPerkBucketRollT2",
-    PerkBucketCraftedPerkBucketRollT3 = "PerkBucket_CraftedPerkBucketRollT3",
-    PerkBucketCraftedPerkBucketRollT4Bucket3 = "PerkBucket_CraftedPerkBucketRollT4Bucket3",
-    PerkBucketCraftedPerkBucketRollT4Bucket4 = "PerkBucket_CraftedPerkBucketRollT4Bucket4",
-    PerkBucketCraftedPerkBucketRollT5Bucket3 = "PerkBucket_CraftedPerkBucketRollT5Bucket3",
-    PerkBucketCraftedPerkBucketRollT5Bucket4 = "PerkBucket_CraftedPerkBucketRollT5Bucket4",
-    PerkBucketCraftedPerkBucketRollT5Fixed = "PerkBucket_CraftedPerkBucketRollT5Fixed",
-    PerkBucketDynastyShipyardBucket = "PerkBucket_DynastyShipyardBucket",
-    PerkBucketEliteAncientBucket = "PerkBucket_EliteAncientBucket",
-    PerkBucketEliteAngryEarthBucket = "PerkBucket_EliteAngryEarthBucket",
-    PerkBucketEliteCorruptedBucket = "PerkBucket_EliteCorruptedBucket",
-    PerkBucketEliteDrownedBucket = "PerkBucket_EliteDrownedBucket",
-    PerkBucketEliteLostBucket = "PerkBucket_EliteLostBucket",
-    PerkBucketGenesisBucket = "PerkBucket_GenesisBucket",
-    PerkBucketGlobalBucket = "PerkBucket_GlobalBucket",
-    PerkBucketGlobalBucketChanceT5 = "PerkBucket_GlobalBucketChanceT5",
-    PerkBucketGlobalPerkBucketRollT2 = "PerkBucket_GlobalPerkBucketRollT2",
-    PerkBucketGlobalPerkBucketRollT3 = "PerkBucket_GlobalPerkBucketRollT3",
-    PerkBucketGlobalPerkBucketRollT4Bucket3 = "PerkBucket_GlobalPerkBucketRollT4Bucket3",
-    PerkBucketGlobalPerkBucketRollT5Bucket3 = "PerkBucket_GlobalPerkBucketRollT5Bucket3",
-    PerkBucketHarvestingItemT1BucketChance = "PerkBucket_HarvestingItemT1BucketChance",
-    PerkBucketHarvestingItemT2BucketChance = "PerkBucket_HarvestingItemT2BucketChance",
-    PerkBucketHarvestingItemT3BucketChance = "PerkBucket_HarvestingItemT3BucketChance",
-    PerkBucketInstrumentsT2Chance = "PerkBucket_InstrumentsT2Chance",
-    PerkBucketInstrumentsT3Chance = "PerkBucket_InstrumentsT3Chance",
-    PerkBucketInstrumentsT4Chance = "PerkBucket_InstrumentsT4Chance",
-    PerkBucketInstrumentsT5Chance = "PerkBucket_InstrumentsT5Chance",
-    PerkBucketInvasionGemsBucket = "PerkBucket_InvasionGemsBucket",
-    PerkBucketLazarusBucket = "PerkBucket_LazarusBucket",
-    PerkBucketLoggingItemT1BucketChance = "PerkBucket_LoggingItemT1BucketChance",
-    PerkBucketLoggingItemT2BucketChance = "PerkBucket_LoggingItemT2BucketChance",
-    PerkBucketLoggingItemT3BucketChance = "PerkBucket_LoggingItemT3BucketChance",
-    PerkBucketLostBucket = "PerkBucket_LostBucket",
-    PerkBucketLostBucketChanceT2 = "PerkBucket_LostBucketChanceT2",
-    PerkBucketLostBucketChanceT3 = "PerkBucket_LostBucketChanceT3",
-    PerkBucketLostBucketChanceT4Bucket3 = "PerkBucket_LostBucketChanceT4Bucket3",
-    PerkBucketLostBucketChanceT5Bucket3 = "PerkBucket_LostBucketChanceT5Bucket3",
-    PerkBucketMasterGlobalPerkBucketRoll = "PerkBucket_MasterGlobalPerkBucketRoll",
-    PerkBucketMiningItemT1BucketChance = "PerkBucket_MiningItemT1BucketChance",
-    PerkBucketMiningItemT2BucketChance = "PerkBucket_MiningItemT2BucketChance",
-    PerkBucketMiningItemT3BucketChance = "PerkBucket_MiningItemT3BucketChance",
-    PerkBucketMyrkgardBucket = "PerkBucket_MyrkgardBucket",
-    PerkBucketObeliskBucket = "PerkBucket_ObeliskBucket",
-    PerkBucketPVPBucket1 = "PerkBucket_PvPBucket1",
-    PerkBucketPVPGemsBucket = "PerkBucket_PvPGemsBucket",
-    PerkBucketPVPRTGemsBucketPrestigeT5 = "PerkBucket_PvPRT_GemsBucketPrestige_T5",
-    PerkBucketPVPRTPerksT2Bucket2Chance = "PerkBucket_PVPRTPerks_T2Bucket2Chance",
-    PerkBucketPVPRTPerksT3Bucket2Chance = "PerkBucket_PVPRTPerks_T3Bucket2Chance",
-    PerkBucketPVPRTPerksT4Bucket2Chance = "PerkBucket_PVPRTPerks_T4Bucket2Chance",
-    PerkBucketPVPRTPerksT4PrestigeBucket4Chance = "PerkBucket_PVPRTPerks_T4PrestigeBucket4Chance",
-    PerkBucketPVPRTPerksT5Bucket2Chance = "PerkBucket_PVPRTPerks_T5Bucket2Chance",
-    PerkBucketPVPRTPerksT5PrestigeBucket4Chance = "PerkBucket_PVPRTPerks_T5PrestigeBucket4Chance",
-    PerkBucketSkinningItemT1BucketChance = "PerkBucket_SkinningItemT1BucketChance",
-    PerkBucketSkinningItemT2BucketChance = "PerkBucket_SkinningItemT2BucketChance",
-    PerkBucketSkinningItemT3BucketChance = "PerkBucket_SkinningItemT3BucketChance",
-    PerkBucketSpringEvent = "PerkBucket_SpringEvent",
-    PerkBucketSummerEvent = "PerkBucket_SummerEvent",
-    PerkBucketTheDepthsBucket = "PerkBucket_TheDepthsBucket",
-    PerkBucketTrackBucketGuaranteeDefenseArmor = "PerkBucket_TrackBucketGuaranteeDefense_Armor",
-    PerkBucketTrackBucketGuaranteeWeapons = "PerkBucket_TrackBucketGuarantee_Weapons",
-    PerkBucketWarGemsBucket = "PerkBucket_WarGemsBucket",
-    PerkBucketWinterEvent = "PerkBucket_WinterEvent",
-}
+export type PerkBucket2 = "" | "PerkBucket_MasterGlobalPerkBucketRoll" | "GlobalGemSlotChanceT5" | "CraftingGemSlotChanceT2" | "CraftingGemSlotChanceT3" | "CraftingGemSlotChanceT4" | "CraftingGemSlotChanceT5" | "PerkBucket_SkinningItemT1BucketChance" | "PerkBucket_SkinningItemT2BucketChance" | "PerkBucket_SkinningItemT3BucketChance" | "PerkBucket_HarvestingItemT1BucketChance" | "PerkBucket_HarvestingItemT2BucketChance" | "PerkBucket_HarvestingItemT3BucketChance" | "PerkBucket_LoggingItemT1BucketChance" | "PerkBucket_LoggingItemT2BucketChance" | "PerkBucket_LoggingItemT3BucketChance" | "PerkBucket_MiningItemT1BucketChance" | "PerkBucket_MiningItemT2BucketChance" | "PerkBucket_MiningItemT3BucketChance" | "FishingItemT1BucketChance" | "FishingItemT2BucketChance" | "FishingItemT3BucketChance" | "PerkBucket_InstrumentsT2Chance" | "PerkBucket_InstrumentsT3Chance" | "PerkBucket_InstrumentsT4Chance" | "PerkBucket_InstrumentsT5Chance" | "PerkBucket_CraftedPerkBucketRollT2" | "PerkBucket_CraftedPerkBucketRollT3" | "PerkBucket_CraftedPerkBucketRollT4Bucket3" | "PerkBucket_CraftedPerkBucketRollT5Bucket3" | "PerkBucket_CraftedPerkBucketRollT4Bucket4" | "PerkBucket_CraftedPerkBucketRollT5Bucket4" | "PerkBucket_AmrineBucket" | "PerkBucket_ObeliskBucket" | "PerkBucket_TheDepthsBucket" | "PerkBucket_DynastyShipyardBucket" | "PerkBucket_LazarusBucket" | "PerkBucket_GenesisBucket" | "PerkBucket_MyrkgardBucket" | "PerkBucket_GlobalBucketChanceT5" | "PerkBucket_BarnaclesBucket" | "GlobalGemSlotT5" | "PerkBucket_CraftedPerkBucketRollT5Fixed" | "PerkBucket_CastPerkBucketRollT5Bucket2" | "CastGemSlotChanceT5Bucket2" | "CastGemSlotChanceT5Bucket3" | "PerkBucket_CastPerkBucketRollT5Bucket3" | "PerkBucket_WinterEvent" | "PerkBucket_SpringEvent" | "PerkBucket_SummerEvent" | "PerkBucket_GlobalPerkBucketRollT2" | "PerkBucket_GlobalPerkBucketRollT3" | "PerkBucket_GlobalPerkBucketRollT4Bucket3" | "PerkBucket_GlobalPerkBucketRollT5Bucket3" | "PerkBucket_WarGemsBucket" | "PerkBucket_PvPBucket1" | "PerkBucket_PvPGemsBucket" | "PerkBucket_CorruptedBucketChanceT2" | "PerkBucket_CorruptedBucketChanceT3" | "PerkBucket_CorruptedBucketChanceT4Bucket3" | "PerkBucket_CorruptedBucketChanceT5Bucket3" | "PerkBucket_CorruptedBucket" | "PerkBucket_LostBucketChanceT2" | "PerkBucket_LostBucketChanceT3" | "PerkBucket_LostBucketChanceT4Bucket3" | "PerkBucket_LostBucketChanceT5Bucket3" | "PerkBucket_LostBucket" | "PerkBucket_AncientBucketChanceT2" | "PerkBucket_AncientBucketChanceT3" | "PerkBucket_AncientBucketChanceT4Bucket3" | "PerkBucket_AncientBucketChanceT5Bucket3" | "PerkBucket_AncientBucket" | "PerkBucket_AngryEarthBucketChanceT2" | "PerkBucket_AngryEarthBucketChanceT3" | "PerkBucket_AngryEarthBucketChanceT4Bucket3" | "PerkBucket_AngryEarthBucketChanceT5Bucket3" | "PerkBucket_AngryEarthBucket" | "PerkBucket_EliteLostBucket" | "PerkBucket_EliteAncientBucket" | "PerkBucket_EliteAngryEarthBucket" | "PerkBucket_EliteCorruptedBucket" | "PerkBucket_EliteDrownedBucket" | "GlobalAttributeBucketT2" | "GlobalAttributeBucketT3" | "GlobalAttributeBucketT4" | "GlobalAttributeBucketT5" | "PerkBucket_InvasionGemsBucket" | "GlobalGemSlotChanceT2" | "GlobalGemSlotChanceT3" | "PerkBucket_BreachBucket" | "PerkBucket_BreachFamily_T3Chance" | "PerkBucket_BreachFamily_T4Chance" | "PerkBucket_BreachFamily_T5Chance" | "PerkBucket_GlobalBucket" | "PerkBucket_PVPRTPerks_T2Bucket2Chance" | "PerkBucket_PVPRTPerks_T3Bucket2Chance" | "PerkBucket_PVPRTPerks_T4Bucket2Chance" | "PerkBucket_PVPRTPerks_T5Bucket2Chance" | "PerkBucket_PvPRT_GemsBucketPrestige_T5" | "PerkBucket_PVPRTPerks_T4PrestigeBucket4Chance" | "PerkBucket_PVPRTPerks_T5PrestigeBucket4Chance" | "PerkBucket_TrackBucketGuarantee_Weapons" | "PerkBucket_TrackBucketGuaranteeDefense_Armor";
 
-export enum PerkBucket3 {
-    BreachGemSlotChanceT3 = "BreachGemSlotChanceT3",
-    BreachGemSlotChanceT4 = "BreachGemSlotChanceT4",
-    BreachGemSlotChanceT5 = "BreachGemSlotChanceT5",
-    CastGemSlotChanceT5Bucket3 = "CastGemSlotChanceT5Bucket3",
-    CraftingGemSlotChanceT2 = "CraftingGemSlotChanceT2",
-    CraftingGemSlotChanceT3 = "CraftingGemSlotChanceT3",
-    CraftingGemSlotChanceT4 = "CraftingGemSlotChanceT4",
-    CraftingGemSlotChanceT5 = "CraftingGemSlotChanceT5",
-    EliteBreachGemSlotChanceT3 = "EliteBreachGemSlotChanceT3",
-    EliteBreachGemSlotChanceT4 = "EliteBreachGemSlotChanceT4",
-    EliteBreachGemSlotChanceT5 = "EliteBreachGemSlotChanceT5",
-    Empty = "",
-    FishingItemT1BucketChance = "FishingItemT1BucketChance",
-    FishingItemT2BucketChance = "FishingItemT2BucketChance",
-    FishingItemT3BucketChance = "FishingItemT3BucketChance",
-    GlobalGemSlotChanceT2 = "GlobalGemSlotChanceT2",
-    GlobalGemSlotChanceT3 = "GlobalGemSlotChanceT3",
-    GlobalGemSlotChanceT4 = "GlobalGemSlotChanceT4",
-    GlobalGemSlotChanceT5 = "GlobalGemSlotChanceT5",
-    GlobalGemSlotT5 = "GlobalGemSlotT5",
-    PerkBucketAncientBucketChanceT2 = "PerkBucket_AncientBucketChanceT2",
-    PerkBucketAncientBucketChanceT3 = "PerkBucket_AncientBucketChanceT3",
-    PerkBucketAncientBucketChanceT4Bucket3 = "PerkBucket_AncientBucketChanceT4Bucket3",
-    PerkBucketAncientBucketChanceT5Bucket3 = "PerkBucket_AncientBucketChanceT5Bucket3",
-    PerkBucketAngryEarthBucket = "PerkBucket_AngryEarthBucket",
-    PerkBucketAngryEarthBucketChanceT2 = "PerkBucket_AngryEarthBucketChanceT2",
-    PerkBucketAngryEarthBucketChanceT3 = "PerkBucket_AngryEarthBucketChanceT3",
-    PerkBucketAngryEarthBucketChanceT4Bucket3 = "PerkBucket_AngryEarthBucketChanceT4Bucket3",
-    PerkBucketAngryEarthBucketChanceT5Bucket3 = "PerkBucket_AngryEarthBucketChanceT5Bucket3",
-    PerkBucketBarnaclesBucketChanceT5Bucket4 = "PerkBucket_BarnaclesBucketChanceT5Bucket4",
-    PerkBucketBreachBucket = "PerkBucket_BreachBucket",
-    PerkBucketBreachPerksBucket4T4Chance = "PerkBucket_BreachPerksBucket4_T4Chance",
-    PerkBucketBreachPerksBucket4T5Chance = "PerkBucket_BreachPerksBucket4_T5Chance",
-    PerkBucketCastPerkBucketRollT5Bucket3 = "PerkBucket_CastPerkBucketRollT5Bucket3",
-    PerkBucketCorruptedBucketChanceT2 = "PerkBucket_CorruptedBucketChanceT2",
-    PerkBucketCorruptedBucketChanceT3 = "PerkBucket_CorruptedBucketChanceT3",
-    PerkBucketCorruptedBucketChanceT4Bucket3 = "PerkBucket_CorruptedBucketChanceT4Bucket3",
-    PerkBucketCorruptedBucketChanceT5Bucket3 = "PerkBucket_CorruptedBucketChanceT5Bucket3",
-    PerkBucketCraftedPerkBucketRollT3 = "PerkBucket_CraftedPerkBucketRollT3",
-    PerkBucketCraftedPerkBucketRollT4Bucket3 = "PerkBucket_CraftedPerkBucketRollT4Bucket3",
-    PerkBucketCraftedPerkBucketRollT4Bucket4 = "PerkBucket_CraftedPerkBucketRollT4Bucket4",
-    PerkBucketCraftedPerkBucketRollT5Bucket3 = "PerkBucket_CraftedPerkBucketRollT5Bucket3",
-    PerkBucketCraftedPerkBucketRollT5Bucket4 = "PerkBucket_CraftedPerkBucketRollT5Bucket4",
-    PerkBucketCraftedPerkBucketRollT5Bucket5 = "PerkBucket_CraftedPerkBucketRollT5Bucket5",
-    PerkBucketCraftedPerkBucketRollT5Fixed = "PerkBucket_CraftedPerkBucketRollT5Fixed",
-    PerkBucketCraftingCarnelian = "PerkBucket_CraftingCarnelian",
-    PerkBucketCraftingDiamond = "PerkBucket_CraftingDiamond",
-    PerkBucketCraftingMalachite = "PerkBucket_CraftingMalachite",
-    PerkBucketCraftingOpal = "PerkBucket_CraftingOpal",
-    PerkBucketCraftingPerkBucketChanceT2 = "PerkBucket_CraftingPerkBucketChanceT2",
-    PerkBucketCraftingPerkBucketChanceT3 = "PerkBucket_CraftingPerkBucketChanceT3",
-    PerkBucketCraftingPerkBucketChanceT4 = "PerkBucket_CraftingPerkBucketChanceT4",
-    PerkBucketCraftingPerkBucketChanceT5 = "PerkBucket_CraftingPerkBucketChanceT5",
-    PerkBucketCraftingSapphire = "PerkBucket_CraftingSapphire",
-    PerkBucketDynastyShipyardBucketChanceT4Bucket4 = "PerkBucket_DynastyShipyardBucketChanceT4Bucket4",
-    PerkBucketEliteAngryEarthBucket = "PerkBucket_EliteAngryEarthBucket",
-    PerkBucketEliteBreachPerksBucket4T4Chance = "PerkBucket_EliteBreachPerksBucket4_T4Chance",
-    PerkBucketEliteBreachPerksBucket4T5Chance = "PerkBucket_EliteBreachPerksBucket4_T5Chance",
-    PerkBucketEliteLostBucket = "PerkBucket_EliteLostBucket",
-    PerkBucketFlameCoreArmor = "PerkBucket_FlameCore_Armor",
-    PerkBucketFlameCoreWeapon = "PerkBucket_FlameCore_Weapon",
-    PerkBucketGenesisBucketChanceT5Bucket4 = "PerkBucket_GenesisBucketChanceT5Bucket4",
-    PerkBucketGlobalBucket = "PerkBucket_GlobalBucket",
-    PerkBucketGlobalBucketChanceT5 = "PerkBucket_GlobalBucketChanceT5",
-    PerkBucketGlobalPerkBucketRollT3 = "PerkBucket_GlobalPerkBucketRollT3",
-    PerkBucketHarvestingItemT2BucketChance = "PerkBucket_HarvestingItemT2BucketChance",
-    PerkBucketHarvestingItemT3BucketChance = "PerkBucket_HarvestingItemT3BucketChance",
-    PerkBucketInstrumentsT3Chance2 = "PerkBucket_InstrumentsT3Chance2",
-    PerkBucketInstrumentsT4Chance2 = "PerkBucket_InstrumentsT4Chance2",
-    PerkBucketInstrumentsT5Chance2 = "PerkBucket_InstrumentsT5Chance2",
-    PerkBucketInvasionBucket = "PerkBucket_InvasionBucket",
-    PerkBucketInvasionGemsBucket = "PerkBucket_InvasionGemsBucket",
-    PerkBucketLazarusBucketChanceT5Bucket4 = "PerkBucket_LazarusBucketChanceT5Bucket4",
-    PerkBucketLoggingItemT2BucketChance = "PerkBucket_LoggingItemT2BucketChance",
-    PerkBucketLoggingItemT3BucketChance = "PerkBucket_LoggingItemT3BucketChance",
-    PerkBucketLostBucketChanceT2 = "PerkBucket_LostBucketChanceT2",
-    PerkBucketLostBucketChanceT3 = "PerkBucket_LostBucketChanceT3",
-    PerkBucketLostBucketChanceT4Bucket3 = "PerkBucket_LostBucketChanceT4Bucket3",
-    PerkBucketLostBucketChanceT5Bucket3 = "PerkBucket_LostBucketChanceT5Bucket3",
-    PerkBucketMiningItemT2BucketChance = "PerkBucket_MiningItemT2BucketChance",
-    PerkBucketMiningItemT3BucketChance = "PerkBucket_MiningItemT3BucketChance",
-    PerkBucketMyrkgardBucketChanceT5Bucket4 = "PerkBucket_MyrkgardBucketChanceT5Bucket4",
-    PerkBucketOpPlaytestArmorBucket = "PerkBucket_OpPlaytest_ArmorBucket",
-    PerkBucketOpPlaytestWeaponBucket = "PerkBucket_OpPlaytest_WeaponBucket",
-    PerkBucketOutpostRushBucket = "PerkBucket_OutpostRushBucket",
-    PerkBucketPVPBucket1 = "PerkBucket_PvPBucket1",
-    PerkBucketPVPGemsBucket = "PerkBucket_PvPGemsBucket",
-    PerkBucketPVPRTGemsBucketPrestigeT5 = "PerkBucket_PvPRT_GemsBucketPrestige_T5",
-    PerkBucketPVPRTGemsBucketT2 = "PerkBucket_PvPRT_GemsBucket_T2",
-    PerkBucketPVPRTGemsBucketT3 = "PerkBucket_PvPRT_GemsBucket_T3",
-    PerkBucketPVPRTGemsBucketT4 = "PerkBucket_PvPRT_GemsBucket_T4",
-    PerkBucketPVPRTGemsBucketT5 = "PerkBucket_PvPRT_GemsBucket_T5",
-    PerkBucketPVPRTPerksT4Bucket4Chance = "PerkBucket_PVPRTPerks_T4Bucket4Chance",
-    PerkBucketPVPRTPerksT4PrestigeBucket4Chance = "PerkBucket_PVPRTPerks_T4PrestigeBucket4Chance",
-    PerkBucketPVPRTPerksT5Bucket4Chance = "PerkBucket_PVPRTPerks_T5Bucket4Chance",
-    PerkBucketPVPRTPerksT5Bucket5Chance = "PerkBucket_PVPRTPerks_T5Bucket5Chance",
-    PerkBucketPVPRTPerksT5PrestigeBucket4Chance = "PerkBucket_PVPRTPerks_T5PrestigeBucket4Chance",
-    PerkBucketSkinningItemT2BucketChance = "PerkBucket_SkinningItemT2BucketChance",
-    PerkBucketSkinningItemT3BucketChance = "PerkBucket_SkinningItemT3BucketChance",
-    PerkBucketTheDepthsBucketChanceT4Bucket4 = "PerkBucket_TheDepthsBucketChanceT4Bucket4",
-    PerkBucketWarBucket = "PerkBucket_WarBucket",
-    PerkBucketWinterEvent = "PerkBucket_WinterEvent",
-    SummerGemSlot = "SummerGemSlot",
-}
+export type PerkBucket3 = "" | "PerkBucket_CraftingPerkBucketChanceT5" | "PerkBucket_CraftingPerkBucketChanceT2" | "PerkBucket_CraftingPerkBucketChanceT3" | "PerkBucket_CraftingPerkBucketChanceT4" | "PerkBucket_GlobalBucketChanceT5" | "PerkBucket_SkinningItemT2BucketChance" | "PerkBucket_SkinningItemT3BucketChance" | "PerkBucket_HarvestingItemT2BucketChance" | "PerkBucket_HarvestingItemT3BucketChance" | "PerkBucket_LoggingItemT2BucketChance" | "PerkBucket_LoggingItemT3BucketChance" | "PerkBucket_MiningItemT2BucketChance" | "PerkBucket_MiningItemT3BucketChance" | "FishingItemT1BucketChance" | "FishingItemT2BucketChance" | "FishingItemT3BucketChance" | "PerkBucket_InstrumentsT3Chance2" | "PerkBucket_InstrumentsT4Chance2" | "PerkBucket_InstrumentsT5Chance2" | "CraftingGemSlotChanceT2" | "CraftingGemSlotChanceT3" | "CraftingGemSlotChanceT4" | "CraftingGemSlotChanceT5" | "PerkBucket_CraftedPerkBucketRollT4Bucket4" | "PerkBucket_CraftedPerkBucketRollT5Bucket4" | "PerkBucket_CraftedPerkBucketRollT3" | "PerkBucket_CraftedPerkBucketRollT4Bucket3" | "PerkBucket_CraftedPerkBucketRollT5Bucket3" | "PerkBucket_CraftedPerkBucketRollT5Bucket5" | "PerkBucket_TheDepthsBucketChanceT4Bucket4" | "PerkBucket_DynastyShipyardBucketChanceT4Bucket4" | "PerkBucket_LazarusBucketChanceT5Bucket4" | "PerkBucket_GenesisBucketChanceT5Bucket4" | "PerkBucket_MyrkgardBucketChanceT5Bucket4" | "PerkBucket_BarnaclesBucketChanceT5Bucket4" | "GlobalGemSlotChanceT5" | "GlobalGemSlotChanceT4" | "GlobalGemSlotT5" | "PerkBucket_CraftedPerkBucketRollT5Fixed" | "CastGemSlotChanceT5Bucket3" | "PerkBucket_CastPerkBucketRollT5Bucket3" | "PerkBucket_FlameCore_Weapon" | "PerkBucket_FlameCore_Armor" | "SummerGemSlot" | "PerkBucket_WinterEvent" | "GlobalGemSlotChanceT2" | "GlobalGemSlotChanceT3" | "PerkBucket_WarBucket" | "PerkBucket_OutpostRushBucket" | "PerkBucket_PvPGemsBucket" | "PerkBucket_PvPBucket1" | "PerkBucket_CorruptedBucketChanceT2" | "PerkBucket_CorruptedBucketChanceT3" | "PerkBucket_CorruptedBucketChanceT4Bucket3" | "PerkBucket_CorruptedBucketChanceT5Bucket3" | "PerkBucket_LostBucketChanceT2" | "PerkBucket_LostBucketChanceT3" | "PerkBucket_LostBucketChanceT4Bucket3" | "PerkBucket_LostBucketChanceT5Bucket3" | "PerkBucket_AncientBucketChanceT2" | "PerkBucket_AncientBucketChanceT3" | "PerkBucket_AncientBucketChanceT4Bucket3" | "PerkBucket_AncientBucketChanceT5Bucket3" | "PerkBucket_AngryEarthBucketChanceT2" | "PerkBucket_AngryEarthBucketChanceT3" | "PerkBucket_AngryEarthBucketChanceT4Bucket3" | "PerkBucket_AngryEarthBucketChanceT5Bucket3" | "PerkBucket_BreachBucket" | "PerkBucket_InvasionBucket" | "PerkBucket_GlobalPerkBucketRollT3" | "PerkBucket_InvasionGemsBucket" | "PerkBucket_AngryEarthBucket" | "PerkBucket_GlobalBucket" | "PerkBucket_EliteLostBucket" | "PerkBucket_EliteAngryEarthBucket" | "BreachGemSlotChanceT3" | "BreachGemSlotChanceT4" | "BreachGemSlotChanceT5" | "PerkBucket_BreachPerksBucket4_T4Chance" | "PerkBucket_BreachPerksBucket4_T5Chance" | "EliteBreachGemSlotChanceT3" | "EliteBreachGemSlotChanceT4" | "EliteBreachGemSlotChanceT5" | "PerkBucket_EliteBreachPerksBucket4_T4Chance" | "PerkBucket_EliteBreachPerksBucket4_T5Chance" | "PerkBucket_CraftingCarnelian" | "PerkBucket_CraftingMalachite" | "PerkBucket_CraftingOpal" | "PerkBucket_CraftingSapphire" | "PerkBucket_CraftingDiamond" | "PerkBucket_OpPlaytest_WeaponBucket" | "PerkBucket_OpPlaytest_ArmorBucket" | "PerkBucket_PvPRT_GemsBucket_T2" | "PerkBucket_PvPRT_GemsBucket_T3" | "PerkBucket_PvPRT_GemsBucket_T4" | "PerkBucket_PvPRT_GemsBucket_T5" | "PerkBucket_PVPRTPerks_T4PrestigeBucket4Chance" | "PerkBucket_PVPRTPerks_T5PrestigeBucket4Chance" | "PerkBucket_PvPRT_GemsBucketPrestige_T5" | "PerkBucket_PVPRTPerks_T4Bucket4Chance" | "PerkBucket_PVPRTPerks_T5Bucket4Chance" | "PerkBucket_PVPRTPerks_T5Bucket5Chance";
 
-export enum PerkBucket4 {
-    Empty = "",
-    FishingArmorT3BucketChance = "FishingArmorT3BucketChance",
-    FishingArmorT4BucketChance = "FishingArmorT4BucketChance",
-    FishingArmorT5BucketChance = "FishingArmorT5BucketChance",
-    FishingItemT2BucketChance = "FishingItemT2BucketChance",
-    FishingItemT3BucketChance = "FishingItemT3BucketChance",
-    PerkBucketAncientBucketChanceT4Bucket4 = "PerkBucket_AncientBucketChanceT4Bucket4",
-    PerkBucketAncientBucketChanceT5Bucket4 = "PerkBucket_AncientBucketChanceT5Bucket4",
-    PerkBucketAngryEarthBucketChanceT4Bucket4 = "PerkBucket_AngryEarthBucketChanceT4Bucket4",
-    PerkBucketAngryEarthBucketChanceT5Bucket4 = "PerkBucket_AngryEarthBucketChanceT5Bucket4",
-    PerkBucketBarnaclesBucketChanceT5Bucket4 = "PerkBucket_BarnaclesBucketChanceT5Bucket4",
-    PerkBucketBarnaclesBucketChanceT5Bucket5 = "PerkBucket_BarnaclesBucketChanceT5Bucket5",
-    PerkBucketBreachBucketChanceT4Bucket4 = "PerkBucket_BreachBucketChanceT4Bucket4",
-    PerkBucketBreachBucketChanceT5Bucket4 = "PerkBucket_BreachBucketChanceT5Bucket4",
-    PerkBucketBreachPerksBucket4T4Chance = "PerkBucket_BreachPerksBucket4_T4Chance",
-    PerkBucketBreachPerksBucket4T5Chance = "PerkBucket_BreachPerksBucket4_T5Chance",
-    PerkBucketBreachPerksBucket5T5Chance = "PerkBucket_BreachPerksBucket5_T5Chance",
-    PerkBucketCastPerkBucketRollT5Bucket4 = "PerkBucket_CastPerkBucketRollT5Bucket4",
-    PerkBucketCorruptedBucketChanceT4Bucket4 = "PerkBucket_CorruptedBucketChanceT4Bucket4",
-    PerkBucketCorruptedBucketChanceT5Bucket4 = "PerkBucket_CorruptedBucketChanceT5Bucket4",
-    PerkBucketCraftedPerkBucketRollT4Bucket4 = "PerkBucket_CraftedPerkBucketRollT4Bucket4",
-    PerkBucketCraftedPerkBucketRollT5Bucket4 = "PerkBucket_CraftedPerkBucketRollT5Bucket4",
-    PerkBucketCraftedPerkBucketRollT5Bucket5 = "PerkBucket_CraftedPerkBucketRollT5Bucket5",
-    PerkBucketCraftedPerkBucketRollT5Fixed = "PerkBucket_CraftedPerkBucketRollT5Fixed",
-    PerkBucketCraftingPerkBucketChanceT3 = "PerkBucket_CraftingPerkBucketChanceT3",
-    PerkBucketCraftingPerkBucketChanceT4 = "PerkBucket_CraftingPerkBucketChanceT4",
-    PerkBucketCraftingPerkBucketChanceT5 = "PerkBucket_CraftingPerkBucketChanceT5",
-    PerkBucketDynastyShipyardBucketChance = "PerkBucket_DynastyShipyardBucketChance",
-    PerkBucketDynastyShipyardBucketChanceT4Bucket4 = "PerkBucket_DynastyShipyardBucketChanceT4Bucket4",
-    PerkBucketEliteAncientBucketChanceT5Bucket4 = "PerkBucket_EliteAncientBucketChanceT5Bucket4",
-    PerkBucketEliteAngryEarthBucketChanceT5Bucket4 = "PerkBucket_EliteAngryEarthBucketChanceT5Bucket4",
-    PerkBucketEliteBreachPerksBucket4T4Chance = "PerkBucket_EliteBreachPerksBucket4_T4Chance",
-    PerkBucketEliteBreachPerksBucket4T5Chance = "PerkBucket_EliteBreachPerksBucket4_T5Chance",
-    PerkBucketEliteBreachPerksBucket5T5Chance = "PerkBucket_EliteBreachPerksBucket5_T5Chance",
-    PerkBucketEliteCorruptedBucketChanceT5Bucket4 = "PerkBucket_EliteCorruptedBucketChanceT5Bucket4",
-    PerkBucketEliteDrownedBucketChanceT5Bucket4 = "PerkBucket_EliteDrownedBucketChanceT5Bucket4",
-    PerkBucketEliteLostBucketChanceT4Bucket4 = "PerkBucket_EliteLostBucketChanceT4Bucket4",
-    PerkBucketEliteLostBucketChanceT5Bucket4 = "PerkBucket_EliteLostBucketChanceT5Bucket4",
-    PerkBucketFlameCoreArmor = "PerkBucket_FlameCore_Armor",
-    PerkBucketFlameCoreWeapon = "PerkBucket_FlameCore_Weapon",
-    PerkBucketGenesisBucketChanceT5 = "PerkBucket_GenesisBucketChanceT5",
-    PerkBucketGenesisBucketChanceT5Bucket4 = "PerkBucket_GenesisBucketChanceT5Bucket4",
-    PerkBucketGenesisBucketChanceT5Bucket5 = "PerkBucket_GenesisBucketChanceT5Bucket5",
-    PerkBucketGlobalBucket = "PerkBucket_GlobalBucket",
-    PerkBucketGlobalBucketChanceT5 = "PerkBucket_GlobalBucketChanceT5",
-    PerkBucketGlobalPerkBucketRollT4Bucket4 = "PerkBucket_GlobalPerkBucketRollT4Bucket4",
-    PerkBucketGlobalPerkBucketRollT5Bucket4 = "PerkBucket_GlobalPerkBucketRollT5Bucket4",
-    PerkBucketHalloweenEvent = "PerkBucket_HalloweenEvent",
-    PerkBucketHarvestingItemT3BucketChance = "PerkBucket_HarvestingItemT3BucketChance",
-    PerkBucketInjectedMutatorPerkBucketRollT5Bucket4 = "PerkBucket_InjectedMutatorPerkBucketRollT5Bucket4",
-    PerkBucketInstrumentsT4Chance3 = "PerkBucket_InstrumentsT4Chance3",
-    PerkBucketInstrumentsT5Chance3 = "PerkBucket_InstrumentsT5Chance3",
-    PerkBucketInvasionBucket = "PerkBucket_InvasionBucket",
-    PerkBucketInvasionBucketChanceT4 = "PerkBucket_InvasionBucketChanceT4",
-    PerkBucketInvasionBucketChanceT5 = "PerkBucket_InvasionBucketChanceT5",
-    PerkBucketLazarusBucketChanceT5 = "PerkBucket_LazarusBucketChanceT5",
-    PerkBucketLazarusBucketChanceT5Bucket4 = "PerkBucket_LazarusBucketChanceT5Bucket4",
-    PerkBucketLazarusBucketChanceT5Bucket5 = "PerkBucket_LazarusBucketChanceT5Bucket5",
-    PerkBucketLoggingItemT3BucketChance = "PerkBucket_LoggingItemT3BucketChance",
-    PerkBucketLostBucketChanceT4Bucket4 = "PerkBucket_LostBucketChanceT4Bucket4",
-    PerkBucketLostBucketChanceT5Bucket4 = "PerkBucket_LostBucketChanceT5Bucket4",
-    PerkBucketMasterGlobalPerkBucketRoll = "PerkBucket_MasterGlobalPerkBucketRoll",
-    PerkBucketMiningItemT3BucketChance = "PerkBucket_MiningItemT3BucketChance",
-    PerkBucketMutatorArmorPerkBucketRollT5Bucket5 = "PerkBucket_MutatorArmorPerkBucketRollT5Bucket5",
-    PerkBucketMutatorDepthsRollT5Bucket5 = "PerkBucket_MutatorDepthsRollT5Bucket5",
-    PerkBucketMutatorDynastyShipyardRollT5Bucket5 = "PerkBucket_MutatorDynastyShipyardRollT5Bucket5",
-    PerkBucketMutatorEarringRollT5Bucket5 = "PerkBucket_MutatorEarringRollT5Bucket5",
-    PerkBucketMutatorRingRollT5Bucket5 = "PerkBucket_MutatorRingRollT5Bucket5",
-    PerkBucketMutatorShatteredObeliskRollT5Bucket5 = "PerkBucket_MutatorShatteredObeliskRollT5Bucket5",
-    PerkBucketMyrkgardBucketChanceT5Bucket4 = "PerkBucket_MyrkgardBucketChanceT5Bucket4",
-    PerkBucketMyrkgardBucketChanceT5Bucket5 = "PerkBucket_MyrkgardBucketChanceT5Bucket5",
-    PerkBucketObeliskBucketChance = "PerkBucket_ObeliskBucketChance",
-    PerkBucketOpPlaytestArmorBucket = "PerkBucket_OpPlaytest_ArmorBucket",
-    PerkBucketOpPlaytestWeaponBucket = "PerkBucket_OpPlaytest_WeaponBucket",
-    PerkBucketOutpostRushBucketChanceT5Bucket4 = "PerkBucket_OutpostRushBucketChanceT5Bucket4",
-    PerkBucketPVPBucket1Chance = "PerkBucket_PvPBucket1Chance",
-    PerkBucketPVPBucket2Chance = "PerkBucket_PvPBucket2Chance",
-    PerkBucketPVPRTPerksT4Bucket4Chance = "PerkBucket_PVPRTPerks_T4Bucket4Chance",
-    PerkBucketPVPRTPerksT5Bucket4Chance = "PerkBucket_PVPRTPerks_T5Bucket4Chance",
-    PerkBucketPVPRTPerksT5Bucket5Chance = "PerkBucket_PVPRTPerks_T5Bucket5Chance",
-    PerkBucketPVPRTPerksT5PrestigeBucket4Chance = "PerkBucket_PVPRTPerks_T5PrestigeBucket4Chance",
-    PerkBucketSkinningItemT3BucketChance = "PerkBucket_SkinningItemT3BucketChance",
-    PerkBucketSpringEvent = "PerkBucket_SpringEvent",
-    PerkBucketSummerEvent = "PerkBucket_SummerEvent",
-    PerkBucketTheDepthsBucketChance = "PerkBucket_TheDepthsBucketChance",
-    PerkBucketTheDepthsBucketChanceT4Bucket4 = "PerkBucket_TheDepthsBucketChanceT4Bucket4",
-    PerkBucketTrackBucket45ChanceOtherArmor = "PerkBucket_TrackBucket45ChanceOther_Armor",
-    PerkBucketTrackBucket4Chance = "PerkBucket_TrackBucket4_Chance",
-    PerkBucketTrackBucketGuaranteeOtherArmor = "PerkBucket_TrackBucketGuaranteeOther_Armor",
-    PerkBucketTrackBucketGuaranteeTrinkets = "PerkBucket_TrackBucketGuarantee_Trinkets",
-    PerkBucketTrackBucketGuaranteeWeapons = "PerkBucket_TrackBucketGuarantee_Weapons",
-    PerkBucketWarBucket = "PerkBucket_WarBucket",
-    PerkBucketWarBucketChanceT4 = "PerkBucket_WarBucketChanceT4",
-    PerkBucketWarBucketChanceT5 = "PerkBucket_WarBucketChanceT5",
-    PerkBucketWinterEvent = "PerkBucket_WinterEvent",
-}
+export type PerkBucket4 = "" | "PerkBucket_CraftingPerkBucketChanceT5" | "PerkBucket_GlobalPerkBucketRollT5Bucket4" | "PerkBucket_CraftingPerkBucketChanceT3" | "PerkBucket_CraftingPerkBucketChanceT4" | "PerkBucket_GlobalBucketChanceT5" | "PerkBucket_SkinningItemT3BucketChance" | "PerkBucket_HarvestingItemT3BucketChance" | "PerkBucket_LoggingItemT3BucketChance" | "PerkBucket_MiningItemT3BucketChance" | "FishingItemT2BucketChance" | "FishingItemT3BucketChance" | "PerkBucket_InstrumentsT4Chance3" | "PerkBucket_InstrumentsT5Chance3" | "PerkBucket_CraftedPerkBucketRollT4Bucket4" | "PerkBucket_CraftedPerkBucketRollT5Bucket4" | "PerkBucket_CraftedPerkBucketRollT5Bucket5" | "PerkBucket_TheDepthsBucketChanceT4Bucket4" | "PerkBucket_DynastyShipyardBucketChanceT4Bucket4" | "PerkBucket_LazarusBucketChanceT5Bucket4" | "PerkBucket_GenesisBucketChanceT5Bucket4" | "PerkBucket_MyrkgardBucketChanceT5Bucket4" | "PerkBucket_BarnaclesBucketChanceT5Bucket4" | "PerkBucket_LazarusBucketChanceT5Bucket5" | "PerkBucket_GenesisBucketChanceT5Bucket5" | "PerkBucket_MyrkgardBucketChanceT5Bucket5" | "PerkBucket_BarnaclesBucketChanceT5Bucket5" | "PerkBucket_HalloweenEvent" | "PerkBucket_CraftedPerkBucketRollT5Fixed" | "PerkBucket_CastPerkBucketRollT5Bucket4" | "PerkBucket_FlameCore_Weapon" | "PerkBucket_FlameCore_Armor" | "PerkBucket_WinterEvent" | "PerkBucket_SpringEvent" | "PerkBucket_SummerEvent" | "PerkBucket_GlobalPerkBucketRollT4Bucket4" | "PerkBucket_WarBucket" | "PerkBucket_WarBucketChanceT4" | "PerkBucket_OutpostRushBucketChanceT5Bucket4" | "PerkBucket_PvPBucket1Chance" | "PerkBucket_WarBucketChanceT5" | "PerkBucket_PvPBucket2Chance" | "PerkBucket_CorruptedBucketChanceT4Bucket4" | "PerkBucket_CorruptedBucketChanceT5Bucket4" | "PerkBucket_LostBucketChanceT4Bucket4" | "PerkBucket_LostBucketChanceT5Bucket4" | "PerkBucket_AncientBucketChanceT4Bucket4" | "PerkBucket_AncientBucketChanceT5Bucket4" | "PerkBucket_AngryEarthBucketChanceT4Bucket4" | "PerkBucket_AngryEarthBucketChanceT5Bucket4" | "PerkBucket_EliteLostBucketChanceT4Bucket4" | "PerkBucket_EliteLostBucketChanceT5Bucket4" | "PerkBucket_EliteAncientBucketChanceT5Bucket4" | "PerkBucket_EliteAngryEarthBucketChanceT5Bucket4" | "PerkBucket_EliteCorruptedBucketChanceT5Bucket4" | "PerkBucket_EliteDrownedBucketChanceT5Bucket4" | "FishingArmorT3BucketChance" | "FishingArmorT4BucketChance" | "FishingArmorT5BucketChance" | "PerkBucket_BreachBucketChanceT5Bucket4" | "PerkBucket_InvasionBucketChanceT4" | "PerkBucket_InvasionBucket" | "PerkBucket_BreachBucketChanceT4Bucket4" | "PerkBucket_TheDepthsBucketChance" | "PerkBucket_DynastyShipyardBucketChance" | "PerkBucket_LazarusBucketChanceT5" | "PerkBucket_GenesisBucketChanceT5" | "PerkBucket_ObeliskBucketChance" | "PerkBucket_InvasionBucketChanceT5" | "PerkBucket_MutatorDynastyShipyardRollT5Bucket5" | "PerkBucket_MutatorDepthsRollT5Bucket5" | "PerkBucket_MutatorShatteredObeliskRollT5Bucket5" | "PerkBucket_InjectedMutatorPerkBucketRollT5Bucket4" | "PerkBucket_MutatorArmorPerkBucketRollT5Bucket5" | "PerkBucket_MutatorEarringRollT5Bucket5" | "PerkBucket_MutatorRingRollT5Bucket5" | "PerkBucket_BreachPerksBucket4_T4Chance" | "PerkBucket_BreachPerksBucket4_T5Chance" | "PerkBucket_BreachPerksBucket5_T5Chance" | "PerkBucket_EliteBreachPerksBucket4_T4Chance" | "PerkBucket_EliteBreachPerksBucket4_T5Chance" | "PerkBucket_EliteBreachPerksBucket5_T5Chance" | "PerkBucket_GlobalBucket" | "PerkBucket_OpPlaytest_ArmorBucket" | "PerkBucket_OpPlaytest_WeaponBucket" | "PerkBucket_PVPRTPerks_T4Bucket4Chance" | "PerkBucket_PVPRTPerks_T5Bucket4Chance" | "PerkBucket_PVPRTPerks_T5Bucket5Chance" | "PerkBucket_PVPRTPerks_T5PrestigeBucket4Chance" | "PerkBucket_TrackBucket4_Chance" | "PerkBucket_TrackBucketGuarantee_Weapons" | "PerkBucket_TrackBucketGuarantee_Trinkets" | "PerkBucket_TrackBucket45ChanceOther_Armor" | "PerkBucket_TrackBucketGuaranteeOther_Armor" | "PerkBucket_MasterGlobalPerkBucketRoll";
 
-export enum PerkBucket5 {
-    Empty = "",
-    FishingArmorT4BucketChance = "FishingArmorT4BucketChance",
-    FishingArmorT5BucketChance = "FishingArmorT5BucketChance",
-    GlobalGemSlotChanceT5 = "GlobalGemSlotChanceT5",
-    PerkBucketAncientBucketChanceT5Bucket5 = "PerkBucket_AncientBucketChanceT5Bucket5",
-    PerkBucketAngryEarthBucketChanceT5Bucket5 = "PerkBucket_AngryEarthBucketChanceT5Bucket5",
-    PerkBucketBag5ThPerk = "PerkBucket_Bag5thPerk",
-    PerkBucketBarnaclesBucketChanceT5Bucket5 = "PerkBucket_BarnaclesBucketChanceT5Bucket5",
-    PerkBucketBreachBucketChanceT5Bucket5 = "PerkBucket_BreachBucketChanceT5Bucket5",
-    PerkBucketBreachBucketChanceT5Bucket5Weights = "PerkBucket_BreachBucketChanceT5Bucket5_Weights",
-    PerkBucketBreachPerksBucket5T5Chance = "PerkBucket_BreachPerksBucket5_T5Chance",
-    PerkBucketCastPerkBucketRollT5Bucket5 = "PerkBucket_CastPerkBucketRollT5Bucket5",
-    PerkBucketCorruptedBucketChanceT5Bucket5 = "PerkBucket_CorruptedBucketChanceT5Bucket5",
-    PerkBucketCraftedPerkBucketRollT5Bucket5 = "PerkBucket_CraftedPerkBucketRollT5Bucket5",
-    PerkBucketCraftedPerkBucketRollT5Fixed = "PerkBucket_CraftedPerkBucketRollT5Fixed",
-    PerkBucketCraftingPerkBucketChanceT4 = "PerkBucket_CraftingPerkBucketChanceT4",
-    PerkBucketCraftingPerkBucketChanceT5 = "PerkBucket_CraftingPerkBucketChanceT5",
-    PerkBucketEliteAncientBucketChanceT5Bucket5 = "PerkBucket_EliteAncientBucketChanceT5Bucket5",
-    PerkBucketEliteAngryEarthBucketChanceT5Bucket5 = "PerkBucket_EliteAngryEarthBucketChanceT5Bucket5",
-    PerkBucketEliteBreachPerksBucket5T5Chance = "PerkBucket_EliteBreachPerksBucket5_T5Chance",
-    PerkBucketEliteCorruptedBucketChanceT5Bucket5 = "PerkBucket_EliteCorruptedBucketChanceT5Bucket5",
-    PerkBucketEliteDrownedBucketChanceT5Bucket5 = "PerkBucket_EliteDrownedBucketChanceT5Bucket5",
-    PerkBucketEliteLostBucketChanceT5Bucket5 = "PerkBucket_EliteLostBucketChanceT5Bucket5",
-    PerkBucketGenesisBucketChanceT5 = "PerkBucket_GenesisBucketChanceT5",
-    PerkBucketGenesisBucketChanceT5Bucket5 = "PerkBucket_GenesisBucketChanceT5Bucket5",
-    PerkBucketGlobalBucket = "PerkBucket_GlobalBucket",
-    PerkBucketGlobalBucketChanceT5 = "PerkBucket_GlobalBucketChanceT5",
-    PerkBucketGlobalPerkBucketRollT5Bucket5 = "PerkBucket_GlobalPerkBucketRollT5Bucket5",
-    PerkBucketHalloweenEvent = "PerkBucket_HalloweenEvent",
-    PerkBucketInjectedArmorPerkBucketRollT5Bucket5 = "PerkBucket_InjectedArmorPerkBucketRollT5Bucket5",
-    PerkBucketInjectedMutatorPerkBucketRollT5Bucket5 = "PerkBucket_InjectedMutatorPerkBucketRollT5Bucket5",
-    PerkBucketInstrumentsT5Chance3 = "PerkBucket_InstrumentsT5Chance3",
-    PerkBucketInvasionBucketChance = "PerkBucket_InvasionBucketChance",
-    PerkBucketInvasionBucketChanceT5 = "PerkBucket_InvasionBucketChanceT5",
-    PerkBucketLazarusBucketChanceT5 = "PerkBucket_LazarusBucketChanceT5",
-    PerkBucketLazarusBucketChanceT5Bucket5 = "PerkBucket_LazarusBucketChanceT5Bucket5",
-    PerkBucketLostBucketChanceT5Bucket5 = "PerkBucket_LostBucketChanceT5Bucket5",
-    PerkBucketMutatorAmuletRollT5Bucket5 = "PerkBucket_MutatorAmuletRollT5Bucket5",
-    PerkBucketMutatorArmorPerkBucketRollT5Bucket5 = "PerkBucket_MutatorArmorPerkBucketRollT5Bucket5",
-    PerkBucketMutatorDepthsRollT5Bucket5 = "PerkBucket_MutatorDepthsRollT5Bucket5",
-    PerkBucketMutatorDynastyShipyardRollT5Bucket5 = "PerkBucket_MutatorDynastyShipyardRollT5Bucket5",
-    PerkBucketMutatorEarringRollT5Bucket5 = "PerkBucket_MutatorEarringRollT5Bucket5",
-    PerkBucketMutatorRingRollT5Bucket5 = "PerkBucket_MutatorRingRollT5Bucket5",
-    PerkBucketMutatorShatteredObeliskRollT5Bucket5 = "PerkBucket_MutatorShatteredObeliskRollT5Bucket5",
-    PerkBucketMyrkgardBucketChanceT5Bucket5 = "PerkBucket_MyrkgardBucketChanceT5Bucket5",
-    PerkBucketOpPlaytestArmorBucket = "PerkBucket_OpPlaytest_ArmorBucket",
-    PerkBucketOpPlaytestWeaponBucket = "PerkBucket_OpPlaytest_WeaponBucket",
-    PerkBucketPVPBucket1Chance = "PerkBucket_PvPBucket1Chance",
-    PerkBucketPVPRTPerksT5Bucket5Chance = "PerkBucket_PVPRTPerks_T5Bucket5Chance",
-    PerkBucketSpringEvent = "PerkBucket_SpringEvent",
-    PerkBucketSummerEvent = "PerkBucket_SummerEvent",
-    PerkBucketTheDepthsBucketChanceT4Bucket4 = "PerkBucket_TheDepthsBucketChanceT4Bucket4",
-    PerkBucketTool5ThPerk = "PerkBucket_Tool5thPerk",
-    PerkBucketTrackBucket45ChanceOtherArmor = "PerkBucket_TrackBucket45ChanceOther_Armor",
-    PerkBucketTrackBucket5Chance = "PerkBucket_TrackBucket5_Chance",
-    PerkBucketTrackBucketGuaranteeOtherArmor = "PerkBucket_TrackBucketGuaranteeOther_Armor",
-    PerkBucketTrackBucketGuaranteeTrinkets = "PerkBucket_TrackBucketGuarantee_Trinkets",
-    PerkBucketTrackBucketGuaranteeWeapons = "PerkBucket_TrackBucketGuarantee_Weapons",
-    PerkBucketWarBucketChanceT5 = "PerkBucket_WarBucketChanceT5",
-    PerkBucketWinterEvent = "PerkBucket_WinterEvent",
-}
+export type PerkBucket5 = "" | "PerkBucket_CraftingPerkBucketChanceT5" | "PerkBucket_CraftedPerkBucketRollT5Bucket5" | "PerkBucket_GlobalPerkBucketRollT5Bucket5" | "PerkBucket_GlobalBucketChanceT5" | "PerkBucket_CraftingPerkBucketChanceT4" | "PerkBucket_Tool5thPerk" | "PerkBucket_InstrumentsT5Chance3" | "PerkBucket_Bag5thPerk" | "PerkBucket_LazarusBucketChanceT5Bucket5" | "PerkBucket_GenesisBucketChanceT5Bucket5" | "PerkBucket_MyrkgardBucketChanceT5Bucket5" | "PerkBucket_BarnaclesBucketChanceT5Bucket5" | "PerkBucket_HalloweenEvent" | "PerkBucket_CraftedPerkBucketRollT5Fixed" | "PerkBucket_CastPerkBucketRollT5Bucket5" | "PerkBucket_WinterEvent" | "PerkBucket_SpringEvent" | "PerkBucket_SummerEvent" | "PerkBucket_WarBucketChanceT5" | "PerkBucket_PvPBucket1Chance" | "PerkBucket_CorruptedBucketChanceT5Bucket5" | "PerkBucket_LostBucketChanceT5Bucket5" | "PerkBucket_AncientBucketChanceT5Bucket5" | "PerkBucket_AngryEarthBucketChanceT5Bucket5" | "PerkBucket_EliteLostBucketChanceT5Bucket5" | "PerkBucket_EliteAncientBucketChanceT5Bucket5" | "PerkBucket_EliteAngryEarthBucketChanceT5Bucket5" | "PerkBucket_EliteCorruptedBucketChanceT5Bucket5" | "PerkBucket_EliteDrownedBucketChanceT5Bucket5" | "FishingArmorT4BucketChance" | "FishingArmorT5BucketChance" | "PerkBucket_BreachBucketChanceT5Bucket5" | "PerkBucket_InvasionBucketChanceT5" | "PerkBucket_BreachBucketChanceT5Bucket5_Weights" | "PerkBucket_LazarusBucketChanceT5" | "PerkBucket_GenesisBucketChanceT5" | "PerkBucket_InvasionBucketChance" | "GlobalGemSlotChanceT5" | "PerkBucket_MutatorShatteredObeliskRollT5Bucket5" | "PerkBucket_MutatorDynastyShipyardRollT5Bucket5" | "PerkBucket_TheDepthsBucketChanceT4Bucket4" | "PerkBucket_MutatorDepthsRollT5Bucket5" | "PerkBucket_InjectedMutatorPerkBucketRollT5Bucket5" | "PerkBucket_MutatorArmorPerkBucketRollT5Bucket5" | "PerkBucket_InjectedArmorPerkBucketRollT5Bucket5" | "PerkBucket_MutatorAmuletRollT5Bucket5" | "PerkBucket_MutatorEarringRollT5Bucket5" | "PerkBucket_MutatorRingRollT5Bucket5" | "PerkBucket_BreachPerksBucket5_T5Chance" | "PerkBucket_EliteBreachPerksBucket5_T5Chance" | "PerkBucket_GlobalBucket" | "PerkBucket_OpPlaytest_ArmorBucket" | "PerkBucket_OpPlaytest_WeaponBucket" | "PerkBucket_PVPRTPerks_T5Bucket5Chance" | "PerkBucket_TrackBucket5_Chance" | "PerkBucket_TrackBucketGuarantee_Weapons" | "PerkBucket_TrackBucketGuarantee_Trinkets" | "PerkBucket_TrackBucket45ChanceOther_Armor" | "PerkBucket_TrackBucketGuaranteeOther_Armor";
 
-export enum TradingCategory {
-    Ammo = "Ammo",
-    Apparel = "Apparel",
-    Empty = "",
-    Furnishings = "Furnishings",
-    Resources = "Resources",
-    Tools = "Tools",
-    Utilities = "Utilities",
-    Weapons = "Weapons",
-}
+export type TradingCategory = "" | "Utilities" | "Resources" | "Weapons" | "Apparel" | "Furnishings" | "Tools" | "Ammo";
 
-export enum TradingFamil {
-    AlchemyResources = "AlchemyResources",
-    AmmoIron = "AmmoIron",
-    AmmoOrichalcum = "AmmoOrichalcum",
-    AmmoStarmetal = "AmmoStarmetal",
-    AmmoSteel = "AmmoSteel",
-    Amulets = "Amulets",
-    ArcanaResources = "ArcanaResources",
-    ArmorHeavy = "ArmorHeavy",
-    ArmorLight = "ArmorLight",
-    ArmorMedium = "ArmorMedium",
-    Azoth = "Azoth",
-    Bags = "Bags",
-    Bait = "Bait",
-    Coating = "Coating",
-    Components = "Components",
-    CookingIngredients = "CookingIngredients",
-    CookingRecipes = "CookingRecipes",
-    CraftingConsumables = "CraftingConsumables",
-    DyeIngredients = "DyeIngredients",
-    Dyes = "Dyes",
-    Earrings = "Earrings",
-    Empty = "",
-    Enhancements = "Enhancements",
-    EventConsumables = "EventConsumables",
-    FoodAttribute = "FoodAttribute",
-    FoodRecovery = "FoodRecovery",
-    FoodTradeskill = "FoodTradeskill",
-    GatheringTools = "GatheringTools",
-    Instruments = "Instruments",
-    Magical = "Magical",
-    MusicSheets = "MusicSheets",
-    Potion = "Potion",
-    RawResources = "RawResources",
-    RefinedResources = "RefinedResources",
-    Rings = "Rings",
-    RuneglassFamily = "RuneglassFamily",
-    SchematicsFurnishing = "SchematicsFurnishing",
-    Shields = "Shields",
-    SpecialResources = "SpecialResources",
-    The1Handed = "1Handed",
-    The2Handed = "2Handed",
-    Tincture = "Tincture",
-}
+export type TradingFamil = "" | "EventConsumables" | "Components" | "Dyes" | "1Handed" | "2Handed" | "Shields" | "Magical" | "ArmorHeavy" | "ArmorMedium" | "ArmorLight" | "RawResources" | "MusicSheets" | "RefinedResources" | "Azoth" | "AlchemyResources" | "CookingIngredients" | "SchematicsFurnishing" | "CookingRecipes" | "ArcanaResources" | "SpecialResources" | "Potion" | "Coating" | "Tincture" | "Enhancements" | "Bait" | "FoodRecovery" | "FoodTradeskill" | "FoodAttribute" | "GatheringTools" | "Instruments" | "AmmoIron" | "AmmoSteel" | "AmmoStarmetal" | "AmmoOrichalcum" | "Amulets" | "Rings" | "Earrings" | "Bags" | "DyeIngredients" | "RuneglassFamily" | "CraftingConsumables";
 
-export enum MasterItemDefinitionTradingGroup {
-    AlchemyMagical = "AlchemyMagical",
-    AlchemyMedicinal = "AlchemyMedicinal",
-    AlchemyOffensive = "AlchemyOffensive",
-    AlchemyProtective = "AlchemyProtective",
-    ArcanaAir = "ArcanaAir",
-    ArcanaDeath = "ArcanaDeath",
-    ArcanaEarth = "ArcanaEarth",
-    ArcanaFire = "ArcanaFire",
-    ArcanaLife = "ArcanaLife",
-    ArcanaSpirit = "ArcanaSpirit",
-    ArcanaWater = "ArcanaWater",
-    Arrows = "Arrows",
-    AttributeItem = "AttributeItem",
-    AzothVial = "AzothVial",
-    BagA = "BagA",
-    BaitFresh = "BaitFresh",
-    BaitSalt = "BaitSalt",
-    Beeswax = "Beeswax",
-    Berry = "Berry",
-    Block = "Block",
-    Blunderbuss = "Blunderbuss",
-    Bows = "Bows",
-    Charcoal = "Charcoal",
-    Cloth = "Cloth",
-    CoatingAeternian = "CoatingAeternian",
-    CoatingAncient = "CoatingAncient",
-    CoatingAngryEarth = "CoatingAngryEarth",
-    CoatingBeast = "CoatingBeast",
-    CoatingCorrupted = "CoatingCorrupted",
-    CoatingLost = "CoatingLost",
-    Conditional = "Conditional",
-    ConsumableLuck = "ConsumableLuck",
-    CookingComponents = "CookingComponents",
-    CraftedAmulet = "CraftedAmulet",
-    CraftedEarring = "CraftedEarring",
-    CraftedRing = "CraftedRing",
-    CraftingComponents = "CraftingComponents",
-    CraftingConsumables = "CraftingConsumables",
-    CraftingPatterns = "CraftingPatterns",
-    CutGem = "CutGem",
-    Defensive = "Defensive",
-    DroppedAmulet = "DroppedAmulet",
-    DroppedEarring = "DroppedEarring",
-    DroppedRing = "DroppedRing",
-    Drums = "Drums",
-    DyeBlue = "DyeBlue",
-    DyeBrown = "DyeBrown",
-    DyeCyan = "DyeCyan",
-    DyeGreen = "DyeGreen",
-    DyeGrey = "DyeGrey",
-    DyeMagenta = "DyeMagenta",
-    DyeOrange = "DyeOrange",
-    DyePurple = "DyePurple",
-    DyeRed = "DyeRed",
-    DyeTurquoise = "DyeTurquoise",
-    DyeYellow = "DyeYellow",
-    Egg = "Egg",
-    Empty = "",
-    Feather = "Feather",
-    Fiber = "Fiber",
-    FishLarge = "FishLarge",
-    FishMedium = "FishMedium",
-    FishSmall = "FishSmall",
-    FishingPoles = "FishingPoles",
-    FishingSalvage = "FishingSalvage",
-    Flint = "Flint",
-    Flutes = "Flutes",
-    FoodArcanist = "FoodArcanist",
-    FoodArmorer = "FoodArmorer",
-    FoodAttribute = "FoodAttribute",
-    FoodCON = "FoodCON",
-    FoodDEX = "FoodDEX",
-    FoodEngineer = "FoodEngineer",
-    FoodFOC = "FoodFOC",
-    FoodHarvester = "FoodHarvester",
-    FoodHealthRecovery = "FoodHealthRecovery",
-    FoodHunter = "FoodHunter",
-    FoodINT = "FoodINT",
-    FoodJewelcrafter = "FoodJewelcrafter",
-    FoodLumberjack = "FoodLumberjack",
-    FoodMana = "FoodMana",
-    FoodMiner = "FoodMiner",
-    FoodSTR = "FoodSTR",
-    FoodWeaponsmith = "FoodWeaponsmith",
-    Fruit = "Fruit",
-    GauntletIce = "GauntletIce",
-    GauntletVoid = "GauntletVoid",
-    Grain = "Grain",
-    GreatAxes = "GreatAxes",
-    GreatSword = "GreatSword",
-    Guitars = "Guitars",
-    Gunpowder = "Gunpowder",
-    Hatchets = "Hatchets",
-    Honey = "Honey",
-    Ingot = "Ingot",
-    IngotPrecious = "IngotPrecious",
-    InstrumentComponents = "InstrumentComponents",
-    Leather = "Leather",
-    Mandolins = "Mandolins",
-    Meat = "Meat",
-    Muskets = "Muskets",
-    Nut = "Nut",
-    Offensive = "Offensive",
-    Oil = "Oil",
-    Ore = "Ore",
-    OrePrecious = "OrePrecious",
-    Pigments = "Pigments",
-    PotionElemDefense = "PotionElemDefense",
-    PotionEncumbrance = "PotionEncumbrance",
-    PotionFocus = "PotionFocus",
-    PotionHealth = "PotionHealth",
-    PotionMana = "PotionMana",
-    PotionPurifyB = "PotionPurifyB",
-    PotionWellness = "PotionWellness",
-    Rapiers = "Rapiers",
-    RawGem = "RawGem",
-    Rawhide = "Rawhide",
-    RecipeFurnishing = "RecipeFurnishing",
-    Recipes = "Recipes",
-    RefiningComponents = "RefiningComponents",
-    RepairKit = "RepairKit",
-    RuneglassAmber = "RuneglassAmber",
-    RuneglassAmethyst = "RuneglassAmethyst",
-    RuneglassAquamarine = "RuneglassAquamarine",
-    RuneglassCarnelian = "RuneglassCarnelian",
-    RuneglassDiamond = "RuneglassDiamond",
-    RuneglassEmerald = "RuneglassEmerald",
-    RuneglassEmpty = "RuneglassEmpty",
-    RuneglassJasper = "RuneglassJasper",
-    RuneglassMalachite = "RuneglassMalachite",
-    RuneglassMoonstone = "RuneglassMoonstone",
-    RuneglassOnyx = "RuneglassOnyx",
-    RuneglassOpal = "RuneglassOpal",
-    RuneglassRuby = "RuneglassRuby",
-    RuneglassSapphire = "RuneglassSapphire",
-    RuneglassTopaz = "RuneglassTopaz",
-    Salvage = "Salvage",
-    Seasonings = "Seasonings",
-    ShieldsKite = "ShieldsKite",
-    ShieldsRound = "ShieldsRound",
-    ShieldsTower = "ShieldsTower",
-    Shots = "Shots",
-    SlotChest = "SlotChest",
-    SlotFeet = "SlotFeet",
-    SlotHands = "SlotHands",
-    SlotHead = "SlotHead",
-    SlotLegs = "SlotLegs",
-    Spears = "Spears",
-    StavesFire = "StavesFire",
-    StavesLife = "StavesLife",
-    Stone = "Stone",
-    Swords = "Swords",
-    The1HSickle = "1hSickle",
-    The1HSkinningKnife = "1hSkinningKnife",
-    The2HAxe = "2hAxe",
-    The2HPick = "2hPick",
-    Timber = "Timber",
-    TrinketComponents = "TrinketComponents",
-    UprightBass = "UprightBass",
-    Utility = "Utility",
-    Vegetable = "Vegetable",
-    WarHammers = "WarHammers",
-    Water = "Water",
-    Wood = "Wood",
-}
+export type MasterItemDefinitionTradingGroup = "" | "FoodAttribute" | "CraftingPatterns" | "ConsumableLuck" | "DyeYellow" | "DyeMagenta" | "DyeCyan" | "Swords" | "Hatchets" | "WarHammers" | "GreatAxes" | "Bows" | "Muskets" | "ShieldsRound" | "ShieldsKite" | "ShieldsTower" | "StavesFire" | "StavesLife" | "Spears" | "Rapiers" | "GauntletIce" | "GauntletVoid" | "Blunderbuss" | "GreatSword" | "SlotHead" | "SlotChest" | "SlotHands" | "SlotLegs" | "SlotFeet" | "Salvage" | "Guitars" | "Drums" | "UprightBass" | "Mandolins" | "Flutes" | "Rawhide" | "Leather" | "Stone" | "Block" | "Flint" | "Ore" | "Ingot" | "OrePrecious" | "IngotPrecious" | "Wood" | "Timber" | "Fiber" | "Cloth" | "CraftingComponents" | "AzothVial" | "Oil" | "Beeswax" | "AlchemyProtective" | "AlchemyOffensive" | "Charcoal" | "Feather" | "Gunpowder" | "RefiningComponents" | "Berry" | "RecipeFurnishing" | "Seasonings" | "Meat" | "Water" | "Grain" | "Egg" | "Fruit" | "Vegetable" | "Nut" | "Honey" | "CookingComponents" | "Recipes" | "AlchemyMedicinal" | "AlchemyMagical" | "ArcanaEarth" | "ArcanaFire" | "ArcanaAir" | "ArcanaWater" | "ArcanaSpirit" | "ArcanaLife" | "ArcanaDeath" | "AttributeItem" | "FishLarge" | "FishingSalvage" | "FishMedium" | "FishSmall" | "RawGem" | "CutGem" | "Utility" | "Defensive" | "Offensive" | "Conditional" | "PotionHealth" | "PotionMana" | "PotionFocus" | "PotionEncumbrance" | "CoatingBeast" | "CoatingLost" | "CoatingCorrupted" | "CoatingAncient" | "CoatingAngryEarth" | "CoatingAeternian" | "PotionPurifyB" | "PotionWellness" | "PotionElemDefense" | "CraftingConsumables" | "BaitFresh" | "BaitSalt" | "FoodHealthRecovery" | "FoodMana" | "FoodMiner" | "FoodHarvester" | "FoodHunter" | "FoodLumberjack" | "FoodWeaponsmith" | "FoodJewelcrafter" | "FoodEngineer" | "FoodArcanist" | "FoodArmorer" | "FoodSTR" | "FoodDEX" | "FoodINT" | "FoodCON" | "FoodFOC" | "1hSkinningKnife" | "1hSickle" | "2hAxe" | "2hPick" | "FishingPoles" | "InstrumentComponents" | "Arrows" | "Shots" | "TrinketComponents" | "CraftedAmulet" | "CraftedRing" | "CraftedEarring" | "BagA" | "DyeGrey" | "DyeBrown" | "DyeRed" | "DyeOrange" | "DyeGreen" | "DyeTurquoise" | "DyeBlue" | "DyePurple" | "Pigments" | "RuneglassAmber" | "RuneglassAmethyst" | "RuneglassAquamarine" | "RuneglassCarnelian" | "RuneglassDiamond" | "RuneglassEmerald" | "RuneglassJasper" | "RuneglassMalachite" | "RuneglassMoonstone" | "RuneglassOnyx" | "RuneglassOpal" | "RuneglassRuby" | "RuneglassSapphire" | "RuneglassTopaz" | "RuneglassEmpty" | "DroppedEarring" | "DroppedRing" | "DroppedAmulet" | "RepairKit";
 
-export enum UIItemClass {
-    Empty = "",
-    UIAlchemy = "UI_Alchemy",
-    UIAmmo = "UI_Ammo",
-    UIArmor = "UI_Armor",
-    UIAttributeFood = "UI_AttributeFood",
-    UIBait = "UI_Bait",
-    UIBasicFood = "UI_BasicFood",
-    UIConsumable = "UI_Consumable",
-    UICooking = "UI_Cooking",
-    UICraftingModifiers = "UI_CraftingModifiers",
-    UIDye = "UI_Dye",
-    UIFurniture = "UI_Furniture",
-    UIInstruments = "UI_Instruments",
-    UIJewelcrafting = "UI_Jewelcrafting",
-    UILeatherworking = "UI_Leatherworking",
-    UILore = "UI_Lore",
-    UIMaterial = "UI_Material",
-    UIOutpostRush = "UI_OutpostRush",
-    UIQuest = "UI_Quest",
-    UIRefining = "UI_Refining",
-    UIRepairKit = "UI_RepairKit",
-    UIRewards = "UI_Rewards",
-    UIRunes = "UI_Runes",
-    UISmelting = "UI_Smelting",
-    UIStonecutting = "UI_Stonecutting",
-    UITools = "UI_Tools",
-    UITradeskillFood = "UI_TradeskillFood",
-    UITuningOrbs = "UI_TuningOrbs",
-    UIWeapon = "UI_Weapon",
-    UIWeaving = "UI_Weaving",
-    UIWoodworking = "UI_Woodworking",
-}
+export type UIItemClass = "UI_Weapon" | "UI_Tools" | "UI_Material" | "UI_Ammo" | "UI_Consumable" | "UI_Rewards" | "UI_AttributeFood" | "UI_BasicFood" | "UI_Dye" | "UI_Armor" | "" | "UI_Lore" | "UI_Leatherworking" | "UI_Stonecutting" | "UI_Smelting" | "UI_Woodworking" | "UI_Weaving" | "UI_Alchemy" | "UI_Refining" | "UI_Furniture" | "UI_Cooking" | "UI_OutpostRush" | "UI_TuningOrbs" | "UI_Quest" | "UI_CraftingModifiers" | "UI_Bait" | "UI_Jewelcrafting" | "UI_TradeskillFood" | "UI_Instruments" | "UI_Runes" | "UI_RepairKit";
 
-export enum WarboardGatherStat {
-    Armour = "Armour",
-    Arrow = "Arrow",
-    Axe = "Axe",
-    AzothEssenceGathered = "AzothEssenceGathered",
-    Blueprint = "Blueprint",
-    Bow = "Bow",
-    Bullet = "Bullet",
-    Cloth = "Cloth",
-    Coin = "Coin",
-    Dirt = "Dirt",
-    Empty = "",
-    Firearm = "Firearm",
-    Foliage = "Foliage",
-    Generic = "Generic",
-    Grass = "Grass",
-    InfusedHideGathered = "InfusedHideGathered",
-    InfusedOreGathered = "InfusedOreGathered",
-    InfusedWoodGathered = "InfusedWoodGathered",
-    Knife = "Knife",
-    Leather = "Leather",
-    Liquid = "Liquid",
-    Meat = "Meat",
-    Metal = "Metal",
-    Paper = "Paper",
-    Slimy = "Slimy",
-    Stone = "Stone",
-    StoneTool = "Stone Tool",
-    Sword = "Sword",
-    Wood = "Wood",
-}
+export type WarboardGatherStat = "" | "Liquid" | "Grass" | "Metal" | "Stone" | "Wood" | "Coin" | "Firearm" | "Cloth" | "Generic" | "Blueprint" | "Sword" | "Bow" | "Axe" | "Knife" | "Leather" | "Foliage" | "Meat" | "Slimy" | "Dirt" | "Armour" | "Stone Tool" | "Paper" | "Arrow" | "Bullet" | "InfusedWoodGathered" | "InfusedOreGathered" | "InfusedHideGathered" | "AzothEssenceGathered";
 
-export enum WeaponAccessory {
-    Empty = "",
-    The1HElementalGauntletIceT3 = "1hElementalGauntlet_IceT3",
-    The1HElementalGauntletIceT4 = "1hElementalGauntlet_IceT4",
-    The1HElementalGauntletIceT5 = "1hElementalGauntlet_IceT5",
-    The1HVoidGauntletVoidT5 = "1hVoidGauntlet_VoidT5",
-    The1HicegauntletGraverobberT5 = "1hicegauntletGraverobberT5",
-    The1HicegauntletShatteredObelisk = "1hicegauntletShatteredObelisk",
-    The1HvoidgauntletShatteredObelisk = "1hvoidgauntletShatteredObelisk",
-    The2HBowDropT5 = "2hBowDropT5",
-    The2HBowT3 = "2hBowT3",
-    The2HBowT4 = "2hBowT4",
-    The2HBowT5 = "2hBowT5",
-    The2HIceGauntletBreachT5 = "2hIceGauntletBreachT5",
-    The2HIceGauntletCondemedSacrariumT5 = "2hIceGauntletCondemedSacrariumT5",
-    The2HIceGauntletFirelightT5 = "2hIceGauntletFirelightT5",
-    The2HIceGauntletHeroicT5 = "2hIceGauntletHeroicT5",
-    The2HIceGauntletHighwaymanT5 = "2hIceGauntletHighwaymanT5",
-    The2HIceGauntletMossborneT5 = "2hIceGauntletMossborneT5",
-    The2HIceGauntletVarangianKnightsV3T5 = "2hIceGauntletVarangianKnightsV3T5",
-    The2HIceGauntletWinterDragonT5 = "2hIceGauntletWinterDragonT5",
-    The2HVoidGauntletBreachT5 = "2hVoidGauntletBreachT5",
-    The2HVoidGauntletCondemedSacrariumT5 = "2hVoidGauntletCondemedSacrariumT5",
-    The2HVoidGauntletCorruptedT3 = "2hVoidGauntletCorruptedT3",
-    The2HVoidGauntletCorruptedT4 = "2hVoidGauntletCorruptedT4",
-    The2HVoidGauntletCorruptedT5 = "2hVoidGauntletCorruptedT5",
-    The2HVoidGauntletCrystallinePVPBT5 = "2hVoidGauntletCrystallinePVPBT5",
-    The2HVoidGauntletDefiledT5 = "2hVoidGauntletDefiledT5",
-    The2HVoidGauntletFirelightT5 = "2hVoidGauntletFirelightT5",
-    The2HVoidGauntletHeroicT5 = "2hVoidGauntletHeroicT5",
-    The2HVoidGauntletMossborneT5 = "2hVoidGauntletMossborneT5",
-    The2HVoidGauntletVarangianKnightsV3T5 = "2hVoidGauntletVarangianKnightsV3T5",
-    The2HVoidGauntletVoidbentT5 = "2hVoidGauntletVoidbentT5",
-    The2HicegauntletImmolatedT5 = "2hicegauntletImmolatedT5",
-    VoidGauntletGraverobberT5 = "VoidGauntletGraverobberT5",
-}
+export type WeaponAccessory = "" | "2hBowT5" | "1hElementalGauntlet_IceT5" | "1hVoidGauntlet_VoidT5" | "2hIceGauntletHeroicT5" | "2hVoidGauntletHeroicT5" | "2hIceGauntletVarangianKnightsV3T5" | "2hVoidGauntletVarangianKnightsV3T5" | "2hIceGauntletCondemedSacrariumT5" | "2hVoidGauntletCondemedSacrariumT5" | "1hicegauntletGraverobberT5" | "VoidGauntletGraverobberT5" | "1hicegauntletShatteredObelisk" | "1hvoidgauntletShatteredObelisk" | "2hBowT3" | "2hBowT4" | "1hElementalGauntlet_IceT3" | "1hElementalGauntlet_IceT4" | "2hVoidGauntletCorruptedT3" | "2hVoidGauntletCorruptedT4" | "2hVoidGauntletCorruptedT5" | "2hIceGauntletBreachT5" | "2hVoidGauntletBreachT5" | "2hicegauntletImmolatedT5" | "2hVoidGauntletVoidbentT5" | "2hVoidGauntletCrystallinePVPBT5" | "2hVoidGauntletDefiledT5" | "2hBowDropT5" | "2hIceGauntletMossborneT5" | "2hVoidGauntletMossborneT5" | "2hIceGauntletWinterDragonT5" | "2hIceGauntletFirelightT5" | "2hVoidGauntletFirelightT5" | "2hIceGauntletHighwaymanT5";
 
-export interface MetaAchievementData {
+export type MetaAchievementData = {
     MetaAchievementId:                string;
     ReadyForSteam:                    boolean | null;
     SteamApiName:                     string;
@@ -6703,172 +3053,25 @@ export interface MetaAchievementData {
     AchievementCategory:              AchievementCategoryEnum;
 }
 
-export enum AttributeType {
-    Constitution = "Constitution",
-    Dexterity = "Dexterity",
-    Empty = "",
-    Focus = "Focus",
-    Intelligence = "Intelligence",
-    Strength = "Strength",
-}
+export type AttributeType = "" | "Strength" | "Dexterity" | "Intelligence" | "Focus" | "Constitution";
 
-export enum GameModeResult {
-    Empty = "",
-    FlawlessVictory = "FlawlessVictory",
-    Victory = "Victory",
-}
+export type GameModeResult = "" | "Victory" | "FlawlessVictory";
 
-export enum HiddenText {
-    Empty = "",
-    UIMetachievementHiddenBrimstone = "@ui_metachievement_hidden_brimstone",
-    UIMetachievementHiddenBrimstoneAncientglyphs = "@ui_metachievement_hidden_brimstone_ancientglyphs",
-    UIMetachievementHiddenEmotesUsedalot = "@ui_metachievement_hidden_emotes_usedalot",
-    UIMetachievementHiddenEverfall = "@ui_metachievement_hidden_everfall",
-    UIMetachievementHiddenGeneric = "@ui_metachievement_hidden_generic",
-    UIMetachievementHiddenInstanceDungeonboss = "@ui_metachievement_hidden_instance_dungeonboss",
-    UIMetachievementHiddenMonarchs = "@ui_metachievement_hidden_monarchs",
-    UIMetachievementHiddenPlayerDeaths1 = "@ui_metachievement_hidden_player_deaths1",
-    UIMetachievementHiddenProgressionCharacterlevel1 = "@ui_metachievement_hidden_progression_characterlevel1",
-    UIMetachievementHiddenProgressionCharacterlevel2 = "@ui_metachievement_hidden_progression_characterlevel2",
-    UIMetachievementHiddenProgressionCharacterlevel3 = "@ui_metachievement_hidden_progression_characterlevel3",
-    UIMetachievementHiddenProgressionCharacterlevel4 = "@ui_metachievement_hidden_progression_characterlevel4",
-    UIMetachievementHiddenProgressionCharacterlevel5 = "@ui_metachievement_hidden_progression_characterlevel5",
-    UIMetachievementHiddenProgressionCharacterlevel6 = "@ui_metachievement_hidden_progression_characterlevel6",
-    UIMetachievementHiddenPvePreykillsBoars = "@ui_metachievement_hidden_pve_preykills_boars",
-    UIMetachievementHiddenPvePreykillsCows = "@ui_metachievement_hidden_pve_preykills_cows",
-    UIMetachievementHiddenPvePreykillsRabbits = "@ui_metachievement_hidden_pve_preykills_rabbits",
-    UIMetachievementHiddenPvePreykillsTurkeys = "@ui_metachievement_hidden_pve_preykills_turkeys",
-    UIMetachievementHiddenWeaversfen = "@ui_metachievement_hidden_weaversfen",
-    UIMetachievementHiddenWindsward = "@ui_metachievement_hidden_windsward",
-}
+export type HiddenText = "" | "@ui_metachievement_hidden_pve_preykills_turkeys" | "@ui_metachievement_hidden_pve_preykills_rabbits" | "@ui_metachievement_hidden_pve_preykills_cows" | "@ui_metachievement_hidden_pve_preykills_boars" | "@ui_metachievement_hidden_instance_dungeonboss" | "@ui_metachievement_hidden_progression_characterlevel1" | "@ui_metachievement_hidden_progression_characterlevel2" | "@ui_metachievement_hidden_progression_characterlevel3" | "@ui_metachievement_hidden_progression_characterlevel4" | "@ui_metachievement_hidden_progression_characterlevel5" | "@ui_metachievement_hidden_progression_characterlevel6" | "@ui_metachievement_hidden_emotes_usedalot" | "@ui_metachievement_hidden_player_deaths1" | "@ui_metachievement_hidden_generic" | "@ui_metachievement_hidden_brimstone_ancientglyphs" | "@ui_metachievement_hidden_brimstone" | "@ui_metachievement_hidden_everfall" | "@ui_metachievement_hidden_monarchs" | "@ui_metachievement_hidden_weaversfen" | "@ui_metachievement_hidden_windsward";
 
-export enum MetaAchievementDatumItemClass {
-    Blunderbuss = "blunderbuss",
-    Bow = "bow",
-    Empty = "",
-    Firestaff = "firestaff",
-    Greatsword = "greatsword",
-    Hatchet = "hatchet",
-    Icemagic = "icemagic",
-    Lifestaff = "lifestaff",
-    Musket = "musket",
-    Ore = "ore",
-    Rapier = "rapier",
-    Rawhide = "rawhide",
-    Spear = "spear",
-    Sword = "sword",
-    The2Haxe = "2haxe",
-    The2Hhammer = "2hhammer",
-    Voidgauntlet = "voidgauntlet",
-    Wood = "wood",
-}
+export type MetaAchievementDatumItemClass = "" | "bow" | "firestaff" | "2haxe" | "2hhammer" | "hatchet" | "icemagic" | "lifestaff" | "musket" | "rapier" | "spear" | "sword" | "voidgauntlet" | "blunderbuss" | "greatsword" | "wood" | "ore" | "rawhide";
 
-export enum LorePagesTopicIDS {
-    Empty = "",
-    Topic00_Aeternum = "Topic_00_Aeternum",
-    Topic02_Brightwood = "Topic_02_Brightwood",
-    Topic03_GreatCleave = "Topic_03_GreatCleave",
-    Topic04_Everfall = "Topic_04_Everfall",
-    Topic05_Reekwater = "Topic_05_Reekwater",
-    Topic06_Windsward = "Topic_06_Windsward",
-    Topic07_ShatteredMountain = "Topic_07_ShatteredMountain",
-    Topic08_EbonscaleReach = "Topic_08_EbonscaleReach",
-    Topic09_FirstLight = "Topic_09_FirstLight",
-    Topic10_CutlassKeys = "Topic_10_CutlassKeys",
-    Topic11_Mourningdale = "Topic_11_Mourningdale",
-    Topic12_MonarchsBluffs = "Topic_12_MonarchsBluffs",
-    Topic13_WeaversFen = "Topic_13_WeaversFen",
-    Topic14_Edengrove = "Topic_14_Edengrove",
-    Topic15_RestlessShore = "Topic_15_RestlessShore",
-    Topic99_MSQ = "Topic_99_MSQ",
-    TopicTalesOfBrimstoneSands = "Topic_Tales_of_Brimstone_Sands",
-    TopicThreeFactions = "Topic_ThreeFactions",
-}
+export type LorePagesTopicIDS = "" | "Topic_02_Brightwood" | "Topic_Tales_of_Brimstone_Sands" | "Topic_10_CutlassKeys" | "Topic_08_EbonscaleReach" | "Topic_14_Edengrove" | "Topic_04_Everfall" | "Topic_09_FirstLight" | "Topic_03_GreatCleave" | "Topic_12_MonarchsBluffs" | "Topic_11_Mourningdale" | "Topic_05_Reekwater" | "Topic_15_RestlessShore" | "Topic_07_ShatteredMountain" | "Topic_13_WeaversFen" | "Topic_06_Windsward" | "Topic_00_Aeternum" | "Topic_ThreeFactions" | "Topic_99_MSQ";
 
-export enum NotificationVerbosity {
-    OneHundred = "OneHundred",
-    SeventyFiveOneHundred = "SeventyFiveOneHundred",
-}
+export type NotificationVerbosity = "OneHundred" | "SeventyFiveOneHundred";
 
-export enum QuestTag {
-    Brightwoodv2Arc1 = "Brightwoodv2Arc1",
-    Brightwoodv2Arc2 = "Brightwoodv2Arc2",
-    Brightwoodv2Arc3 = "Brightwoodv2Arc3",
-    Brightwoodv2Arc4 = "Brightwoodv2Arc4",
-    BrimstoneSandsArc1 = "BrimstoneSandsArc1",
-    BrimstoneSandsArc2 = "BrimstoneSandsArc2",
-    BrimstoneSandsArc3 = "BrimstoneSandsArc3",
-    BrimstoneSandsArc4 = "BrimstoneSandsArc4",
-    BrimstoneSandsArc5 = "BrimstoneSandsArc5",
-    CutlassKeysArc1 = "CutlassKeysArc1",
-    CutlassKeysArc2 = "CutlassKeysArc2",
-    CutlassKeysArc3 = "CutlassKeysArc3",
-    CutlassKeysArc4 = "CutlassKeysArc4",
-    EbonscaleReachArc1 = "EbonscaleReachArc1",
-    EbonscaleReachArc2 = "EbonscaleReachArc2",
-    EbonscaleReachArc3 = "EbonscaleReachArc3",
-    EdengroveArc1 = "EdengroveArc1",
-    EdengroveArc2 = "EdengroveArc2",
-    EdengroveArc3 = "EdengroveArc3",
-    Empty = "",
-    FishingQuestsArc = "FishingQuestsArc",
-    GreatCleaveArc1 = "GreatCleaveArc1",
-    GreatCleaveArc2 = "GreatCleaveArc2",
-    GreatCleaveArc3 = "GreatCleaveArc3",
-    MourningdaleArc1 = "MourningdaleArc1",
-    MourningdaleArc2 = "MourningdaleArc2",
-    MourningdaleArc3 = "MourningdaleArc3",
-    ReekwaterArc1 = "ReekwaterArc1",
-    ReekwaterArc2 = "ReekwaterArc2",
-    ReekwaterArc3 = "ReekwaterArc3",
-    RestlessShoreArc1 = "RestlessShoreArc1",
-    RestlessShoreArc2 = "RestlessShoreArc2",
-    RestlessShoreArc3 = "RestlessShoreArc3",
-    ShateredMtnArc1 = "ShateredMtnArc1",
-    ShateredMtnArc2 = "ShateredMtnArc2",
-    ShateredMtnArc3 = "ShateredMtnArc3",
-}
+export type QuestTag = "" | "Brightwoodv2Arc4" | "Brightwoodv2Arc3" | "GreatCleaveArc2" | "GreatCleaveArc1" | "GreatCleaveArc3" | "ReekwaterArc1" | "ReekwaterArc2" | "ReekwaterArc3" | "FishingQuestsArc" | "ShateredMtnArc1" | "ShateredMtnArc3" | "ShateredMtnArc2" | "EbonscaleReachArc3" | "EbonscaleReachArc1" | "EbonscaleReachArc2" | "CutlassKeysArc1" | "CutlassKeysArc2" | "CutlassKeysArc3" | "CutlassKeysArc4" | "MourningdaleArc3" | "MourningdaleArc1" | "MourningdaleArc2" | "EdengroveArc1" | "EdengroveArc2" | "EdengroveArc3" | "RestlessShoreArc2" | "RestlessShoreArc3" | "RestlessShoreArc1" | "BrimstoneSandsArc3" | "BrimstoneSandsArc5" | "BrimstoneSandsArc4" | "BrimstoneSandsArc2" | "BrimstoneSandsArc1" | "Brightwoodv2Arc1" | "Brightwoodv2Arc2";
 
-export enum Tier {
-    Empty = "",
-    UIMetaAchievementsRomanNumeralI = "@ui_meta_achievements_roman_numeral_i",
-    UIMetaAchievementsRomanNumeralIi = "@ui_meta_achievements_roman_numeral_ii",
-    UIMetaAchievementsRomanNumeralIii = "@ui_meta_achievements_roman_numeral_iii",
-    UIMetaAchievementsRomanNumeralIv = "@ui_meta_achievements_roman_numeral_iv",
-    UIMetaAchievementsRomanNumeralV = "@ui_meta_achievements_roman_numeral_v",
-    UIMetaAchievementsRomanNumeralVi = "@ui_meta_achievements_roman_numeral_vi",
-    UIMetaAchievementsRomanNumeralVii = "@ui_meta_achievements_roman_numeral_vii",
-}
+export type Tier = "@ui_meta_achievements_roman_numeral_i" | "@ui_meta_achievements_roman_numeral_ii" | "@ui_meta_achievements_roman_numeral_iii" | "@ui_meta_achievements_roman_numeral_iv" | "@ui_meta_achievements_roman_numeral_v" | "" | "@ui_meta_achievements_roman_numeral_vi" | "@ui_meta_achievements_roman_numeral_vii";
 
-export enum VitalsCategories {
-    Ancient = "Ancient",
-    AncientGuardianHeavyBossNamedDGEverfall00 = "AncientGuardian_Heavy_Boss_Named_DG_Everfall_00",
-    AngryEarth = "AngryEarth",
-    AnubianGuardianHorusBoss = "AnubianGuardian_Horus_Boss",
-    Boar = "Boar",
-    Corrupted = "Corrupted",
-    Cow = "Cow",
-    DamnedLongSwordsmanCommanderNamedDGRestless00 = "Damned_LongSwordsman_Commander_Named_DG_Restless_00",
-    DryadSiren = "Dryad_Siren",
-    DynastyEmpress = "Dynasty_Empress",
-    Empty = "",
-    EvilKnightFireChampionDGGreatCleave01 = "Evil_Knight_Fire_Champion_DG_GreatCleave_01",
-    IsabellaDGShatterMtnPhase200 = "Isabella_DG_ShatterMtn_Phase2_00",
-    Lost = "Lost",
-    NagaAngryEarth = "Naga_AngryEarth",
-    NamedAncient = "Named,Ancient",
-    NamedAngryEarth = "Named,AngryEarth",
-    NamedCorrupted = "Named,Corrupted",
-    NamedLost = "Named,Lost",
-    NamedPredator = "Named,Predator",
-    Predator = "Predator",
-    Rabbit = "Rabbit",
-    TorsoBoss = "Torso_Boss",
-    Turkey = "Turkey",
-    WitheredBruteNamed08 = "Withered_Brute_Named_08",
-}
+export type VitalsCategories = "Corrupted" | "Lost" | "AngryEarth" | "Ancient" | "Predator" | "Turkey" | "Rabbit" | "Cow" | "Boar" | "Named,Corrupted" | "Named,Lost" | "Named,AngryEarth" | "Named,Ancient" | "Named,Predator" | "" | "Withered_Brute_Named_08" | "AncientGuardian_Heavy_Boss_Named_DG_Everfall_00" | "Damned_LongSwordsman_Commander_Named_DG_Restless_00" | "Naga_AngryEarth" | "Torso_Boss" | "Dynasty_Empress" | "Isabella_DG_ShatterMtn_Phase2_00" | "Dryad_Siren" | "AnubianGuardian_Horus_Boss" | "Evil_Knight_Fire_Champion_DG_GreatCleave_01";
 
-export interface MissionData {
+export type MissionData = {
     MissionID:                                     string;
     MissionTier:                                   number;
     ObjectiveID:                                   string;
@@ -6929,228 +3132,19 @@ export interface MissionData {
     AvailableTerritoryID?:                         string;
 }
 
-export enum DetailImagePath {
-    Empty = "",
-    LyShineUIImagesMissionImagesMissionImageAlligatorPNG = "LyShineUI\\Images\\MissionImages\\missionImage_alligator.png",
-    LyShineUIImagesMissionImagesMissionImageBearPNG = "LyShineUI\\Images\\MissionImages\\missionImage_bear.png",
-    LyShineUIImagesMissionImagesMissionImageBisonPNG = "LyShineUI\\Images\\MissionImages\\missionImage_bison.png",
-    LyShineUIImagesMissionImagesMissionImageBoarPNG = "LyShineUI\\Images\\MissionImages\\missionImage_boar.png",
-    LyShineUIImagesMissionImagesMissionImageElkPNG = "LyShineUI\\Images\\MissionImages\\missionImage_elk.png",
-    LyShineUIImagesMissionImagesMissionImageGoatPNG = "LyShineUI\\Images\\MissionImages\\missionImage_goat.png",
-    LyShineUIImagesMissionImagesMissionImageLynxPNG = "LyShineUI\\Images\\MissionImages\\missionImage_lynx.png",
-    LyShineUIImagesMissionImagesMissionImageRabbitPNG = "LyShineUI\\Images\\MissionImages\\missionImage_rabbit.png",
-    LyShineUIImagesMissionImagesMissionImageRuins2PNG = "LyShineUI\\Images\\MissionImages\\missionImage_ruins2.png",
-    LyShineUIImagesMissionImagesMissionImageSheepPNG = "LyShineUI\\Images\\MissionImages\\missionImage_sheep.png",
-    LyShineUIImagesMissionImagesMissionImageTurkeyPNG = "LyShineUI\\Images\\MissionImages\\missionImage_turkey.png",
-    LyShineUIImagesMissionImagesMissionImageWolfPNG = "LyShineUI\\Images\\MissionImages\\missionImage_wolf.png",
-}
+export type DetailImagePath = "" | "LyShineUI\\Images\\MissionImages\\missionImage_wolf.png" | "LyShineUI\\Images\\MissionImages\\missionImage_elk.png" | "LyShineUI\\Images\\MissionImages\\missionImage_rabbit.png" | "LyShineUI\\Images\\MissionImages\\missionImage_turkey.png" | "LyShineUI\\Images\\MissionImages\\missionImage_boar.png" | "LyShineUI\\Images\\MissionImages\\missionImage_sheep.png" | "LyShineUI\\Images\\MissionImages\\missionImage_goat.png" | "LyShineUI\\Images\\MissionImages\\missionImage_bison.png" | "LyShineUI\\Images\\MissionImages\\missionImage_lynx.png" | "LyShineUI\\Images\\MissionImages\\missionImage_alligator.png" | "LyShineUI\\Images\\MissionImages\\missionImage_bear.png" | "LyShineUI\\Images\\MissionImages\\missionImage_ruins2.png";
 
-export enum FailureGameEventIDOverride {
-    CMissionFailure = "CMission_Failure",
-    FactionMissionFailure = "FactionMission_Failure",
-    PVPMissionFailure = "PVPMission_Failure",
-}
+export type FailureGameEventIDOverride = "FactionMission_Failure" | "PVPMission_Failure" | "CMission_Failure";
 
-export enum PatrolPoi1 {
-    AbandonedVillage40253 = "abandoned_village_40253",
-    DevWorldCave = "DevWorld_Cave",
-    DevWorldFarm = "DevWorld_Farm",
-    Empty = "",
-    Factionarea30328 = "factionarea_30328",
-    Factionarea30329 = "factionarea_30329",
-    Factionarea30330 = "factionarea_30330",
-    Factionarea40034 = "factionarea_40034",
-    Factionarea40035 = "factionarea_40035",
-    Factionarea40036 = "factionarea_40036",
-    Factionarea40169 = "factionarea_40169",
-    Factionarea40278 = "factionarea_40278",
-    Factionarea40284 = "factionarea_40284",
-    Factionarea40285 = "factionarea_40285",
-    Factionarea40286 = "factionarea_40286",
-    Factionarea40341 = "factionarea_40341",
-    Factionarea40424 = "factionarea_40424",
-    Factionarea50147 = "factionarea_50147",
-    Factionarea50148 = "factionarea_50148",
-    Factionarea50247 = "factionarea_50247",
-    Factionarea50248 = "factionarea_50248",
-    Factionarea50249 = "factionarea_50249",
-    Factionarea50393 = "factionarea_50393",
-    Factionarea50394 = "factionarea_50394",
-    Factionarea50395 = "factionarea_50395",
-    Factionarea60236 = "factionarea_60236",
-    Factionarea60237 = "factionarea_60237",
-    Factionarea60411 = "factionarea_60411",
-    Factionarea60412 = "factionarea_60412",
-    Factionarea60413 = "factionarea_60413",
-    Poi30035_Factionarea = "poi_30035_factionarea",
-    Poi30036_Factionarea = "poi_30036_factionarea",
-    Poi30037_Factionarea = "poi_30037_factionarea",
-    Poi30146_Factionarea = "poi_30146_factionarea",
-    Poi30147_Factionarea = "poi_30147_factionarea",
-    Poi30148_Factionarea = "poi_30148_factionarea",
-    Poi30244_Factionarea = "poi_30244_factionarea",
-    Poi30245_Factionarea = "poi_30245_factionarea",
-    Poi30313_Factionarea = "poi_30313_factionarea",
-}
+export type PatrolPoi1 = "" | "DevWorld_Farm" | "DevWorld_Cave" | "factionarea_40278" | "abandoned_village_40253" | "factionarea_40341" | "factionarea_40285" | "factionarea_40286" | "factionarea_40284" | "factionarea_50147" | "factionarea_50148" | "factionarea_40169" | "factionarea_40424" | "poi_30313_factionarea" | "poi_30245_factionarea" | "poi_30244_factionarea" | "factionarea_40036" | "factionarea_40035" | "factionarea_40034" | "poi_30035_factionarea" | "poi_30036_factionarea" | "poi_30037_factionarea" | "factionarea_60412" | "factionarea_60413" | "factionarea_60411" | "poi_30146_factionarea" | "poi_30147_factionarea" | "poi_30148_factionarea" | "factionarea_60236" | "factionarea_60237" | "factionarea_50394" | "factionarea_50395" | "factionarea_50393" | "factionarea_50247" | "factionarea_50249" | "factionarea_50248" | "factionarea_30329" | "factionarea_30330" | "factionarea_30328";
 
-export enum RequiredAchievementConditional {
-    Empty = "",
-    The16_Bsmsq00 = "16_BSMSQ_00",
-    The16_Bsmsq05 = "16_BSMSQ_05",
-    The16_Bsmsq09 = "16_BSMSQ_09",
-    The16_Bsmsq10 = "16_BSMSQ_10",
-}
+export type RequiredAchievementConditional = "" | "16_BSMSQ_00" | "16_BSMSQ_05" | "16_BSMSQ_10" | "16_BSMSQ_09";
 
-export enum TaskGiveAndTakeItemOverride {
-    Empty = "",
-    PVPTimberBundle1 = "PVP_TimberBundle_1",
-    WorkOrderFactionArmaments01T2 = "WorkOrder_Faction_Armaments01_T2",
-    WorkOrderFactionArmaments01T3 = "WorkOrder_Faction_Armaments01_T3",
-    WorkOrderFactionArmaments01T4 = "WorkOrder_Faction_Armaments01_T4",
-    WorkOrderFactionArmaments01T5 = "WorkOrder_Faction_Armaments01_T5",
-    WorkOrderFactionArmaments02T2 = "WorkOrder_Faction_Armaments02_T2",
-    WorkOrderFactionArmaments02T3 = "WorkOrder_Faction_Armaments02_T3",
-    WorkOrderFactionArmaments02T4 = "WorkOrder_Faction_Armaments02_T4",
-    WorkOrderFactionArmaments02T5 = "WorkOrder_Faction_Armaments02_T5",
-    WorkOrderFactionArmaments03T2 = "WorkOrder_Faction_Armaments03_T2",
-    WorkOrderFactionArmaments03T3 = "WorkOrder_Faction_Armaments03_T3",
-    WorkOrderFactionArmaments03T4 = "WorkOrder_Faction_Armaments03_T4",
-    WorkOrderFactionArmaments03T5 = "WorkOrder_Faction_Armaments03_T5",
-    WorkOrderFactionArmaments04T2 = "WorkOrder_Faction_Armaments04_T2",
-    WorkOrderFactionArmaments04T3 = "WorkOrder_Faction_Armaments04_T3",
-    WorkOrderFactionArmaments04T4 = "WorkOrder_Faction_Armaments04_T4",
-    WorkOrderFactionArmaments04T5 = "WorkOrder_Faction_Armaments04_T5",
-    WorkOrderFactionArmaments05T2 = "WorkOrder_Faction_Armaments05_T2",
-    WorkOrderFactionArmaments05T3 = "WorkOrder_Faction_Armaments05_T3",
-    WorkOrderFactionArmaments05T4 = "WorkOrder_Faction_Armaments05_T4",
-    WorkOrderFactionArmaments05T5 = "WorkOrder_Faction_Armaments05_T5",
-    WorkOrderFactionArmaments06T2 = "WorkOrder_Faction_Armaments06_T2",
-    WorkOrderFactionArmaments06T3 = "WorkOrder_Faction_Armaments06_T3",
-    WorkOrderFactionArmaments06T4 = "WorkOrder_Faction_Armaments06_T4",
-    WorkOrderFactionArmaments06T5 = "WorkOrder_Faction_Armaments06_T5",
-    WorkOrderFactionArmaments07T2 = "WorkOrder_Faction_Armaments07_T2",
-    WorkOrderFactionArmaments07T3 = "WorkOrder_Faction_Armaments07_T3",
-    WorkOrderFactionArmaments07T4 = "WorkOrder_Faction_Armaments07_T4",
-    WorkOrderFactionArmaments07T5 = "WorkOrder_Faction_Armaments07_T5",
-    WorkOrderFactionArmaments08T2 = "WorkOrder_Faction_Armaments08_T2",
-    WorkOrderFactionArmaments08T3 = "WorkOrder_Faction_Armaments08_T3",
-    WorkOrderFactionArmaments08T4 = "WorkOrder_Faction_Armaments08_T4",
-    WorkOrderFactionArmaments08T5 = "WorkOrder_Faction_Armaments08_T5",
-    WorkOrderFactionArmaments09T2 = "WorkOrder_Faction_Armaments09_T2",
-    WorkOrderFactionArmaments09T3 = "WorkOrder_Faction_Armaments09_T3",
-    WorkOrderFactionArmaments09T4 = "WorkOrder_Faction_Armaments09_T4",
-    WorkOrderFactionArmaments09T5 = "WorkOrder_Faction_Armaments09_T5",
-    WorkOrderFactionArmaments10T2 = "WorkOrder_Faction_Armaments10_T2",
-    WorkOrderFactionArmaments10T3 = "WorkOrder_Faction_Armaments10_T3",
-    WorkOrderFactionArmaments10T4 = "WorkOrder_Faction_Armaments10_T4",
-    WorkOrderFactionArmaments10T5 = "WorkOrder_Faction_Armaments10_T5",
-    WorkOrderFactionArmorSet01T2 = "WorkOrder_Faction_ArmorSet01_T2",
-    WorkOrderFactionArmorSet01T3 = "WorkOrder_Faction_ArmorSet01_T3",
-    WorkOrderFactionArmorSet01T4 = "WorkOrder_Faction_ArmorSet01_T4",
-    WorkOrderFactionArmorSet01T5 = "WorkOrder_Faction_ArmorSet01_T5",
-    WorkOrderFactionArmorSet02T2 = "WorkOrder_Faction_ArmorSet02_T2",
-    WorkOrderFactionArmorSet02T3 = "WorkOrder_Faction_ArmorSet02_T3",
-    WorkOrderFactionArmorSet02T4 = "WorkOrder_Faction_ArmorSet02_T4",
-    WorkOrderFactionArmorSet02T5 = "WorkOrder_Faction_ArmorSet02_T5",
-    WorkOrderFactionArmorSet03T2 = "WorkOrder_Faction_ArmorSet03_T2",
-    WorkOrderFactionArmorSet03T3 = "WorkOrder_Faction_ArmorSet03_T3",
-    WorkOrderFactionArmorSet03T4 = "WorkOrder_Faction_ArmorSet03_T4",
-    WorkOrderFactionArmorSet03T5 = "WorkOrder_Faction_ArmorSet03_T5",
-    WorkOrderFactionArmorSet04T2 = "WorkOrder_Faction_ArmorSet04_T2",
-    WorkOrderFactionArmorSet04T3 = "WorkOrder_Faction_ArmorSet04_T3",
-    WorkOrderFactionArmorSet04T4 = "WorkOrder_Faction_ArmorSet04_T4",
-    WorkOrderFactionArmorSet04T5 = "WorkOrder_Faction_ArmorSet04_T5",
-    WorkOrderFactionArmorSet05T2 = "WorkOrder_Faction_ArmorSet05_T2",
-    WorkOrderFactionArmorSet05T3 = "WorkOrder_Faction_ArmorSet05_T3",
-    WorkOrderFactionArmorSet05T4 = "WorkOrder_Faction_ArmorSet05_T4",
-    WorkOrderFactionArmorSet05T5 = "WorkOrder_Faction_ArmorSet05_T5",
-    WorkOrderFactionArmorSet06T2 = "WorkOrder_Faction_ArmorSet06_T2",
-    WorkOrderFactionArmorSet06T3 = "WorkOrder_Faction_ArmorSet06_T3",
-    WorkOrderFactionArmorSet06T4 = "WorkOrder_Faction_ArmorSet06_T4",
-    WorkOrderFactionArmorSet06T5 = "WorkOrder_Faction_ArmorSet06_T5",
-    WorkOrderFactionArmorSet07T2 = "WorkOrder_Faction_ArmorSet07_T2",
-    WorkOrderFactionArmorSet07T3 = "WorkOrder_Faction_ArmorSet07_T3",
-    WorkOrderFactionArmorSet07T4 = "WorkOrder_Faction_ArmorSet07_T4",
-    WorkOrderFactionArmorSet07T5 = "WorkOrder_Faction_ArmorSet07_T5",
-    WorkOrderFactionProvisions01T1 = "WorkOrder_Faction_Provisions01_T1",
-    WorkOrderFactionProvisions01T2 = "WorkOrder_Faction_Provisions01_T2",
-    WorkOrderFactionProvisions01T3 = "WorkOrder_Faction_Provisions01_T3",
-    WorkOrderFactionProvisions01T4 = "WorkOrder_Faction_Provisions01_T4",
-    WorkOrderFactionProvisions01T5 = "WorkOrder_Faction_Provisions01_T5",
-    WorkOrderFactionProvisions02T1 = "WorkOrder_Faction_Provisions02_T1",
-    WorkOrderFactionProvisions02T2 = "WorkOrder_Faction_Provisions02_T2",
-    WorkOrderFactionProvisions02T3 = "WorkOrder_Faction_Provisions02_T3",
-    WorkOrderFactionProvisions02T4 = "WorkOrder_Faction_Provisions02_T4",
-    WorkOrderFactionProvisions02T5 = "WorkOrder_Faction_Provisions02_T5",
-    WorkOrderFactionProvisions03T1 = "WorkOrder_Faction_Provisions03_T1",
-    WorkOrderFactionProvisions03T2 = "WorkOrder_Faction_Provisions03_T2",
-    WorkOrderFactionProvisions03T3 = "WorkOrder_Faction_Provisions03_T3",
-    WorkOrderFactionProvisions03T4 = "WorkOrder_Faction_Provisions03_T4",
-    WorkOrderFactionProvisions03T5 = "WorkOrder_Faction_Provisions03_T5",
-    WorkOrderFactionProvisions04T2 = "WorkOrder_Faction_Provisions04_T2",
-    WorkOrderFactionProvisions04T3 = "WorkOrder_Faction_Provisions04_T3",
-    WorkOrderFactionProvisions04T4 = "WorkOrder_Faction_Provisions04_T4",
-    WorkOrderFactionProvisions04T5 = "WorkOrder_Faction_Provisions04_T5",
-    WorkOrderFactionProvisions05T2 = "WorkOrder_Faction_Provisions05_T2",
-    WorkOrderFactionProvisions05T3 = "WorkOrder_Faction_Provisions05_T3",
-    WorkOrderFactionProvisions05T4 = "WorkOrder_Faction_Provisions05_T4",
-    WorkOrderFactionProvisions05T5 = "WorkOrder_Faction_Provisions05_T5",
-    WorkOrderFactionProvisions06T2 = "WorkOrder_Faction_Provisions06_T2",
-    WorkOrderFactionProvisions06T3 = "WorkOrder_Faction_Provisions06_T3",
-    WorkOrderFactionProvisions06T4 = "WorkOrder_Faction_Provisions06_T4",
-    WorkOrderFactionProvisions06T5 = "WorkOrder_Faction_Provisions06_T5",
-    WorkOrderFactionProvisions07T2 = "WorkOrder_Faction_Provisions07_T2",
-    WorkOrderFactionProvisions07T3 = "WorkOrder_Faction_Provisions07_T3",
-    WorkOrderFactionProvisions07T4 = "WorkOrder_Faction_Provisions07_T4",
-    WorkOrderFactionProvisions07T5 = "WorkOrder_Faction_Provisions07_T5",
-    WorkOrderFactionProvisions08T2 = "WorkOrder_Faction_Provisions08_T2",
-    WorkOrderFactionProvisions08T3 = "WorkOrder_Faction_Provisions08_T3",
-    WorkOrderFactionProvisions08T4 = "WorkOrder_Faction_Provisions08_T4",
-    WorkOrderFactionProvisions08T5 = "WorkOrder_Faction_Provisions08_T5",
-    WorkOrderFactionProvisions09T2 = "WorkOrder_Faction_Provisions09_T2",
-    WorkOrderFactionProvisions09T3 = "WorkOrder_Faction_Provisions09_T3",
-    WorkOrderFactionProvisions09T4 = "WorkOrder_Faction_Provisions09_T4",
-    WorkOrderFactionProvisions09T5 = "WorkOrder_Faction_Provisions09_T5",
-    WorkOrderFactionProvisions10T2 = "WorkOrder_Faction_Provisions10_T2",
-    WorkOrderFactionProvisions10T3 = "WorkOrder_Faction_Provisions10_T3",
-    WorkOrderFactionProvisions10T4 = "WorkOrder_Faction_Provisions10_T4",
-    WorkOrderFactionProvisions10T5 = "WorkOrder_Faction_Provisions10_T5",
-}
+export type TaskGiveAndTakeItemOverride = "" | "PVP_TimberBundle_1" | "WorkOrder_Faction_Armaments01_T2" | "WorkOrder_Faction_Armaments02_T2" | "WorkOrder_Faction_Armaments03_T2" | "WorkOrder_Faction_Armaments04_T2" | "WorkOrder_Faction_Armaments05_T2" | "WorkOrder_Faction_Armaments06_T2" | "WorkOrder_Faction_Armaments07_T2" | "WorkOrder_Faction_Armaments08_T2" | "WorkOrder_Faction_Armaments09_T2" | "WorkOrder_Faction_Armaments10_T2" | "WorkOrder_Faction_Armaments01_T3" | "WorkOrder_Faction_Armaments02_T3" | "WorkOrder_Faction_Armaments03_T3" | "WorkOrder_Faction_Armaments04_T3" | "WorkOrder_Faction_Armaments05_T3" | "WorkOrder_Faction_Armaments06_T3" | "WorkOrder_Faction_Armaments07_T3" | "WorkOrder_Faction_Armaments08_T3" | "WorkOrder_Faction_Armaments09_T3" | "WorkOrder_Faction_Armaments10_T3" | "WorkOrder_Faction_Armaments01_T4" | "WorkOrder_Faction_Armaments02_T4" | "WorkOrder_Faction_Armaments03_T4" | "WorkOrder_Faction_Armaments04_T4" | "WorkOrder_Faction_Armaments05_T4" | "WorkOrder_Faction_Armaments06_T4" | "WorkOrder_Faction_Armaments07_T4" | "WorkOrder_Faction_Armaments08_T4" | "WorkOrder_Faction_Armaments09_T4" | "WorkOrder_Faction_Armaments10_T4" | "WorkOrder_Faction_Armaments01_T5" | "WorkOrder_Faction_Armaments02_T5" | "WorkOrder_Faction_Armaments03_T5" | "WorkOrder_Faction_Armaments04_T5" | "WorkOrder_Faction_Armaments05_T5" | "WorkOrder_Faction_Armaments06_T5" | "WorkOrder_Faction_Armaments07_T5" | "WorkOrder_Faction_Armaments08_T5" | "WorkOrder_Faction_Armaments09_T5" | "WorkOrder_Faction_Armaments10_T5" | "WorkOrder_Faction_ArmorSet01_T2" | "WorkOrder_Faction_ArmorSet02_T2" | "WorkOrder_Faction_ArmorSet03_T2" | "WorkOrder_Faction_ArmorSet04_T2" | "WorkOrder_Faction_ArmorSet05_T2" | "WorkOrder_Faction_ArmorSet06_T2" | "WorkOrder_Faction_ArmorSet07_T2" | "WorkOrder_Faction_ArmorSet01_T3" | "WorkOrder_Faction_ArmorSet02_T3" | "WorkOrder_Faction_ArmorSet03_T3" | "WorkOrder_Faction_ArmorSet04_T3" | "WorkOrder_Faction_ArmorSet05_T3" | "WorkOrder_Faction_ArmorSet06_T3" | "WorkOrder_Faction_ArmorSet07_T3" | "WorkOrder_Faction_ArmorSet01_T4" | "WorkOrder_Faction_ArmorSet02_T4" | "WorkOrder_Faction_ArmorSet03_T4" | "WorkOrder_Faction_ArmorSet04_T4" | "WorkOrder_Faction_ArmorSet05_T4" | "WorkOrder_Faction_ArmorSet06_T4" | "WorkOrder_Faction_ArmorSet07_T4" | "WorkOrder_Faction_ArmorSet01_T5" | "WorkOrder_Faction_ArmorSet02_T5" | "WorkOrder_Faction_ArmorSet03_T5" | "WorkOrder_Faction_ArmorSet04_T5" | "WorkOrder_Faction_ArmorSet05_T5" | "WorkOrder_Faction_ArmorSet06_T5" | "WorkOrder_Faction_ArmorSet07_T5" | "WorkOrder_Faction_Provisions01_T1" | "WorkOrder_Faction_Provisions01_T2" | "WorkOrder_Faction_Provisions01_T3" | "WorkOrder_Faction_Provisions01_T4" | "WorkOrder_Faction_Provisions01_T5" | "WorkOrder_Faction_Provisions02_T1" | "WorkOrder_Faction_Provisions02_T2" | "WorkOrder_Faction_Provisions02_T3" | "WorkOrder_Faction_Provisions02_T4" | "WorkOrder_Faction_Provisions02_T5" | "WorkOrder_Faction_Provisions03_T1" | "WorkOrder_Faction_Provisions03_T2" | "WorkOrder_Faction_Provisions03_T3" | "WorkOrder_Faction_Provisions03_T4" | "WorkOrder_Faction_Provisions03_T5" | "WorkOrder_Faction_Provisions04_T2" | "WorkOrder_Faction_Provisions04_T3" | "WorkOrder_Faction_Provisions04_T4" | "WorkOrder_Faction_Provisions04_T5" | "WorkOrder_Faction_Provisions05_T2" | "WorkOrder_Faction_Provisions05_T3" | "WorkOrder_Faction_Provisions05_T4" | "WorkOrder_Faction_Provisions05_T5" | "WorkOrder_Faction_Provisions06_T2" | "WorkOrder_Faction_Provisions06_T3" | "WorkOrder_Faction_Provisions06_T4" | "WorkOrder_Faction_Provisions06_T5" | "WorkOrder_Faction_Provisions07_T2" | "WorkOrder_Faction_Provisions07_T3" | "WorkOrder_Faction_Provisions07_T4" | "WorkOrder_Faction_Provisions07_T5" | "WorkOrder_Faction_Provisions08_T2" | "WorkOrder_Faction_Provisions08_T3" | "WorkOrder_Faction_Provisions08_T4" | "WorkOrder_Faction_Provisions08_T5" | "WorkOrder_Faction_Provisions09_T2" | "WorkOrder_Faction_Provisions10_T2" | "WorkOrder_Faction_Provisions09_T3" | "WorkOrder_Faction_Provisions10_T3" | "WorkOrder_Faction_Provisions09_T4" | "WorkOrder_Faction_Provisions10_T4" | "WorkOrder_Faction_Provisions09_T5" | "WorkOrder_Faction_Provisions10_T5";
 
-export enum TerritoryProjectID {
-    AlchemistProjectID = "AlchemistProjectId",
-    ArcaneBlessingProjectID = "ArcaneBlessingProjectId",
-    ArcaneWisdomProjectID = "ArcaneWisdomProjectId",
-    BallistaUpgradeProjectID = "BallistaUpgradeProjectId",
-    BlacksmithProjectID = "BlacksmithProjectId",
-    BlacksmithTemperamentProjectID = "BlacksmithTemperamentProjectId",
-    CarpentryProjectID = "CarpentryProjectId",
-    ChefsPassionProjectID = "ChefsPassionProjectId",
-    CommunityProjectID = "CommunityProjectId",
-    CookingProjectID = "CookingProjectId",
-    EngineeringProjectID = "EngineeringProjectId",
-    EngineersPatienceProjectID = "EngineersPatienceProjectId",
-    ExplosiveUpgradeProjectID = "ExplosiveUpgradeProjectId",
-    FarmersHarvestProjectID = "FarmersHarvestProjectId",
-    FireBarrelUpgradeProjectID = "FireBarrelUpgradeProjectId",
-    FortGatesProjectID = "FortGatesProjectId",
-    FortHardPointsProjectID = "FortHardPointsProjectId",
-    HaleAndHeartyProjectID = "HaleAndHeartyProjectId",
-    HornUpgradeProjectID = "HornUpgradeProjectId",
-    HuntersBountyProjectID = "HuntersBountyProjectId",
-    LumberJackSpiritProjectID = "LumberJackSpiritProjectId",
-    MasonryProjectID = "MasonryProjectId",
-    MinersResolveProjectID = "MinersResolveProjectId",
-    OutfittersInspirationProjectID = "OutfittersInspirationProjectId",
-    OutfittingProjectID = "OutfittingProjectId",
-    RepeaterUpgradeProjectID = "RepeaterUpgradeProjectId",
-    SmeltingProjectID = "SmeltingProjectId",
-    StalwartProjectID = "StalwartProjectId",
-    TanningProjectID = "TanningProjectId",
-    WeavingProjectID = "WeavingProjectId",
-}
+export type TerritoryProjectID = "CommunityProjectId" | "BlacksmithProjectId" | "EngineeringProjectId" | "OutfittingProjectId" | "AlchemistProjectId" | "CookingProjectId" | "SmeltingProjectId" | "MasonryProjectId" | "CarpentryProjectId" | "TanningProjectId" | "WeavingProjectId" | "FortGatesProjectId" | "FortHardPointsProjectId" | "BallistaUpgradeProjectId" | "ExplosiveUpgradeProjectId" | "RepeaterUpgradeProjectId" | "HornUpgradeProjectId" | "FireBarrelUpgradeProjectId" | "LumberJackSpiritProjectId" | "MinersResolveProjectId" | "HuntersBountyProjectId" | "FarmersHarvestProjectId" | "ArcaneBlessingProjectId" | "HaleAndHeartyProjectId" | "StalwartProjectId" | "OutfittersInspirationProjectId" | "BlacksmithTemperamentProjectId" | "ArcaneWisdomProjectId" | "ChefsPassionProjectId" | "EngineersPatienceProjectId";
 
-export interface MissionWeightsData {
+export type MissionWeightsData = {
     MissionWeightId: string;
     SlotNumber:      number;
     IsPvpSlot:       boolean | null;
@@ -7158,7 +3152,7 @@ export interface MissionWeightsData {
     Weight:          number;
 }
 
-export interface Moonshot {
+export type Moonshot = {
     Slice:       string;
     PowerLevel:  number;
     Destruction: number;
@@ -7173,35 +3167,19 @@ export interface Moonshot {
     Available:   number;
 }
 
-export enum MoonshotFamily {
-    Ancient = "Ancient",
-    Corrupted = "Corrupted",
-    Damned = "Damned",
-    Earth = "Earth",
-    Unaffiliated = "Unaffiliated",
-    Withered = "Withered",
-}
+export type MoonshotFamily = "Ancient" | "Corrupted" | "Damned" | "Earth" | "Withered" | "Unaffiliated";
 
-export enum MoonshotType {
-    Infantry = "Infantry",
-    Siege = "Siege",
-}
+export type MoonshotType = "Infantry" | "Siege";
 
-export interface MusicalInstrumentSlot {
+export type MusicalInstrumentSlot = {
     PaperdollId:  PaperdollID;
     Name:         string;
     ClefIconPath: string;
 }
 
-export enum PaperdollID {
-    InstrumentDrumsSlot = "instrument-drums-slot",
-    InstrumentFluteSlot = "instrument-flute-slot",
-    InstrumentGuitarSlot = "instrument-guitar-slot",
-    InstrumentMandolinSlot = "instrument-mandolin-slot",
-    InstrumentUprightbassSlot = "instrument-uprightbass-slot",
-}
+export type PaperdollID = "instrument-guitar-slot" | "instrument-drums-slot" | "instrument-uprightbass-slot" | "instrument-mandolin-slot" | "instrument-flute-slot";
 
-export interface MusicalPerformanceRewards {
+export type MusicalPerformanceRewards = {
     RewardId:                 string;
     Name:                     string;
     Description:              string;
@@ -7213,24 +3191,21 @@ export interface MusicalPerformanceRewards {
     GameEventId_Rank_Bad:     string;
 }
 
-export enum FilterType {
-    DefaultPerformance = "DefaultPerformance",
-    Summer = "Summer",
-}
+export type FilterType = "Summer" | "DefaultPerformance";
 
-export interface MusicalRanking {
+export type MusicalRanking = {
     Grade:            string;
     MinimumScore:     number;
     RankGameEventId:  string;
     MusicalScoreMult: number;
 }
 
-export interface MusicalScoring {
+export type MusicalScoring = {
     InputType: string;
     Points:    number;
 }
 
-export interface MutationDifficultyStaticData {
+export type MutationDifficultyStaticData = {
     MutationDifficulty:            number;
     DifficultyTier:                number;
     ReqItemsToEnter:               string;
@@ -7270,19 +3245,13 @@ export interface MutationDifficultyStaticData {
     HWMExceedMod:                  number;
 }
 
-export enum DamageIncreaseMod {
-    MutDamageScale = "Mut_DamageScale",
-}
+export type DamageIncreaseMod = "Mut_DamageScale";
 
-export enum HealthIncreaseMod {
-    MutHealthScale = "Mut_HealthScale",
-}
+export type HealthIncreaseMod = "Mut_HealthScale";
 
-export enum InjectedCLoot {
-    MutatorLootDifficulty = "MutatorLoot_Difficulty",
-}
+export type InjectedCLoot = "MutatorLoot_Difficulty";
 
-export interface MutationPerksStaticData {
+export type MutationPerksStaticData = {
     ElementalMutationTypeId:   string;
     InjectedPerkBucket1:       string;
     InjectedPerkBucketWeight1: string;
@@ -7301,7 +3270,7 @@ export interface MutationPerksStaticData {
     Description:               string;
 }
 
-export interface NotificationData {
+export type NotificationData = {
     NotificationId:    string;
     DisplayTitle:      string;
     DisplayText:       string;
@@ -7317,29 +3286,15 @@ export interface NotificationData {
     NumberFields:      NumberFields;
 }
 
-export enum Keybind {
-    Empty = "",
-    ToggleCriminalIntent = "toggleCriminalIntent",
-}
+export type Keybind = "" | "toggleCriminalIntent";
 
-export enum KeybindActionmap {
-    Empty = "",
-    UI = "ui",
-}
+export type KeybindActionmap = "" | "ui";
 
-export enum NotificationType {
-    Empty = "",
-    Minor = "Minor",
-    Popup = "Popup",
-    Social = "Social",
-}
+export type NotificationType = "" | "Social" | "Popup" | "Minor";
 
-export enum NumberFields {
-    Amount = "amount",
-    Empty = "",
-}
+export type NumberFields = "" | "amount";
 
-export interface NPCData {
+export type NPCData = {
     NPCId:                             string;
     Title:                             string;
     GenericName:                       string;
@@ -7390,138 +3345,31 @@ export interface NPCData {
     Location14?:                       string;
 }
 
-export enum ConversationStateId10 {
-    Empty = "",
-    GuardCaptainTaskTopicPlayForTown = "GuardCaptain_TaskTopic_PlayForTown",
-    The0208_06PreAlchemist = "0208_06pre_Alchemist",
-    The0209_06PreAdjudicator = "0209_06pre_Adjudicator",
-    The0440A00_AtticusDelphiTaskTopicMSQRumors = "0440a_00_AtticusDelphi_TaskTopic_MSQRumors",
-    The06_06_MarcelDupont = "06_06_MarcelDupont",
-    The06_08_LeovixSilva = "06_08_LeovixSilva",
-    The06_08_NessaHarrower = "06_08_NessaHarrower",
-    The06_08_SaatvikAgrawal = "06_08_SaatvikAgrawal",
-    The06_09_GraceOMalley = "06_09_GraceOMalley",
-    The12_05_SerPayneBennett = "12_05_SerPayneBennett",
-    The12_08_RegentJinJae = "12_08_RegentJinJae",
-    The12_09_MBGrace = "12_09_MB_Grace",
-    The1507_06PreCommander = "1507_06pre_Commander",
-    The1602_08_Crassus = "1602_08_Crassus",
-    The1602_09_Crassus = "1602_09_Crassus",
-    The1625_09_GhaziP6 = "1625_09_Ghazi_p6",
-    The9901_10_MSQYonas = "9901_10_MSQ_Yonas",
-    The9901_20_MSQYonas = "9901_20_MSQ_Yonas",
-    The9902_13_MSQAdiana = "9902_13_MSQ_Adiana",
-    Yonas01_09 = "Yonas_01_09",
-}
+export type ConversationStateId10 = "" | "0208_06pre_Alchemist" | "0209_06pre_Adjudicator" | "0440a_00_AtticusDelphi_TaskTopic_MSQRumors" | "06_06_MarcelDupont" | "06_09_GraceOMalley" | "06_08_SaatvikAgrawal" | "06_08_NessaHarrower" | "06_08_LeovixSilva" | "12_08_RegentJinJae" | "12_09_MB_Grace" | "12_05_SerPayneBennett" | "1507_06pre_Commander" | "1602_08_Crassus" | "1602_09_Crassus" | "1625_09_Ghazi_p6" | "Yonas_01_09" | "GuardCaptain_TaskTopic_PlayForTown" | "9901_10_MSQ_Yonas" | "9901_20_MSQ_Yonas" | "9902_13_MSQ_Adiana";
 
-export enum ConversationStateId11 {
-    Empty = "",
-    GuardCaptain01ATaskTopicMSQRumors = "GuardCaptain_01A_TaskTopic_MSQRumors",
-    The0208_06_Alchemist = "0208_06_Alchemist",
-    The0209_06_Adjudicator = "0209_06_Adjudicator",
-    The06_09_LeovixSilva = "06_09_LeovixSilva",
-    The06_09_NessaHarrower = "06_09_NessaHarrower",
-    The06_09_SaatvikAgrawal = "06_09_SaatvikAgrawal",
-    The12_06_SerPayneBennett = "12_06_SerPayneBennett",
-    The12_09ARegentJinJae = "12_09A_RegentJinJae",
-    The12_10_MBGrace = "12_10_MB_Grace",
-    The1507_06_Commander = "1507_06_Commander",
-    The1602_09_Crassus = "1602_09_Crassus",
-    The1602_10_Crassus = "1602_10_Crassus",
-    The9901_11_MSQYonas = "9901_11_MSQ_Yonas",
-    The9901_21_MSQYonas = "9901_21_MSQ_Yonas",
-    YonasTaskTopicAmrineSkip = "Yonas_TaskTopic_AmrineSkip",
-}
+export type ConversationStateId11 = "" | "0208_06_Alchemist" | "0209_06_Adjudicator" | "06_09_SaatvikAgrawal" | "06_09_NessaHarrower" | "06_09_LeovixSilva" | "12_09A_RegentJinJae" | "12_10_MB_Grace" | "12_06_SerPayneBennett" | "1507_06_Commander" | "1602_09_Crassus" | "1602_10_Crassus" | "Yonas_TaskTopic_AmrineSkip" | "GuardCaptain_01A_TaskTopic_MSQRumors" | "9901_11_MSQ_Yonas" | "9901_21_MSQ_Yonas";
 
-export enum ConversationStateId12 {
-    Empty = "",
-    GuardCaptain02_TaskTopicAdiana = "GuardCaptain_02_TaskTopic_Adiana",
-    The06_10_LeovixSilva = "06_10_LeovixSilva",
-    The06_10_NessaHarrower = "06_10_NessaHarrower",
-    The06_10_SaatvikAgrawal = "06_10_SaatvikAgrawal",
-    The12_07_SerPayneBennett = "12_07_SerPayneBennett",
-    The12_09_RegentJinJae = "12_09_RegentJinJae",
-    The12_11_MBGrace = "12_11_MB_Grace",
-    The1602_10_Crassus = "1602_10_Crassus",
-    The1602_11_Crassus = "1602_11_Crassus",
-    The9901_12_MSQYonas = "9901_12_MSQ_Yonas",
-    The9901_22_MSQYonas = "9901_22_MSQ_Yonas",
-}
+export type ConversationStateId12 = "" | "06_10_SaatvikAgrawal" | "06_10_NessaHarrower" | "06_10_LeovixSilva" | "12_09_RegentJinJae" | "12_11_MB_Grace" | "12_07_SerPayneBennett" | "1602_10_Crassus" | "1602_11_Crassus" | "GuardCaptain_02_TaskTopic_Adiana" | "9901_12_MSQ_Yonas" | "9901_22_MSQ_Yonas";
 
-export enum ConversationStateId13 {
-    Empty = "",
-    The06_11_LeovixSilva = "06_11_LeovixSilva",
-    The06_11_NessaHarrower = "06_11_NessaHarrower",
-    The06_11_SaatvikAgrawal = "06_11_SaatvikAgrawal",
-    The12_09_SerPayneBennett = "12_09_SerPayneBennett",
-    The12_10_RegentJinJae = "12_10_RegentJinJae",
-    The12_12_MBGrace = "12_12_MB_Grace",
-    The1602_11_Crassus = "1602_11_Crassus",
-    The1602_12_Crassus = "1602_12_Crassus",
-}
+export type ConversationStateId13 = "" | "06_11_SaatvikAgrawal" | "06_11_NessaHarrower" | "06_11_LeovixSilva" | "12_10_RegentJinJae" | "12_12_MB_Grace" | "12_09_SerPayneBennett" | "1602_11_Crassus" | "1602_12_Crassus";
 
-export enum ConversationStateId14 {
-    Empty = "",
-    The06_12_LeovixSilva = "06_12_LeovixSilva",
-    The06_12_NessaHarrower = "06_12_NessaHarrower",
-    The12_10ARegentJinJae = "12_10a_RegentJinJae",
-    The12_10_SerPayneBennett = "12_10_SerPayneBennett",
-    The1602_13_Crassus = "1602_13_Crassus",
-}
+export type ConversationStateId14 = "" | "06_12_NessaHarrower" | "06_12_LeovixSilva" | "12_10a_RegentJinJae" | "12_10_SerPayneBennett" | "1602_13_Crassus";
 
-export enum ConversationStateId15 {
-    Empty = "",
-    The06_13_NessaHarrower = "06_13_NessaHarrower",
-    The12_11_RegentJinJae = "12_11_RegentJinJae",
-    The1602_14_Crassus = "1602_14_Crassus",
-}
+export type ConversationStateId15 = "" | "06_13_NessaHarrower" | "12_11_RegentJinJae" | "1602_14_Crassus";
 
-export enum ConversationStateId16 {
-    Empty = "",
-    The06_14_NessaHarrower = "06_14_NessaHarrower",
-}
+export type ConversationStateId16 = "" | "06_14_NessaHarrower";
 
-export enum ConversationStateId17 {
-    Empty = "",
-    The06_15_NessaHarrower = "06_15_NessaHarrower",
-}
+export type ConversationStateId17 = "" | "06_15_NessaHarrower";
 
-export enum ConversationStateId18 {
-    Empty = "",
-    The06_16_NessaHarrower = "06_16_NessaHarrower",
-}
+export type ConversationStateId18 = "" | "06_16_NessaHarrower";
 
-export enum ConversationStateId19 {
-    Empty = "",
-    The06_17_NessaHarrower = "06_17_NessaHarrower",
-}
+export type ConversationStateId19 = "" | "06_17_NessaHarrower";
 
-export enum ConversationStateId20 {
-    Empty = "",
-    The06_18_NessaHarrower = "06_18_NessaHarrower",
-}
+export type ConversationStateId20 = "" | "06_18_NessaHarrower";
 
-export enum InteractOptionDisplayNameOverride {
-    Empty = "",
-    The0251AHeadstoneInteractOverride = "@0251a_Headstone_InteractOverride",
-    The0444ALostAlchemyInteractOverride = "@0444a_LostAlchemy_InteractOverride",
-    The0445ARequisitionNoteInteractOverride = "@0445a_RequisitionNote_InteractOverride",
-    The0446AAncientScrollInteractOverride = "@0446a_AncientScroll_InteractOverride",
-    The0447ALocketInteractOverride = "@0447a_Locket_InteractOverride",
-    The0449AHeronNoteInteractOverride = "@0449a_HeronNote_InteractOverride",
-    The0451AMineCartInteractOverride = "@0451a_MineCart_InteractOverride",
-    The0727_BookOfIsabellaInteract = "@0727_BookOfIsabella_Interact",
-    The1124_Override = "@1124_Override",
-    The1129_Override = "@1129_Override",
-    The12_ClericLetterInteractOverride = "@12_ClericLetter_InteractOverride",
-    The12_KnightsDecreeInteractOverride = "@12_KnightsDecree_InteractOverride",
-    The1678_EmptyChestInt = "@1678_EmptyChest_int",
-    The9927_VKScoutsNoteExamine = "@9927_VK_ScoutsNote_Examine",
-    The9928_MSQYonasMemorialExamine = "@9928_MSQ_YonasMemorial_Examine",
-    The99BGravestoneInteractoverride = "@99B_gravestone_interactoverride",
-}
+export type InteractOptionDisplayNameOverride = "" | "@0251a_Headstone_InteractOverride" | "@0444a_LostAlchemy_InteractOverride" | "@0445a_RequisitionNote_InteractOverride" | "@0446a_AncientScroll_InteractOverride" | "@0447a_Locket_InteractOverride" | "@0449a_HeronNote_InteractOverride" | "@0451a_MineCart_InteractOverride" | "@0727_BookOfIsabella_Interact" | "@1124_Override" | "@1129_Override" | "@12_KnightsDecree_InteractOverride" | "@12_ClericLetter_InteractOverride" | "@1678_EmptyChest_int" | "@99B_gravestone_interactoverride" | "@9928_MSQ_YonasMemorial_Examine" | "@9927_VK_ScoutsNote_Examine";
 
-export interface Objectives {
+export type Objectives = {
     ObjectiveID:                            string;
     Type:                                   ObjectiveType;
     Difficulty:                             Difficulty;
@@ -7569,98 +3417,21 @@ export interface Objectives {
     RewardType?:                            CreatureTypeEnum;
 }
 
-export enum DestinationCompletionAvailablePrompt {
-    CompleteAvailablePromptDEFAULT = "@complete_available_prompt_DEFAULT",
-    Empty = "",
-}
+export type DestinationCompletionAvailablePrompt = "@complete_available_prompt_DEFAULT" | "";
 
-export enum Difficulty {
-    Easy = "Easy",
-    Empty = "",
-}
+export type Difficulty = "" | "Easy";
 
-export enum FailureGameEventID {
-    Empty = "",
-    FactionMissionFailure = "FactionMission_Failure",
-    MissionFailureBountyT1 = "Mission_Failure_Bounty_T1",
-    MissionFailureExplorerT1 = "Mission_Failure_Explorer_T1",
-    MissionFailureMerchantT1 = "Mission_Failure_Merchant_T1",
-    MissionFailureProcurerT1 = "Mission_Failure_Procurer_T1",
-    PVPMissionFailure = "PVPMission_Failure",
-    The0511_0101_AguardiansplightFailure = "0511_0101_aguardiansplight_failure",
-}
+export type FailureGameEventID = "" | "0511_0101_aguardiansplight_failure" | "FactionMission_Failure" | "Mission_Failure_Merchant_T1" | "Mission_Failure_Procurer_T1" | "Mission_Failure_Explorer_T1" | "Mission_Failure_Bounty_T1" | "PVPMission_Failure";
 
-export enum ORMReleaseEventTags {
-    Cancelled = "CANCELLED",
-    Empty = "",
-}
+export type ORMReleaseEventTags = "" | "CANCELLED";
 
-export enum ObjectiveReward {
-    Empty = "",
-    The01_SoleSurvivor2 = "01_SoleSurvivor2",
-    The0504_0102_Defianceanddoubt = "0504_0102_defianceanddoubt",
-    The06ATS03_LearnTownBoard = "06A_TS_03_LearnTownBoard",
-    The0721_0101_BW00 = "0721_0101_BW_00",
-    The0831_0103_LastArgumentPolished = "0831_0103_LastArgument_Polished",
-    The0831_0105_LastArgumentPerfection = "0831_0105_LastArgument_Perfection",
-    The0831_0107_LastArgumentDarkness = "0831_0107_LastArgument_Darkness",
-    The12ASide17_MarketBoard = "12A_Side_17_MarketBoard",
-    The1625_0701_Challengingpharaoh = "1625_0701_challengingpharaoh",
-    The98_C0102_RankUp = "98_C_0102_RankUp",
-    The98_C0203_RankUp = "98_C_0203_RankUp",
-    The98_C0304_RankUp = "98_C_0304_RankUp",
-    The98_M0102_RankUp = "98_M_0102_RankUp",
-    The98_M0203_RankUp = "98_M_0203_RankUp",
-    The98_M0304_RankUp = "98_M_0304_RankUp",
-    The98_S0102_RankUp = "98_S_0102_RankUp",
-    The98_S0203_RankUp = "98_S_0203_RankUp",
-    The98_S0304_RankUp = "98_S_0304_RankUp",
-    The9906_0050_Thescenicrouteb = "9906_0050_thescenicrouteb",
-}
+export type ObjectiveReward = "01_SoleSurvivor2" | "" | "98_M_0102_RankUp" | "98_M_0203_RankUp" | "98_M_0304_RankUp" | "98_S_0102_RankUp" | "98_S_0203_RankUp" | "98_S_0304_RankUp" | "98_C_0102_RankUp" | "98_C_0203_RankUp" | "98_C_0304_RankUp" | "0504_0102_defianceanddoubt" | "06A_TS_03_LearnTownBoard" | "0721_0101_BW_00" | "0831_0103_LastArgument_Polished" | "0831_0105_LastArgument_Perfection" | "0831_0107_LastArgument_Darkness" | "12A_Side_17_MarketBoard" | "1625_0701_challengingpharaoh" | "9906_0050_thescenicrouteb";
 
-export enum ProgressionReward {
-    Covenant1 = "Covenant 1",
-    Covenant2 = "Covenant 2",
-    Covenant3 = "Covenant 3",
-    Covenant4 = "Covenant 4",
-    CovenantTokens11500 = "CovenantTokens 1 1500",
-    CovenantTokens23000 = "CovenantTokens 2 3000",
-    CovenantTokens36000 = "CovenantTokens 3 6000",
-    CovenantTokens412000 = "CovenantTokens 4 12000",
-    Empty = "",
-    Marauder1 = "Marauder 1",
-    Marauder2 = "Marauder 2",
-    Marauder3 = "Marauder 3",
-    Marauder4 = "Marauder 4",
-    MarauderTokens11500 = "MarauderTokens 1 1500",
-    MarauderTokens23000 = "MarauderTokens 2 3000",
-    MarauderTokens36000 = "MarauderTokens 3 6000",
-    MarauderTokens412000 = "MarauderTokens 4 12000",
-    Syndicate1 = "Syndicate 1",
-    Syndicate2 = "Syndicate 2",
-    Syndicate3 = "Syndicate 3",
-    Syndicate4 = "Syndicate 4",
-    SyndicateTokens11500 = "SyndicateTokens 1 1500",
-    SyndicateTokens23000 = "SyndicateTokens 2 3000",
-    SyndicateTokens36000 = "SyndicateTokens 3 6000",
-    SyndicateTokens412000 = "SyndicateTokens 4 12000",
-}
+export type ProgressionReward = "" | "Marauder 1" | "MarauderTokens 1 1500" | "Marauder 2" | "MarauderTokens 2 3000" | "Marauder 3" | "MarauderTokens 3 6000" | "Marauder 4" | "MarauderTokens 4 12000" | "Syndicate 1" | "SyndicateTokens 1 1500" | "Syndicate 2" | "SyndicateTokens 2 3000" | "Syndicate 3" | "SyndicateTokens 3 6000" | "Syndicate 4" | "SyndicateTokens 4 12000" | "Covenant 1" | "CovenantTokens 1 1500" | "Covenant 2" | "CovenantTokens 2 3000" | "Covenant 3" | "CovenantTokens 3 6000" | "Covenant 4" | "CovenantTokens 4 12000";
 
-export enum ObjectiveType {
-    CommunityGoal = "CommunityGoal",
-    Darkness = "Darkness",
-    EpicEquipment = "EpicEquipment",
-    FactionStoryCovenant = "FactionStory_Covenant",
-    FactionStoryMarauders = "FactionStory_Marauders",
-    FactionStorySyndicate = "FactionStory_Syndicate",
-    Journey = "Journey",
-    MainStoryQuest = "MainStoryQuest",
-    Mission = "Mission",
-    SeasonQuest = "SeasonQuest",
-    SkillProgression = "SkillProgression",
-}
+export type ObjectiveType = "MainStoryQuest" | "Journey" | "FactionStory_Marauders" | "FactionStory_Syndicate" | "FactionStory_Covenant" | "EpicEquipment" | "Mission" | "SkillProgression" | "SeasonQuest" | "CommunityGoal" | "Darkness";
 
-export interface ObjectiveTasks {
+export type ObjectiveTasks = {
     TaskID:                          string;
     Type:                            ObjectiveTaskType;
     FailOnCondition:                 boolean | number | null | string;
@@ -7735,207 +3506,26 @@ export interface ObjectiveTasks {
     ResetOnCondition?:               number | null;
 }
 
-export enum CraftingRecipeID {
-    Empty = "",
-    ProceduralHealthRecoveryT1 = "Procedural_HealthRecoveryT1",
-    ProceduralLongswordT2 = "Procedural_LongswordT2",
-    SwordAbilityTable = "SwordAbilityTable",
-    The0511_0204_UmbrasReachGlove = "0511_0204_UmbrasReach_Glove",
-    The0511_0204_UmbrasReachLeather = "0511_0204_UmbrasReach_Leather",
-    The0511_0204_UmbrasReachLens = "0511_0204_UmbrasReach_Lens",
-    The0831_0102_HardIronwoodPlank = "0831_0102_HardIronwoodPlank",
-    The0831_0104_CustomBlunderbussLock = "0831_0104_CustomBlunderbussLock",
-    The0831_0109_GunpowderAdditive = "0831_0109_GunpowderAdditive",
-    The1225_0501_AncientProtectionStone = "1225_0501_AncientProtectionStone",
-    The1625_0502_ImhotepRemedy = "1625_0502_ImhotepRemedy",
-    The1679_0101_DesertCerate = "1679_0101_DesertCerate",
-    The95_S0104_HealingSalve = "95_s01_04_HealingSalve",
-    The95_S0107_SearingTemper = "95_s01_07_SearingTemper",
-}
+export type CraftingRecipeID = "" | "Procedural_HealthRecoveryT1" | "SwordAbilityTable" | "0511_0204_UmbrasReach_Glove" | "0511_0204_UmbrasReach_Lens" | "0511_0204_UmbrasReach_Leather" | "0831_0102_HardIronwoodPlank" | "0831_0104_CustomBlunderbussLock" | "0831_0109_GunpowderAdditive" | "Procedural_LongswordT2" | "1225_0501_AncientProtectionStone" | "1679_0101_DesertCerate" | "1625_0502_ImhotepRemedy" | "95_s01_04_HealingSalve" | "95_s01_07_SearingTemper";
 
-export enum KillEnemyWeaponIDEnum {
-    BlunderbussAbilityTable = "BlunderbussAbilityTable",
-    BowAbilityTable = "BowAbilityTable",
-    Empty = "",
-    FireMagicAbilityTable = "FireMagicAbilityTable",
-    GreatAxeAbilityTable = "GreatAxeAbilityTable",
-    GreatSwordAbilityTable = "GreatSwordAbilityTable",
-    HatchetAbilityTable = "HatchetAbilityTable",
-    IceMagicAbilityTable = "IceMagicAbilityTable",
-    LifeMagicAbilityTable = "LifeMagicAbilityTable",
-    MusketAbilityTable = "MusketAbilityTable",
-    RapierAbilityTable = "RapierAbilityTable",
-    SpearAbilityTable = "SpearAbilityTable",
-    SwordAbilityTable = "SwordAbilityTable",
-    TEMPCraftingSpecializationAlchemy = "TEMP_Crafting_Specialization_Alchemy",
-    TEMPCraftingSpecializationBlacksmithing = "TEMP_Crafting_Specialization_Blacksmithing",
-    TEMPCraftingSpecializationOutfitting = "TEMP_Crafting_Specialization_Outfitting",
-    VoidGauntletAbilityTable = "VoidGauntletAbilityTable",
-    WarHammerAbilityTable = "WarHammerAbilityTable",
-}
+export type KillEnemyWeaponIDEnum = "" | "SwordAbilityTable" | "RapierAbilityTable" | "HatchetAbilityTable" | "GreatAxeAbilityTable" | "WarHammerAbilityTable" | "SpearAbilityTable" | "BowAbilityTable" | "MusketAbilityTable" | "FireMagicAbilityTable" | "LifeMagicAbilityTable" | "IceMagicAbilityTable" | "TEMP_Crafting_Specialization_Blacksmithing" | "TEMP_Crafting_Specialization_Alchemy" | "TEMP_Crafting_Specialization_Outfitting" | "BlunderbussAbilityTable" | "VoidGauntletAbilityTable" | "GreatSwordAbilityTable";
 
-export enum SSStatePreset {
-    Empty = "",
-    FM16_PVPControlSpotCovenantFirst = "FM_16_PVP_ControlSpot_Covenant_first",
-    FM16_PVPControlSpotCovenantTask = "FM_16_PVP_ControlSpot_Covenant_task",
-    FM16_PVPControlSpotMarauderFirst = "FM_16_PVP_ControlSpot_Marauder_first",
-    FM16_PVPControlSpotMarauderTask = "FM_16_PVP_ControlSpot_Marauder_task",
-    FM16_PVPControlSpotSyndicateFirst = "FM_16_PVP_ControlSpot_Syndicate_first",
-    FM16_PVPControlSpotSyndicateTask = "FM_16_PVP_ControlSpot_Syndicate_task",
-    FM16_PVPSpySpotCovenant2_StepContainer = "FM_16_PVP_SpySpot_Covenant_2_step_container",
-    FM16_PVPSpySpotCovenantFirst = "FM_16_PVP_SpySpot_Covenant_first",
-    FM16_PVPSpySpotCovenantFirstOrdie = "FM_16_PVP_SpySpot_Covenant_first_ordie",
-    FM16_PVPSpySpotCovenantTask = "FM_16_PVP_SpySpot_Covenant_task",
-    FM16_PVPSpySpotCovenantTurnin = "FM_16_PVP_SpySpot_Covenant_turnin",
-    FM16_PVPSpySpotMarauder2_StepContainer = "FM_16_PVP_SpySpot_Marauder_2_step_container",
-    FM16_PVPSpySpotMarauderFirst = "FM_16_PVP_SpySpot_Marauder_first",
-    FM16_PVPSpySpotMarauderFirstOrdie = "FM_16_PVP_SpySpot_Marauder_first_ordie",
-    FM16_PVPSpySpotMarauderTask = "FM_16_PVP_SpySpot_Marauder_task",
-    FM16_PVPSpySpotMarauderTurnin = "FM_16_PVP_SpySpot_Marauder_turnin",
-    FM16_PVPSpySpotSyndicate2_StepContainer = "FM_16_PVP_SpySpot_Syndicate_2_step_container",
-    FM16_PVPSpySpotSyndicateFirst = "FM_16_PVP_SpySpot_Syndicate_first",
-    FM16_PVPSpySpotSyndicateFirstOrdie = "FM_16_PVP_SpySpot_Syndicate_first_ordie",
-    FM16_PVPSpySpotSyndicateTask = "FM_16_PVP_SpySpot_Syndicate_task",
-    FM16_PVPSpySpotSyndicateTurnin = "FM_16_PVP_SpySpot_Syndicate_turnin",
-}
+export type SSStatePreset = "" | "FM_16_PVP_ControlSpot_Marauder_first" | "FM_16_PVP_ControlSpot_Marauder_task" | "FM_16_PVP_SpySpot_Marauder_2_step_container" | "FM_16_PVP_SpySpot_Marauder_first_ordie" | "FM_16_PVP_SpySpot_Marauder_first" | "FM_16_PVP_SpySpot_Marauder_turnin" | "FM_16_PVP_SpySpot_Marauder_task" | "FM_16_PVP_ControlSpot_Syndicate_first" | "FM_16_PVP_ControlSpot_Syndicate_task" | "FM_16_PVP_SpySpot_Syndicate_2_step_container" | "FM_16_PVP_SpySpot_Syndicate_first_ordie" | "FM_16_PVP_SpySpot_Syndicate_first" | "FM_16_PVP_SpySpot_Syndicate_turnin" | "FM_16_PVP_SpySpot_Syndicate_task" | "FM_16_PVP_ControlSpot_Covenant_first" | "FM_16_PVP_ControlSpot_Covenant_task" | "FM_16_PVP_SpySpot_Covenant_2_step_container" | "FM_16_PVP_SpySpot_Covenant_first_ordie" | "FM_16_PVP_SpySpot_Covenant_first" | "FM_16_PVP_SpySpot_Covenant_turnin" | "FM_16_PVP_SpySpot_Covenant_task";
 
-export enum TargetDescriptionTaskID {
-    Empty = "",
-    FM04_EXP01ALegATask = "FM_04_EXP_01a_leg_A_task",
-    FM04_EXP02ALegATask = "FM_04_EXP_02a_leg_A_task",
-    FM04_EXP02_LegATask = "FM_04_EXP_02_leg_A_task",
-    FM04_EXP03ALegATask = "FM_04_EXP_03a_leg_A_task",
-    FM05_EXP01_LegATask = "FM_05_EXP_01_leg_A_task",
-    FM05_EXP01_LegBTask = "FM_05_EXP_01_leg_B_task",
-    FM05_EXP02_LegATask = "FM_05_EXP_02_leg_A_task",
-    FM05_EXP03_LegATask = "FM_05_EXP_03_leg_A_task",
-    FM05_EXP03_LegBTask = "FM_05_EXP_03_leg_B_task",
-    FM06_EXP01_LegATask = "FM_06_EXP_01_leg_A_task",
-    FM07_EXP01_LegATask = "FM_07_EXP_01_leg_A_task",
-    FM07_EXP02_LegATask = "FM_07_EXP_02_leg_A_task",
-    FM07_EXP03_LegATask = "FM_07_EXP_03_leg_A_task",
-    FM08_EXP01_LegATask = "FM_08_EXP_01_leg_A_task",
-    FM08_EXP03_LegATask = "FM_08_EXP_03_leg_A_task",
-    FM10_EXP01_LegATask = "FM_10_EXP_01_leg_A_task",
-    FM10_EXP02_LegATask = "FM_10_EXP_02_leg_A_task",
-    FM10_EXP03_LegATask = "FM_10_EXP_03_leg_A_task",
-    FM14_EXP01_LegATask = "FM_14_EXP_01_leg_A_task",
-    FM14_EXP02_LegATask = "FM_14_EXP_02_leg_A_task",
-    FM14_EXP03_LegATask = "FM_14_EXP_03_leg_A_task",
-    FM15_EXP01_LegATask = "FM_15_EXP_01_leg_A_task",
-    FM15_EXP02_LegBTask = "FM_15_EXP_02_leg_B_task",
-    FM15_EXP03_LegBTask = "FM_15_EXP_03_leg_B_task",
-    FM16_EXP14_LegATask = "FM_16_EXP_14_leg_A_task",
-    FMC16_EXP14_LegATask = "FM_C_16_EXP_14_leg_A_task",
-    FMS16_EXP14_LegATask = "FM_S_16_EXP_14_leg_A_task",
-    The0411_0413_D01_TaskGoToPOI = "0411_0413_d_01_task_GoToPOI",
-    The0411_0414_D01_TaskGoToPOI = "0411_0414_d_01_task_GoToPOI",
-    The0502_0106_D01_GotoPOI = "0502_0106_d_01_gotoPOI",
-    The0699_0101_D01_TaskGoToPOI = "0699_0101_d_01_TaskGoToPOI",
-    The0699_0102_D01_TaskGoToPOI = "0699_0102_d_01_TaskGoToPOI",
-    The0699_0103_D01_TaskGoToPOI = "0699_0103_d_01_TaskGoToPOI",
-    The06AP03_RecoverEyepieceEnterDungeon = "06A_P_03_RecoverEyepiece_enterDungeon",
-    The0714_0105_D01_GotoPOI = "0714_0105_d_01_goto_POI",
-    The0718_0103_D01_GotoPOI = "0718_0103_d_01_gotoPOI",
-    The0726_0101_D01_TaskGoToPOITag = "0726_0101_d_01_TaskGoToPOITag",
-    The0726_0102_D01_TaskGoToPOITag = "0726_0102_d_01_TaskGoToPOITag",
-    The0726_0103_D01_TaskGoToPOITag = "0726_0103_d_01_TaskGoToPOITag",
-    The0726_0104_D01_TaskGoToPOITag = "0726_0104_d_01_TaskGoToPOITag",
-    The0726_0105_D01_TaskGoToPOITag = "0726_0105_d_01_TaskGoToPOITag",
-    The0726_0106_D01_TaskGoToPOITag = "0726_0106_d_01_TaskGoToPOITag",
-    The0726_0107_D01_TaskGoToPOITag = "0726_0107_d_01_TaskGoToPOITag",
-    The0811_0803_D01_TaskGoToPOITagDungeon = "0811_0803_d_01_TaskGoToPOITag_dungeon",
-    The0831_0102_D02_01_02_01_HaveAndReturnItems4_ImbuedResin = "0831_0102_d_02_01_02_01_HaveAndReturnItems_4_ImbuedResin",
-    The0899_0801_D01_TaskGoToPOITagLiberator = "0899_0801_d_01_TaskGoToPOITag_Liberator",
-    The1403A0301_D01_Task = "1403A_0301_d_01_Task",
-    The1502_1511_D01_TaskGoto = "1502_1511_d_01_Task_Goto",
-    The1599_1513_D01_TaskGoto = "1599_1513_d_01_Task_Goto",
-    The1625_0101_D03_02_ContainerBreadcrumbs = "1625_0101_d_03_02_container_breadcrumbs",
-    The1625_0601_D02_ContainerReflectors = "1625_0601_d_02_container_reflectors",
-    The1625_0601_D04_ContainerEnterVault = "1625_0601_d_04_container_enterVault",
-    The9901_0057_D02_GameMode = "9901_0057_d_02_GameMode",
-    The99BMSQ07_D02_04_01_01_GameEventEncounterStart = "99B_MSQ_07_d_02_04_01_01_GameEvent_EncounterStart",
-}
+export type TargetDescriptionTaskID = "" | "FM_04_EXP_01a_leg_A_task" | "FM_04_EXP_02a_leg_A_task" | "FM_04_EXP_03a_leg_A_task" | "0411_0413_d_01_task_GoToPOI" | "0411_0414_d_01_task_GoToPOI" | "FM_04_EXP_02_leg_A_task" | "0502_0106_d_01_gotoPOI" | "FM_05_EXP_01_leg_A_task" | "FM_05_EXP_01_leg_B_task" | "FM_05_EXP_02_leg_A_task" | "FM_05_EXP_03_leg_A_task" | "FM_05_EXP_03_leg_B_task" | "06A_P_03_RecoverEyepiece_enterDungeon" | "0699_0101_d_01_TaskGoToPOI" | "0699_0102_d_01_TaskGoToPOI" | "0699_0103_d_01_TaskGoToPOI" | "FM_06_EXP_01_leg_A_task" | "0714_0105_d_01_goto_POI" | "0718_0103_d_01_gotoPOI" | "0726_0101_d_01_TaskGoToPOITag" | "0726_0102_d_01_TaskGoToPOITag" | "0726_0103_d_01_TaskGoToPOITag" | "0726_0104_d_01_TaskGoToPOITag" | "0726_0105_d_01_TaskGoToPOITag" | "0726_0106_d_01_TaskGoToPOITag" | "0726_0107_d_01_TaskGoToPOITag" | "FM_07_EXP_01_leg_A_task" | "FM_07_EXP_02_leg_A_task" | "FM_07_EXP_03_leg_A_task" | "0811_0803_d_01_TaskGoToPOITag_dungeon" | "0899_0801_d_01_TaskGoToPOITag_Liberator" | "0831_0102_d_02_01_02_01_HaveAndReturnItems_4_ImbuedResin" | "FM_08_EXP_01_leg_A_task" | "FM_08_EXP_03_leg_A_task" | "FM_10_EXP_01_leg_A_task" | "FM_10_EXP_02_leg_A_task" | "FM_10_EXP_03_leg_A_task" | "1403A_0301_d_01_Task" | "FM_14_EXP_01_leg_A_task" | "FM_14_EXP_02_leg_A_task" | "FM_14_EXP_03_leg_A_task" | "1502_1511_d_01_Task_Goto" | "1599_1513_d_01_Task_Goto" | "FM_15_EXP_01_leg_A_task" | "FM_15_EXP_02_leg_B_task" | "FM_15_EXP_03_leg_B_task" | "1625_0101_d_03_02_container_breadcrumbs" | "1625_0601_d_02_container_reflectors" | "1625_0601_d_04_container_enterVault" | "FM_16_EXP_14_leg_A_task" | "FM_S_16_EXP_14_leg_A_task" | "FM_C_16_EXP_14_leg_A_task" | "99B_MSQ_07_d_02_04_01_01_GameEvent_EncounterStart" | "9901_0057_d_02_GameMode";
 
-export enum TriggerAreaType {
-    Empty = "",
-    Enter = "Enter",
-    Hud = "HUD",
-    Leave = "Leave",
-}
+export type TriggerAreaType = "" | "Enter" | "Leave" | "HUD";
 
-export enum ObjectiveTaskType {
-    ConsecutiveTaskContainer = "ConsecutiveTaskContainer",
-    E = "e",
-    Empty = "",
-    PartialTaskContainer = "PartialTaskContainer",
-    PatrolTask = "PatrolTask",
-    SimpleTaskContainer = "SimpleTaskContainer",
-    TaskAchievement = "TaskAchievement",
-    TaskChooseFaction = "TaskChooseFaction",
-    TaskControlPoint = "TaskControlPoint",
-    TaskConversationState = "TaskConversationState",
-    TaskConversationTopic = "TaskConversationTopic",
-    TaskCraftRecipe = "TaskCraftRecipe",
-    TaskCraftWeaponFamily = "TaskCraftWeaponFamily",
-    TaskDarknessKill = "TaskDarknessKill",
-    TaskDarknessWaves = "TaskDarknessWaves",
-    TaskDie = "TaskDie",
-    TaskEquipItem = "TaskEquipItem",
-    TaskFishingCast = "TaskFishingCast",
-    TaskFishingCatchAnyFish = "TaskFishingCatchAnyFish",
-    TaskFishingCatchFish = "TaskFishingCatchFish",
-    TaskFishingCatchLength = "TaskFishingCatchLength",
-    TaskFishingCatchWeight = "TaskFishingCatchWeight",
-    TaskFishingEquip = "TaskFishingEquip",
-    TaskFishingHook = "TaskFishingHook",
-    TaskFishingHotspotAny = "TaskFishingHotspotAny",
-    TaskFishingReel = "TaskFishingReel",
-    TaskGameEvent = "TaskGameEvent",
-    TaskGameMode = "TaskGameMode",
-    TaskGatherAndReturnItems = "TaskGatherAndReturnItems",
-    TaskGatherCyclicState = "TaskGatherCyclicState",
-    TaskGatherItems = "TaskGatherItems",
-    TaskGiveAndTakeItem = "TaskGiveAndTakeItem",
-    TaskGiveItem = "TaskGiveItem",
-    TaskGoToPOITag = "TaskGoToPOITag",
-    TaskGoToPOITagOnTerritory = "TaskGoToPOITagOnTerritory",
-    TaskGoToTerritory = "TaskGoToTerritory",
-    TaskHaveAndReturnItems = "TaskHaveAndReturnItems",
-    TaskHaveItems = "TaskHaveItems",
-    TaskHaveItemsWithWeaponFamily = "TaskHaveItemsWithWeaponFamily",
-    TaskHaveLevel = "TaskHaveLevel",
-    TaskHouseScore = "TaskHouseScore",
-    TaskInteract = "TaskInteract",
-    TaskKillContribution = "TaskKillContribution",
-    TaskLockAchievement = "TaskLockAchievement",
-    TaskObjective = "TaskObjective",
-    TaskOpenUIScreen = "TaskOpenUiScreen",
-    TaskPerformSong = "TaskPerformSong",
-    TaskRemoveItem = "TaskRemoveItem",
-    TaskRequireGatherItems = "TaskRequireGatherItems",
-    TaskSalvageItem = "TaskSalvageItem",
-    TaskTemporaryUnlockAchievement = "TaskTemporaryUnlockAchievement",
-    TaskTimer = "TaskTimer",
-    TaskTriggerArea = "TaskTriggerArea",
-    TaskTriggerGameEvent = "TaskTriggerGameEvent",
-    TaskUnLockAchievement = "TaskUnLockAchievement",
-    TaskUnlockAchievement = "TaskUnlockAchievement",
-    TaskUseItems = "TaskUseItems",
-}
+export type ObjectiveTaskType = "ConsecutiveTaskContainer" | "TaskGiveItem" | "TaskOpenUiScreen" | "TaskTriggerArea" | "TaskGameEvent" | "TaskTriggerGameEvent" | "TaskTimer" | "SimpleTaskContainer" | "TaskKillContribution" | "TaskUnlockAchievement" | "TaskLockAchievement" | "TaskGoToPOITag" | "PartialTaskContainer" | "TaskHaveItems" | "TaskEquipItem" | "TaskGatherItems" | "TaskCraftRecipe" | "TaskInteract" | "TaskAchievement" | "TaskGatherAndReturnItems" | "TaskConversationTopic" | "TaskConversationState" | "TaskTemporaryUnlockAchievement" | "TaskGiveAndTakeItem" | "TaskHaveAndReturnItems" | "TaskRequireGatherItems" | "TaskGameMode" | "TaskRemoveItem" | "PatrolTask" | "TaskObjective" | "TaskPerformSong" | "TaskCraftWeaponFamily" | "TaskHaveItemsWithWeaponFamily" | "TaskChooseFaction" | "TaskHaveLevel" | "TaskGatherCyclicState" | "TaskFishingEquip" | "TaskFishingCast" | "TaskFishingHook" | "TaskFishingReel" | "TaskFishingCatchFish" | "TaskSalvageItem" | "TaskFishingHotspotAny" | "TaskFishingCatchAnyFish" | "TaskFishingCatchLength" | "TaskFishingCatchWeight" | "e" | "TaskHouseScore" | "" | "TaskUseItems" | "TaskUnLockAchievement" | "TaskDarknessWaves" | "TaskDarknessKill" | "TaskDie" | "TaskGoToPOITagOnTerritory" | "TaskGoToTerritory" | "TaskControlPoint";
 
-export interface ParticleContextualPriorityOverrideData {
+export type ParticleContextualPriorityOverrideData = {
     EffectName:       string;
     PriorityOverride: PriorityOverride;
 }
 
-export enum PriorityOverride {
-    High = "High",
-    Normal = "Normal",
-    Required = "Required",
-}
+export type PriorityOverride = "High" | "Required" | "Normal";
 
-export interface ParticleData {
+export type ParticleData = {
     "Effect Name":           string;
     Group:                   string;
     "Priority Within Group": number;
@@ -7944,7 +3534,7 @@ export interface ParticleData {
     Constants:               number | null;
 }
 
-export interface PerkData {
+export type PerkData = {
     PerkID:                    string;
     PerkType:                  PerkType;
     ConditionEvent:            ConditionEvent;
@@ -7975,169 +3565,35 @@ export interface PerkData {
     Category:                  AchievementCategoryEnum;
 }
 
-export enum AppliedPrefix {
-    AbyssalPrefix = "@AbyssalPrefix",
-    AbyssalWardPrefix = "@AbyssalWardPrefix",
-    ArborealPrefix = "@ArborealPrefix",
-    ArcaneWardPrefix = "@ArcaneWardPrefix",
-    BrashPrefix = "@BrashPrefix",
-    CruelPrefix = "@CruelPrefix",
-    ElectrifiedPrefix = "@ElectrifiedPrefix",
-    ElementalWardPrefix = "@ElementalWardPrefix",
-    EmpoweredPrefix = "@EmpoweredPrefix",
-    Empty = "",
-    ExhilaratePrefix = "@ExhilaratePrefix",
-    FireWardPrefix = "@FireWardPrefix",
-    FrozenPrefix = "@FrozenPrefix",
-    GambitPrefix = "@GambitPrefix",
-    IceWardPrefix = "@IceWardPrefix",
-    IgnitedPrefix = "@IgnitedPrefix",
-    LightningWardPrefix = "@LightningWardPrefix",
-    NatureWardPrefix = "@NatureWardPrefix",
-    OpportunistPrefix = "@OpportunistPrefix",
-    PhysicalWardPrefix = "@PhysicalWardPrefix",
-    RallyPrefix = "@RallyPrefix",
-    RetaliatePrefix = "@RetaliatePrefix",
-    SlashWardPrefix = "@SlashWardPrefix",
-    SpectralWardPrefix = "@SpectralWardPrefix",
-    StrikeWardPrefix = "@StrikeWardPrefix",
-    ThrustWardPrefix = "@ThrustWardPrefix",
-    WildernessWardPrefix = "@WildernessWardPrefix",
-}
+export type AppliedPrefix = "" | "@AbyssalPrefix" | "@ElectrifiedPrefix" | "@EmpoweredPrefix" | "@IgnitedPrefix" | "@FrozenPrefix" | "@ArborealPrefix" | "@BrashPrefix" | "@OpportunistPrefix" | "@RetaliatePrefix" | "@ExhilaratePrefix" | "@CruelPrefix" | "@GambitPrefix" | "@RallyPrefix" | "@AbyssalWardPrefix" | "@FireWardPrefix" | "@LightningWardPrefix" | "@ArcaneWardPrefix" | "@IceWardPrefix" | "@NatureWardPrefix" | "@SlashWardPrefix" | "@StrikeWardPrefix" | "@ThrustWardPrefix" | "@PhysicalWardPrefix" | "@WildernessWardPrefix" | "@ElementalWardPrefix" | "@SpectralWardPrefix";
 
-export enum AppliedSuffix {
-    ArtificerSuffix = "@ArtificerSuffix",
-    AssassinSuffix = "@AssassinSuffix",
-    BarbarianSuffix = "@BarbarianSuffix",
-    BattlemageSuffix = "@BattlemageSuffix",
-    BrigandSuffix = "@BrigandSuffix",
-    CavalierSuffix = "@CavalierSuffix",
-    ClericSuffix = "@ClericSuffix",
-    DruidSuffix = "@DruidSuffix",
-    DuelistSuffix = "@DuelistSuffix",
-    Empty = "",
-    FighterSuffix = "@FighterSuffix",
-    KnightSuffix = "@KnightSuffix",
-    MageSuffix = "@MageSuffix",
-    MonkSuffix = "@MonkSuffix",
-    NomadSuffix = "@NomadSuffix",
-    OccultistSuffix = "@OccultistSuffix",
-    PriestSuffix = "@PriestSuffix",
-    RangerSuffix = "@RangerSuffix",
-    SageSuffix = "@SageSuffix",
-    ScholarSuffix = "@ScholarSuffix",
-    SentrySuffix = "@SentrySuffix",
-    SoldierSuffix = "@SoldierSuffix",
-    SpellswordSuffix = "@SpellswordSuffix",
-    TricksterSuffix = "@TricksterSuffix",
-    WardenSuffix = "@WardenSuffix",
-    ZealotSuffix = "@ZealotSuffix",
-}
+export type AppliedSuffix = "@ArtificerSuffix" | "@AssassinSuffix" | "@BarbarianSuffix" | "@BattlemageSuffix" | "@BrigandSuffix" | "@CavalierSuffix" | "@ClericSuffix" | "@DruidSuffix" | "@DuelistSuffix" | "@FighterSuffix" | "@KnightSuffix" | "@MageSuffix" | "@MonkSuffix" | "@NomadSuffix" | "@OccultistSuffix" | "@PriestSuffix" | "@RangerSuffix" | "@SageSuffix" | "@ScholarSuffix" | "@SentrySuffix" | "@SoldierSuffix" | "@SpellswordSuffix" | "@TricksterSuffix" | "@WardenSuffix" | "@ZealotSuffix" | "";
 
-export enum ConditionEvent {
-    OnActive = "OnActive",
-    OnEquip = "OnEquip",
-    OnUnsheathed = "OnUnsheathed",
-}
+export type ConditionEvent = "OnEquip" | "OnActive" | "OnUnsheathed";
 
-export enum DayPhases {
-    Day = "Day",
-    Empty = "",
-    Night = "Night",
-}
+export type DayPhases = "" | "Day" | "Night";
 
-export enum DeprecatedPerkID {
-    Empty = "",
-    PerkIDBagsAmmoReturn = "PerkID_Bags_AmmoReturn",
-}
+export type DeprecatedPerkID = "" | "PerkID_Bags_AmmoReturn";
 
-export enum FishingWaterType {
-    Empty = "",
-    Fresh = "Fresh",
-    Salt = "Salt",
-}
+export type FishingWaterType = "" | "Salt" | "Fresh";
 
-export enum GroupName {
-    AmberNatureDMG = "Amber_NatureDMG",
-    AmberNatureWard = "Amber_NatureWard",
-    AmethystAbyssalWard = "Amethyst_AbyssalWard",
-    AmethystVoidDMG = "Amethyst_VoidDMG",
-    AquamarineIceDMG = "Aquamarine_IceDMG",
-    AquamarineIceWard = "Aquamarine_IceWard",
-    DiamondRallyGem = "Diamond_RallyGem",
-    DiamondWildernessWard = "Diamond_WildernessWard",
-    EmeraldOpportunistGem = "Emerald_OpportunistGem",
-    EmeraldThrustWard = "Emerald_ThrustWard",
-    Empty = "",
-    JasperRetaliateGem = "Jasper_RetaliateGem",
-    JasperStrikeWard = "Jasper_StrikeWard",
-    MalachiteCruelGem = "Malachite_CruelGem",
-    MalachiteSpectralWard = "Malachite_SpectralWard",
-    MoonstoneExhilarateGem = "Moonstone_ExhilarateGem",
-    MoonstoneSlashWard = "Moonstone_SlashWard",
-    OnyxBrashGem = "Onyx_BrashGem",
-    OnyxPhysicalWard = "Onyx_PhysicalWard",
-    OpalElementalWard = "Opal_ElementalWard",
-    OpalGambitGem = "Opal_GambitGem",
-    RubyFireDMG = "Ruby_FireDMG",
-    RubyFireWard = "Ruby_FireWard",
-    SapphireArcaneDMG = "Sapphire_ArcaneDMG",
-    SapphireArcaneWard = "Sapphire_ArcaneWard",
-    TopazLightningDMG = "Topaz_LightningDMG",
-    TopazLightningWard = "Topaz_LightningWard",
-}
+export type GroupName = "" | "Amethyst_VoidDMG" | "Topaz_LightningDMG" | "Sapphire_ArcaneDMG" | "Ruby_FireDMG" | "Aquamarine_IceDMG" | "Amber_NatureDMG" | "Onyx_BrashGem" | "Emerald_OpportunistGem" | "Jasper_RetaliateGem" | "Moonstone_ExhilarateGem" | "Malachite_CruelGem" | "Opal_GambitGem" | "Diamond_RallyGem" | "Amethyst_AbyssalWard" | "Ruby_FireWard" | "Topaz_LightningWard" | "Sapphire_ArcaneWard" | "Aquamarine_IceWard" | "Amber_NatureWard" | "Moonstone_SlashWard" | "Jasper_StrikeWard" | "Emerald_ThrustWard" | "Onyx_PhysicalWard" | "Diamond_WildernessWard" | "Opal_ElementalWard" | "Malachite_SpectralWard";
 
-export enum ItemClassGSBonus {
-    Blunderbuss500 = "Blunderbuss:500",
-    Bow500 = "Bow:500",
-    Empty = "",
-    FireStaff220 = "FireStaff:220",
-    FireStaff500 = "FireStaff:500",
-    GreatSword500 = "GreatSword:500",
-    Hatchet500 = "Hatchet:500",
-    IceMagic500 = "IceMagic:500",
-    LifeStaff500 = "LifeStaff:500",
-    Magic500Ranged500 = "Magic:500,Ranged:500",
-    Musket400 = "Musket:400",
-    Musket500 = "Musket:500",
-    Rapier500 = "Rapier:500",
-    Shield500 = "Shield:500",
-    Spear200 = "Spear:200",
-    Spear500 = "Spear:500",
-    Spear570 = "Spear:570",
-    Sword500 = "Sword:500",
-    The2HAxe500 = "2hAxe:500",
-    The2HHammer340 = "2HHammer:340",
-    The2HHammer433 = "2HHammer:433",
-    The2HHammer500 = "2HHammer:500",
-    VoidGauntlet300 = "VoidGauntlet:300",
-    VoidGauntlet450 = "VoidGauntlet:450",
-    VoidGauntlet500 = "VoidGauntlet:500",
-}
+export type ItemClassGSBonus = "" | "Hatchet:500" | "2HHammer:433" | "2HHammer:500" | "2HHammer:340" | "Musket:500" | "Musket:400" | "Spear:500" | "Spear:200" | "Spear:570" | "Bow:500" | "Rapier:500" | "LifeStaff:500" | "FireStaff:500" | "FireStaff:220" | "Sword:500" | "Shield:500" | "2hAxe:500" | "IceMagic:500" | "VoidGauntlet:500" | "VoidGauntlet:300" | "VoidGauntlet:450" | "Blunderbuss:500" | "GreatSword:500" | "Magic:500,Ranged:500";
 
-export enum ItemPerkConflictsLOCText {
-    Empty = "",
-    IncompatibleElementalPerk = "@incompatible_elemental_perk",
-}
+export type ItemPerkConflictsLOCText = "" | "@incompatible_elemental_perk";
 
-export enum PerkType {
-    Gem = "Gem",
-    Generated = "Generated",
-    Inherent = "Inherent",
-}
+export type PerkType = "Inherent" | "Gem" | "Generated";
 
-export interface PerkExclusiveLabelData {
+export type PerkExclusiveLabelData = {
     ExclusiveLabelID:   string;
     Weight:             number;
     ItemClassOverrides: ItemClassOverrides;
 }
 
-export enum ItemClassOverrides {
-    Empty = "",
-    Shield200 = "Shield:200",
-}
+export type ItemClassOverrides = "" | "Shield:200";
 
-export interface PlayerTitleData {
+export type PlayerTitleData = {
     TitleID:                             string;
     TitleType:                           TitleType;
     UIDisplayCategory:                   string;
@@ -8152,28 +3608,11 @@ export interface PlayerTitleData {
     RequiredPlayerLevel:                 number | null;
 }
 
-export enum PermanentOwnershipAchievementIDEnum {
-    Empty = "",
-    TerritoryPermanentOwner02 = "TerritoryPermanentOwner02",
-    TerritoryPermanentOwner04 = "TerritoryPermanentOwner04",
-    TerritoryPermanentOwner05 = "TerritoryPermanentOwner05",
-    TerritoryPermanentOwner06 = "TerritoryPermanentOwner06",
-    TerritoryPermanentOwner08 = "TerritoryPermanentOwner08",
-    TerritoryPermanentOwner09 = "TerritoryPermanentOwner09",
-    TerritoryPermanentOwner10 = "TerritoryPermanentOwner10",
-    TerritoryPermanentOwner11 = "TerritoryPermanentOwner11",
-    TerritoryPermanentOwner12 = "TerritoryPermanentOwner12",
-    TerritoryPermanentOwner13 = "TerritoryPermanentOwner13",
-    TerritoryPermanentOwner15 = "TerritoryPermanentOwner15",
-    TerritoryPermanentOwner16 = "TerritoryPermanentOwner16",
-}
+export type PermanentOwnershipAchievementIDEnum = "" | "TerritoryPermanentOwner02" | "TerritoryPermanentOwner04" | "TerritoryPermanentOwner05" | "TerritoryPermanentOwner06" | "TerritoryPermanentOwner08" | "TerritoryPermanentOwner09" | "TerritoryPermanentOwner10" | "TerritoryPermanentOwner11" | "TerritoryPermanentOwner12" | "TerritoryPermanentOwner13" | "TerritoryPermanentOwner15" | "TerritoryPermanentOwner16";
 
-export enum TitleType {
-    Account = "Account",
-    Character = "Character",
-}
+export type TitleType = "Account" | "Character";
 
-export interface ProgressionPointData {
+export type ProgressionPointData = {
     ProgressionPointId:                  string;
     Description:                         string;
     PointPoolId:                         KillEnemyWeaponIDEnum;
@@ -8194,67 +3633,17 @@ export interface ProgressionPointData {
     UpgradeCardStat:                     UpgradeCardStat;
 }
 
-export enum PoolCategory {
-    Empty = "",
-    Territory = "Territory",
-}
+export type PoolCategory = "" | "Territory";
 
-export enum TerritoryBonusCategory {
-    Empty = "",
-    GainFactionRep = "GainFactionRep",
-    GainGatherRate = "GainGatherRate",
-    GainHousePoints = "GainHousePoints",
-    GainStanding = "GainStanding",
-    GainStorage = "GainStorage",
-    GainXP = "GainXP",
-    HousePurchase = "HousePurchase",
-    PropertyTax = "PropertyTax",
-    StationTax = "StationTax",
-    TradingTax = "TradingTax",
-}
+export type TerritoryBonusCategory = "" | "GainStanding" | "GainXP" | "GainStorage" | "GainGatherRate" | "GainFactionRep" | "GainHousePoints" | "TradingTax" | "StationTax" | "PropertyTax" | "HousePurchase";
 
-export enum UpgradeCardCategory {
-    Empty = "",
-    UITerritoryStandingUpgradeCategoryCraftingFee = "@ui_territory_standing_upgrade_category_crafting_fee",
-    UITerritoryStandingUpgradeCategoryGather = "@ui_territory_standing_upgrade_category_gather",
-    UITerritoryStandingUpgradeCategoryHouseOwnership = "@ui_territory_standing_upgrade_category_house_ownership",
-    UITerritoryStandingUpgradeCategoryHousepoint = "@ui_territory_standing_upgrade_category_housepoint",
-    UITerritoryStandingUpgradeCategoryPropertyTax = "@ui_territory_standing_upgrade_category_property_tax",
-    UITerritoryStandingUpgradeCategoryReputation = "@ui_territory_standing_upgrade_category_reputation",
-    UITerritoryStandingUpgradeCategoryStandingGain = "@ui_territory_standing_upgrade_category_standing_gain",
-    UITerritoryStandingUpgradeCategoryStorage = "@ui_territory_standing_upgrade_category_storage",
-    UITerritoryStandingUpgradeCategoryTradingTax = "@ui_territory_standing_upgrade_category_trading_tax",
-    UITerritoryStandingUpgradeCategoryXPGain = "@ui_territory_standing_upgrade_category_xp_gain",
-}
+export type UpgradeCardCategory = "" | "@ui_territory_standing_upgrade_category_standing_gain" | "@ui_territory_standing_upgrade_category_xp_gain" | "@ui_territory_standing_upgrade_category_storage" | "@ui_territory_standing_upgrade_category_gather" | "@ui_territory_standing_upgrade_category_reputation" | "@ui_territory_standing_upgrade_category_housepoint" | "@ui_territory_standing_upgrade_category_trading_tax" | "@ui_territory_standing_upgrade_category_crafting_fee" | "@ui_territory_standing_upgrade_category_property_tax" | "@ui_territory_standing_upgrade_category_house_ownership";
 
-export enum UpgradeCardSprite {
-    Empty = "",
-    LyShineUIImagesTerritoryStandingRewardsExperienceBoostDds = "LyShineUI/Images/Territory/StandingRewards/ExperienceBoost.dds",
-    LyShineUIImagesTerritoryStandingRewardsFactionReputationDds = "LyShineUI/Images/Territory/StandingRewards/FactionReputation.dds",
-    LyShineUIImagesTerritoryStandingRewardsGainStandingDds = "LyShineUI/Images/Territory/StandingRewards/GainStanding.dds",
-    LyShineUIImagesTerritoryStandingRewardsGatherBoostDds = "LyShineUI/Images/Territory/StandingRewards/GatherBoost.dds",
-    LyShineUIImagesTerritoryStandingRewardsHouseOwnershipDds = "LyShineUI/Images/Territory/StandingRewards/HouseOwnership.dds",
-    LyShineUIImagesTerritoryStandingRewardsHousePointDds = "LyShineUI/Images/Territory/StandingRewards/HousePoint.dds",
-    LyShineUIImagesTerritoryStandingRewardsPropertyTaxDds = "LyShineUI/Images/Territory/StandingRewards/PropertyTax.dds",
-    LyShineUIImagesTerritoryStandingRewardsStationFeeDds = "LyShineUI/Images/Territory/StandingRewards/StationFee.dds",
-    LyShineUIImagesTerritoryStandingRewardsStorageDds = "LyShineUI/Images/Territory/StandingRewards/Storage.dds",
-    LyShineUIImagesTerritoryStandingRewardsTradingTaxDds = "LyShineUI/Images/Territory/StandingRewards/TradingTax.dds",
-}
+export type UpgradeCardSprite = "" | "LyShineUI/Images/Territory/StandingRewards/GainStanding.dds" | "LyShineUI/Images/Territory/StandingRewards/ExperienceBoost.dds" | "LyShineUI/Images/Territory/StandingRewards/Storage.dds" | "LyShineUI/Images/Territory/StandingRewards/GatherBoost.dds" | "LyShineUI/Images/Territory/StandingRewards/FactionReputation.dds" | "LyShineUI/Images/Territory/StandingRewards/HousePoint.dds" | "LyShineUI/Images/Territory/StandingRewards/TradingTax.dds" | "LyShineUI/Images/Territory/StandingRewards/StationFee.dds" | "LyShineUI/Images/Territory/StandingRewards/PropertyTax.dds" | "LyShineUI/Images/Territory/StandingRewards/HouseOwnership.dds";
 
-export enum UpgradeCardStat {
-    Empty = "",
-    UITerritoryStandingUpgradeStatCraftingFee = "@ui_territory_standing_upgrade_stat_crafting_fee",
-    UITerritoryStandingUpgradeStatFactionRep = "@ui_territory_standing_upgrade_stat_faction_rep",
-    UITerritoryStandingUpgradeStatGatheringSpeed = "@ui_territory_standing_upgrade_stat_gathering_speed",
-    UITerritoryStandingUpgradeStatHousePoint = "@ui_territory_standing_upgrade_stat_house_point",
-    UITerritoryStandingUpgradeStatPropertyTax = "@ui_territory_standing_upgrade_stat_property_tax",
-    UITerritoryStandingUpgradeStatStorage = "@ui_territory_standing_upgrade_stat_storage",
-    UITerritoryStandingUpgradeStatTerritoryStanding = "@ui_territory_standing_upgrade_stat_territory_standing",
-    UITerritoryStandingUpgradeStatTradingTax = "@ui_territory_standing_upgrade_stat_trading_tax",
-    UITerritoryStandingUpgradeStatXPGain = "@ui_territory_standing_upgrade_stat_xp_gain",
-}
+export type UpgradeCardStat = "" | "@ui_territory_standing_upgrade_stat_territory_standing" | "@ui_territory_standing_upgrade_stat_xp_gain" | "@ui_territory_standing_upgrade_stat_storage" | "@ui_territory_standing_upgrade_stat_gathering_speed" | "@ui_territory_standing_upgrade_stat_faction_rep" | "@ui_territory_standing_upgrade_stat_house_point" | "@ui_territory_standing_upgrade_stat_trading_tax" | "@ui_territory_standing_upgrade_stat_crafting_fee" | "@ui_territory_standing_upgrade_stat_property_tax";
 
-export interface ProgressionPoolData {
+export type ProgressionPoolData = {
     ProgressionPoolId: string;
     Category:          ProgressionPoolDatumCategory;
     PointCap:          number;
@@ -8262,12 +3651,9 @@ export interface ProgressionPoolData {
     VersionNumber:     number | null;
 }
 
-export enum ProgressionPoolDatumCategory {
-    Player = "Player",
-    Territory = "Territory",
-}
+export type ProgressionPoolDatumCategory = "Player" | "Territory";
 
-export interface PromotionMutationStaticData {
+export type PromotionMutationStaticData = {
     PromotionMutationId: string;
     Promotion1:          string;
     Promotion2:          string;
@@ -8279,7 +3665,7 @@ export interface PromotionMutationStaticData {
     BackgroundColor:     string;
 }
 
-export interface PVPRankData {
+export type PVPRankData = {
     Level:             number;
     DisplayName:       PVPRankDatumDisplayName;
     RequiredLevel:     number;
@@ -8297,33 +3683,13 @@ export interface PVPRankData {
     SkipStage3Salt:    number;
 }
 
-export enum PVPRankDatumDisplayName {
-    Empty = "",
-    UIPvpRankName0 = "@ui_pvp_rank_name_0",
-    UIPvpRankName1 = "@ui_pvp_rank_name_1",
-    UIPvpRankName2 = "@ui_pvp_rank_name_2",
-    UIPvpRankName3 = "@ui_pvp_rank_name_3",
-    UIPvpRankName4 = "@ui_pvp_rank_name_4",
-    UIPvpRankName5 = "@ui_pvp_rank_name_5",
-    UIPvpRankName6 = "@ui_pvp_rank_name_6",
-}
+export type PVPRankDatumDisplayName = "@ui_pvp_rank_name_0" | "@ui_pvp_rank_name_1" | "" | "@ui_pvp_rank_name_2" | "@ui_pvp_rank_name_3" | "@ui_pvp_rank_name_4" | "@ui_pvp_rank_name_5" | "@ui_pvp_rank_name_6";
 
-export enum PVPRankDatumGameEventID {
-    Empty = "",
-    PVPLevelUpItemReward = "PvP_LevelUpItemReward",
-}
+export type PVPRankDatumGameEventID = "" | "PvP_LevelUpItemReward";
 
-export enum RewardDescription {
-    Empty = "",
-    UIPvpTrackBannerrewards1 = "@ui_pvp_track_bannerrewards_1",
-    UIPvpTrackBannerrewards2 = "@ui_pvp_track_bannerrewards_2",
-    UIPvpTrackBannerrewards3 = "@ui_pvp_track_bannerrewards_3",
-    UIPvpTrackBannerrewards4 = "@ui_pvp_track_bannerrewards_4",
-    UIPvpTrackBannerrewards5 = "@ui_pvp_track_bannerrewards_5",
-    UIPvpTrackBannerrewards6 = "@ui_pvp_track_bannerrewards_6",
-}
+export type RewardDescription = "" | "@ui_pvp_track_bannerrewards_1" | "@ui_pvp_track_bannerrewards_2" | "@ui_pvp_track_bannerrewards_3" | "@ui_pvp_track_bannerrewards_4" | "@ui_pvp_track_bannerrewards_5" | "@ui_pvp_track_bannerrewards_6";
 
-export interface PVPStoreData {
+export type PVPStoreData = {
     RowPlaceholders:     string;
     Bucket1:             Bucket1;
     Tag1:                string;
@@ -8366,78 +3732,40 @@ export interface PVPStoreData {
     ExcludeTypeShop3:    ExcludeTypeShop1;
 }
 
-export enum Bucket1 {
-    Empty = "",
-    NotchOne = "NotchOne",
-}
+export type Bucket1 = "NotchOne" | "";
 
-export enum Bucket2 {
-    Empty = "",
-    NotchTwo = "NotchTwo",
-}
+export type Bucket2 = "NotchTwo" | "";
 
-export enum Bucket3 {
-    Empty = "",
-    NotchThree = "NotchThree",
-}
+export type Bucket3 = "NotchThree" | "";
 
-export enum Entitlement3 {
-    EmoteCurtsy = "Emote_Curtsy",
-    Empty = "",
-    EntEmoteAutograph = "Ent_Emote_Autograph",
-    EntEmoteGiveFlower = "Ent_Emote_GiveFlower",
-    EntEmotePushups = "Ent_Emote_Pushups",
-    EntEmoteQueenWave = "Ent_Emote_QueenWave",
-}
+export type Entitlement3 = "" | "Ent_Emote_Autograph" | "Ent_Emote_QueenWave" | "Ent_Emote_Pushups" | "Ent_Emote_GiveFlower" | "Emote_Curtsy";
 
-export enum ExcludeTypeShop1 {
-    Coin = "Coin",
-    Emote = "Emote",
-    Empty = "",
-    Named = "Named",
-    PotionsLarge = "PotionsLarge",
-    PotionsMed = "PotionsMed",
-    PotionsSmall = "PotionsSmall",
-    Salt = "Salt",
-    Shards = "Shards",
-    Special = "Special",
-    Token = "Token",
-    Weapon = "Weapon",
-    XP = "XP",
-}
+export type ExcludeTypeShop1 = "" | "PotionsSmall" | "PotionsMed" | "PotionsLarge" | "Shards" | "XP" | "Coin" | "Token" | "Salt" | "Named" | "Emote" | "Weapon" | "Special";
 
-export interface RandomEncounterDefinitions {
+export type RandomEncounterDefinitions = {
     AreaID:           string;
     VitalsLevelRange: VitalsLevelRange;
 }
 
-export enum VitalsLevelRange {
-    Empty = "",
-    The6061 = "60-61",
-}
+export type VitalsLevelRange = "" | "60-61";
 
-export interface RefiningRecipes {
+export type RefiningRecipes = {
     StructureID:  string;
     RefineType:   string;
     TooltipText:  string;
     FuelCategory: string;
 }
 
-export interface ResourceItemDefinitions {
+export type ResourceItemDefinitions = {
     ResourceID: string;
     SocketType: SocketType;
     GemPerk:    string;
     PerkBucket: string;
 }
 
-export enum SocketType {
-    Chitin = "Chitin",
-    Empty = "",
-    Gem = "Gem",
-    Runeglass = "Runeglass",
-}
+export type SocketType = "" | "Gem" | "Chitin" | "Runeglass";
 
-export interface RewardMilestoneData {
+export type RewardMilestoneData = {
     RewardID:       string;
     MilestoneType:  MilestoneType;
     MilestoneLevel: number;
@@ -8448,19 +3776,11 @@ export interface RewardMilestoneData {
     Notes:          RewardMilestoneDatumNotes;
 }
 
-export enum MilestoneType {
-    Empty = "",
-    Major = "major",
-    Minor = "minor",
-    Territory = "territory",
-}
+export type MilestoneType = "major" | "" | "territory" | "minor";
 
-export enum RewardMilestoneDatumNotes {
-    Empty = "",
-    LocatedInPBA = "Located in PBA",
-}
+export type RewardMilestoneDatumNotes = "Located in PBA" | "";
 
-export interface RewardModifierData {
+export type RewardModifierData = {
     Modifiers:                 string;
     Experience:                number;
     Currency:                  number | null;
@@ -8477,7 +3797,7 @@ export interface RewardModifierData {
     "Found in":                string;
 }
 
-export interface RewardTrackItemData {
+export type RewardTrackItemData = {
     RewardId:                      string;
     Entitlement:                   Entitlement;
     GameEvent:                     string;
@@ -8493,20 +3813,11 @@ export interface RewardTrackItemData {
     UseLevelGS:                    string;
 }
 
-export enum RewardTrackItemDatumCategoricalProgressionID {
-    AzothSaltCurrency = "AzothSalt_Currency",
-}
+export type RewardTrackItemDatumCategoricalProgressionID = "AzothSalt_Currency";
 
-export enum Entitlement {
-    EmoteBreakItUp = "Emote_BreakItUp",
-    EmoteFrustrated = "Emote_Frustrated",
-    EmoteImmatureTaunt = "Emote_ImmatureTaunt",
-    EmoteMIMEInBox = "Emote_MimeInBox",
-    EmoteUmpire = "Emote_Umpire",
-    Empty = "",
-}
+export type Entitlement = "" | "Emote_Frustrated" | "Emote_BreakItUp" | "Emote_ImmatureTaunt" | "Emote_Umpire" | "Emote_MimeInBox";
 
-export interface ScheduleData {
+export type ScheduleData = {
     ScheduleId:   string;
     StartDate:    string;
     EndDate:      string;
@@ -8516,7 +3827,7 @@ export interface ScheduleData {
     Comments:     string;
 }
 
-export interface SeasonPassRankData {
+export type SeasonPassRankData = {
     Level:            number;
     MaximumInfluence: number;
     InfluenceCost:    number;
@@ -8524,7 +3835,7 @@ export interface SeasonPassRankData {
     PremiumRewardId:  string;
 }
 
-export interface SeasonsRewardData {
+export type SeasonsRewardData = {
     RewardId:              string;
     RewardIndex:           number;
     RewardType:            RewardTypeEnum;
@@ -8537,35 +3848,16 @@ export interface SeasonsRewardData {
     LimitingEntitlementId: LimitingEntitlementID;
 }
 
-export enum LimitingEntitlementID {
-    Empty = "",
-    EntitlementSeason1UnclaimedFreePass05 = "Entitlement_Season1_UnclaimedFreePass05",
-    EntitlementSeason1UnclaimedFreePass30 = "Entitlement_Season1_UnclaimedFreePass30",
-    EntitlementSeason1UnclaimedFreePass40 = "Entitlement_Season1_UnclaimedFreePass40",
-    EntitlementSeason1UnclaimedFreePass60 = "Entitlement_Season1_UnclaimedFreePass60",
-    EntitlementSeason1UnclaimedFreePass80 = "Entitlement_Season1_UnclaimedFreePass80",
-    EntitlementSeason1UnclaimedFreePass99 = "Entitlement_Season1_UnclaimedFreePass99",
-    EntitlementSeason1UnclaimedGearSetStorage = "Entitlement_Season1_UnclaimedGearSetStorage",
-    EntitlementSeason1UnclaimedPremiumPass05 = "Entitlement_Season1_UnclaimedPremiumPass05",
-    EntitlementSeason1UnclaimedPremiumPass20 = "Entitlement_Season1_UnclaimedPremiumPass20",
-    EntitlementSeason1UnclaimedPremiumPass35 = "Entitlement_Season1_UnclaimedPremiumPass35",
-    EntitlementSeason1UnclaimedPremiumPass55 = "Entitlement_Season1_UnclaimedPremiumPass55",
-    EntitlementSeason1UnclaimedPremiumPass80 = "Entitlement_Season1_UnclaimedPremiumPass80",
-}
+export type LimitingEntitlementID = "" | "Entitlement_Season1_UnclaimedFreePass05" | "Entitlement_Season1_UnclaimedFreePass30" | "Entitlement_Season1_UnclaimedFreePass40" | "Entitlement_Season1_UnclaimedFreePass60" | "Entitlement_Season1_UnclaimedFreePass80" | "Entitlement_Season1_UnclaimedFreePass99" | "Entitlement_Season1_UnclaimedGearSetStorage" | "Entitlement_Season1_UnclaimedPremiumPass05" | "Entitlement_Season1_UnclaimedPremiumPass20" | "Entitlement_Season1_UnclaimedPremiumPass35" | "Entitlement_Season1_UnclaimedPremiumPass55" | "Entitlement_Season1_UnclaimedPremiumPass80";
 
-export enum RewardTypeEnum {
-    BattlePassFree = "BattlePass_Free",
-    BattlePassPremium = "BattlePass_Premium",
-    Chapter = "Chapter",
-    Journey = "Journey",
-}
+export type RewardTypeEnum = "BattlePass_Free" | "BattlePass_Premium" | "Journey" | "Chapter";
 
-export interface SeasonsRewardsActivitiesConfig {
+export type SeasonsRewardsActivitiesConfig = {
     ConfigId:    string;
     ConfigValue: number;
 }
 
-export interface SeasonsRewardsActivitiesTasksData {
+export type SeasonsRewardsActivitiesTasksData = {
     ActivitiesTaskId: string;
     Task:             string;
     Type:             Column1TypeEnum;
@@ -8573,23 +3865,11 @@ export interface SeasonsRewardsActivitiesTasksData {
     Active:           Active;
 }
 
-export enum Active {
-    Disabled = "DISABLED",
-    Empty = "",
-    RabbitsrevengeEvent = "RABBITSREVENGE_EVENT",
-    SpringtidebloomEvent = "SPRINGTIDEBLOOM_EVENT",
-}
+export type Active = "" | "DISABLED" | "RABBITSREVENGE_EVENT" | "SPRINGTIDEBLOOM_EVENT";
 
-export enum Column1TypeEnum {
-    Crafting = "Crafting",
-    Expedition = "Expedition",
-    Gathering = "Gathering",
-    Pve = "Pve",
-    Pvp = "Pvp",
-    Season = "Season",
-}
+export type Column1TypeEnum = "Pve" | "Pvp" | "Gathering" | "Crafting" | "Season" | "Expedition";
 
-export interface SeasonsRewardsCardData {
+export type SeasonsRewardsCardData = {
     CardID:           CardIDEnum;
     StampsToComplete: number;
     LineBonusXp:      number;
@@ -8597,7 +3877,7 @@ export interface SeasonsRewardsCardData {
     CardBonusXp:      number;
 }
 
-export interface SeasonsRewardsCardTemplates {
+export type SeasonsRewardsCardTemplates = {
     CardAndRowID:   string;
     Column1Type:    Column1TypeEnum;
     Column1XP:      number;
@@ -8613,7 +3893,7 @@ export interface SeasonsRewardsCardTemplates {
     Column4Special: string;
 }
 
-export interface SeasonsRewardsChapterData {
+export type SeasonsRewardsChapterData = {
     ChapterId:        Chapter;
     ChapterType:      string;
     ChapterIndex:     number;
@@ -8621,16 +3901,9 @@ export interface SeasonsRewardsChapterData {
     ChapterRewardId:  string;
 }
 
-export enum Chapter {
-    Season1Challenge = "Season1Challenge",
-    Season1Chapter1 = "Season1Chapter1",
-    Season1Chapter2 = "Season1Chapter2",
-    Season1Chapter3 = "Season1Chapter3",
-    Season1Chapter4 = "Season1Chapter4",
-    Season1Chapter5 = "Season1Chapter5",
-}
+export type Chapter = "Season1Chapter1" | "Season1Chapter2" | "Season1Chapter3" | "Season1Chapter4" | "Season1Chapter5" | "Season1Challenge";
 
-export interface SeasonsRewardsJourneyData {
+export type SeasonsRewardsJourneyData = {
     JourneyTaskId: string;
     Chapter:       Chapter;
     Task:          string;
@@ -8638,7 +3911,7 @@ export interface SeasonsRewardsJourneyData {
     SortOrder:     number;
 }
 
-export interface SeasonsRewardsSeasonData {
+export type SeasonsRewardsSeasonData = {
     SeasonId:                     string;
     SeasonIndex:                  number;
     Name:                         string;
@@ -8648,7 +3921,7 @@ export interface SeasonsRewardsSeasonData {
     PurchasedLevelsEntitlementId: string;
 }
 
-export interface SeasonsRewardsStats {
+export type SeasonsRewardsStats = {
     TrackedStatID:              string;
     StatType:                   string;
     TargetID?:                  string;
@@ -8708,28 +3981,15 @@ export interface SeasonsRewardsStats {
     SongRank?:                  string;
 }
 
-export enum CraftingType {
-    Empty = "",
-    Refining = "Refining",
-}
+export type CraftingType = "" | "Refining";
 
-export enum MutatorRank {
-    Empty = "",
-    Silver = "SILVER",
-}
+export type MutatorRank = "" | "SILVER";
 
-export enum TradingCategories {
-    Empty = "",
-    WeaponsApparel = "Weapons,Apparel",
-}
+export type TradingCategories = "" | "Weapons,Apparel";
 
-export enum TradingGroups {
-    CraftingConsumables = "CraftingConsumables",
-    Empty = "",
-    PotionElemDefensePotionWellnessPotionPurifyB = "PotionElemDefense,PotionWellness,PotionPurifyB",
-}
+export type TradingGroups = "" | "CraftingConsumables" | "PotionElemDefense,PotionWellness,PotionPurifyB";
 
-export interface SeasonsRewardsTasks {
+export type SeasonsRewardsTasks = {
     SeasonsTaskID:        string;
     SeasonsTrackedStatID: string;
     TaskMaxValue:         number;
@@ -8737,7 +3997,7 @@ export interface SeasonsRewardsTasks {
     Description:          string;
 }
 
-export interface SimpleTreeCategoryData {
+export type SimpleTreeCategoryData = {
     MetaAchievementCategoryId: string;
     "Parent Category":         FactionInfluenceSrc;
     Index:                     number;
@@ -8746,7 +4006,7 @@ export interface SimpleTreeCategoryData {
     HideFromUI?:               boolean | null;
 }
 
-export interface SkillData {
+export type SkillData = {
     SkillID:             string;
     Name:                string;
     CategoryID:          CategoryID;
@@ -8758,32 +4018,22 @@ export interface SkillData {
     Description:         string;
 }
 
-export enum CategoryDisplay {
-    CombatSkills = "Combat Skills",
-    CraftingSkills = "Crafting Skills",
-    GatheringSkills = "Gathering Skills",
-    GeneralSkills = "General Skills",
-}
+export type CategoryDisplay = "General Skills" | "Combat Skills" | "Gathering Skills" | "Crafting Skills";
 
-export enum CategoryID {
-    Combat = "Combat",
-    Crafting = "Crafting",
-    Gathering = "Gathering",
-    General = "General",
-}
+export type CategoryID = "General" | "Combat" | "Gathering" | "Crafting";
 
-export interface SkillExperienceData {
+export type SkillExperienceData = {
     SkillLevel:  number;
     RequiredExp: number;
 }
 
-export interface Socketables {
+export type Socketables = {
     SocketableID: string;
     DisplayName:  string;
     Health:       number;
 }
 
-export interface SongBookData {
+export type SongBookData = {
     SongId:                   string;
     MusicTitle:               string;
     Performance:              Performance;
@@ -8807,29 +4057,15 @@ export interface SongBookData {
     HighestRankAchievementId: string;
 }
 
-export enum CompletionGameEvent {
-    SongCompletedEasy = "SongCompletedEasy",
-    SongCompletedHard = "SongCompletedHard",
-    SongCompletedMedium = "SongCompletedMedium",
-}
+export type CompletionGameEvent = "SongCompletedEasy" | "SongCompletedMedium" | "SongCompletedHard";
 
-export enum DanceTimeline {
-    PerformanceDance = "Performance_Dance",
-}
+export type DanceTimeline = "Performance_Dance";
 
-export enum NotePattern {
-    Expert = "Expert",
-    Novice = "Novice",
-    Skilled = "Skilled",
-}
+export type NotePattern = "Novice" | "Skilled" | "Expert";
 
-export enum Performance {
-    Easy = "Easy",
-    Hard = "Hard",
-    Medium = "Medium",
-}
+export type Performance = "Easy" | "Medium" | "Hard";
 
-export interface SongBookSheets {
+export type SongBookSheets = {
     SheetId:    string;
     Instrument: PaperdollID;
     SheetName:  SheetName;
@@ -8839,26 +4075,11 @@ export interface SongBookSheets {
     Timeline:   string;
 }
 
-export enum ErrorEvent {
-    AgMistake = "AG_MISTAKE",
-    AzfMistake = "AZF_MISTAKE",
-    DRMMistake = "DRM_MISTAKE",
-    ManMistake = "MAN_MISTAKE",
-    UrbMistake = "URB_MISTAKE",
-}
+export type ErrorEvent = "AG_MISTAKE" | "DRM_MISTAKE" | "URB_MISTAKE" | "MAN_MISTAKE" | "AZF_MISTAKE";
 
-export enum SheetName {
-    Empty = "",
-    UIMusicFlutePart1 = "@ui_music_flute_part_1",
-    UIMusicFlutePart2 = "@ui_music_flute_part_2",
-    UIMusicGuitarPart1 = "@ui_music_guitar_part_1",
-    UIMusicGuitarPart2 = "@ui_music_guitar_part_2",
-    UIMusicGuitarPart3 = "@ui_music_guitar_part_3",
-    UIMusicMandolinPart1 = "@ui_music_mandolin_part_1",
-    UIMusicMandolinPart2 = "@ui_music_mandolin_part_2",
-}
+export type SheetName = "@ui_music_guitar_part_1" | "@ui_music_guitar_part_2" | "" | "@ui_music_flute_part_1" | "@ui_music_flute_part_2" | "@ui_music_mandolin_part_1" | "@ui_music_mandolin_part_2" | "@ui_music_guitar_part_3";
 
-export interface SpellData {
+export type SpellData = {
     SpellID:                                         string;
     StatusEffects:                                   string;
     StatusEffectDurations:                           number | null | string;
@@ -8956,147 +4177,33 @@ export interface SpellData {
     MaintainDistanceFromGround?:                     boolean | null;
 }
 
-export enum AbilityID {
-    AbilityHatchetInfectedThrow = "Ability_Hatchet_InfectedThrow",
-    Empty = "",
-    GlobalPerkAbilitySwordWhirlingBlade = "GlobalPerk_Ability_Sword_WhirlingBlade",
-    IceStormPunishingStorm = "IceStormPunishingStorm",
-    PassiveBowSkirmishHasteWhenFoesNear = "Passive_Bow_Skirmish_HasteWhenFoesNear",
-    PassiveGreataxeMaulerArmorWhenFoesNear = "Passive_Greataxe_Mauler_ArmorWhenFoesNear",
-    PassiveGreataxeMaulerDmgWhenFoesNear = "Passive_Greataxe_Mauler_DmgWhenFoesNear",
-    PassiveHatchetBerserkDMGPerNearbyEnemy = "Passive_Hatchet_Berserk_DMGPerNearbyEnemy",
-    PassiveMusketTrapperBackSpdNearEnemy = "Passive_Musket_Trapper_BackSpdNearEnemy",
-    PassiveVoidGauntletEmpowerCloseRange = "Passive_VoidGauntlet_EmpowerCloseRange",
-    PassiveWarHammerCrowdCrusherArmorPerNearbyEnemy = "Passive_WarHammer_CrowdCrusher_ArmorPerNearbyEnemy",
-    SpinAttackDamagePerk1 = "SpinAttackDamagePerk1",
-    SpinAttackDamagePerk2 = "SpinAttackDamagePerk2",
-    SpinAttackDamagePerk3 = "SpinAttackDamagePerk3",
-    UltimateGreataxeReaper = "Ultimate_Greataxe_Reaper",
-    UltimateVoidGauntletDotHealAura = "Ultimate_VoidGauntlet_DotHealAura",
-    UpgradeGreataxeGravityWellDmgPerFoe = "Upgrade_Greataxe_GravityWell_DmgPerFoe",
-    UpgradeGreataxeWhirlwindDmgWhenFoesNear = "Upgrade_Greataxe_Whirlwind_DmgWhenFoesNear",
-}
+export type AbilityID = "" | "Passive_Bow_Skirmish_HasteWhenFoesNear" | "Upgrade_Greataxe_GravityWell_DmgPerFoe" | "Upgrade_Greataxe_Whirlwind_DmgWhenFoesNear" | "Passive_Greataxe_Mauler_DmgWhenFoesNear" | "Passive_Greataxe_Mauler_ArmorWhenFoesNear" | "Ultimate_Greataxe_Reaper" | "Passive_Hatchet_Berserk_DMGPerNearbyEnemy" | "Ability_Hatchet_InfectedThrow" | "IceStormPunishingStorm" | "Passive_Musket_Trapper_BackSpdNearEnemy" | "SpinAttackDamagePerk1" | "SpinAttackDamagePerk2" | "SpinAttackDamagePerk3" | "GlobalPerk_Ability_Sword_WhirlingBlade" | "Passive_VoidGauntlet_EmpowerCloseRange" | "Ultimate_VoidGauntlet_DotHealAura" | "Passive_WarHammer_CrowdCrusher_ArmorPerNearbyEnemy";
 
-export enum AmmoSlot {
-    ArrowAmmo = "arrow-ammo",
-    CartridgeAmmo = "cartridge-ammo",
-    Empty = "",
-}
+export type AmmoSlot = "cartridge-ammo" | "" | "arrow-ammo";
 
-export enum BeamEffect {
-    CFXNpcAngryEarthNagaPoisonPoolBeam = "cFX_npc_AngryEarthNaga.Poison_Pool_Beam",
-    CFXNpcDryadSwampBuffBeam = "cFX_npc_Dryad.Swamp_Buff_Beam",
-    CFXNpcLegionSigniferHOLTether = "cFX_npc_LegionSignifer.HOL_Tether",
-    CFXNpcUmbertoSpectreSoulSplitTether = "cFX_npc_UmbertoSpectre.soulSplit_tether",
-    CfxNpcAncientAnubianHorusInstrumentOfJudgementBeam = "cfx_npc_AncientAnubianHorus.InstrumentOfJudgement_beam",
-    Empty = "",
-    WFXArcaneRangeChain = "wFX_Arcane_Range.Chain",
-    WFXBlunderbussContainmentClawProjChain = "wFX_Blunderbuss_Containment.Claw_Proj_Chain",
-    WFXFireRangeChain = "wFX_Fire_Range.Chain",
-    WFXIceRangeChain = "wFX_Ice_Range.Chain",
-    WFXLightningRangeChain = "wFX_Lightning_Range.Chain",
-    WFXNatureRangeChain = "wFX_Nature_Range.Chain",
-    WFXVoidGauntDecayDrainHitScan = "wFX_VoidGaunt_Decay.Drain_HitScan",
-    WFXVoidRangeChain = "wFX_Void_Range.Chain",
-}
+export type BeamEffect = "" | "wFX_Void_Range.Chain" | "cFX_npc_AngryEarthNaga.Poison_Pool_Beam" | "wFX_Arcane_Range.Chain" | "cFX_npc_Dryad.Swamp_Buff_Beam" | "wFX_Lightning_Range.Chain" | "cFX_npc_LegionSignifer.HOL_Tether" | "cfx_npc_AncientAnubianHorus.InstrumentOfJudgement_beam" | "wFX_Blunderbuss_Containment.Claw_Proj_Chain" | "wFX_Fire_Range.Chain" | "wFX_Nature_Range.Chain" | "wFX_Ice_Range.Chain" | "cFX_npc_UmbertoSpectre.soulSplit_tether" | "wFX_VoidGaunt_Decay.Drain_HitScan";
 
-export enum CastingTypes {
-    AoE = "AoE",
-    Aoe = "Aoe",
-    BeamAttack = "BeamAttack",
-    Burnout = "Burnout",
-    CastingTypesAOE = "AOE",
-    Chain = "Chain",
-    ClosestTargetInAoe = "ClosestTargetInAoe",
-    Direct = "Direct",
-    Empty = "",
-    IceSpikes = "IceSpikes",
-    Line = "Line",
-    Meteor = "Meteor",
-    NoTargetSpawnFromRaycast = "NoTargetSpawnFromRaycast",
-    PathOfDestiny = "PathOfDestiny",
-    Projectile = "Projectile",
-    SpawnFromWeaponAimRaycast = "SpawnFromWeaponAimRaycast",
-}
+export type CastingTypes = "AoE" | "Meteor" | "Burnout" | "" | "Chain" | "Projectile" | "PathOfDestiny" | "Direct" | "ClosestTargetInAoe" | "BeamAttack" | "NoTargetSpawnFromRaycast" | "IceSpikes" | "Aoe" | "Line" | "SpawnFromWeaponAimRaycast" | "AOE";
 
-export enum FireJointName {
-    AimDirection = "aim_direction",
-    Empty = "",
-    FireJoint = "fireJoint",
-    HandsSlot = "HANDS_SLOT",
-    LeftHandAttach = "left_hand_attach",
-    LeftHandAttachment = "left_hand_attachment",
-    MusketAMuzzle = "musketA_muzzle",
-    RightHandAttach = "right_hand_attach",
-    VfxMuzzle = "vfx_muzzle",
-    Xform = "Xform",
-}
+export type FireJointName = "" | "right_hand_attach" | "left_hand_attach" | "left_hand_attachment" | "HANDS_SLOT" | "aim_direction" | "vfx_muzzle" | "Xform" | "musketA_muzzle" | "fireJoint";
 
-export enum ProjRaycastOrientation {
-    Empty = "",
-    ZNegative = "ZNegative",
-    Znegative = "Znegative",
-}
+export type ProjRaycastOrientation = "" | "ZNegative" | "Znegative";
 
-export enum ShapeTypes {
-    Box = "Box",
-    Capsule = "Capsule",
-    Cylinder = "Cylinder",
-    Empty = "",
-    NoShape = "NoShape",
-    Sphere = "Sphere",
-    SquareToroid = "SquareToroid",
-    Wedge = "Wedge",
-}
+export type ShapeTypes = "Sphere" | "" | "Cylinder" | "SquareToroid" | "Box" | "Wedge" | "NoShape" | "Capsule";
 
-export enum SpawnBeamCasterJoint {
-    Empty = "",
-    WingsBND = "Wings_BND",
-}
+export type SpawnBeamCasterJoint = "" | "Wings_BND";
 
-export enum SpellTypes {
-    Ability = "Ability",
-    Celestial = "Celestial",
-    ClawShot = "ClawShot",
-    Elemental = "Elemental",
-    Empty = "",
-}
+export type SpellTypes = "Elemental" | "" | "Ability" | "Celestial" | "ClawShot";
 
-export enum TargetAbilityCondition {
-    AIEmpressWaveImmunity = "AI_Empress_WaveImmunity",
-    AbilityLifestaffDivineEmbrace = "Ability_Lifestaff_DivineEmbrace",
-    Empty = "",
-}
+export type TargetAbilityCondition = "" | "AI_Empress_WaveImmunity" | "Ability_Lifestaff_DivineEmbrace";
 
-export enum TargetTypes {
-    All = "All",
-    Empty = "",
-    Enemy = "Enemy",
-    Friend = "Friend",
-    Friendly = "Friendly",
-    Group = "Group",
-    GroupNoRange = "GroupNoRange",
-    Self = "Self",
-}
+export type TargetTypes = "Enemy" | "All" | "" | "Friend" | "Friendly" | "Self" | "GroupNoRange" | "Group";
 
-export enum TertiarySpellID {
-    Empty = "",
-    IceMagicSpellShowerQuick = "IceMagic_Spell_Shower_Quick",
-    RuneFireStormAoEDominatorFriendly = "Rune_FireStorm_AoE_Dominator_Friendly",
-    RuneFireStormAoEFriendly = "Rune_FireStorm_AoE_Friendly",
-    RuneFireStormAoEGreaterFriendly = "Rune_FireStorm_AoE_Greater_Friendly",
-    RuneFireStormAoESurvivorFriendly = "Rune_FireStorm_AoE_Survivor_Friendly",
-    VoidGauntletNullChamberEmpower = "VoidGauntlet_NullChamber_Empower",
-    VoidGauntletNullChamberEmpowerBonusStamina = "VoidGauntlet_NullChamber_Empower_BonusStamina",
-    VoidGauntletSiphonAuraHeal = "VoidGauntlet_SiphonAura_Heal",
-}
+export type TertiarySpellID = "" | "IceMagic_Spell_Shower_Quick" | "Rune_FireStorm_AoE_Friendly" | "Rune_FireStorm_AoE_Greater_Friendly" | "Rune_FireStorm_AoE_Survivor_Friendly" | "Rune_FireStorm_AoE_Dominator_Friendly" | "VoidGauntlet_NullChamber_Empower" | "VoidGauntlet_NullChamber_Empower_BonusStamina" | "VoidGauntlet_SiphonAura_Heal";
 
-export enum WeaponSlotOverride {
-    Empty = "",
-    HeartGemSlot = "heart-gem-slot",
-}
+export type WeaponSlotOverride = "" | "heart-gem-slot";
 
-export interface StatusEffectCategoryData {
+export type StatusEffectCategoryData = {
     StatusEffectCategoryID: string;
     DurationDiminishingMod: number | null;
     DurationModMin:         number | null;
@@ -9107,7 +4214,7 @@ export interface StatusEffectCategoryData {
     ValueLimits:            string;
 }
 
-export interface StatusEffectData {
+export type StatusEffectData = {
     StatusID:                                    string;
     DisplayName:                                 string;
     Description:                                 string;
@@ -9392,405 +4499,49 @@ export interface StatusEffectData {
     DontApplyOnEndEffectOnTimeOutDeath?:         boolean | null;
 }
 
-export enum ABSVitalsCategoryABSVitalsCategory {
-    Ancient05 = "Ancient=.05",
-    Ancient1 = "Ancient=.1",
-    Ancient10 = "Ancient=.10",
-    Ancient15 = "Ancient=.15",
-    Ancient2 = "Ancient=.2",
-    AngryEarth05 = "AngryEarth=.05",
-    AngryEarth1 = "AngryEarth=.1",
-    AngryEarth10 = "AngryEarth=.10",
-    AngryEarth15 = "AngryEarth=.15",
-    AngryEarth2 = "AngryEarth=.2",
-    Beast05 = "Beast=.05",
-    Beast1 = "Beast=.1",
-    Beast10 = "Beast=.10",
-    Beast15 = "Beast=.15",
-    Beast2 = "Beast=.2",
-    Corrupted05 = "Corrupted=.05",
-    Corrupted1 = "Corrupted=.1",
-    Corrupted10 = "Corrupted=.10",
-    Corrupted15 = "Corrupted=.15",
-    Corrupted2 = "Corrupted=.2",
-    Empty = "",
-    Human05 = "Human=.05",
-    Human10 = "Human=.10",
-    Human15 = "Human=.15",
-    Lost05 = "Lost=.05",
-    Lost10 = "Lost=.10",
-    Lost15 = "Lost=.15",
-    MegaTurkey066Beast15 = "MegaTurkey=0.66+Beast=.15",
-    OutpostRush15 = "OutpostRush=.15",
-    Player05 = "Player=.05",
-    Wraith05 = "Wraith=.05",
-    Wraith1 = "Wraith=.1",
-    Wraith15 = "Wraith=.15",
-    Wraith2 = "Wraith=.2",
-}
+export type ABSVitalsCategoryABSVitalsCategory = "" | "Corrupted=.05" | "OutpostRush=.15" | "Player=.05" | "Wraith=.05" | "AngryEarth=.05" | "Beast=.05" | "Ancient=.05" | "Corrupted=.1" | "Wraith=.1" | "AngryEarth=.1" | "Beast=.1" | "Ancient=.1" | "Corrupted=.15" | "Wraith=.15" | "AngryEarth=.15" | "Beast=.15" | "Ancient=.15" | "Corrupted=.2" | "Wraith=.2" | "AngryEarth=.2" | "Beast=.2" | "Ancient=.2" | "Lost=.05" | "Lost=.10" | "Lost=.15" | "Corrupted=.10" | "AngryEarth=.10" | "Ancient=.10" | "Beast=.10" | "MegaTurkey=0.66+Beast=.15" | "Human=.05" | "Human=.10" | "Human=.15";
 
-export enum Afflictions {
-    AfflictionBlight1 = "AfflictionBlight=1",
-    AfflictionBlight10 = "AfflictionBlight=10",
-    AfflictionBlight2 = "AfflictionBlight=2",
-    AfflictionBlight20 = "AfflictionBlight=20",
-    AfflictionBlight3 = "AfflictionBlight=3",
-    AfflictionBlight5 = "AfflictionBlight=5",
-    AfflictionBlight99 = "AfflictionBlight=-99",
-    AfflictionCurse1 = "AfflictionCurse=1",
-    AfflictionCurse10 = "AfflictionCurse=10",
-    AfflictionCurse15 = "AfflictionCurse=15",
-    AfflictionCurse18 = "AfflictionCurse=18",
-    AfflictionCurse2 = "AfflictionCurse=2",
-    AfflictionCurse20 = "AfflictionCurse=20",
-    AfflictionCurse21 = "AfflictionCurse2=1",
-    AfflictionCurse230 = "AfflictionCurse2=-30",
-    AfflictionCurse3 = "AfflictionCurse=3",
-    AfflictionCurse31 = "AfflictionCurse3=1",
-    AfflictionCurse360 = "AfflictionCurse3=-60",
-    AfflictionCurse41 = "AfflictionCurse4=1",
-    AfflictionCurse460 = "AfflictionCurse4=-60",
-    AfflictionCurse5 = "AfflictionCurse=5",
-    AfflictionDrowning1 = "AfflictionDrowning=1",
-    AfflictionPoison1 = "AfflictionPoison=1",
-    AfflictionPoison10 = "AfflictionPoison=10",
-    AfflictionPoison2 = "AfflictionPoison=2",
-    AfflictionPoison20 = "AfflictionPoison=20",
-    AfflictionPoison3 = "AfflictionPoison=3",
-    AfflictionPoison30 = "AfflictionPoison=30",
-    AfflictionPoison5 = "AfflictionPoison=5",
-    AfflictionsAfflictionCurse21 = "AfflictionCurse2=-1",
-    Empty = "",
-}
+export type Afflictions = "" | "AfflictionCurse=18" | "AfflictionBlight=-99" | "AfflictionBlight=5" | "AfflictionCurse=5" | "AfflictionCurse=15" | "AfflictionPoison=5" | "AfflictionPoison=1" | "AfflictionCurse=2" | "AfflictionCurse=20" | "AfflictionCurse=1" | "AfflictionCurse=3" | "AfflictionCurse=10" | "AfflictionBlight=2" | "AfflictionBlight=20" | "AfflictionBlight=1" | "AfflictionBlight=3" | "AfflictionBlight=10" | "AfflictionDrowning=1" | "AfflictionPoison=2" | "AfflictionPoison=20" | "AfflictionPoison=3" | "AfflictionPoison=10" | "AfflictionPoison=30" | "AfflictionCurse2=1" | "AfflictionCurse2=-1" | "AfflictionCurse2=-30" | "AfflictionCurse3=1" | "AfflictionCurse3=-60" | "AfflictionCurse4=1" | "AfflictionCurse4=-60";
 
-export enum AntirequisiteEffectCategories {
-    Empty = "",
-    GatherBoost = "GatherBoost",
-    TokenGatherBoost = "TokenGatherBoost",
-}
+export type AntirequisiteEffectCategories = "" | "GatherBoost" | "TokenGatherBoost";
 
-export enum DMGVitalsCategoryDMGVitalsCategory {
-    Ancient003 = "Ancient=0.03",
-    Ancient004 = "Ancient=0.04",
-    Ancient005 = "Ancient=0.05",
-    AngryEarth003 = "AngryEarth=0.03",
-    AngryEarth004 = "AngryEarth=0.04",
-    AngryEarth005 = "AngryEarth=0.05",
-    Beast003 = "Beast=0.03",
-    Beast004 = "Beast=0.04",
-    Beast005 = "Beast=0.05",
-    Corrupted003 = "Corrupted=0.03",
-    Corrupted004 = "Corrupted=0.04",
-    Corrupted005 = "Corrupted=0.05",
-    Empty = "",
-    Hostile002Prey002 = "Hostile=0.02+Prey=0.02",
-    Lost003 = "Lost=0.03",
-    Lost004 = "Lost=0.04",
-    Lost005 = "Lost=0.05",
-    OutpostRush15 = "OutpostRush=.15",
-    Player05 = "Player=.05",
-    Season01_Event100 = "Season_01_Event=10.0",
-    The005 = "0.05",
-    Varangian003 = "Varangian=0.03",
-    Varangian004 = "Varangian=0.04",
-    Varangian005 = "Varangian=0.05",
-}
+export type DMGVitalsCategoryDMGVitalsCategory = "" | "Hostile=0.02+Prey=0.02" | "0.05" | "OutpostRush=.15" | "Player=.05" | "Corrupted=0.03" | "Corrupted=0.04" | "Corrupted=0.05" | "Beast=0.03" | "Beast=0.04" | "Beast=0.05" | "Ancient=0.03" | "Ancient=0.04" | "Ancient=0.05" | "Lost=0.03" | "Lost=0.04" | "Lost=0.05" | "AngryEarth=0.03" | "AngryEarth=0.04" | "AngryEarth=0.05" | "Varangian=0.03" | "Varangian=0.04" | "Varangian=0.05" | "Season_01_Event=10.0";
 
-export enum DisableAllNonAttributePerksExceptionLabels {
-    Empty = "",
-    EncumReduceEncumAdd = "EncumReduce+EncumAdd",
-}
+export type DisableAllNonAttributePerksExceptionLabels = "" | "EncumReduce+EncumAdd";
 
-export enum EXPWoodworkingEnum {
-    Empty = "",
-    StatFXSilenceON = "StatFX_Silence_ON",
-}
+export type EXPWoodworkingEnum = "" | "StatFX_Silence_ON";
 
-export enum EffectPotencyMods {
-    Bleed01 = "Bleed=0.1",
-    Burn01 = "Burn=0.1",
-    Burn10 = "Burn=-1.0",
-    Cc01 = "CC=0.1",
-    DeathFog10 = "DeathFog=-1.0",
-    Debuff01 = "Debuff=0.1",
-    Debuff10 = "Debuff=-1.0",
-    Disease01 = "Disease=0.1",
-    Dot01 = "Dot=0.1",
-    EffectPotencyModsBleed01 = "Bleed=-0.1",
-    EffectPotencyModsBurn01 = "Burn=-0.1",
-    EffectPotencyModsCC01 = "CC=-0.1",
-    EffectPotencyModsDebuff01 = "Debuff=-0.1",
-    EffectPotencyModsDisease01 = "Disease=-0.1",
-    EffectPotencyModsDot01 = "Dot=-0.1",
-    EffectPotencyModsExhaust01 = "Exhaust=-0.1",
-    EffectPotencyModsFrostbite01 = "Frostbite=-0.1",
-    EffectPotencyModsPoison01 = "Poison=-0.1",
-    EffectPotencyModsRend01 = "Rend=-0.1",
-    EffectPotencyModsRoot01 = "Root=-0.1",
-    EffectPotencyModsShock01 = "Shock=-0.1",
-    EffectPotencyModsSilence01 = "Silence=-0.1",
-    EffectPotencyModsSlow01 = "Slow=-0.1",
-    EffectPotencyModsStun01 = "Stun=-0.1",
-    EffectPotencyModsWeaken01 = "Weaken=-0.1",
-    Empty = "",
-    EssenceRuptureT11 = "EssenceRuptureT1=-1",
-    EssenceRuptureT11EssenceRuptureT21 = "EssenceRuptureT1=-1+EssenceRuptureT2=-1",
-    Exhaust01 = "Exhaust=0.1",
-    Frostbite01 = "Frostbite=0.1",
-    HarvestHP035 = "HarvestHP=-0.35",
-    Immortal10Uninterruptible10 = "Immortal=-1.0+Uninterruptible=-1.0",
-    PassiveFoodRegen15 = "PassiveFoodRegen=1.5",
-    Poison01 = "Poison=0.1",
-    Rend01 = "Rend=0.1",
-    Root01 = "Root=0.1",
-    Shock01 = "Shock=0.1",
-    Silence01 = "Silence=0.1",
-    Slow01 = "Slow=0.1",
-    Slow10Root10Debuff10 = "Slow=-1.0+Root=-1.0+Debuff=-1.0",
-    Slow10Root10Stun10 = "Slow=-1.0+Root=-1.0+Stun=-1.0",
-    Slow10Root10UnclampedSlow10 = "Slow=-1.0+Root=-1.0+UnclampedSlow=-1.0",
-    Stun01 = "Stun=0.1",
-    Stun10 = "Stun=-1.0",
-    TeamWipeCat10 = "TeamWipeCat=-1.0",
-    Weaken01 = "Weaken=0.1",
-}
+export type EffectPotencyMods = "" | "Slow=-1.0+Root=-1.0+Debuff=-1.0" | "Debuff=-1.0" | "Slow=-1.0+Root=-1.0+UnclampedSlow=-1.0" | "Stun=-1.0" | "Slow=-1.0+Root=-1.0+Stun=-1.0" | "Burn=-1.0" | "TeamWipeCat=-1.0" | "Immortal=-1.0+Uninterruptible=-1.0" | "Debuff=0.1" | "Debuff=-0.1" | "Burn=0.1" | "Burn=-0.1" | "Poison=0.1" | "Poison=-0.1" | "Bleed=0.1" | "Bleed=-0.1" | "Rend=0.1" | "Rend=-0.1" | "Weaken=0.1" | "Weaken=-0.1" | "Shock=0.1" | "Shock=-0.1" | "Slow=0.1" | "Slow=-0.1" | "Disease=0.1" | "Disease=-0.1" | "Silence=0.1" | "Silence=-0.1" | "Stun=0.1" | "Stun=-0.1" | "Frostbite=0.1" | "Frostbite=-0.1" | "Exhaust=0.1" | "Exhaust=-0.1" | "CC=0.1" | "CC=-0.1" | "Dot=0.1" | "Dot=-0.1" | "Root=0.1" | "Root=-0.1" | "DeathFog=-1.0" | "PassiveFoodRegen=1.5" | "HarvestHP=-0.35" | "EssenceRuptureT1=-1" | "EssenceRuptureT1=-1+EssenceRuptureT2=-1";
 
-export enum FxScriptOff {
-    AOEBlightOFF = "AOE_Blight_OFF",
-    AOECorruptionOff = "AOE_Corruption_Off",
-    BloodORBStack1OFF = "BloodOrb_Stack1_OFF",
-    BloodORBStack2OFF = "BloodOrb_Stack2_OFF",
-    BloodORBStack3OFF = "BloodOrb_Stack3_OFF",
-    BowSmokeBombStop = "Bow_SmokeBomb_Stop",
-    DrainingTetherSlowOFF = "DrainingTether_Slow_OFF",
-    DungeonCorruptionBubbleProtectionOFF = "Dungeon_Corruption_Bubble_Protection OFF",
-    Empty = "",
-    EssenceRuptureHeal = "EssenceRupture_Heal",
-    OverchargeORBStack1OFF = "OverchargeOrb_Stack1_OFF",
-    OverchargeORBStack2OFF = "OverchargeOrb_Stack2_OFF",
-    OverchargeORBStack3OFF = "OverchargeOrb_Stack3_OFF",
-    POTIONCure = "POTION_Cure",
-    RuneDetonateChargeOff = "Rune_Detonate_Charge_Off",
-    RuneStoneFormOff = "Rune_StoneForm_Off",
-    ShieldOff = "Shield_Off",
-    SiphonDamageOFF = "Siphon_Damage_OFF",
-    SiphonHealOFF = "Siphon_Heal_OFF",
-    StatFXArmorRendOFF = "StatFX_ArmorRend_OFF",
-    StatFXBlackPowderOFF = "StatFX_BlackPowder_OFF",
-    StatFXBloodbathOFF = "StatFX_Bloodbath_OFF",
-    StatFXBurn02OFF = "StatFX_Burn02_OFF",
-    StatFXBurnOFF = "StatFX_Burn_OFF",
-    StatFXDiseaseOFF = "StatFX_Disease_OFF",
-    StatFXDrownOFF = "StatFX_Drown_OFF",
-    StatFXEnrageLimitedOFF = "StatFX_EnrageLimited_OFF",
-    StatFXEnrageUnlimitedOFF = "StatFX_EnrageUnlimited_OFF",
-    StatFXFrostbiteOFF = "StatFX_Frostbite_OFF",
-    StatFXOverloadOFF = "StatFX_Overload_OFF",
-    StatFXPoisonOFF = "StatFX_Poison_OFF",
-    StatFXRootOFF = "StatFX_Root_OFF",
-    StatFXShatterOFF = "StatFX_Shatter_OFF",
-    StatFXShatterSwiftBuffHasteOFF = "StatFX_ShatterSwift_BuffHaste_OFF",
-    StatFXSlowOFF = "StatFX_Slow_OFF",
-    StatFXVoidOFF = "StatFX_Void_OFF",
-    StatFXVoidON = "StatFX_Void_ON",
-    StatFXWeakenOFF = "StatFX_Weaken_OFF",
-    StatFXWoundOFF = "StatFX_Wound_OFF",
-    ThorpeForcePop = "Thorpe_Force_Pop",
-    TorsoBossArcaneORBOff = "Torso_Boss_Arcane_Orb_Off",
-}
+export type FxScriptOff = "" | "StatFX_Disease_OFF" | "StatFX_Shatter_OFF" | "StatFX_Wound_OFF" | "StatFX_Burn_OFF" | "StatFX_Void_OFF" | "StatFX_Void_ON" | "StatFX_Poison_OFF" | "StatFX_Frostbite_OFF" | "StatFX_Root_OFF" | "StatFX_Slow_OFF" | "StatFX_ShatterSwift_BuffHaste_OFF" | "StatFX_Weaken_OFF" | "StatFX_EnrageLimited_OFF" | "StatFX_EnrageUnlimited_OFF" | "Siphon_Damage_OFF" | "Shield_Off" | "Bow_SmokeBomb_Stop" | "Torso_Boss_Arcane_Orb_Off" | "StatFX_BlackPowder_OFF" | "Thorpe_Force_Pop" | "AOE_Corruption_Off" | "StatFX_Drown_OFF" | "StatFX_Bloodbath_OFF" | "StatFX_Overload_OFF" | "StatFX_Burn02_OFF" | "AOE_Blight_OFF" | "Dungeon_Corruption_Bubble_Protection OFF" | "EssenceRupture_Heal" | "OverchargeOrb_Stack1_OFF" | "OverchargeOrb_Stack2_OFF" | "OverchargeOrb_Stack3_OFF" | "BloodOrb_Stack1_OFF" | "BloodOrb_Stack2_OFF" | "BloodOrb_Stack3_OFF" | "POTION_Cure" | "Siphon_Heal_OFF" | "Rune_Detonate_Charge_Off" | "Rune_StoneForm_Off" | "StatFX_ArmorRend_OFF" | "DrainingTether_Slow_OFF";
 
-export enum StatusEffectDatumGameEventID {
-    Empty = "",
-    WarBattleTokenGen = "War_Battle_Token_Gen",
-}
+export type StatusEffectDatumGameEventID = "" | "War_Battle_Token_Gen";
 
-export enum HealRewardGameEventID {
-    Empty = "",
-    WarHeal = "War_Heal",
-}
+export type HealRewardGameEventID = "" | "War_Heal";
 
-export enum Condition {
-    Empty = "",
-    OnAllSourcesRemoved = "OnAllSourcesRemoved",
-    OnHit = "OnHit",
-    OnHitTaken = "OnHitTaken",
-}
+export type Condition = "" | "OnHitTaken" | "OnHit" | "OnAllSourcesRemoved";
 
-export enum ItemLootVolumeMods {
-    Empty = "",
-    SBWispybloom10 = "SB_Wispybloom=1.0",
-    WCGleamite10 = "WCGleamite=1.0",
-}
+export type ItemLootVolumeMods = "" | "WCGleamite=1.0" | "SB_Wispybloom=1.0";
 
-export enum Notification {
-    BossTeamWipe = "Boss_Team_Wipe",
-    Empty = "",
-    ExitWorldBounds = "Exit_World_Bounds",
-}
+export type Notification = "" | "Exit_World_Bounds" | "Boss_Team_Wipe";
 
-export enum OnStatusEffect {
-    AIAnubianGuardianHorusBossInstrumentOfJudgementOnTick = "AI_AnubianGuardian_HorusBoss_InstrumentOfJudgement_OnTick",
-    AIAnubianGuardianHorusMultiSunStatusEffectCast = "AI_AnubianGuardian_Horus_MultiSun_StatusEffect_Cast",
-    AIAnubianGuardianHorusMultiSunStatusEffectFireCast = "AI_AnubianGuardian_Horus_MultiSun_StatusEffect_Fire_Cast",
-    AIEvilKnightFireChampionOverheatSpell = "AI_Evil_Knight_Fire_Champion_OverheatSpell",
-    AIEvilKnightFlamekeeperLivingBombKill = "AI_Evil_Knight_Flamekeeper_Living_Bomb_Kill",
-    AIEvilKnightFlamekeeperRovingMeteorShowerCast = "AI_Evil_Knight_Flamekeeper_Roving_Meteor_Shower_Cast",
-    AILostMonarchBeseechRemoved = "AI_Lost_Monarch_Beseech_Removed",
-    AIMageMinibossOrbsStatusEffectCast = "AI_Mage_Miniboss_Orbs_StatusEffect_Cast",
-    AINagaAncientGuardianBombStatusEffectCast = "AI_Naga_AncientGuardian_Bomb_StatusEffect_Cast",
-    AINagaAngryEarthChannelPoison = "AI_Naga_AngryEarth_Channel_Poison",
-    AINagaAngryEarthSpawnPoisonPool = "AI_Naga_AngryEarth_Spawn_PoisonPool",
-    AIRemnantCoreStabilize = "AI_Remnant_CoreStabilize",
-    AIStaggeredStaggerDamageResist = "AI_Staggered_StaggerDamageResist",
-    AIThorpePhase2 = "AI_Thorpe_Phase_2",
-    ATBDexBonusCritOnDodgeSpamPrevention = "ATB_Dex_Bonus_CritOnDodge_SpamPrevention",
-    DungeonArcaneBarrierProtection = "Dungeon_ArcaneBarrierProtection",
-    DungeonCorruptedTether = "Dungeon_CorruptedTether",
-    DungeonRelicBubbleRelease = "Dungeon_RelicBubbleRelease",
-    Empty = "",
-    HatchetBerserkHP = "Hatchet_Berserk_HP",
-    HatchetPassDoTPurgeTimer = "Hatchet_Pass_DoTPurgeTimer",
-    HatchetUltImmortalTimer = "Hatchet_Ult_ImmortalTimer",
-    IceMagicFreezeCooldown = "IceMagic_Freeze_Cooldown",
-    IceMagicFrostbiteDur3 = "IceMagic_Frostbite_Dur3",
-    IceMagicFrostbiteDur3Rend = "IceMagic_Frostbite_Dur3_Rend",
-    IceMagicFrostbiteDur3RendDeadlyFrost = "IceMagic_Frostbite_Dur3_Rend_DeadlyFrost",
-    IceMagicIceShowerFreezeCooldown = "IceMagic_IceShower_Freeze_Cooldown",
-    IceMagicIceStormUTDuration = "IceMagic_IceStorm_UT_Duration",
-    IceMagicQuickShowerDur2 = "IceMagic_QuickShower_Dur2",
-    MutCurse1VFXKill = "Mut_Curse1_VFX_Kill",
-    MutCurse2VFXKill = "Mut_Curse2_VFX_Kill",
-    MutFirAOEVFX = "Mut_Fir_AOE_VFX",
-    RuneDetonateCastAoE = "Rune_Detonate_CastAoE",
-    RuneStoneFormDominatorCastAoE = "Rune_StoneForm_Dominator_CastAoE",
-    StatusAbilitySwordFinalStandHealHeal = "Status_Ability_Sword_FinalStand_Heal_Heal",
-    StatusPassiveFirestaffFireMageDmgNoDmg = "Status_Passive_Firestaff_FireMage_DmgNoDmg",
-    StatusPassiveGreatAxeGravityRootHold = "Status_Passive_GreatAxe_Gravity_Root_Hold",
-    StatusPassiveGreataxeMaulerStamVsLowHPTimer = "Status_Passive_Greataxe_Mauler_StamVsLowHp_Timer",
-    StatusPerkToolHasteOnGatherApp = "Status_Perk_Tool_HasteOnGatherApp",
-    StatusUltimateSwordDefenderTimer = "Status_Ultimate_Sword_Defender_Timer",
-    StatusWhenFoesNearCleanup = "Status_WhenFoesNearCleanup",
-    VoidGauntletEssenceRuptureAoEOnEndCastSpell = "VoidGauntlet_EssenceRupture_AoE_OnEnd_CastSpell",
-    VoidGauntletHealOnDodgeMaxManaTimer = "VoidGauntlet_HealOnDodgeMaxMana_Timer",
-}
+export type OnStatusEffect = "" | "VoidGauntlet_EssenceRupture_AoE_OnEnd_CastSpell" | "Mut_Fir_AOE_VFX" | "AI_Staggered_StaggerDamageResist" | "AI_AnubianGuardian_HorusBoss_InstrumentOfJudgement_OnTick" | "AI_AnubianGuardian_Horus_MultiSun_StatusEffect_Cast" | "AI_AnubianGuardian_Horus_MultiSun_StatusEffect_Fire_Cast" | "AI_Naga_AngryEarth_Channel_Poison" | "AI_Naga_AngryEarth_Spawn_PoisonPool" | "AI_Naga_AncientGuardian_Bomb_StatusEffect_Cast" | "AI_Thorpe_Phase_2" | "AI_Mage_Miniboss_Orbs_StatusEffect_Cast" | "AI_Lost_Monarch_Beseech_Removed" | "AI_Remnant_CoreStabilize" | "AI_Evil_Knight_Fire_Champion_OverheatSpell" | "AI_Evil_Knight_Flamekeeper_Living_Bomb_Kill" | "AI_Evil_Knight_Flamekeeper_Roving_Meteor_Shower_Cast" | "Dungeon_ArcaneBarrierProtection" | "Dungeon_RelicBubbleRelease" | "Dungeon_CorruptedTether" | "ATB_Dex_Bonus_CritOnDodge_SpamPrevention" | "Mut_Curse1_VFX_Kill" | "Mut_Curse2_VFX_Kill" | "Status_Passive_Firestaff_FireMage_DmgNoDmg" | "Status_Passive_Greataxe_Mauler_StamVsLowHp_Timer" | "Status_WhenFoesNearCleanup" | "Status_Passive_GreatAxe_Gravity_Root_Hold" | "Hatchet_Berserk_HP" | "Hatchet_Pass_DoTPurgeTimer" | "Hatchet_Ult_ImmortalTimer" | "IceMagic_IceStorm_UT_Duration" | "IceMagic_Frostbite_Dur3" | "IceMagic_Frostbite_Dur3_Rend" | "IceMagic_Frostbite_Dur3_Rend_DeadlyFrost" | "IceMagic_QuickShower_Dur2" | "IceMagic_Freeze_Cooldown" | "IceMagic_IceShower_Freeze_Cooldown" | "Status_Perk_Tool_HasteOnGatherApp" | "Rune_Detonate_CastAoE" | "Rune_StoneForm_Dominator_CastAoE" | "Status_Ability_Sword_FinalStand_Heal_Heal" | "Status_Ultimate_Sword_Defender_Timer" | "VoidGauntlet_HealOnDodgeMaxMana_Timer";
 
-export enum OnHitAffixes {
-    AIArcaneDMG50 = "AI_ArcaneDMG_50",
-    AICorruptionDMG10_Additive = "AI_CorruptionDMG_10_Additive",
-    AICorruptionDMG50 = "AI_CorruptionDMG_50",
-    AIFireDMG20_Additive = "AI_FireDMG_20_Additive",
-    AIFireDMG50 = "AI_FireDMG_50",
-    AIIceDMG50 = "AI_IceDMG_50",
-    AILightningDMG50 = "AI_LightningDMG_50",
-    AINatureDMG50 = "AI_NatureDMG_50",
-    Empty = "",
-}
+export type OnHitAffixes = "" | "AI_FireDMG_50" | "AI_CorruptionDMG_50" | "AI_NatureDMG_50" | "AI_IceDMG_50" | "AI_LightningDMG_50" | "AI_ArcaneDMG_50" | "AI_FireDMG_20_Additive" | "AI_CorruptionDMG_10_Additive";
 
-export enum OnStackStatusEffect {
-    AIEvilKnightFireChampionHeatingUpSpell = "AI_Evil_Knight_Fire_Champion_HeatingUpSpell",
-    AIEvilKnightFireChampionOverheatSpellWarning = "AI_Evil_Knight_Fire_Champion_OverheatSpell_Warning",
-    Empty = "",
-    MutCurse1FirMajorCast = "Mut_Curse1_Fir_Major_Cast",
-    MutCurse1FirMinorCast = "Mut_Curse1_Fir_Minor_Cast",
-    MutCurse1IceMajorCast = "Mut_Curse1_Ice_Major_Cast",
-    MutCurse1IceMinorCast = "Mut_Curse1_Ice_Minor_Cast",
-    MutCurse1NatMajorCast = "Mut_Curse1_Nat_Major_Cast",
-    MutCurse1NatMinorCast = "Mut_Curse1_Nat_Minor_Cast",
-    MutCurse1VoiMajorCast = "Mut_Curse1_Voi_Major_Cast",
-    MutCurse1VoiMinorCast = "Mut_Curse1_Voi_Minor_Cast",
-    MutEnrageEmpower = "Mut_Enrage_Empower",
-    MutIceDeathFreezeRoot = "Mut_Ice_DeathFreeze_Root",
-    MutVoiStacks1_Cast = "Mut_Voi_Stacks_1_Cast",
-    MutVoiStacks2_Cast = "Mut_Voi_Stacks_2_Cast",
-    StatusPassiveBowSkirmishHasteOnSwapTimer = "Status_Passive_Bow_Skirmish_HasteOnSwap_Timer",
-}
+export type OnStackStatusEffect = "" | "Mut_Enrage_Empower" | "Mut_Voi_Stacks_1_Cast" | "Mut_Voi_Stacks_2_Cast" | "Mut_Ice_DeathFreeze_Root" | "AI_Evil_Knight_Fire_Champion_HeatingUpSpell" | "AI_Evil_Knight_Fire_Champion_OverheatSpell_Warning" | "Status_Passive_Bow_Skirmish_HasteOnSwap_Timer" | "Mut_Curse1_Fir_Minor_Cast" | "Mut_Curse1_Voi_Minor_Cast" | "Mut_Curse1_Nat_Minor_Cast" | "Mut_Curse1_Ice_Minor_Cast" | "Mut_Curse1_Fir_Major_Cast" | "Mut_Curse1_Voi_Major_Cast" | "Mut_Curse1_Nat_Major_Cast" | "Mut_Curse1_Ice_Major_Cast";
 
-export enum OnTickStatusEffect {
-    AIAnubianGuardianBruteBossDivineAnguishDamageBuff = "AI_AnubianGuardian_BruteBoss_DivineAnguish_DamageBuff",
-    AIAnubianGuardianBruteBossDivineAnguishDamageBuffReapply = "AI_AnubianGuardian_BruteBoss_DivineAnguish_DamageBuff_Reapply",
-    AIAnubianGuardianHorusBossDivineAnguishDamageBuff = "AI_AnubianGuardian_HorusBoss_DivineAnguish_DamageBuff",
-    AIAnubianGuardianHorusBossDivineAnguishDamageBuffReapply = "AI_AnubianGuardian_HorusBoss_DivineAnguish_DamageBuff_Reapply",
-    AIAnubianGuardianHorusBossDivineDoomCastSpell = "AI_AnubianGuardian_HorusBoss_DivineDoom_CastSpell",
-    AIAnubianGuardianHorusBossInstrumentOfJudgementDamage = "AI_AnubianGuardian_HorusBoss_InstrumentOfJudgement_Damage",
-    AIDisease = "AI_Disease",
-    AIDryadSirenSpinPhase2ATick = "AI_DryadSiren_Spin_Phase2_A_Tick",
-    AIDryadSirenSpinPhase2Ability = "AI_DryadSiren_Spin_Phase2_Ability",
-    AIDryadSirenSpinPhase2BTick = "AI_DryadSiren_Spin_Phase2_B_Tick",
-    AIDryadSirenSpinPhase2CTick = "AI_DryadSiren_Spin_Phase2_C_Tick",
-    AIDryadSirenSpinPhase2DTick = "AI_DryadSiren_Spin_Phase2_D_Tick",
-    AIDryadSirenSpinPhase3ATick = "AI_DryadSiren_Spin_Phase3_A_Tick",
-    AIDryadSirenSpinPhase3Ability = "AI_DryadSiren_Spin_Phase3_Ability",
-    AIDryadSirenSpinPhase3BTick = "AI_DryadSiren_Spin_Phase3_B_Tick",
-    AIDryadSirenSpinPhase3CTick = "AI_DryadSiren_Spin_Phase3_C_Tick",
-    AIDryadSirenSpinPhase3DTick = "AI_DryadSiren_Spin_Phase3_D_Tick",
-    AIDryadSirenSpinPhase3ETick = "AI_DryadSiren_Spin_Phase3_E_Tick",
-    AIDryadSirenSpinPhase3FTick = "AI_DryadSiren_Spin_Phase3_F_Tick",
-    AIEvilKnightFireChampionSpinAbility = "AI_Evil_Knight_Fire_Champion_Spin_Ability",
-    AIEvilKnightFireChampionSpinBTick = "AI_Evil_Knight_Fire_Champion_Spin_B_Tick",
-    AIEvilKnightFireChampionSpinFTick = "AI_Evil_Knight_Fire_Champion_Spin_F_Tick",
-    AIEvilKnightFireChampionSpinLTick = "AI_Evil_Knight_Fire_Champion_Spin_L_Tick",
-    AIEvilKnightFireChampionSpinRTick = "AI_Evil_Knight_Fire_Champion_Spin_R_Tick",
-    AIHeartforgeGuardianExplosiveWalkCastSpell = "AI_Heartforge_Guardian_Explosive_Walk_CastSpell",
-    AIRend = "AI_Rend",
-    AISandElementalQuestBossTargetedTremorTick = "AI_SandElemental_QuestBoss_Targeted_Tremor_Tick",
-    AISulfurBurn = "AI_SulfurBurn",
-    AIThorpeBurn = "AI_Thorpe_Burn",
-    ArmadilloResistanceOnHitTaken = "Armadillo_ResistanceOnHitTaken",
-    DungeonLaserBeamDeathRemoveImmortal = "Dungeon_LaserBeamDeath_RemoveImmortal",
-    Empty = "",
-    IceMagicFrostbiteDeadlyFrostDur3 = "IceMagic_Frostbite_DeadlyFrost_Dur3",
-    IceMagicIceShowerFreeze = "IceMagic_IceShower_Freeze",
-    IceMagicPylonRefresh = "IceMagic_PylonRefresh",
-    IceMagicUltimateChill = "IceMagic_UltimateChill",
-    MutEnrageTimer = "Mut_Enrage_Timer",
-    MutVoiLeechBlock = "Mut_Voi_Leech_Block",
-    MutVoiStacks1_Effect = "Mut_Voi_Stacks_1_Effect",
-    MutVoiStacks2_Effect = "Mut_Voi_Stacks_2_Effect",
-    PVPArenaScalingHealingDebuff = "PVP_Arena_ScalingHealingDebuff",
-    RuneFireStormDoT = "Rune_FireStorm_DoT",
-    StatusPassiveFirestaffPyroUltimateRemoval = "Status_Passive_Firestaff_Pyro_Ultimate_Removal",
-    StatusRuneFireStormSurvivorDoT = "Status_Rune_FireStorm_Survivor_DoT",
-}
+export type OnTickStatusEffect = "" | "Mut_Enrage_Timer" | "Mut_Voi_Stacks_1_Effect" | "Mut_Voi_Stacks_2_Effect" | "Mut_Voi_Leech_Block" | "AI_Rend" | "AI_Disease" | "AI_AnubianGuardian_HorusBoss_DivineDoom_CastSpell" | "AI_AnubianGuardian_HorusBoss_InstrumentOfJudgement_Damage" | "AI_AnubianGuardian_BruteBoss_DivineAnguish_DamageBuff_Reapply" | "AI_AnubianGuardian_BruteBoss_DivineAnguish_DamageBuff" | "AI_AnubianGuardian_HorusBoss_DivineAnguish_DamageBuff_Reapply" | "AI_AnubianGuardian_HorusBoss_DivineAnguish_DamageBuff" | "AI_DryadSiren_Spin_Phase2_Ability" | "AI_DryadSiren_Spin_Phase2_A_Tick" | "AI_DryadSiren_Spin_Phase2_B_Tick" | "AI_DryadSiren_Spin_Phase2_C_Tick" | "AI_DryadSiren_Spin_Phase2_D_Tick" | "AI_DryadSiren_Spin_Phase3_Ability" | "AI_DryadSiren_Spin_Phase3_A_Tick" | "AI_DryadSiren_Spin_Phase3_B_Tick" | "AI_DryadSiren_Spin_Phase3_C_Tick" | "AI_DryadSiren_Spin_Phase3_D_Tick" | "AI_DryadSiren_Spin_Phase3_E_Tick" | "AI_DryadSiren_Spin_Phase3_F_Tick" | "AI_Thorpe_Burn" | "AI_Heartforge_Guardian_Explosive_Walk_CastSpell" | "Armadillo_ResistanceOnHitTaken" | "AI_SandElemental_QuestBoss_Targeted_Tremor_Tick" | "AI_SulfurBurn" | "AI_Evil_Knight_Fire_Champion_Spin_Ability" | "AI_Evil_Knight_Fire_Champion_Spin_F_Tick" | "AI_Evil_Knight_Fire_Champion_Spin_R_Tick" | "AI_Evil_Knight_Fire_Champion_Spin_B_Tick" | "AI_Evil_Knight_Fire_Champion_Spin_L_Tick" | "Dungeon_LaserBeamDeath_RemoveImmortal" | "PVP_Arena_ScalingHealingDebuff" | "Status_Passive_Firestaff_Pyro_Ultimate_Removal" | "IceMagic_IceShower_Freeze" | "IceMagic_Frostbite_DeadlyFrost_Dur3" | "IceMagic_UltimateChill" | "IceMagic_PylonRefresh" | "Rune_FireStorm_DoT" | "Status_Rune_FireStorm_Survivor_DoT";
 
-export enum StatusEffectDatumRemoveStatusEffectCategories {
-    Buff = "Buff",
-    Burn = "Burn",
-    CCSprintDelayCombat = "CC+SprintDelayCombat",
-    Cc = "CC",
-    ClearOnReset = "ClearOnReset",
-    Debuff = "Debuff",
-    DoT = "DoT",
-    Empty = "",
-    GSOffenseOnly = "GSOffenseOnly",
-    ImmortalTraversalHasteHaste = "Immortal+TraversalHaste+Haste",
-    ImmortalUninterruptible = "Immortal+Uninterruptible",
-    MutatorCurse = "MutatorCurse",
-    StunSlowRootSilenceRendWeakenDisease = "Stun+Slow+Root+Silence+Rend+Weaken+Disease",
-    StunSlowRootSilenceRendWeakenDiseaseFortify = "Stun+Slow+Root+Silence+Rend+Weaken+Disease+Fortify",
-    TeamWipeCat = "TeamWipeCat",
-}
+export type StatusEffectDatumRemoveStatusEffectCategories = "" | "ClearOnReset" | "Stun+Slow+Root+Silence+Rend+Weaken+Disease+Fortify" | "Stun+Slow+Root+Silence+Rend+Weaken+Disease" | "Burn" | "TeamWipeCat" | "Immortal+TraversalHaste+Haste" | "Immortal+Uninterruptible" | "Debuff" | "MutatorCurse" | "GSOffenseOnly" | "CC" | "CC+SprintDelayCombat" | "DoT" | "Buff";
 
-export enum SlotToFillWeaponDamageInfo {
-    HeartGemSlot = "HEART_GEM_SLOT",
-}
+export type SlotToFillWeaponDamageInfo = "HEART_GEM_SLOT";
 
-export enum WindowHeader {
-    AllEnemiesHeader = "@AllEnemies_Header",
-    Empty = "",
-    SomeEnemiesHeader = "@SomeEnemies_Header",
-}
+export type WindowHeader = "" | "@AllEnemies_Header" | "@SomeEnemies_Header";
 
-export enum XPIncreasesEnum {
-    Empty = "",
-    General05Gathering05 = "General=0.5+Gathering=0.5",
-    General10 = "General=1.0",
-    Group004 = "Group=0.04",
-    Group007 = "Group=0.07",
-    Group010 = "Group=0.10",
-    Group015 = "Group=0.15",
-}
+export type XPIncreasesEnum = "" | "General=0.5+Gathering=0.5" | "General=1.0" | "Group=0.15" | "Group=0.10" | "Group=0.07" | "Group=0.04";
 
-export interface StoreProductData {
+export type StoreProductData = {
     UniqueTagID:     string;
     IsEnabled:       number;
     DisplayName:     string;
@@ -9802,14 +4553,14 @@ export interface StoreProductData {
     TypeDescription: string;
 }
 
-export interface StructureFootprintData {
+export type StructureFootprintData = {
     FootprintID:   string;
     SidesTakenUp:  string;
     Rotation:      number;
     FootprintType: string;
 }
 
-export interface StructurePieceData {
+export type StructurePieceData = {
     StructurePieceId:     string;
     FootprintDataTableId: FootprintDataTableID;
     FootprintId:          string;
@@ -9817,11 +4568,9 @@ export interface StructurePieceData {
     PrefabPath:           string;
 }
 
-export enum FootprintDataTableID {
-    WallFootprint = "WallFootprint",
-}
+export type FootprintDataTableID = "WallFootprint";
 
-export interface TerritoryAdvancementLevel {
+export type TerritoryAdvancementLevel = {
     "Scaling Group": string;
     "0":             number;
     "1":             number;
@@ -9865,7 +4614,7 @@ export interface TerritoryAdvancementLevel {
     "39":            number;
 }
 
-export interface TerritoryDefinition {
+export type TerritoryDefinition = {
     TerritoryID:                             number;
     NameLocalizationKey:                     string;
     IsPOI:                                   boolean | null;
@@ -9922,72 +4671,23 @@ export interface TerritoryDefinition {
     EntryStatusEffectId?:                    string;
 }
 
-export enum AudioGroup {
-    Empty = "",
-    MXTerritory = "MX_Territory",
-    MusicPOI = "Music_POI",
-    MusicTerritory = "Music_Territory",
-    POIState = "POI_State",
-    PVEArena = "PvE_Arena",
-}
+export type AudioGroup = "Music_Territory" | "PvE_Arena" | "POI_State" | "" | "MX_Territory" | "Music_POI";
 
-export enum CompassIcon {
-    Empty = "",
-    LyShineUIImagesIconsObjectivesIconObjectiveQuestPNG = "LyShineUI\\Images\\Icons\\Objectives\\icon_Objective_Quest.png",
-    LyShineUIImagesMapIconPOIsAngryearthRuinsElitePNG = "LyShineUI\\Images\\Map\\Icon\\POIs\\angryearth_ruins_elite.png",
-    LyShineUIImagesMapIconPOIsAngryearthSprigganElitePNG = "LyShineUI/Images/Map/Icon/POIs/angryearth_spriggan_elite.png",
-    LyShineUIImagesMapIconPOIsBaalphazuPNG = "LyShineUI/Images/Map/Icon/POIs/Baalphazu.png",
-    LyShineUIImagesMapIconPOIsCyclopsPNG = "LyShineUI/Images/Map/Icon/POIs/cyclops.png",
-    LyShineUIImagesMapIconPOIsDamnedCompassDangerPNG = "LyShineUI/Images/map/Icon/POIs/damned_compass_danger.png",
-    LyShineUIImagesMapIconPOIsDamnedCompassPNG = "LyShineUI/Images/map/Icon/POIs/damned_compass.png",
-    LyShineUIImagesMapIconPOIsDamnedMajorCompassPNG = "LyShineUI/Images/map/Icon/POIs/damned_major_compass.png",
-    LyShineUIImagesMapIconPOIsFurySprigganPNG = "LyShineUI/Images/Map/Icon/POIs/furySpriggan.png",
-    LyShineUIImagesMapIconPOIsHeroShipwreckElitePNG = "LyShineUI/Images/Map/Icon/POIs/hero_shipwreck_elite.png",
-    LyShineUIImagesMapIconPOIsMaudlinbugPNG = "LyShineUI/Images/Map/Icon/POIs/maudlinbug.png",
-    LyShineUIImagesMapIconPOIsOutpostCompassPNG = "LyShineUI/Images/Map/Icon/POIs/outpost_compass.png",
-    LyShineUIImagesMapIconPOIsSpiritShrineChartedDds = "LyShineUI\\Images\\Map\\Icon\\POIs\\spirit_shrine_charted.dds",
-    LyShineUIImagesMapIconPOIsTurkeyPNG = "LyShineUI/Images/Map/Icon/POIs/Turkey.png",
-    LyShineUIImagesMapIconPOIsWinterWarriorPNG = "LyShineUI/Images/Map/Icon/POIs/winter_warrior.png",
-}
+export type CompassIcon = "LyShineUI/Images/Map/Icon/POIs/angryearth_spriggan_elite.png" | "LyShineUI/Images/Map/Icon/POIs/hero_shipwreck_elite.png" | "LyShineUI\\Images\\Map\\Icon\\POIs\\angryearth_ruins_elite.png" | "LyShineUI/Images/map/Icon/POIs/damned_compass.png" | "LyShineUI/Images/map/Icon/POIs/damned_major_compass.png" | "LyShineUI/Images/Map/Icon/POIs/maudlinbug.png" | "LyShineUI/Images/map/Icon/POIs/damned_compass_danger.png" | "LyShineUI/Images/Map/Icon/POIs/Baalphazu.png" | "" | "LyShineUI/Images/Map/Icon/POIs/winter_warrior.png" | "LyShineUI/Images/Map/Icon/POIs/Turkey.png" | "LyShineUI/Images/Map/Icon/POIs/cyclops.png" | "LyShineUI/Images/Map/Icon/POIs/furySpriggan.png" | "LyShineUI\\Images\\Icons\\Objectives\\icon_Objective_Quest.png" | "LyShineUI\\Images\\Map\\Icon\\POIs\\spirit_shrine_charted.dds" | "LyShineUI/Images/Map/Icon/POIs/outpost_compass.png";
 
-export enum Debug {
-    B = "B+",
-    Empty = "",
-}
+export type Debug = "" | "B+";
 
-export enum TerritoryDefinitionEventID {
-    CrowsNest = "CrowsNest",
-    Empty = "",
-}
+export type TerritoryDefinitionEventID = "" | "CrowsNest";
 
-export enum FactionControlTerritoryBuffs {
-    Empty = "",
-    InfluencePointsModifierExperiencePointsModifier = "InfluencePoints_Modifier,ExperiencePoints_Modifier",
-    None = "None",
-}
+export type FactionControlTerritoryBuffs = "None" | "InfluencePoints_Modifier,ExperiencePoints_Modifier" | "";
 
-export enum ObjectiveID {
-    Empty = "",
-    The06_Getoffbeach = "06_getoffbeach",
-    The12_Getoffbeach = "12_getoffbeach",
-}
+export type ObjectiveID = "" | "12_getoffbeach" | "06_getoffbeach";
 
-export enum TerritoryDefinitionRequiredItemID {
-    DarknessAzothStaffT1 = "Darkness_AzothStaff_T1",
-    Empty = "",
-    The2HInstrumentGuitarT2 = "2hInstrumentGuitarT2",
-}
+export type TerritoryDefinitionRequiredItemID = "Darkness_AzothStaff_T1" | "2hInstrumentGuitarT2" | "";
 
-export enum UnchartedIcon {
-    Empty = "",
-    LyShineUIImagesMapIconPOIsAncientShrinePNG = "LyShineUI\\Images\\Map\\Icon\\POIs\\ancient_shrine.png",
-    LyShineUIImagesMapIconPOIsAzureTreePNG = "LyShineUI/Images/Map/Icon/POIs/azure_tree.png",
-    LyShineUIImagesMapIconPOIsBrimstoneBrimstoneColossusPNG = "LyShineUI\\Images\\Map\\Icon\\POIs\\brimstone\\brimstone_colossus.png",
-    LyShineUIImagesMapIconPOIsBrimstoneBrimstonePyramidPNG = "LyShineUI\\Images\\Map\\Icon\\POIs\\brimstone\\brimstone_pyramid.png",
-    LyShineUIImagesMapIconPOIsSpiritShrinePNG = "LyShineUI/Images/Map/Icon/POIs/spirit_shrine.png",
-}
+export type UnchartedIcon = "" | "LyShineUI/Images/Map/Icon/POIs/spirit_shrine.png" | "LyShineUI\\Images\\Map\\Icon\\POIs\\brimstone\\brimstone_pyramid.png" | "LyShineUI/Images/Map/Icon/POIs/azure_tree.png" | "LyShineUI\\Images\\Map\\Icon\\POIs\\brimstone\\brimstone_colossus.png" | "LyShineUI\\Images\\Map\\Icon\\POIs\\ancient_shrine.png";
 
-export interface TerritoryProgressionData {
+export type TerritoryProgressionData = {
     ProjectId:                   string;
     Cost:                        number;
     Level:                       number;
@@ -10012,14 +4712,9 @@ export interface TerritoryProgressionData {
     LifestyleBuffEffectDuration: number | null;
 }
 
-export enum DisplayColumn {
-    AlwaysAvailable = "AlwaysAvailable",
-    Fortress = "Fortress",
-    Lifestyle = "Lifestyle",
-    Settlement = "Settlement",
-}
+export type DisplayColumn = "Settlement" | "Fortress" | "Lifestyle" | "AlwaysAvailable";
 
-export interface ThrowableItemDefinitions {
+export type ThrowableItemDefinitions = {
     ThrowableId:          string;
     ActivationTime:       number;
     SpawnSliceOnActivate: boolean;
@@ -10031,13 +4726,13 @@ export interface ThrowableItemDefinitions {
     AttachmentSlicePath:  string;
 }
 
-export interface TimelineRegistryEntryData {
+export type TimelineRegistryEntryData = {
     TimelineEntryName:   string;
     TimelineAssetPath:   string;
     AssetDependencyPath: string;
 }
 
-export interface TradeSkillPostCapData {
+export type TradeSkillPostCapData = {
     TradeSkillType:     string;
     TradeSkillRewardXP: number;
     SubRewardPerc1:     number;
@@ -10064,11 +4759,9 @@ export interface TradeSkillPostCapData {
     GameEvent:          GameEvent;
 }
 
-export enum GameEvent {
-    GypsumGreenEvent = "GypsumGreenEvent",
-}
+export type GameEvent = "GypsumGreenEvent";
 
-export interface TradeskillRankData {
+export type TradeskillRankData = {
     Level:                        number;
     DisplayName:                  TradeskillRankDatumDisplayName;
     RequiredLevel:                number;
@@ -10106,115 +4799,25 @@ export interface TradeskillRankData {
     Intensify?:                   number | null;
 }
 
-export enum TradeskillRankDatumDisplayName {
-    Empty = "",
-    UIAlchemy1 = "@ui_alchemy1",
-    UIAlchemy3 = "@ui_alchemy3",
-    UIAlchemyStones = "@ui_alchemyStones",
-    UIAloe = "@ui_aloe",
-    UIBrimstone = "@ui_brimstone",
-    UIFarmplants = "@ui_farmplants",
-    UIGold = "@ui_gold",
-    UIHemp = "@ui_hemp",
-    UIHempT4 = "@ui_hempT4",
-    UIHempT5 = "@ui_hempT5",
-    UIIron = "@ui_iron",
-    UIIronwood = "@ui_ironwood",
-    UILargepredator = "@ui_largepredator",
-    UILargeprey = "@ui_largeprey",
-    UILodestone = "@ui_lodestone",
-    UIMediumprey = "@ui_mediumprey",
-    UIOil = "@ui_oil",
-    UIOrichalcum = "@ui_orichalcum",
-    UIPlatinum = "@ui_platinum",
-    UISandstone = "@ui_sandstone",
-    UISilver = "@ui_silver",
-    UISmallpredator = "@ui_smallpredator",
-    UISmallprey = "@ui_smallprey",
-    UIStarmetal = "@ui_starmetal",
-    UIWyrdwood = "@ui_wyrdwood",
-}
+export type TradeskillRankDatumDisplayName = "" | "@ui_farmplants" | "@ui_hemp" | "@ui_alchemy1" | "@ui_aloe" | "@ui_hempT4" | "@ui_alchemy3" | "@ui_hempT5" | "@ui_wyrdwood" | "@ui_ironwood" | "@ui_iron" | "@ui_silver" | "@ui_oil" | "@ui_gold" | "@ui_alchemyStones" | "@ui_lodestone" | "@ui_starmetal" | "@ui_sandstone" | "@ui_platinum" | "@ui_brimstone" | "@ui_orichalcum" | "@ui_smallprey" | "@ui_mediumprey" | "@ui_largeprey" | "@ui_smallpredator" | "@ui_largepredator";
 
-export enum IconTypeUnlock {
-    Alchemy1 = "Alchemy1",
-    Alchemy2 = "Alchemy2",
-    Alchemy3 = "Alchemy3",
-    Aloe = "Aloe",
-    Brimstone = "Brimstone",
-    Empty = "",
-    FarmPlants = "FarmPlants",
-    Gold = "Gold",
-    HarvestingplantT4 = "harvestingplantT4",
-    HarvestingplantT5 = "harvestingplantT5",
-    Hemp = "Hemp",
-    Iron = "Iron",
-    Ironwood = "Ironwood",
-    LargePredator = "LargePredator",
-    LargePrey = "LargePrey",
-    Lodestone = "Lodestone",
-    MediumPrey = "MediumPrey",
-    Oil = "Oil",
-    Orichalcum = "Orichalcum",
-    Platinum = "Platinum",
-    Sandstone = "Sandstone",
-    Silver = "Silver",
-    SmallPredator = "SmallPredator",
-    SmallPrey = "SmallPrey",
-    Starmetal = "Starmetal",
-    Wyrdwood = "Wyrdwood",
-}
+export type IconTypeUnlock = "" | "FarmPlants" | "Hemp" | "Alchemy1" | "Aloe" | "harvestingplantT4" | "Alchemy3" | "harvestingplantT5" | "Wyrdwood" | "Ironwood" | "Iron" | "Silver" | "Oil" | "Gold" | "Alchemy2" | "Lodestone" | "Starmetal" | "Sandstone" | "Platinum" | "Brimstone" | "Orichalcum" | "SmallPrey" | "MediumPrey" | "LargePrey" | "SmallPredator" | "LargePredator";
 
-export enum Tooltip {
-    ChopIronwood = "Chop Ironwood",
-    ChopWyrdwood = "Chop Wyrdwood",
-    DetectAlchemyCreatures = "Detect Alchemy Creatures",
-    DetectAlchemyPlants = "Detect Alchemy Plants",
-    DetectAlchemyStones = "Detect Alchemy Stones",
-    DetectBrimstone = "Detect Brimstone",
-    DetectCookingIngredients = "Detect Cooking Ingredients",
-    DetectGold = "Detect Gold",
-    DetectHemp = "Detect Hemp",
-    DetectIron = "Detect Iron",
-    DetectIronwood = "Detect Ironwood",
-    DetectLodestone = "Detect Lodestone",
-    DetectOrichalcum = "Detect Orichalcum",
-    DetectPlatinum = "Detect Platinum",
-    DetectSandstone = "Detect Sandstone",
-    DetectSeepingStones = "Detect Seeping Stones",
-    DetectSilver = "Detect Silver",
-    DetectStarmetal = "Detect Starmetal",
-    DetectT4Plants = "Detect T4 plants",
-    DetectT5Plants = "Detect T5 plants",
-    DetectWyrdwood = "Detect Wyrdwood",
-    Empty = "",
-    GatherAlchemyPlants = "Gather Alchemy Plants",
-    MineAlchemyStones = "Mine Alchemy Stones",
-    MineBouldersIron = "Mine Boulders, Iron",
-    MineGold = "Mine Gold",
-    MineLodestone = "Mine Lodestone",
-    MineOrichalcum = "Mine Orichalcum",
-    MinePlatinum = "Mine Platinum",
-    MineSeepingStone = "Mine Seeping Stone",
-    MineSilver = "Mine Silver",
-    MineStarmetal = "Mine Starmetal",
-    ProficientHarvester = "Proficient Harvester",
-    ProficientLogger = "Proficient Logger",
-    ProficientMiner = "Proficient Miner",
-}
+export type Tooltip = "" | "Proficient Harvester" | "Gather Alchemy Plants" | "Detect Cooking Ingredients" | "Detect Hemp" | "Detect Alchemy Plants" | "Detect T4 plants" | "Detect Alchemy Creatures" | "Detect T5 plants" | "Proficient Logger" | "Chop Wyrdwood" | "Detect Wyrdwood" | "Chop Ironwood" | "Detect Ironwood" | "Mine Boulders, Iron" | "Proficient Miner" | "Mine Silver" | "Mine Seeping Stone" | "Detect Iron" | "Detect Seeping Stones" | "Detect Silver" | "Mine Lodestone" | "Mine Alchemy Stones" | "Detect Alchemy Stones" | "Mine Gold" | "Detect Lodestone" | "Detect Gold" | "Mine Starmetal" | "Detect Sandstone" | "Detect Brimstone" | "Detect Starmetal" | "Mine Platinum" | "Detect Platinum" | "Mine Orichalcum" | "Detect Orichalcum";
 
-export interface TwitchDropsStatDefinitions {
+export type TwitchDropsStatDefinitions = {
     TwitchDropId: string;
     RuleKeyEvent: string;
 }
 
-export interface TwitchTagsStatDefinitions {
+export type TwitchTagsStatDefinitions = {
     TwitchTagId:  string;
     TagGroupId:   number;
     KeyValuePair: string;
     DisplayName:  string;
 }
 
-export interface VariationData {
+export type VariationData = {
     HouseItemID?:                            string;
     ExcludeFromGame?:                        number;
     PrefabPath?:                             string;
@@ -10506,469 +5109,95 @@ export interface VariationData {
     VitalsCategoryOverride_003?:             string;
 }
 
-export enum AchievementServerState {
-    Depleted = "Depleted",
-    Empty = "",
-}
+export type AchievementServerState = "" | "Depleted";
 
-export enum AmbientType {
-    BaldCypressTree = "BaldCypressTree",
-    BananaTree = "BananaTree",
-    BeechTree = "BeechTree",
-    Bush = "Bush",
-    Cattail = "Cattail",
-    DeadTree = "DeadTree",
-    Empty = "",
-    KapokTree = "KapokTree",
-    OakTree = "OakTree",
-    PineTree = "PineTree",
-    PoplarTree = "PoplarTree",
-}
+export type AmbientType = "Bush" | "Cattail" | "" | "BeechTree" | "DeadTree" | "OakTree" | "PineTree" | "PoplarTree" | "BananaTree" | "BaldCypressTree" | "KapokTree";
 
-export enum AudioPreloadName {
-    Empty = "",
-    GathOilseep = "gath_oilseep",
-}
+export type AudioPreloadName = "" | "gath_oilseep";
 
-export enum AudioPreload {
-    Empty = "",
-    MissionsBrightwood = "missions_brightwood",
-    MissionsEverfall = "missions_everfall",
-    StructBrimstoneSandsAzothProjector = "Struct_BrimstoneSands_AzothProjector",
-}
+export type AudioPreload = "" | "missions_brightwood" | "Struct_BrimstoneSands_AzothProjector" | "missions_everfall";
 
-export enum AudioPreloadDepletion {
-    Empty = "",
-    GathBushLeavesBig = "gath_bush_leaves_big",
-    GathBushLeavesMed = "gath_bush_leaves_med",
-    GathBushLeavesSmall = "gath_bush_leaves_small",
-    NA = "N/A",
-}
+export type AudioPreloadDepletion = "gath_bush_leaves_big" | "gath_bush_leaves_med" | "gath_bush_leaves_small" | "N/A" | "";
 
-export enum AudioPreloadIdle {
-    BrimstoneSandsSeedpodDevices = "BrimstoneSands_Seedpod_Devices",
-    CorruptionBeamA = "Corruption_Beam_A",
-    Empty = "",
-    GathBushLeavesSmall = "gath_bush_leaves_small",
-    MissionsBreakCurse = "Missions_BreakCurse",
-    MissionsBrightwood = "missions_brightwood",
-}
+export type AudioPreloadIdle = "" | "Corruption_Beam_A" | "gath_bush_leaves_small" | "BrimstoneSands_Seedpod_Devices" | "Missions_BreakCurse" | "missions_brightwood";
 
-export enum CollisionFX {
-    Empty = "",
-    GatherableEdibleFloraLoopBurstberrySummerA = "Gatherable.Edible_Flora.Loop_Burstberry_Summer_A",
-}
+export type CollisionFX = "Gatherable.Edible_Flora.Loop_Burstberry_Summer_A" | "";
 
-export enum CollisionPlaySFX {
-    Empty = "",
-    PlayFoliageGreenJungleMed = "Play_Foliage_Green_Jungle_Med",
-    PlayFoliageGreenMed = "Play_Foliage_Green_Med",
-    PlayFoliageGreenTropicalMed = "Play_Foliage_Green_Tropical_Med",
-}
+export type CollisionPlaySFX = "Play_Foliage_Green_Med" | "Play_Foliage_Green_Tropical_Med" | "Play_Foliage_Green_Jungle_Med" | "";
 
-export enum CollisionStopSFX {
-    Empty = "",
-    StopFoliageGreenJungleMed = "Stop_Foliage_Green_Jungle_Med",
-    StopFoliageGreenMed = "Stop_Foliage_Green_Med",
-    StopFoliageGreenTropicalMed = "Stop_Foliage_Green_Tropical_Med",
-}
+export type CollisionStopSFX = "Stop_Foliage_Green_Med" | "Stop_Foliage_Green_Tropical_Med" | "Stop_Foliage_Green_Jungle_Med" | "";
 
-export enum ColorFamilies {
-    DecorColorYellows = "DecorColor_Yellows",
-    Empty = "",
-}
+export type ColorFamilies = "" | "DecorColor_Yellows";
 
-export enum DEVFurnitureSet {
-    Empty = "",
-    MTXPack01Pirate = "MTX-Pack-01-Pirate",
-    MTXPack02Spooky = "MTX-Pack-02-Spooky",
-    MTXPack03Royal = "MTX-Pack-03-Royal",
-    MTXPack04Winter2021 = "MTX-Pack-04-Winter-2021",
-    MTXPack05NewYears2021 = "MTX-Pack-05-NewYears-2021",
-    MTXPack06Love = "MTX-Pack-06-Love",
-    MTXPack07Spring = "MTX-Pack-07-Spring",
-    MTXPack08FateFortune = "MTX-Pack-08-FateFortune",
-    MTXPack09RPG = "MTX-Pack-09-RPG",
-    MTXPack10Metal = "MTX-Pack-10-Metal",
-    MTXPack11Phoenix = "MTX-Pack-11-Phoenix",
-    MTXPack12Egyptian = "MTX-Pack-12-Egyptian",
-    MTXPack13Nightveil = "MTX-Pack-13-Nightveil",
-    MTXPack14DarkFae = "MTX-Pack-14-DarkFae",
-    MTXPack15Winter2022 = "MTX-Pack-15-Winter-2022",
-    MTXPack16NewYears2023 = "MTX-Pack-16-NewYears-2023",
-    MTXPack17Omens2023 = "MTX-Pack-17-Omens-2023",
-    MTXPack18Firelight2023 = "MTX-Pack-18-Firelight-2023",
-    NABasic = "NA-Basic",
-    NABuffs = "NA-Buffs",
-    NAOther = "NA-Other",
-    Pack01HolidayWinter2021 = "Pack-01-HolidayWinter-2021",
-    Pack01HolidayWinter2022 = "Pack-01-HolidayWinter-2022",
-    Pack02HolidaySummer2022 = "Pack-02-HolidaySummer-2022",
-    Pack03HolidayFall2022 = "Pack-03-HolidayFall-2022",
-    Pack04HolidaySpring2023 = "Pack-04-HolidaySpring-2023",
-    Set01Settler = "Set-01-Settler",
-    Set02Pirate = "Set-02-Pirate",
-    Set03Dynasty = "Set-03-Dynasty",
-    Set04Legion = "Set-04-Legion",
-    The0TestOnly0 = "0-TEST_ONLY-0",
-}
+export type DEVFurnitureSet = "0-TEST_ONLY-0" | "MTX-Pack-01-Pirate" | "MTX-Pack-02-Spooky" | "MTX-Pack-03-Royal" | "MTX-Pack-04-Winter-2021" | "MTX-Pack-05-NewYears-2021" | "MTX-Pack-06-Love" | "MTX-Pack-07-Spring" | "MTX-Pack-08-FateFortune" | "MTX-Pack-09-RPG" | "MTX-Pack-10-Metal" | "MTX-Pack-11-Phoenix" | "MTX-Pack-12-Egyptian" | "MTX-Pack-13-Nightveil" | "MTX-Pack-14-DarkFae" | "MTX-Pack-15-Winter-2022" | "NA-Basic" | "NA-Buffs" | "NA-Other" | "Pack-01-HolidayWinter-2021" | "Pack-01-HolidayWinter-2022" | "Pack-02-HolidaySummer-2022" | "Pack-03-HolidayFall-2022" | "Set-01-Settler" | "Set-02-Pirate" | "Set-03-Dynasty" | "Set-04-Legion" | "Pack-04-HolidaySpring-2023" | "" | "MTX-Pack-16-NewYears-2023" | "MTX-Pack-17-Omens-2023" | "MTX-Pack-18-Firelight-2023";
 
-export enum DepletedFX {
-    CFXLootChestBigCelebration01 = "cFX_Loot.Chest_Big_Celebration01",
-    CFXLootChestBigCelebration02 = "cFX_Loot.Chest_Big_Celebration02",
-    CFXLootChestBigCelebration03 = "cFX_Loot.Chest_Big_Celebration03",
-    CFXLootChestBigCelebration04 = "cFX_Loot.Chest_Big_Celebration04",
-    CFXLootChestMediumCelebration01 = "cFX_Loot.Chest_Medium_Celebration01",
-    CFXLootChestSmallCelebration01 = "cFX_Loot.Chest_Small_Celebration01",
-    CFXLootSettlementMediumCelebration01 = "cFX_Loot.Settlement_Medium_Celebration01",
-    CFXLootSettlementMediumCelebration02 = "cFX_Loot.Settlement_Medium_Celebration02",
-    CFXLootSettlementSmallCelebration01 = "cFX_Loot.Settlement_Small_Celebration01",
-}
+export type DepletedFX = "cFX_Loot.Chest_Big_Celebration01" | "cFX_Loot.Chest_Medium_Celebration01" | "cFX_Loot.Chest_Small_Celebration01" | "cFX_Loot.Chest_Big_Celebration02" | "cFX_Loot.Settlement_Small_Celebration01" | "cFX_Loot.Settlement_Medium_Celebration01" | "cFX_Loot.Settlement_Medium_Celebration02" | "cFX_Loot.Chest_Big_Celebration03" | "cFX_Loot.Chest_Big_Celebration04";
 
-export enum Preload {
-    LootContainer = "loot_container",
-}
+export type Preload = "loot_container";
 
-export enum DepletedSFX {
-    Empty = "",
-    PlayGatherBoulderLrg = "Play_Gather_Boulder_Lrg",
-    PlayGatherBoulderMed = "Play_Gather_Boulder_Med",
-    PlayGatherBoulderSml = "Play_Gather_Boulder_Sml",
-    PlayGatherBushSml = "Play_Gather_Bush_Sml",
-    PlayGatherChestLarge = "Play_Gather_Chest_Large",
-    PlayGatherChestSmall = "Play_Gather_Chest_Small",
-    PlayGatherLogMed = "Play_Gather_Log_Med",
-    PlayGatherNuts = "Play_Gather_Nuts",
-    PlayGatherStones = "Play_Gather_Stones",
-}
+export type DepletedSFX = "" | "Play_Gather_Log_Med" | "Play_Gather_Chest_Large" | "Play_Gather_Chest_Small" | "Play_Gather_Boulder_Lrg" | "Play_Gather_Boulder_Med" | "Play_Gather_Boulder_Sml" | "Play_Gather_Stones" | "Play_Gather_Bush_Sml" | "Play_Gather_Nuts";
 
-export enum DepletedVFXQuest {
-    BuildablesCampRuinCampfire01 = "Buildables.Camp.Ruin_Campfire_01",
-    BuildablesPlacementDustA = "Buildables.Placement.Dust_A",
-    CFXLifeStaffMassRezSpawn = "cFX_LifeStaff.MassRez_Spawn",
-    CFXLootChestBigCelebration01 = "cFX_Loot.Chest_Big_Celebration01",
-    CFXLootLootQuestMediumDepleted = "cFX_Loot.Loot_Quest_Medium_Depleted",
-    CFXLootLootQuestSmall = "cFX_Loot.Loot_Quest_Small",
-    CFXLootLootQuestSmallDepleted = "cFX_Loot.Loot_Quest_Small_Depleted",
-    CFXNpcDryadArcherWeaponIgnite = "cFX_npc_DryadArcher.Weapon_Ignite",
-    CfxNpcAncientHeavyHeavyJumpWave = "cfx_npc_ancient_heavy.Heavy_Jump_Wave",
-    ENVDungeonAncientGateSealBreak02 = "ENV_Dungeon_Ancient_Gate.Seal_Break_02",
-    Empty = "",
-    EnvDarknessGroveMinorMainDESExpl = "env_darkness_grove.Minor.Main_DES_Expl",
-    EnvEverfallForgeComplete = "env_everfall.Forge_Complete",
-    EnvMsqCollectableCorruptedORBORBExplosion = "env_msq_collectable.CorruptedOrb.Orb_Explosion",
-    EnvMsqCollectableWitchWitchsFireBursting = "env_msq_collectable.Witch.witchs_fire_bursting",
-    GatherableAlchemyBoidAmbienceBoidDeathBurst03 = "gatherable_alchemy_boid.Ambience.Boid_Death_Burst03",
-    GatherableAlchemyPlantAmbiencePlantAirBurst02 = "gatherable_Alchemy_Plant.Ambience.Plant_Air_Burst02",
-    GatherableAlchemyPlantAmbiencePlantFireDeplete01 = "Gatherable_Alchemy_Plant.Ambience.Plant_Fire_Deplete01",
-    GatherableEdibleFloraDemolishGrainA = "Gatherable.Edible_Flora.Demolish.Grain_A",
-    GatherableLogDemolishRottenLogC = "Gatherable.Log.Demolish.RottenLog_C",
-    GatherableMineralDemolishBoulderSmC = "Gatherable.Mineral.Demolish.Boulder_sm_C",
-    ReveriesFireworksFireworksShootingstarSpectrum = "Reveries_Fireworks.Fireworks_Shootingstar_Spectrum",
-    VfxEzraLeadForgebreaker = "vfx_ezra_lead.Forgebreaker",
-}
+export type DepletedVFXQuest = "cFX_Loot.Loot_Quest_Small_Depleted" | "" | "Gatherable_Alchemy_Plant.Ambience.Plant_Fire_Deplete01" | "cFX_LifeStaff.MassRez_Spawn" | "cFX_Loot.Loot_Quest_Medium_Depleted" | "env_darkness_grove.Minor.Main_DES_Expl" | "cFX_npc_DryadArcher.Weapon_Ignite" | "Buildables.Camp.Ruin_Campfire_01" | "Gatherable.Mineral.Demolish.Boulder_sm_C" | "Gatherable.Log.Demolish.RottenLog_C" | "ENV_Dungeon_Ancient_Gate.Seal_Break_02" | "Gatherable.Edible_Flora.Demolish.Grain_A" | "gatherable_Alchemy_Plant.Ambience.Plant_Air_Burst02" | "cFX_Loot.Chest_Big_Celebration01" | "env_msq_collectable.CorruptedOrb.Orb_Explosion" | "env_everfall.Forge_Complete" | "Buildables.Placement.Dust_A" | "Reveries_Fireworks.Fireworks_Shootingstar_Spectrum" | "gatherable_alchemy_boid.Ambience.Boid_Death_Burst03" | "vfx_ezra_lead.Forgebreaker" | "cFX_Loot.Loot_Quest_Small" | "cfx_npc_ancient_heavy.Heavy_Jump_Wave" | "env_msq_collectable.Witch.witchs_fire_bursting";
 
-export enum DepletedSFXEnum {
-    PlayGatherBushLrg = "Play_Gather_Bush_Lrg",
-    PlayGatherBushMed = "Play_Gather_Bush_Med",
-    PlayGatherBushSml = "Play_Gather_Bush_Sml",
-}
+export type DepletedSFXEnum = "Play_Gather_Bush_Lrg" | "Play_Gather_Bush_Med" | "Play_Gather_Bush_Sml";
 
-export enum Gatherable {
-    Empty = "",
-    SlicesGatherablesMasterQuestDamageableInstancedSlice = "slices\\Gatherables\\Master_Quest_Damageable_Instanced.slice",
-    SlicesGatherablesMasterQuestInstancedSlice = "slices\\Gatherables\\Master_Quest_Instanced.slice",
-    SlicesGatherablesMasterQuestProximityInstancedSlice = "slices\\Gatherables\\Master_Quest_Proximity_Instanced.slice",
-    SlicesGatherablesMasterQuestSlice = "slices\\Gatherables\\Master_Quest.slice",
-    SlicesWorldEventsVarangianCustomMQI9926_VKCannonA00Slice = "slices\\WorldEvents\\Varangian\\CustomMQI_9926_VKCannon_A_00.slice",
-    SlicesWorldEventsVarangianCustomMQI9926_VKCannonB00Slice = "slices\\WorldEvents\\Varangian\\CustomMQI_9926_VKCannon_B_00.slice",
-}
+export type Gatherable = "slices\\Gatherables\\Master_Quest.slice" | "slices\\Gatherables\\Master_Quest_Instanced.slice" | "slices\\Gatherables\\Master_Quest_Proximity_Instanced.slice" | "slices\\Gatherables\\Master_Quest_Damageable_Instanced.slice" | "slices\\WorldEvents\\Varangian\\CustomMQI_9926_VKCannon_A_00.slice" | "slices\\WorldEvents\\Varangian\\CustomMQI_9926_VKCannon_B_00.slice" | "";
 
-export enum GatheringFX {
-    DungeonShatteredobeliskBeamCharge = "dungeon_shatteredobelisk.Beam_Charge",
-    Empty = "",
-    EnvDarknessCoreCoreMinorMonolithGather01 = "env_darkness.Core.Core_minor_monolith_gather01",
-}
+export type GatheringFX = "env_darkness.Core.Core_minor_monolith_gather01" | "" | "dungeon_shatteredobelisk.Beam_Charge";
 
-export enum HousingTag1Placed {
-    Empty = "",
-    OnCeiling = "OnCeiling",
-    OnFloor = "OnFloor",
-    OnFurniture = "OnFurniture",
-    OnWall = "OnWall",
-}
+export type HousingTag1Placed = "" | "OnFloor" | "OnCeiling" | "OnWall" | "OnFurniture";
 
-export enum HousingTag2Points {
-    Empty = "",
-    IsAnimal = "+IsAnimal",
-    IsBed = "+IsBed",
-    IsBooksPaper = "+IsBooksPaper",
-    IsCabinetShort = "+IsCabinetShort",
-    IsCabinetTall = "+IsCabinetTall",
-    IsChairDining = "+IsChairDining",
-    IsChairOther = "+IsChairOther",
-    IsCurtain = "+IsCurtain",
-    IsDishes = "+IsDishes",
-    IsLargeDecor = "+IsLargeDecor",
-    IsLighting = "+IsLighting",
-    IsMediumDecor = "+IsMediumDecor",
-    IsPainting = "+IsPainting",
-    IsPlaceSetting = "+IsPlaceSetting",
-    IsRug = "+IsRug",
-    IsShelfWall = "+IsShelfWall",
-    IsShelves = "+IsShelves",
-    IsSmallDecor = "+IsSmallDecor",
-    IsStorage = "+IsStorage",
-    IsStoveOven = "+IsStoveOven",
-    IsTableDining = "+IsTableDining",
-    IsTableOther = "+IsTableOther",
-    IsTrophyBuff = "+IsTrophyBuff",
-    IsUnique = "+IsUnique",
-    IsVeg = "+IsVeg",
-    Name = "#NAME?",
-}
+export type HousingTag2Points = "" | "+IsChairOther" | "+IsLighting" | "+IsAnimal" | "+IsLargeDecor" | "+IsBooksPaper" | "+IsVeg" | "+IsPainting" | "+IsSmallDecor" | "+IsMediumDecor" | "+IsCurtain" | "+IsBed" | "+IsChairDining" | "+IsTableOther" | "+IsRug" | "+IsTableDining" | "+IsShelfWall" | "+IsShelves" | "+IsCabinetShort" | "+IsDishes" | "+IsPlaceSetting" | "+IsStoveOven" | "+IsStorage" | "+IsUnique" | "+IsTrophyBuff" | "+IsCabinetTall" | "#NAME?";
 
-export enum HousingTag3Limiter {
-    Empty = "",
-    LimiterAnimatedRigged = "+LimiterAnimatedRigged",
-    LimiterAnimatedTimelineInteract = "+LimiterAnimatedTimelineInteract",
-    LimiterAnimatedTimelineLooping = "+LimiterAnimatedTimelineLooping",
-    LimiterLighting = "+LimiterLighting",
-    LimiterStorage = "+LimiterStorage",
-    LimiterTrophyBuff = "+LimiterTrophyBuff",
-    Name = "#NAME?",
-}
+export type HousingTag3Limiter = "" | "+LimiterLighting" | "+LimiterAnimatedRigged" | "+LimiterAnimatedTimelineInteract" | "+LimiterAnimatedTimelineLooping" | "+LimiterStorage" | "+LimiterTrophyBuff" | "#NAME?";
 
-export enum HousingTag5Buffs {
-    CombatAncientBonus = "+CombatAncientBonus",
-    CombatAngryEarthBonus = "+CombatAngryEarthBonus",
-    CombatBeastBonus = "+CombatBeastBonus",
-    CombatCorruptedBonus = "+CombatCorruptedBonus",
-    CombatLostBonus = "+CombatLostBonus",
-    CombatVarangianBonus = "+CombatVarangianBonus",
-    CraftingAlchemyBonus = "+CraftingAlchemyBonus",
-    CraftingBlacksmithingBonus = "+CraftingBlacksmithingBonus",
-    CraftingCookingBonus = "+CraftingCookingBonus",
-    CraftingEngineeringBonus = "+CraftingEngineeringBonus",
-    CraftingOutfittingBonus = "+CraftingOutfittingBonus",
-    Empty = "",
-    GatheringFishingBonus = "+GatheringFishingBonus",
-    GatheringHarvestingBonus = "+GatheringHarvestingBonus",
-    GatheringLoggingBonus = "+GatheringLoggingBonus",
-    GatheringMiningBonus = "+GatheringMiningBonus",
-    GatheringSkinningBonus = "+GatheringSkinningBonus",
-    Name = "#NAME?",
-    NoStacking = "+NoStacking",
-    OtherFoodTimeBonus = "+OtherFoodTimeBonus",
-    OtherLootLuckBonus = "+OtherLootLuckBonus",
-    SeasonXPBonus = "+SeasonXPBonus",
-}
+export type HousingTag5Buffs = "" | "+NoStacking" | "+CraftingAlchemyBonus" | "+CraftingBlacksmithingBonus" | "+CraftingCookingBonus" | "+CombatAncientBonus" | "+CombatAngryEarthBonus" | "+CombatBeastBonus" | "+CombatCorruptedBonus" | "+CombatLostBonus" | "+CombatVarangianBonus" | "+CraftingEngineeringBonus" | "+GatheringFishingBonus" | "+GatheringHarvestingBonus" | "+GatheringLoggingBonus" | "+OtherLootLuckBonus" | "+GatheringMiningBonus" | "+CraftingOutfittingBonus" | "+GatheringSkinningBonus" | "+OtherFoodTimeBonus" | "+SeasonXPBonus" | "#NAME?";
 
-export enum HowToOptainPrimarily {
-    CraftingCommonMaterials = "Crafting - Common Materials",
-    CraftingEpicMaterials = "Crafting - Epic Materials",
-    CraftingRareMaterials = "Crafting - Rare Materials",
-    CraftingUncommonMaterials = "Crafting - Uncommon Materials",
-    Empty = "",
-    ExplorationPaintingRewards = "Exploration Painting Rewards",
-    FishingTournamentRewards = "Fishing Tournament Rewards",
-    FishingTreasureChest = "Fishing Treasure Chest",
-    FromSalvageEpic = "From Salvage - Epic",
-    HolidayShop = "Holiday Shop",
-    LiveOpsMakeGood = "LiveOps Make-Good",
-    LootDropCommon = "Loot Drop - Common",
-    LootDropElite = "Loot Drop - Elite",
-    LootDropLegendary = "Loot Drop - Legendary",
-    LootDropRare = "Loot Drop - Rare",
-    LootDropUncommon = "Loot Drop - Uncommon",
-    MTXShopGift = "MTX Shop/Gift",
-    QuestReward = "Quest Reward",
-    SeasonEventDrop = "Season Event Drop",
-    SeasonJourneyReward = "Season Journey Reward",
-}
+export type HowToOptainPrimarily = "" | "MTX Shop/Gift" | "Crafting - Common Materials" | "Crafting - Uncommon Materials" | "Crafting - Rare Materials" | "Loot Drop - Uncommon" | "Loot Drop - Common" | "Loot Drop - Rare" | "Crafting - Epic Materials" | "Fishing Treasure Chest" | "Loot Drop - Elite" | "Quest Reward" | "Holiday Shop" | "Loot Drop - Legendary" | "Season Journey Reward" | "Exploration Painting Rewards" | "From Salvage - Epic" | "LiveOps Make-Good" | "Fishing Tournament Rewards" | "Season Event Drop";
 
-export enum IdleSFX {
-    Empty = "",
-    PlayAMB3DOilSeep = "Play_AMB_3D_OilSeep",
-}
+export type IdleSFX = "" | "Play_AMB_3D_OilSeep";
 
-export enum IdleSFXPlay {
-    PlayLootSmallIdle = "Play_Loot_Small_Idle",
-}
+export type IdleSFXPlay = "Play_Loot_Small_Idle";
 
-export enum IdleSFXStop {
-    StopLootSmallIdle = "Stop_Loot_Small_Idle",
-}
+export type IdleSFXStop = "Stop_Loot_Small_Idle";
 
-export enum IdleVFX {
-    LootChestBigClosed01 = "Loot.Chest_big_closed01",
-    LootChestBigOpen01 = "Loot.Chest_big_open01",
-    LootChestBigPeek01 = "Loot.Chest_big_peek01",
-    LootChestXbig01 = "Loot.Chest_xbig01",
-    LootCrateSmall01 = "Loot.Crate_small01",
-    LootCrateTall01 = "Loot.Crate_tall01",
-    LootCrateXsmall01 = "Loot.Crate_xsmall01",
-    LootGlyphChestBigOpen1 = "Loot.GlyphChest_big_open1",
-}
+export type IdleVFX = "Loot.Crate_small01" | "Loot.Chest_big_open01" | "Loot.Crate_xsmall01" | "Loot.Crate_tall01" | "Loot.Chest_big_closed01" | "Loot.Chest_big_peek01" | "Loot.Chest_xbig01" | "Loot.GlyphChest_big_open1";
 
-export enum ItemRarity {
-    Common = "Common",
-    Empty = "",
-    Epic = "Epic",
-    Legendary = "Legendary",
-    Rare = "Rare",
-    Uncommon = "Uncommon",
-}
+export type ItemRarity = "" | "Rare" | "Common" | "Uncommon" | "Epic" | "Legendary";
 
-export enum MarkerCreatureTypeOverride {
-    DamageableGatherable = "DamageableGatherable",
-    Empty = "",
-}
+export type MarkerCreatureTypeOverride = "" | "DamageableGatherable";
 
-export enum PlacementGridDisplaySize {
-    Empty = "",
-    GridSizeLarge = "GridSize_Large",
-}
+export type PlacementGridDisplaySize = "" | "GridSize_Large";
 
-export enum PlayFallingSFX {
-    PlayGatherCactusFallMed = "Play_Gather_CactusFall_Med",
-    PlayGatherTreeFallBig = "Play_Gather_TreeFall_Big",
-    PlayGatherTreeFallMed = "Play_Gather_TreeFall_Med",
-    PlayGatherTreeFallSmall = "Play_Gather_TreeFall_Small",
-}
+export type PlayFallingSFX = "Play_Gather_TreeFall_Med" | "Play_Gather_TreeFall_Small" | "Play_Gather_TreeFall_Big" | "Play_Gather_CactusFall_Med";
 
-export enum PlaySlidingSFX {
-    Empty = "",
-    PlaySlideTreeHvy = "Play_Slide_Tree_Hvy",
-    PlaySlideTreeMed = "Play_Slide_Tree_Med",
-    PlaySlideTreeSmall = "Play_Slide_Tree_Small",
-}
+export type PlaySlidingSFX = "Play_Slide_Tree_Med" | "Play_Slide_Tree_Small" | "Play_Slide_Tree_Hvy" | "";
 
-export enum RankingPointsEnum {
-    NA = "#N/A",
-    The002 = "0.02",
-    The003 = "0.03",
-    The004 = "0.04",
-    The005 = "0.05",
-    The006 = "0.06",
-    The008 = "0.08",
-    The009 = "0.09",
-    The01 = "0.1",
-    The011 = "0.11",
-    The012 = "0.12",
-    The013 = "0.13",
-    The014000000000000001 = "0.14000000000000001",
-    The015 = "0.15",
-    The016 = "0.16",
-    The018 = "0.18",
-    The02 = "0.2",
-    The70000000000000007E2 = "7.0000000000000007E-2",
-}
+export type RankingPointsEnum = "0.02" | "0.12" | "0.11" | "0.04" | "0.08" | "0.06" | "7.0000000000000007E-2" | "0.03" | "0.09" | "0.05" | "0.13" | "0.1" | "0.14000000000000001" | "0.16" | "0.18" | "0.2" | "#N/A" | "0.15";
 
-export enum SfxBurst {
-    Empty = "",
-    PlayAlchemyAirSparksBoid01 = "Play_Alchemy_Air_Sparks_Boid_01",
-    PlayAlchemyAirSparksBoid02 = "Play_Alchemy_Air_Sparks_Boid_02",
-    PlayAlchemyAirSparksBoid03 = "Play_Alchemy_Air_Sparks_Boid_03",
-    PlayAlchemyAirSparksStone = "Play_Alchemy_Air_Sparks_Stone",
-    PlayAlchemyDeathPlant = "Play_Alchemy_Death_Plant",
-    PlayAlchemyEarthBoid = "Play_Alchemy_Earth_Boid",
-    PlayAlchemyEarthStone = "Play_Alchemy_Earth_Stone",
-    PlayAlchemyFireBoid = "Play_Alchemy_Fire_Boid",
-    PlayAlchemyFirePlant = "Play_Alchemy_Fire_Plant",
-    PlayAlchemyFireStone = "Play_Alchemy_Fire_Stone",
-    PlayAlchemyLifeMoth = "Play_Alchemy_Life_Moth",
-    PlayAlchemySoulBoid = "Play_Alchemy_Soul_Boid",
-}
+export type SfxBurst = "Play_Alchemy_Fire_Boid" | "" | "Play_Alchemy_Fire_Plant" | "Play_Alchemy_Air_Sparks_Boid_01" | "Play_Alchemy_Death_Plant" | "Play_Alchemy_Earth_Stone" | "Play_Alchemy_Fire_Stone" | "Play_Alchemy_Air_Sparks_Stone" | "Play_Alchemy_Earth_Boid" | "Play_Alchemy_Life_Moth" | "Play_Alchemy_Soul_Boid" | "Play_Alchemy_Air_Sparks_Boid_02" | "Play_Alchemy_Air_Sparks_Boid_03";
 
-export enum SFXDepletedIdlePlay {
-    Empty = "",
-    PlaySFXMissionsBrightwoodBurnCaskets = "Play_SFX_Missions_Brightwood_BurnCaskets",
-}
+export type SFXDepletedIdlePlay = "" | "Play_SFX_Missions_Brightwood_BurnCaskets";
 
-export enum SFXDepletedIdleStop {
-    Empty = "",
-    StopSFXMissionsBrightwoodBurnCaskets = "Stop_SFX_Missions_Brightwood_BurnCaskets",
-}
+export type SFXDepletedIdleStop = "" | "Stop_SFX_Missions_Brightwood_BurnCaskets";
 
-export enum SFXGathering {
-    Empty = "",
-    PlaySFXAzothProjectorMovement = "Play_SFX_AzothProjector_Movement",
-}
+export type SFXGathering = "" | "Play_SFX_AzothProjector_Movement";
 
-export enum SalvageGameEventID {
-    Empty = "",
-    SalvageCoinGrantT2 = "SalvageCoinGrantT2",
-    SalvageCoinGrantT3 = "SalvageCoinGrantT3",
-    SalvageCoinGrantT4 = "SalvageCoinGrantT4",
-}
+export type SalvageGameEventID = "" | "SalvageCoinGrantT2" | "SalvageCoinGrantT3" | "SalvageCoinGrantT4";
 
-export enum StopFallingSFX {
-    StopGatherCactusFallMed = "Stop_Gather_CactusFall_Med",
-    StopGatherTreeFallBig = "Stop_Gather_TreeFall_Big",
-    StopGatherTreeFallMed = "Stop_Gather_TreeFall_Med",
-    StopGatherTreeFallSmall = "Stop_Gather_TreeFall_Small",
-}
+export type StopFallingSFX = "Stop_Gather_TreeFall_Med" | "Stop_Gather_TreeFall_Small" | "Stop_Gather_TreeFall_Big" | "Stop_Gather_CactusFall_Med";
 
-export enum TradingFamily {
-    Empty = "",
-    HousingTrdFDecorations = "HousingTrdF_Decorations",
-    HousingTrdFFurniture = "HousingTrdF_Furniture",
-    HousingTrdFMisc = "HousingTrdF_Misc",
-    HousingTrdFTrophies = "HousingTrdF_Trophies",
-}
+export type TradingFamily = "" | "HousingTrdF_Furniture" | "HousingTrdF_Misc" | "HousingTrdF_Decorations" | "HousingTrdF_Trophies";
 
-export enum VariationDatumTradingGroup {
-    Empty = "",
-    HousingTrdGAnimals = "HousingTrdG_Animals",
-    HousingTrdGBeds = "HousingTrdG_Beds",
-    HousingTrdGBooksPaper = "HousingTrdG_BooksPaper",
-    HousingTrdGBuffCombat = "HousingTrdG_BuffCombat",
-    HousingTrdGBuffCrafting = "HousingTrdG_BuffCrafting",
-    HousingTrdGBuffGathering = "HousingTrdG_BuffGathering",
-    HousingTrdGBuffOther = "HousingTrdG_BuffOther",
-    HousingTrdGCabinets = "HousingTrdG_Cabinets",
-    HousingTrdGChairs = "HousingTrdG_Chairs",
-    HousingTrdGCurtains = "HousingTrdG_Curtains",
-    HousingTrdGDecorOther = "HousingTrdG_DecorOther",
-    HousingTrdGDishes = "HousingTrdG_Dishes",
-    HousingTrdGLighting = "HousingTrdG_Lighting",
-    HousingTrdGMiscOther = "HousingTrdG_MiscOther",
-    HousingTrdGPaintings = "HousingTrdG_Paintings",
-    HousingTrdGRugs = "HousingTrdG_Rugs",
-    HousingTrdGShelves = "HousingTrdG_Shelves",
-    HousingTrdGStorage = "HousingTrdG_Storage",
-    HousingTrdGStoves = "HousingTrdG_Stoves",
-    HousingTrdGTables = "HousingTrdG_Tables",
-    HousingTrdGVeg = "HousingTrdG_Veg",
-}
+export type VariationDatumTradingGroup = "" | "HousingTrdG_Shelves" | "HousingTrdG_MiscOther" | "HousingTrdG_DecorOther" | "HousingTrdG_Beds" | "HousingTrdG_Chairs" | "HousingTrdG_Curtains" | "HousingTrdG_Dishes" | "HousingTrdG_Lighting" | "HousingTrdG_BooksPaper" | "HousingTrdG_Rugs" | "HousingTrdG_Cabinets" | "HousingTrdG_Stoves" | "HousingTrdG_Storage" | "HousingTrdG_Tables" | "HousingTrdG_Veg" | "HousingTrdG_BuffCrafting" | "HousingTrdG_BuffCombat" | "HousingTrdG_BuffGathering" | "HousingTrdG_BuffOther" | "HousingTrdG_Paintings" | "HousingTrdG_Animals";
 
-export enum UIHousingCategory {
-    Beds = "Beds",
-    Chairs = "Chairs",
-    Decorations = "Decorations",
-    Empty = "",
-    Lighting = "Lighting",
-    Misc = "Misc",
-    Pets = "Pets",
-    Shelves = "Shelves",
-    Tables = "Tables",
-    Trophies = "Trophies",
-    Vegetation = "Vegetation",
-}
+export type UIHousingCategory = "" | "Chairs" | "Lighting" | "Pets" | "Misc" | "Decorations" | "Vegetation" | "Beds" | "Tables" | "Shelves" | "Trophies";
 
-export enum VegAreaDataSet {
-    Empty = "",
-    GroundCoverObjectSetsNatureBush01Vegsetdb = "GroundCover/ObjectSets/Nature/bush_01.vegsetdb",
-}
+export type VegAreaDataSet = "GroundCover/ObjectSets/Nature/bush_01.vegsetdb" | "";
 
-export enum WalkInTimeline {
-    LibsTimelineNpcNpc01_Graceww00_WalkinTimeline = "Libs\\Timeline\\Npc\\npc_01_graceww_00_walkin.timeline",
-    LibsTimelineNpcNpc01_ReesewwWalkawayLeftTimeline = "Libs\\Timeline\\Npc\\npc_01_reeseww_walkaway_left.timeline",
-    TimelinesEmptyTimelineTimeline = "Timelines\\EmptyTimeline.timeline",
-}
+export type WalkInTimeline = "Libs\\Timeline\\Npc\\npc_01_reeseww_walkaway_left.timeline" | "Timelines\\EmptyTimeline.timeline" | "Libs\\Timeline\\Npc\\npc_01_graceww_00_walkin.timeline";
 
-export interface VitalsCategoryData {
+export type VitalsCategoryData = {
     VitalsCategoryID:          string;
     DisplayName:               string;
     Icon:                      Icon;
@@ -10982,27 +5211,11 @@ export interface VitalsCategoryData {
     FemaleMtlOverride:         string;
 }
 
-export enum Icon {
-    Empty = "",
-    LyShineUIImagesMissionsKillAncientPNG = "LyShineUI\\Images\\missions\\kill\\Ancient.png",
-    LyShineUIImagesMissionsKillBearPNG = "LyShineUI\\Images\\Missions\\Kill\\Bear.PNG",
-    LyShineUIImagesMissionsKillBisonPNG = "LyShineUI\\Images\\Missions\\Kill\\Bison.PNG",
-    LyShineUIImagesMissionsKillBoarPNG = "LyShineUI\\Images\\Missions\\Kill\\Boar.PNG",
-    LyShineUIImagesMissionsKillBossPNG = "LyShineUI\\Images\\Missions\\Kill\\Boss.PNG",
-    LyShineUIImagesMissionsKillCorruptedPNG = "LyShineUI\\Images\\Missions\\Kill\\Corrupted.PNG",
-    LyShineUIImagesMissionsKillElkPNG = "LyShineUI\\Images\\Missions\\Kill\\Elk.PNG",
-    LyShineUIImagesMissionsKillSprigganPNG = "LyShineUI\\Images\\missions\\kill\\Spriggan.png",
-    LyShineUIImagesMissionsKillTurkeyPNG = "LyShineUI\\Images\\Missions\\Kill\\Turkey.PNG",
-    LyShineUIImagesMissionsKillWitheredPNG = "LyShineUI\\Images\\Missions\\Kill\\Withered.PNG",
-    LyShineUIImagesMissionsKillWolfPNG = "LyShineUI\\Images\\Missions\\Kill\\Wolf.PNG",
-}
+export type Icon = "" | "LyShineUI\\Images\\missions\\kill\\Ancient.png" | "LyShineUI\\Images\\Missions\\Kill\\Bear.PNG" | "LyShineUI\\Images\\Missions\\Kill\\Bison.PNG" | "LyShineUI\\Images\\Missions\\Kill\\Boar.PNG" | "LyShineUI\\Images\\Missions\\Kill\\Corrupted.PNG" | "LyShineUI\\Images\\missions\\kill\\Spriggan.png" | "LyShineUI\\Images\\Missions\\Kill\\Withered.PNG" | "LyShineUI\\Images\\Missions\\Kill\\Elk.PNG" | "LyShineUI\\Images\\Missions\\Kill\\Boss.PNG" | "LyShineUI\\Images\\Missions\\Kill\\Wolf.PNG" | "LyShineUI\\Images\\Missions\\Kill\\Turkey.PNG";
 
-export enum LocationHint {
-    EbonyHawk = "Ebony_Hawk",
-    Empty = "",
-}
+export type LocationHint = "" | "Ebony_Hawk";
 
-export interface VitalsData {
+export type VitalsData = {
     VitalsID:                                  string;
     DisplayName:                               string;
     VitalsCategories:                          string;
@@ -11180,133 +5393,25 @@ export interface VitalsData {
     DMGMagic?:                                 number | null;
 }
 
-export enum AFAFrostbite {
-    C = "c",
-    Empty = "",
-}
+export type AFAFrostbite = "" | "c";
 
-export enum VitalsDatumFamily {
-    AncientGuardian = "AncientGuardian",
-    AngryEarth = "AngryEarth",
-    Corrupted = "Corrupted",
-    Empty = "",
-    Human = "Human",
-    Lost = "Lost",
-    Wildlife = "Wildlife",
-}
+export type VitalsDatumFamily = "Wildlife" | "AncientGuardian" | "" | "Corrupted" | "AngryEarth" | "Lost" | "Human";
 
-export enum HealthRegenThresholds {
-    Empty = "",
-    Food601002565102500 = "Food;60:100;25:65;10:25;0:0",
-    Health100075505020025350105000150000 = "Health;100:0;75:50;50:200;25:350;10:500;0.1:500;0:0",
-    Health100075505020025350105000150001 = "Health;100:0;75:50;50:200;25:350;10:500;0.1:500;0:1",
-    Health100075505020025350105000150002 = "Health;100:0;75:50;50:200;25:350;10:500;0.1:500;0:2",
-}
+export type HealthRegenThresholds = "" | "Health;100:0;75:50;50:200;25:350;10:500;0.1:500;0:0" | "Health;100:0;75:50;50:200;25:350;10:500;0.1:500;0:1" | "Health;100:0;75:50;50:200;25:350;10:500;0.1:500;0:2" | "Food;60:100;25:65;10:25;0:0";
 
-export enum KillEventIDOverride {
-    AncientGuardianHeavyBossNamedDGGreatCleave01 = "AncientGuardian_Heavy_Boss_Named_DG_GreatCleave_01",
-    DamnedLongSwordsmanCommanderNamedDGRestless00 = "Damned_LongSwordsman_Commander_Named_DG_Restless_00",
-    Empty = "",
-    IsabellaPhase2DGShatterMtn00 = "Isabella_Phase2_DG_ShatterMtn_00",
-    KillFTUESailorT12 = "KillFTUE_Sailor_T1_2",
-    KillStructure = "KillStructure",
-    KillTerrorTurkey = "Kill_TerrorTurkey",
-    Naga = "Naga",
-}
+export type KillEventIDOverride = "" | "AncientGuardian_Heavy_Boss_Named_DG_GreatCleave_01" | "Damned_LongSwordsman_Commander_Named_DG_Restless_00" | "KillStructure" | "KillFTUE_Sailor_T1_2" | "Isabella_Phase2_DG_ShatterMtn_00" | "Kill_TerrorTurkey" | "Naga";
 
-export enum VitalsDatumLootTableID {
-    CreatureLootMaster = "CreatureLootMaster",
-    DarknessDamnedAcolyte = "Darkness_Damned_Acolyte",
-    DarknessRiftBoss = "DarknessRiftBoss",
-    Elk = "Elk",
-    Empty = "",
-    GoblinLoot = "GoblinLoot",
-    GoblinLoot60 = "GoblinLoot60",
-    NullRoll = "NullRoll",
-    OutpostRushCreatures = "OutpostRush_Creatures",
-    OutpostRushLargeCreatures = "OutpostRush_Large_Creatures",
-    OutpostRushUndeadBrute = "OutpostRush_Undead_Brute",
-    PlayerMaster = "PlayerMaster",
-}
+export type VitalsDatumLootTableID = "CreatureLootMaster" | "" | "NullRoll" | "GoblinLoot" | "GoblinLoot60" | "OutpostRush_Large_Creatures" | "OutpostRush_Creatures" | "OutpostRush_Undead_Brute" | "PlayerMaster" | "Darkness_Damned_Acolyte" | "DarknessRiftBoss" | "Elk";
 
-export enum MinionVitalsID {
-    AncientGuardianMageMinion22 = "AncientGuardian_Mage_Minion_22",
-    AncientGuardianMageMinion36 = "AncientGuardian_Mage_Minion_36",
-    AncientGuardianMageMinion37 = "AncientGuardian_Mage_Minion_37",
-    AncientGuardianMageMinion38 = "AncientGuardian_Mage_Minion_38",
-    AncientGuardianMageMinion39 = "AncientGuardian_Mage_Minion_39",
-    AncientGuardianMageMinion40 = "AncientGuardian_Mage_Minion_40",
-    AncientGuardianMageMinion41 = "AncientGuardian_Mage_Minion_41",
-    AncientGuardianMageMinion42 = "AncientGuardian_Mage_Minion_42",
-    AncientGuardianMageMinion43 = "AncientGuardian_Mage_Minion_43",
-    AncientGuardianMageMinion44 = "AncientGuardian_Mage_Minion_44",
-    AncientGuardianMageMinion45 = "AncientGuardian_Mage_Minion_45",
-    AncientGuardianMageMinion49 = "AncientGuardian_Mage_Minion_49",
-    AncientGuardianMageMinion58 = "AncientGuardian_Mage_Minion_58",
-    AncientGuardianMageMinion59 = "AncientGuardian_Mage_Minion_59",
-    AncientGuardianMageMinion60 = "AncientGuardian_Mage_Minion_60",
-    AncientGuardianMageMinion61 = "AncientGuardian_Mage_Minion_61",
-    AncientGuardianMageMinion62 = "AncientGuardian_Mage_Minion_62",
-    AncientGuardianMageMinion67_ELITE = "AncientGuardian_Mage_Minion_67_ELITE",
-    AncientGuardianMageMinionDGEverfall00 = "AncientGuardian_Mage_Minion_DG_Everfall_00",
-    BearCubElemental = "Bear_Cub_Elemental",
-    CorruptedMine = "Corrupted_Mine",
-    CorruptedMine25 = "Corrupted_Mine_25",
-    CorruptedMine35 = "Corrupted_Mine_35",
-    CorruptedMine45 = "Corrupted_Mine_45",
-    CorruptedMine49 = "Corrupted_Mine_49",
-    CorruptedMine50 = "Corrupted_Mine_50",
-    CorruptedMine55 = "Corrupted_Mine_55",
-    CorruptedMine60 = "Corrupted_Mine_60",
-    CorruptedMine61 = "Corrupted_Mine_61",
-    CorruptedMine63 = "Corrupted_Mine_63",
-    CorruptedMine65 = "Corrupted_Mine_65",
-    DamnedPriestHound46 = "Damned_Priest_Hound_46",
-    DamnedPriestHound62 = "Damned_Priest_Hound_62",
-    DamnedPriestHound65 = "Damned_Priest_Hound_65",
-    Empty = "",
-    LesserDryad35 = "Lesser_Dryad_35",
-    LesserDryad64 = "Lesser_Dryad_64",
-    LesserDryad65 = "Lesser_Dryad_65",
-    NagaAngryEarthMinion = "Naga_AngryEarth_Minion",
-    ORWolf = "OR_Wolf",
-    PriestLesserDamnedHoundRestlessShores = "Priest_Lesser_DamnedHound_RestlessShores",
-    RisenBruteMinion = "Risen_Brute_Minion",
-    SwampFiendArena = "Swamp_Fiend_Arena",
-    TorsoBossMinion = "Torso_Boss_Minion",
-    UnstableSwampFiendMinion = "Unstable_Swamp_Fiend_Minion",
-    WolfMinion08QP05 = "Wolf_Minion_08QP05",
-    WolfMinion10 = "Wolf_Minion_10",
-    WolfMinion11 = "Wolf_Minion_11",
-    WolfMinion15 = "Wolf_Minion_15",
-    WolfMinion16 = "Wolf_Minion_16",
-    WolfMinion21 = "Wolf_Minion_21",
-    WolfMinion26 = "Wolf_Minion_26",
-    WolfMinion34 = "Wolf_Minion_34",
-    WolfMinion40 = "Wolf_Minion_40",
-    WolfMinion7 = "Wolf_Minion_7",
-}
+export type MinionVitalsID = "" | "AncientGuardian_Mage_Minion_44" | "AncientGuardian_Mage_Minion_36" | "AncientGuardian_Mage_Minion_37" | "AncientGuardian_Mage_Minion_38" | "AncientGuardian_Mage_Minion_39" | "AncientGuardian_Mage_Minion_40" | "AncientGuardian_Mage_Minion_41" | "AncientGuardian_Mage_Minion_42" | "AncientGuardian_Mage_Minion_43" | "AncientGuardian_Mage_Minion_45" | "AncientGuardian_Mage_Minion_49" | "AncientGuardian_Mage_Minion_58" | "AncientGuardian_Mage_Minion_59" | "AncientGuardian_Mage_Minion_60" | "AncientGuardian_Mage_Minion_61" | "AncientGuardian_Mage_Minion_62" | "AncientGuardian_Mage_Minion_67_ELITE" | "AncientGuardian_Mage_Minion_22" | "AncientGuardian_Mage_Minion_DG_Everfall_00" | "Bear_Cub_Elemental" | "Lesser_Dryad_65" | "Lesser_Dryad_64" | "Lesser_Dryad_35" | "Corrupted_Mine" | "Corrupted_Mine_60" | "Corrupted_Mine_49" | "Corrupted_Mine_65" | "Corrupted_Mine_61" | "Corrupted_Mine_63" | "Corrupted_Mine_25" | "Corrupted_Mine_35" | "Corrupted_Mine_45" | "Corrupted_Mine_55" | "Corrupted_Mine_50" | "Damned_Priest_Hound_65" | "Priest_Lesser_DamnedHound_RestlessShores" | "Damned_Priest_Hound_62" | "Damned_Priest_Hound_46" | "Naga_AngryEarth_Minion" | "OR_Wolf" | "Unstable_Swamp_Fiend_Minion" | "Swamp_Fiend_Arena" | "Torso_Boss_Minion" | "Risen_Brute_Minion" | "Wolf_Minion_15" | "Wolf_Minion_10" | "Wolf_Minion_11" | "Wolf_Minion_7" | "Wolf_Minion_16" | "Wolf_Minion_21" | "Wolf_Minion_26" | "Wolf_Minion_34" | "Wolf_Minion_40" | "Wolf_Minion_08QP05";
 
-export enum StaminaRegenThresholds {
-    Drink6010025100101000100 = "Drink;60:100;25:100;10:100;0:100",
-    Empty = "",
-}
+export type StaminaRegenThresholds = "" | "Drink;60:100;25:100;10:100;0:100";
 
-export enum WarAssistEventID {
-    Empty = "",
-    WarAssistMajor = "War_Assist_Major",
-    WarAssistMinor = "War_Assist_Minor",
-    WarAssistSpecial = "War_Assist_Special",
-}
+export type WarAssistEventID = "War_Assist_Minor" | "" | "War_Assist_Special" | "War_Assist_Major";
 
-export enum WarKillEventID {
-    Empty = "",
-    WarKillMajor = "War_Kill_Major",
-    WarKillMinor = "War_Kill_Minor",
-    WarKillSpecial = "War_Kill_Special",
-}
+export type WarKillEventID = "War_Kill_Minor" | "" | "War_Kill_Special" | "War_Kill_Major";
 
-export interface VitalsLevelData {
+export type VitalsLevelData = {
     Level:                number;
     GearScore:            number;
     BaseDamage:           number;
@@ -11320,14 +5425,14 @@ export interface VitalsLevelData {
     "Solo Health":        string;
 }
 
-export interface VitalsModifierData {
+export type VitalsModifierData = {
     CategoryId:            AttackerVitalsCategory;
     CategoryDamageMod:     number;
     CategoryHealthMod:     number;
     CategoryDropChanceMod: number;
 }
 
-export interface WarboardStatDefinitions {
+export type WarboardStatDefinitions = {
     WarboardStatID:              string;
     InGameStat:                  boolean;
     EndGameStat:                 boolean;
@@ -11341,7 +5446,7 @@ export interface WarboardStatDefinitions {
     AG_DamageTaken?:             number;
 }
 
-export interface WeaponAccessoryDefinitions {
+export type WeaponAccessoryDefinitions = {
     "#":               number;
     WeaponID:          string;
     PrefabPath:        PrefabPath;
@@ -11358,26 +5463,15 @@ export interface WeaponAccessoryDefinitions {
     SheathMode:        MaterialOverride2;
 }
 
-export enum WeaponAccessoryDefinitionEquipType {
-    Gauntlet = "Gauntlet",
-    Quiver = "Quiver",
-}
+export type WeaponAccessoryDefinitionEquipType = "Quiver" | "Gauntlet";
 
-export enum MaterialOverride2 {
-    AlwaysVisible = "ALWAYS_VISIBLE",
-    Empty = "",
-}
+export type MaterialOverride2 = "" | "ALWAYS_VISIBLE";
 
-export enum PrefabPath {
-    ItemsWeaponsWeaponAccessory = "Items/Weapons/weapon_accessory",
-}
+export type PrefabPath = "Items/Weapons/weapon_accessory";
 
-export enum WeaponAccessoryDefinitionSkinOverride2 {
-    Empty = "",
-    Quiver = "Quiver",
-}
+export type WeaponAccessoryDefinitionSkinOverride2 = "" | "Quiver";
 
-export interface WeaponAppearanceDefinitions {
+export type WeaponAppearanceDefinitions = {
     WeaponAppearanceID:          string;
     Name:                        WeaponAppearanceDefinitionName;
     Description:                 string;
@@ -11420,530 +5514,27 @@ export interface WeaponAppearanceDefinitions {
     ADyeSlotDisabled?:           string;
 }
 
-export enum EmissiveColor {
-    A465Ce = "#A465CE",
-    B7E124 = "#B7E124",
-    B8B8B8 = "#B8B8B8",
-    Bc0C0E = "#BC0C0E",
-    E0A40C = "#E0A40C",
-    E0Ad2B = "#E0AD2B",
-    E2D6A1 = "#E2D6A1",
-    E3C76E = "#E3C76E",
-    Empty = "",
-    Ff18Fc = "#FF18FC",
-    Ff5500 = "#FF5500",
-    Ff7200 = "#FF7200",
-    Ffffff = "#FFFFFF",
-    The007D00 = "#007D00",
-    The0080Fe = "#0080FE",
-    The00A095 = "#00A095",
-    The02B7E8 = "#02B7E8",
-    The2C9D41 = "#2C9D41",
-    The63C5Da = "#63C5DA",
-    The7Aa8Fd = "#7AA8FD",
-    The80D3Ff = "#80D3FF",
-    The9E8818 = "#9E8818",
-}
+export type EmissiveColor = "" | "#63C5DA" | "#2C9D41" | "#9E8818" | "#00A095" | "#FF7200" | "#80D3FF" | "#A465CE" | "#007D00" | "#7AA8FD" | "#BC0C0E" | "#0080FE" | "#B7E124" | "#B8B8B8" | "#FF5500" | "#FFFFFF" | "#E3C76E" | "#E2D6A1" | "#E0A40C" | "#FF18FC" | "#E0AD2B" | "#02B7E8";
 
-export enum WeaponAppearanceDefinitionIconCaptureGroup {
-    A = "a",
-    AzothStaff = "AzothStaff",
-    Bass = "Bass",
-    Blunderbuss = "Blunderbuss",
-    Bow = "Bow",
-    Drum = "Drum",
-    Empty = "",
-    FishingPole = "FishingPole",
-    Flute = "Flute",
-    Gauntlet = "Gauntlet",
-    GreatAxe = "GreatAxe",
-    GreatSword = "GreatSword",
-    Guitar = "Guitar",
-    KiteShield = "KiteShield",
-    Longsword = "Longsword",
-    Mandolin = "Mandolin",
-    Musket = "Musket",
-    Pistol = "Pistol",
-    Rapier = "Rapier",
-    RoundShield = "RoundShield",
-    Sickle = "Sickle",
-    SkinningKnife = "SkinningKnife",
-    Spear = "Spear",
-    StaffFire = "StaffFire",
-    StaffLife = "StaffLife",
-    The1HLoggingAxe = "1hLoggingAxe",
-    The1HPickAxe = "1hPickAxe",
-    The2HLoggingAxe = "2hLoggingAxe",
-    The2HPickAxe = "2hPickAxe",
-    ThrowingAxe = "ThrowingAxe",
-    TowerShield = "TowerShield",
-    WarHammer = "WarHammer",
-}
+export type WeaponAppearanceDefinitionIconCaptureGroup = "Mandolin" | "Guitar" | "Bass" | "Flute" | "" | "Drum" | "RoundShield" | "KiteShield" | "TowerShield" | "Longsword" | "StaffFire" | "GreatAxe" | "WarHammer" | "Rapier" | "Spear" | "ThrowingAxe" | "1hLoggingAxe" | "GreatSword" | "StaffLife" | "Bow" | "Musket" | "Blunderbuss" | "Gauntlet" | "AzothStaff" | "FishingPole" | "2hLoggingAxe" | "1hPickAxe" | "2hPickAxe" | "Sickle" | "SkinningKnife" | "a" | "Pistol";
 
-export enum WeaponAppearanceDefinitionItemClass {
-    Empty = "",
-    EquippableMainHandFireStaffMagic = "EquippableMainHand+FireStaff+Magic",
-    EquippableMainHandHatchetMelee = "EquippableMainHand+Hatchet+Melee",
-    EquippableMainHandIceMagicMagic = "EquippableMainHand+IceMagic+Magic",
-    EquippableMainHandLifeStaffMagic = "EquippableMainHand+LifeStaff+Magic",
-    EquippableMainHandMusketRanged = "EquippableMainHand+Musket+Ranged",
-    EquippableMainHandRapierMelee = "EquippableMainHand+Rapier+Melee",
-    EquippableMainHandSwordMelee = "EquippableMainHand+Sword+Melee",
-    EquippableMainHandVoidGauntletMagic = "EquippableMainHand+VoidGauntlet+Magic",
-    EquippableOffHandShield = "EquippableOffHand+Shield",
-    EquippableOffHandShieldKite = "EquippableOffHand+Shield+Kite",
-    EquippableToolAxeLoggingAxe = "EquippableTool+Axe+LoggingAxe",
-    EquippableToolAxePickAxe = "EquippableTool+Axe+PickAxe",
-    EquippableToolAxePickaxe = "EquippableTool+Axe+Pickaxe",
-    EquippableToolAxeSickle = "EquippableTool+Axe+Sickle",
-    EquippableToolAxeSkinningKnife = "EquippableTool+Axe+SkinningKnife",
-    EquippableToolFishingPole = "EquippableTool+FishingPole",
-    EquippableToolInstrumentDrums = "EquippableTool+InstrumentDrums",
-    EquippableToolInstrumentFlute = "EquippableTool+InstrumentFlute",
-    EquippableToolInstrumentGuitar = "EquippableTool+InstrumentGuitar",
-    EquippableToolInstrumentMandolin = "EquippableTool+InstrumentMandolin",
-    EquippableToolInstrumentUprightBass = "EquippableTool+InstrumentUprightBass",
-    EquippableTwoHand2HAxeMelee = "EquippableTwoHand+2HAxe+Melee",
-    EquippableTwoHand2HHammerMelee = "EquippableTwoHand+2HHammer+Melee",
-    EquippableTwoHandBlunderbussRanged = "EquippableTwoHand+Blunderbuss+Ranged",
-    EquippableTwoHandBowRanged = "EquippableTwoHand+Bow+Ranged",
-    EquippableTwoHandFireStaffMagic = "EquippableTwoHand+FireStaff+Magic",
-    EquippableTwoHandLifeStaffMagic = "EquippableTwoHand+LifeStaff+Magic",
-    EquippableTwoHandMusketRanged = "EquippableTwoHand+Musket+Ranged",
-    EquippableTwoHandSpearMelee = "EquippableTwoHand+Spear+Melee",
-    WeaponEquippableMainHandFireStaffMagic = "Weapon+EquippableMainHand+FireStaff+Magic",
-    WeaponEquippableMainHandFireStaffMagicNamed = "Weapon+EquippableMainHand+FireStaff+Magic+Named",
-    WeaponEquippableMainHandHatchetMelee = "Weapon+EquippableMainHand+Hatchet+Melee",
-    WeaponEquippableMainHandHatchetMeleeNamed = "Weapon+EquippableMainHand+Hatchet+Melee+Named",
-    WeaponEquippableMainHandIceMagicMagic = "Weapon+EquippableMainHand+IceMagic+Magic",
-    WeaponEquippableMainHandIceMagicMagicNamed = "Weapon+EquippableMainHand+IceMagic+Magic+Named",
-    WeaponEquippableMainHandLifeStaffMagic = "Weapon+EquippableMainHand+LifeStaff+Magic",
-    WeaponEquippableMainHandLifeStaffMagicNamed = "Weapon+EquippableMainHand+LifeStaff+Magic+Named",
-    WeaponEquippableMainHandRapierMelee = "Weapon+EquippableMainHand+Rapier+Melee",
-    WeaponEquippableMainHandRapierMeleeNamed = "Weapon+EquippableMainHand+Rapier+Melee+Named",
-    WeaponEquippableMainHandSword = "Weapon+EquippableMainHand+Sword",
-    WeaponEquippableMainHandSwordMelee = "Weapon+EquippableMainHand+Sword+Melee",
-    WeaponEquippableMainHandSwordMeleeNamed = "Weapon+EquippableMainHand+Sword+Melee+Named",
-    WeaponEquippableMainHandVoidGauntletMagic = "Weapon+EquippableMainHand+VoidGauntlet+Magic",
-    WeaponEquippableMainHandVoidGauntletMagicNamed = "Weapon+EquippableMainHand+VoidGauntlet+Magic+Named",
-    WeaponEquippableOffHandShieldKiteShield = "Weapon+EquippableOffHand+Shield+KiteShield",
-    WeaponEquippableOffHandShieldKiteShieldNamed = "Weapon+EquippableOffHand+Shield+KiteShield+Named",
-    WeaponEquippableOffHandShieldRoundShield = "Weapon+EquippableOffHand+Shield+RoundShield",
-    WeaponEquippableOffHandShieldRoundShieldNamed = "Weapon+EquippableOffHand+Shield+RoundShield+Named",
-    WeaponEquippableOffHandShieldTowerShield = "Weapon+EquippableOffHand+Shield+TowerShield",
-    WeaponEquippableOffHandShieldTowerShieldNamed = "Weapon+EquippableOffHand+Shield+TowerShield+Named",
-    WeaponEquippableToolAxeAzothStaff = "Weapon+EquippableTool+Axe+AzothStaff",
-    WeaponEquippableToolAxeLoggingAxe = "Weapon+EquippableTool+Axe+LoggingAxe",
-    WeaponEquippableTwoHand = "Weapon+EquippableTwoHand",
-    WeaponEquippableTwoHand2HAxeMelee = "Weapon+EquippableTwoHand+2HAxe+Melee",
-    WeaponEquippableTwoHand2HAxeMeleeNamed = "Weapon+EquippableTwoHand+2HAxe+Melee+Named",
-    WeaponEquippableTwoHand2HHammerMelee = "Weapon+EquippableTwoHand+2HHammer+Melee",
-    WeaponEquippableTwoHand2HHammerMeleeNamed = "Weapon+EquippableTwoHand+2HHammer+Melee+Named",
-    WeaponEquippableTwoHandBlunderbussRanged = "Weapon+EquippableTwoHand+Blunderbuss+Ranged",
-    WeaponEquippableTwoHandBlunderbussRangedNamed = "Weapon+EquippableTwoHand+Blunderbuss+Ranged+Named",
-    WeaponEquippableTwoHandBowRanged = "Weapon+EquippableTwoHand+Bow+Ranged",
-    WeaponEquippableTwoHandBowRangedNamed = "Weapon+EquippableTwoHand+Bow+Ranged+Named",
-    WeaponEquippableTwoHandGreatSwordMelee = "Weapon+EquippableTwoHand+GreatSword+Melee",
-    WeaponEquippableTwoHandGreatSwordMeleeNamed = "Weapon+EquippableTwoHand+GreatSword+Melee+Named",
-    WeaponEquippableTwoHandMusketRanged = "Weapon+EquippableTwoHand+Musket+Ranged",
-    WeaponEquippableTwoHandMusketRangedNamed = "Weapon+EquippableTwoHand+Musket+Ranged+Named",
-    WeaponEquippableTwoHandSpearMelee = "Weapon+EquippableTwoHand+Spear+Melee",
-    WeaponEquippableTwoHandSpearMeleeNamed = "Weapon+EquippableTwoHand+Spear+Melee+Named",
-}
+export type WeaponAppearanceDefinitionItemClass = "" | "EquippableTool+InstrumentMandolin" | "EquippableTool+InstrumentGuitar" | "EquippableTool+InstrumentUprightBass" | "EquippableTool+InstrumentFlute" | "EquippableTool+InstrumentDrums" | "Weapon+EquippableOffHand+Shield+RoundShield" | "Weapon+EquippableOffHand+Shield+RoundShield+Named" | "EquippableOffHand+Shield" | "Weapon+EquippableOffHand+Shield+KiteShield" | "Weapon+EquippableOffHand+Shield+KiteShield+Named" | "EquippableOffHand+Shield+Kite" | "Weapon+EquippableOffHand+Shield+TowerShield" | "Weapon+EquippableMainHand+Sword+Melee" | "Weapon+EquippableMainHand+Sword+Melee+Named" | "EquippableMainHand+Sword+Melee" | "EquippableMainHand+FireStaff+Magic" | "EquippableTwoHand+2HAxe+Melee" | "EquippableTwoHand+2HHammer+Melee" | "Weapon+EquippableMainHand+Rapier+Melee" | "Weapon+EquippableMainHand+Rapier+Melee+Named" | "Weapon+EquippableTwoHand+Spear+Melee" | "Weapon+EquippableTwoHand+Spear+Melee+Named" | "EquippableTwoHand+Spear+Melee" | "EquippableMainHand+Hatchet+Melee" | "Weapon+EquippableTool+Axe+LoggingAxe" | "Weapon+EquippableMainHand+Hatchet+Melee" | "Weapon+EquippableMainHand+Hatchet+Melee+Named" | "Weapon+EquippableTwoHand+2HAxe+Melee" | "Weapon+EquippableTwoHand+2HAxe+Melee+Named" | "Weapon+EquippableTwoHand+2HHammer+Melee" | "Weapon+EquippableTwoHand+2HHammer+Melee+Named" | "Weapon+EquippableTwoHand+GreatSword+Melee" | "Weapon+EquippableTwoHand+GreatSword+Melee+Named" | "Weapon+EquippableMainHand+FireStaff+Magic+Named" | "Weapon+EquippableMainHand+FireStaff+Magic" | "Weapon+EquippableMainHand+LifeStaff+Magic+Named" | "Weapon+EquippableMainHand+LifeStaff+Magic" | "Weapon+EquippableTwoHand+Bow+Ranged" | "Weapon+EquippableTwoHand+Bow+Ranged+Named" | "EquippableTwoHand+Bow+Ranged" | "Weapon+EquippableTwoHand+Musket+Ranged" | "Weapon+EquippableTwoHand+Musket+Ranged+Named" | "Weapon+EquippableTwoHand+Blunderbuss+Ranged" | "Weapon+EquippableTwoHand+Blunderbuss+Ranged+Named" | "Weapon+EquippableMainHand+IceMagic+Magic" | "Weapon+EquippableMainHand+VoidGauntlet+Magic" | "Weapon+EquippableMainHand+IceMagic+Magic+Named" | "Weapon+EquippableMainHand+VoidGauntlet+Magic+Named" | "Weapon+EquippableTool+Axe+AzothStaff" | "EquippableTool+FishingPole" | "EquippableTool+Axe+LoggingAxe" | "EquippableTool+Axe+PickAxe" | "EquippableTool+Axe+Sickle" | "EquippableTool+Axe+SkinningKnife" | "Weapon+EquippableTwoHand" | "Weapon+EquippableMainHand+Sword" | "EquippableTwoHand+Musket+Ranged" | "EquippableMainHand+Rapier+Melee" | "EquippableMainHand+LifeStaff+Magic" | "EquippableMainHand+IceMagic+Magic" | "EquippableMainHand+VoidGauntlet+Magic" | "EquippableTwoHand+Blunderbuss+Ranged" | "EquippableMainHand+Musket+Ranged" | "Weapon+EquippableOffHand+Shield+TowerShield+Named" | "EquippableTwoHand+FireStaff+Magic" | "EquippableTwoHand+LifeStaff+Magic" | "EquippableTool+Axe+Pickaxe";
 
-export enum MaskASpecColor {
-    A09Fbb = "#A09FBB",
-    A0A0A0 = "#A0A0A0",
-    A4669A = "#A4669A",
-    Aa865A = "#AA865A",
-    B3Effb = "#B3EFFB",
-    B60486 = "#B60486",
-    B6A980 = "#B6A980",
-    B8B8B8 = "#B8B8B8",
-    C054Be = "#C054BE",
-    C2D4C3 = "#C2D4C3",
-    Daa375 = "#DAA375",
-    E9Cc86 = "#E9CC86",
-    Empty = "",
-    Ffeea2 = "#FFEEA2",
-    The000000 = "#000000",
-    The0E0E14 = "#0E0E14",
-    The141414 = "#141414",
-    The1Adad8 = "#1ADAD8",
-    The250904 = "#250904",
-    The286301 = "#286301",
-    The2B1D33 = "#2B1D33",
-    The30321A = "#30321A",
-    The343536 = "#343536",
-    The354A69 = "#354A69",
-    The37044C = "#37044C",
-    The383842 = "#383842",
-    The3C363A = "#3C363A",
-    The3D310A = "#3D310A",
-    The3D3518 = "#3D3518",
-    The3D3D3D = "#3D3D3D",
-    The3D4F89 = "#3D4F89",
-    The411208 = "#411208",
-    The422C3F = "#422C3F",
-    The443D53 = "#443D53",
-    The46371B = "#46371B",
-    The46381C = "#46381C",
-    The525F70 = "#525F70",
-    The54B72F = "#54B72F",
-    The55412A = "#55412A",
-    The575757 = "#575757",
-    The58566C = "#58566C",
-    The585858 = "#585858",
-    The595959 = "#595959",
-    The5C4A65 = "#5C4A65",
-    The5C5C69 = "#5C5C69",
-    The605856 = "#605856",
-    The625D104 = "#625D104",
-    The625D105 = "#625D105",
-    The625D92 = "#625D92",
-    The625D93 = "#625D93",
-    The625D94 = "#625D94",
-    The625D95 = "#625D95",
-    The625D96 = "#625D96",
-    The63561F = "#63561F",
-    The635E5A = "#635E5A",
-    The644B05 = "#644B05",
-    The656565 = "#656565",
-    The666677 = "#666677",
-    The676570 = "#676570",
-    The683F27 = "#683F27",
-    The69190E = "#69190E",
-    The695B00 = "#695B00",
-    The69697B = "#69697B",
-    The6A6A6A = "#6A6A6A",
-    The6C5A2F = "#6C5A2F",
-    The6D5C31 = "#6D5C31",
-    The717171 = "#717171",
-    The754827 = "#754827",
-    The7752A2 = "#7752A2",
-    The782Fa4 = "#782FA4",
-    The790002 = "#790002",
-    The807A60 = "#807A60",
-    The856C39 = "#856C39",
-    The856C40 = "#856C40",
-    The856C41 = "#856C41",
-    The856C42 = "#856C42",
-    The856C43 = "#856C43",
-    The856C44 = "#856C44",
-    The856C45 = "#856C45",
-    The856C46 = "#856C46",
-    The856C47 = "#856C47",
-    The856C48 = "#856C48",
-    The856C49 = "#856C49",
-    The856C50 = "#856C50",
-    The86Bdff = "#86BDFF",
-    The8B8B8B = "#8B8B8B",
-    The8E4600 = "#8E4600",
-    The8F824D = "#8F824D",
-    The906C09 = "#906C09",
-    The930408 = "#930408",
-    The939800 = "#939800",
-    The9B3B1D = "#9B3B1D",
-    The9D9Da0 = "#9D9DA0",
-}
+export type MaskASpecColor = "#B8B8B8" | "#86BDFF" | "#411208" | "#A0A0A0" | "#AA865A" | "#3D3D3D" | "#6C5A2F" | "#000000" | "#A4669A" | "#666677" | "#856C39" | "#790002" | "#58566C" | "#37044C" | "#6D5C31" | "#5C4A65" | "#683F27" | "#55412A" | "#343536" | "#141414" | "#0E0E14" | "#A09FBB" | "#807A60" | "#5C5C69" | "#754827" | "#8E4600" | "#443D53" | "#906C09" | "#625D92" | "#625D93" | "#625D94" | "#625D95" | "#625D96" | "#635E5A" | "#930408" | "#1ADAD8" | "#605856" | "#54B72F" | "#C2D4C3" | "#B3EFFB" | "#8B8B8B" | "#9D9DA0" | "#B60486" | "#595959" | "#585858" | "#B6A980" | "#625D104" | "#625D105" | "#782FA4" | "#FFEEA2" | "#63561F" | "#C054BE" | "#575757" | "#8F824D" | "#E9CC86" | "#422C3F" | "#676570" | "#46371B" | "#717171" | "#525F70" | "#383842" | "#30321A" | "#250904" | "#3D310A" | "#69697B" | "#695B00" | "#9B3B1D" | "#2B1D33" | "#856C44" | "#856C46" | "#856C50" | "#856C45" | "#856C40" | "#856C49" | "#856C43" | "#856C41" | "#856C42" | "#856C47" | "#856C48" | "#644B05" | "#3D3518" | "#46381C" | "#6A6A6A" | "#3D4F89" | "#656565" | "#DAA375" | "#3C363A" | "#939800" | "" | "#69190E" | "#7752A2" | "#286301" | "#354A69";
 
-export enum WeaponAppearanceDefinitionMaskBColor {
-    A14Cd2 = "#A14CD2",
-    A14Cd3 = "#A14CD3",
-    A14Cd4 = "#A14CD4",
-    A14Cd5 = "#A14CD5",
-    A14Cd6 = "#A14CD6",
-    A3A09A = "#A3A09A",
-    A4A3A3 = "#A4A3A3",
-    A7A28B = "#A7A28B",
-    Aeaeae = "#AEAEAE",
-    Afb645 = "#AFB645",
-    B3B3B3 = "#B3B3B3",
-    B67F58 = "#B67F58",
-    B8B8B8 = "#B8B8B8",
-    Ba9780 = "#BA9780",
-    Baa66B = "#BAA66B",
-    Bc5F0D = "#BC5F0D",
-    C38D75 = "#C38D75",
-    C4C4C4 = "#C4C4C4",
-    C8Cac0 = "#C8CAC0",
-    C9D1E5 = "#C9D1E5",
-    Cc815B = "#CC815B",
-    D3Bfda = "#D3BFDA",
-    D4D4Ee = "#D4D4EE",
-    Eacd89 = "#EACD89",
-    Eaea84 = "#eaea84",
-    Empty = "",
-    F6F5E9 = "#F6F5E9",
-    Ffc800 = "#FFC800",
-    The000000 = "#000000",
-    The00E6Ff = "#00E6FF",
-    The08Cfbf = "#08CFBF",
-    The0Aedda = "#0AEDDA",
-    The0C0C0C = "#0C0C0C",
-    The0C9A5A = "#0C9A5A",
-    The191500 = "#191500",
-    The1A1600 = "#1A1600",
-    The1A7Eb4 = "#1A7EB4",
-    The2A0606 = "#2A0606",
-    The334154 = "#334154",
-    The371B6F = "#371B6F",
-    The3C363A = "#3C363A",
-    The3D4E88 = "#3D4E88",
-    The3D4F89 = "#3D4F89",
-    The432C99 = "#432C99",
-    The4893Ba = "#4893BA",
-    The4B4039 = "#4B4039",
-    The4C462C = "#4C462C",
-    The4D4167 = "#4D4167",
-    The4F5263 = "#4F5263",
-    The4F5270 = "#4F5270",
-    The53235D = "#53235D",
-    The54Ffff = "#54FFFF",
-    The575757 = "#575757",
-    The585Ea0 = "#585EA0",
-    The5E562F = "#5E562F",
-    The5E73Aa = "#5E73AA",
-    The5F0006 = "#5F0006",
-    The6495F9 = "#6495F9",
-    The656565 = "#656565",
-    The661010 = "#661010",
-    The67534A = "#67534A",
-    The6C40C3 = "#6C40C3",
-    The6D685A = "#6D685A",
-    The6E6E6E = "#6E6E6E",
-    The700000 = "#700000",
-    The732Eb8 = "#732EB8",
-    The740000 = "#740000",
-    The7443A0 = "#7443A0",
-    The796546 = "#796546",
-    The7C8B75 = "#7C8B75",
-    The7D613C = "#7D613C",
-    The849B6C = "#849B6C",
-    The860000 = "#860000",
-    The868686 = "#868686",
-    The895B30 = "#895B30",
-    The8B8D8C = "#8B8D8C",
-    The8D9F61 = "#8D9F61",
-    The8F4E11 = "#8F4E11",
-    The8F95A3 = "#8F95A3",
-    The948968 = "#948968",
-    The948E7B = "#948E7B",
-    The97B2CA = "#97B2CA",
-    The985555 = "#985555",
-    The9B1A9B = "#9B1A9B",
-    The9D0000 = "#9D0000",
-}
+export type WeaponAppearanceDefinitionMaskBColor = "#B8B8B8" | "#849B6C" | "#5F0006" | "#A4A3A3" | "#895B30" | "#B67F58" | "#4893BA" | "#9D0000" | "#0AEDDA" | "#D4D4EE" | "#54FFFF" | "#B3B3B3" | "#CC815B" | "#432C99" | "#656565" | "#D3BFDA" | "#AEAEAE" | "#948E7B" | "#6D685A" | "#0C0C0C" | "#8F4E11" | "#585EA0" | "#575757" | "#4F5270" | "#F6F5E9" | "#334154" | "#1A1600" | "#A14CD2" | "#A14CD3" | "#A14CD4" | "#A14CD5" | "#A14CD6" | "#7C8B75" | "#740000" | "#7D613C" | "#4B4039" | "#5E562F" | "#67534A" | "#6C40C3" | "#C4C4C4" | "#C8CAC0" | "#000000" | "#08CFBF" | "#53235D" | "#948968" | "#7443A0" | "#6495F9" | "#371B6F" | "#796546" | "#C38D75" | "#00E6FF" | "#8B8D8C" | "#868686" | "#97B2CA" | "#EACD89" | "#BA9780" | "#4D4167" | "#4C462C" | "#9B1A9B" | "#0C9A5A" | "#8F95A3" | "#A3A09A" | "#8D9F61" | "#661010" | "#732EB8" | "#2A0606" | "#A7A28B" | "#BC5F0D" | "#5E73AA" | "#985555" | "#1A7EB4" | "#C9D1E5" | "#191500" | "#860000" | "#700000" | "#3D4E88" | "#3D4F89" | "#6E6E6E" | "#AFB645" | "#FFC800" | "#4F5263" | "#BAA66B" | "#3C363A" | "#eaea84" | "";
 
-export enum WeaponAppearanceDefinitionMaskGColor {
-    A0A7B6 = "#A0A7B6",
-    A19E87 = "#A19E87",
-    A35E00 = "#A35E00",
-    A3A7AC = "#A3A7AC",
-    A494A4 = "#A494A4",
-    A6Adbd = "#A6ADBD",
-    A99D5E = "#A99D5E",
-    Ae0000 = "#AE0000",
-    Afb645 = "#AFB645",
-    B0924C = "#B0924C",
-    B49A9A = "#B49A9A",
-    B8B8B8 = "#B8B8B8",
-    Bfb4A2 = "#BFB4A2",
-    C16675 = "#C16675",
-    C327Ce = "#C327CE",
-    D30003 = "#D30003",
-    D4D2Be = "#D4D2BE",
-    Daafdd = "#DAAFDD",
-    Eaea84 = "#eaea84",
-    Empty = "",
-    Ffc800 = "#FFC800",
-    Ffce3B = "#FFCE3B",
-    Ffffff = "#FFFFFF",
-    The000000 = "#000000",
-    The00Acdb = "#00ACDB",
-    The00Ff55 = "#00FF55",
-    The030303 = "#030303",
-    The0A6813 = "#0A6813",
-    The1788A4 = "#1788A4",
-    The1788A5 = "#1788A5",
-    The1788A6 = "#1788A6",
-    The1788A7 = "#1788A7",
-    The1788A8 = "#1788A8",
-    The2E363D = "#2E363D",
-    The2Fcce4 = "#2FCCE4",
-    The332730 = "#332730",
-    The394667 = "#394667",
-    The3A085A = "#3A085A",
-    The3D4E88 = "#3D4E88",
-    The3D4F89 = "#3D4F89",
-    The44372E = "#44372E",
-    The4D4167 = "#4D4167",
-    The55007F = "#55007F",
-    The590B0B = "#590B0B",
-    The5E3466 = "#5E3466",
-    The605A55 = "#605A55",
-    The611A02 = "#611A02",
-    The64876E = "#64876E",
-    The680A0A = "#680A0A",
-    The687C83 = "#687C83",
-    The688Bac = "#688BAC",
-    The697D7F = "#697D7F",
-    The700A0A = "#700a0a",
-    The72774F = "#72774F",
-    The78E0Cb = "#78E0CB",
-    The7A7Ab6 = "#7A7AB6",
-    The7D9388 = "#7D9388",
-    The7F766D = "#7F766D",
-    The80Eeb10 = "#80EEB10",
-    The80Eeb11 = "#80EEB11",
-    The80Eeb12 = "#80EEB12",
-    The80Eeb13 = "#80EEB13",
-    The80Eeb14 = "#80EEB14",
-    The80Eeb15 = "#80EEB15",
-    The80Eeb16 = "#80EEB16",
-    The80Eeb17 = "#80EEB17",
-    The80Eeb18 = "#80EEB18",
-    The80Eeb7 = "#80EEB7",
-    The80Eeb8 = "#80EEB8",
-    The80Eeb9 = "#80EEB9",
-    The826858 = "#826858",
-    The850000 = "#850000",
-    The858D5E = "#858D5E",
-    The86919C = "#86919C",
-    The871212 = "#871212",
-    The873333 = "#873333",
-    The877C63 = "#877C63",
-    The87A197 = "#87A197",
-    The890A1B = "#890A1B",
-    The8982A0 = "#8982A0",
-    The8C828B = "#8C828B",
-    The90A18E = "#90A18E",
-    The9377B9 = "#9377B9",
-    The939Ca4 = "#939CA4",
-    The95B61D = "#95B61D",
-    The999999 = "#999999",
-    The9D0000 = "#9D0000",
-}
+export type WeaponAppearanceDefinitionMaskGColor = "#B8B8B8" | "#A3A7AC" | "#B49A9A" | "#999999" | "#AFB645" | "#00ACDB" | "#AE0000" | "#C327CE" | "#9377B9" | "#80EEB7" | "#A35E00" | "#2FCCE4" | "#8982A0" | "#B0924C" | "#688BAC" | "#FFCE3B" | "#877C63" | "#7F766D" | "#030303" | "#939CA4" | "#000000" | "#1788A4" | "#1788A5" | "#1788A6" | "#1788A7" | "#1788A8" | "#A19E87" | "#D30003" | "#44372E" | "#890A1B" | "#858D5E" | "#87A197" | "#86919C" | "#FFFFFF" | "#873333" | "#64876E" | "#55007F" | "#95B61D" | "#697D7F" | "#332730" | "#78E0CB" | "#3A085A" | "#5E3466" | "#7D9388" | "#00FF55" | "#8C828B" | "#90A18E" | "#850000" | "#BFB4A2" | "#DAAFDD" | "#826858" | "#4D4167" | "#700a0a" | "#3D4F89" | "#A494A4" | "#0A6813" | "#A0A7B6" | "#D4D2BE" | "#72774F" | "#590B0B" | "#7A7AB6" | "#871212" | "#A99D5E" | "#605A55" | "#394667" | "#A6ADBD" | "#80EEB12" | "#80EEB14" | "#80EEB18" | "#80EEB13" | "#80EEB8" | "#80EEB17" | "#80EEB11" | "#80EEB9" | "#80EEB10" | "#80EEB15" | "#80EEB16" | "#680A0A" | "#611A02" | "#2E363D" | "#3D4E88" | "#9D0000" | "#FFC800" | "#687C83" | "#C16675" | "#eaea84" | "";
 
-export enum WeaponAppearanceDefinitionMaskRColor {
-    A08C33 = "#A08C33",
-    A38C76 = "#A38C76",
-    A6Dce8 = "#A6DCE8",
-    B7B9A4 = "#B7B9A4",
-    B8B8B8 = "#B8B8B8",
-    Baa66B = "#BAA66B",
-    Baba00 = "#baba00",
-    C7F1F4 = "#C7F1F4",
-    Ca5A19 = "#CA5A19",
-    D76A6A = "#D76A6A",
-    E0C260 = "#E0C260",
-    Eaea84 = "#eaea84",
-    Eed49D = "#EED49D",
-    Empty = "",
-    F6D7B6 = "#F6D7B6",
-    Ff0004 = "#FF0004",
-    Ffc800 = "#FFC800",
-    The000000 = "#000000",
-    The00710D = "#00710D",
-    The007400 = "#007400",
-    The007A00 = "#007A00",
-    The030303 = "#030303",
-    The046618 = "#046618",
-    The1278A3 = "#1278A3",
-    The1Bc7C10 = "#1BC7C10",
-    The1Bc7C11 = "#1BC7C11",
-    The1Bc7C12 = "#1BC7C12",
-    The1Bc7C13 = "#1BC7C13",
-    The1Bc7C2 = "#1BC7C2",
-    The1Bc7C3 = "#1BC7C3",
-    The1Bc7C4 = "#1BC7C4",
-    The1Bc7C5 = "#1BC7C5",
-    The1Bc7C6 = "#1BC7C6",
-    The1Bc7C7 = "#1BC7C7",
-    The1Bc7C8 = "#1BC7C8",
-    The1Bc7C9 = "#1BC7C9",
-    The234659 = "#234659",
-    The252525 = "#252525",
-    The26037F = "#26037F",
-    The26Acca = "#26ACCA",
-    The27Aabf = "#27AABF",
-    The2A1A18 = "#2A1A18",
-    The343536 = "#343536",
-    The3B3B3B = "#3B3B3B",
-    The3D393A = "#3D393A",
-    The3D4E88 = "#3D4E88",
-    The3D4F89 = "#3D4F89",
-    The3E7254 = "#3E7254",
-    The424637 = "#424637",
-    The4B5F8E = "#4B5F8E",
-    The514D55 = "#514D55",
-    The532311 = "#532311",
-    The540000 = "#540000",
-    The583B87 = "#583B87",
-    The5A2B15 = "#5A2B15",
-    The645500 = "#645500",
-    The647298 = "#647298",
-    The68540D = "#68540D",
-    The68540E = "#68540E",
-    The685D56 = "#685D56",
-    The69550F = "#69550F",
-    The6C6F46 = "#6C6F46",
-    The6F5A43 = "#6F5A43",
-    The71538B = "#71538B",
-    The736862 = "#736862",
-    The7484B0 = "#7484B0",
-    The77568E = "#77568E",
-    The791618 = "#791618",
-    The7A6316 = "#7A6316",
-    The7A7Ab6 = "#7A7AB6",
-    The7B8Cbb = "#7B8CBB",
-    The7D613C = "#7D613C",
-    The7D7D7D = "#7D7D7D",
-    The808096 = "#808096",
-    The826B59 = "#826B59",
-    The82737B = "#82737B",
-    The83571A = "#83571A",
-    The860000 = "#860000",
-    The878787 = "#878787",
-    The88793A = "#88793A",
-    The8B7A6A = "#8B7A6A",
-    The8E5E11 = "#8E5E11",
-    The8F2400 = "#8F2400",
-    The90A8B8 = "#90A8B8",
-    The916E91 = "#916E91",
-    The920202 = "#920202",
-    The935A54 = "#935A54",
-    The943194 = "#943194",
-    The9797B0 = "#9797B0",
-    The996C29 = "#996C29",
-    The998D48 = "#998D48",
-    The9B7D72 = "#9B7D72",
-    The9B9A8E = "#9B9A8E",
-}
+export type WeaponAppearanceDefinitionMaskRColor = "#B8B8B8" | "#4B5F8E" | "#2A1A18" | "#252525" | "#532311" | "#007400" | "#996C29" | "#860000" | "#26ACCA" | "#1278A3" | "#1BC7C2" | "#540000" | "#A38C76" | "#26037F" | "#00710D" | "#77568E" | "#CA5A19" | "#826B59" | "#90A8B8" | "#000000" | "#998D48" | "#9797B0" | "#878787" | "#808096" | "#A08C33" | "#030303" | "#5A2B15" | "#8E5E11" | "#234659" | "#71538B" | "#046618" | "#FF0004" | "#7D613C" | "#685D56" | "#6F5A43" | "#9B7D72" | "#82737B" | "#D76A6A" | "#27AABF" | "#514D55" | "#3D393A" | "#EED49D" | "#8B7A6A" | "#791618" | "#6C6F46" | "#916E91" | "#736862" | "#C7F1F4" | "#F6D7B6" | "#583B87" | "#68540E" | "#943194" | "#3E7254" | "#7B8CBB" | "#9B9A8E" | "#007A00" | "#935A54" | "#7A7AB6" | "#920202" | "#7A6316" | "#8F2400" | "#343536" | "#7484B0" | "#83571A" | "#645500" | "#647298" | "#1BC7C7" | "#1BC7C9" | "#1BC7C13" | "#1BC7C8" | "#1BC7C3" | "#1BC7C12" | "#1BC7C6" | "#1BC7C4" | "#1BC7C5" | "#1BC7C10" | "#1BC7C11" | "#7D7D7D" | "#88793A" | "#69550F" | "#3D4E88" | "#68540D" | "#3D4F89" | "#FFC800" | "#BAA66B" | "#424637" | "#baba00" | "#eaea84" | "" | "#B7B9A4" | "#3B3B3B" | "#E0C260" | "#A6DCE8";
 
-export enum WeaponAppearanceDefinitionName {
-    Empty = "",
-    The1HSwordMedievalT5TransmogName = "@1hSwordMedievalT5_TransmogName",
-    The2HBlunderbussMedievalT5TransmogName = "@2hBlunderbussMedievalT5_TransmogName",
-    The2HFireStaffMedievalT5TransmogName = "@2hFireStaffMedievalT5_TransmogName",
-    The2HGreatAxeMedievalT5TransmogName = "@2hGreatAxeMedievalT5_TransmogName",
-    The2HGreatswordMedievalT5TransmogName = "@2hGreatswordMedievalT5_TransmogName",
-    The2HSpearMedievalT5TransmogName = "@2hSpearMedievalT5_TransmogName",
-}
+export type WeaponAppearanceDefinitionName = "" | "@2hGreatAxeMedievalT5_TransmogName" | "@1hSwordMedievalT5_TransmogName" | "@2hSpearMedievalT5_TransmogName" | "@2hFireStaffMedievalT5_TransmogName" | "@2hBlunderbussMedievalT5_TransmogName" | "@2hGreatswordMedievalT5_TransmogName";
 
-export enum SkinOverride1 {
-    Empty = "",
-    ObjectsWeaponsRangedBowsBowAWEPRan2HBowAT1Skin = "Objects/Weapons/Ranged/Bows/BowA/wep_ran2h_BowA_T1.skin",
-    ObjectsWeaponsRangedBowsBowAWEPRan2HBowAT2Skin = "Objects/Weapons/Ranged/Bows/BowA/wep_ran2h_BowA_T2.skin",
-    ObjectsWeaponsRangedBowsBowAWEPRan2HBowAT3Skin = "Objects/Weapons/Ranged/Bows/BowA/wep_ran2h_BowA_T3.skin",
-}
+export type SkinOverride1 = "" | "Objects/Weapons/Ranged/Bows/BowA/wep_ran2h_BowA_T1.skin" | "Objects/Weapons/Ranged/Bows/BowA/wep_ran2h_BowA_T2.skin" | "Objects/Weapons/Ranged/Bows/BowA/wep_ran2h_BowA_T3.skin";
 
-export enum WeaponAppearanceDefinitionSkinOverride2 {
-    Empty = "",
-    ObjectsWeaponsRangedBowsBowAWEPRan2HBowAT1StringSkin = "Objects/Weapons/Ranged/Bows/BowA/wep_ran2h_BowA_T1_string.skin",
-}
+export type WeaponAppearanceDefinitionSkinOverride2 = "" | "Objects/Weapons/Ranged/Bows/BowA/wep_ran2h_BowA_T1_string.skin";
 
-export interface WeaponEffectData {
+export type WeaponEffectData = {
     WeaponEffectId: string;
     Default:        string;
     Fire:           string;
@@ -11954,7 +5545,7 @@ export interface WeaponEffectData {
     Nature:         string;
 }
 
-export interface WeaponItemDefinitions {
+export type WeaponItemDefinitions = {
     WeaponID:                     string;
     BaseWeaponID:                 string;
     "DEV Prio":                   number | null;
@@ -12051,190 +5642,45 @@ export interface WeaponItemDefinitions {
     SoundTableID:                 ItemSoundIDEnum;
 }
 
-export enum Appearance {
-    ElementalGauntletT2Ice = "Elemental_Gauntlet_T2_Ice",
-    ElementalGauntletT3Ice = "Elemental_Gauntlet_T3_Ice",
-    ElementalGauntletT4Ice = "Elemental_Gauntlet_T4_Ice",
-    ElementalGauntletT5Ice = "Elemental_Gauntlet_T5_Ice",
-    Empty = "",
-}
+export type Appearance = "" | "Elemental_Gauntlet_T2_Ice" | "Elemental_Gauntlet_T3_Ice" | "Elemental_Gauntlet_T4_Ice" | "Elemental_Gauntlet_T5_Ice";
 
-export enum AttachedSpellData {
-    CelestialHealAoE = "Celestial_Heal_AoE",
-    ElementalFireAoE = "Elemental_Fire_AoE",
-    Empty = "",
-}
+export type AttachedSpellData = "" | "Elemental_Fire_AoE" | "Celestial_Heal_AoE";
 
-export enum AttackGameEventID {
-    DamageEnemyUnarmed = "DamageEnemyUnarmed",
-    Empty = "",
-    WeaponHit1 = "WeaponHit1",
-    WeaponHit2 = "WeaponHit2",
-    WeaponHit3 = "WeaponHit3",
-    WeaponHit4 = "WeaponHit4",
-    WeaponHit5 = "WeaponHit5",
-}
+export type AttackGameEventID = "DamageEnemyUnarmed" | "WeaponHit1" | "WeaponHit2" | "WeaponHit3" | "WeaponHit4" | "WeaponHit5" | "";
 
-export enum WeaponItemDefinitionAudioPickup {
-    Empty = "",
-    PlayBeep12D = "Play_Beep1_2D",
-}
+export type WeaponItemDefinitionAudioPickup = "Play_Beep1_2D" | "";
 
-export enum WeaponItemDefinitionAudioPlace {
-    Empty = "",
-    PlayBeep32D = "Play_Beep3_2D",
-}
+export type WeaponItemDefinitionAudioPlace = "Play_Beep3_2D" | "";
 
-export enum DamageStatMultiplier {
-    BowDamage = "BowDamage",
-    Empty = "",
-    KnifeDamage = "KnifeDamage",
-    OneHandAxeDamage = "OneHandAxeDamage",
-    OneHandClubDamage = "OneHandClubDamage",
-    OneHandPickDamage = "OneHandPickDamage",
-    OneHandSwordDamage = "OneHandSwordDamage",
-    PistolDamage = "PistolDamage",
-    RifleDamage = "RifleDamage",
-    TwoHandAxeDamage = "TwoHandAxeDamage",
-    TwoHandClubDamage = "TwoHandClubDamage",
-    TwoHandPickDamage = "TwoHandPickDamage",
-    TwoHandSpearDamage = "TwoHandSpearDamage",
-    TwoHandSwordDamage = "TwoHandSwordDamage",
-}
+export type DamageStatMultiplier = "" | "OneHandAxeDamage" | "KnifeDamage" | "OneHandPickDamage" | "TwoHandAxeDamage" | "TwoHandPickDamage" | "OneHandSwordDamage" | "TwoHandSwordDamage" | "TwoHandClubDamage" | "OneHandClubDamage" | "TwoHandSpearDamage" | "BowDamage" | "RifleDamage" | "PistolDamage";
 
-export enum DamageTableRow {
-    BowAttack1 = "BowAttack1",
-    Empty = "",
-}
+export type DamageTableRow = "" | "BowAttack1";
 
-export enum WeaponItemDefinitionEquipType {
-    AlwaysUnsheathedLHand = "AlwaysUnsheathed_LHand",
-    AlwaysUnsheathedRHand = "AlwaysUnsheathed_RHand",
-    Bow = "Bow",
-    BowmanSword = "BowmanSword",
-    Brute = "Brute",
-    Drum = "Drum",
-    Empty = "",
-    EquippableMouth = "EquippableMouth",
-    GeneralInstrument = "GeneralInstrument",
-    GrappleSheath = "GrappleSheath",
-    Greatsword = "Greatsword",
-    HammerAxe = "Hammer_Axe",
-    RPistolLeftHolster = "RPistol_LeftHolster",
-    RSwordLeftHolster = "RSword_LeftHolster",
-    Rifle = "Rifle",
-    Shield = "Shield",
-    Spear = "Spear",
-    Tendril = "Tendril",
-}
+export type WeaponItemDefinitionEquipType = "RSword_LeftHolster" | "Hammer_Axe" | "GeneralInstrument" | "Greatsword" | "Spear" | "Bow" | "Rifle" | "RPistol_LeftHolster" | "Shield" | "EquippableMouth" | "AlwaysUnsheathed_RHand" | "Tendril" | "Drum" | "AlwaysUnsheathed_LHand" | "GrappleSheath" | "Brute" | "BowmanSword" | "";
 
-export enum FemaleAppearance {
-    Empty = "",
-    FElementalGauntletT2Ice = "F_Elemental_Gauntlet_T2_Ice",
-    FElementalGauntletT3Ice = "F_Elemental_Gauntlet_T3_Ice",
-    FElementalGauntletT4Ice = "F_Elemental_Gauntlet_T4_Ice",
-    FElementalGauntletT5Ice = "F_Elemental_Gauntlet_T5_Ice",
-}
+export type FemaleAppearance = "" | "F_Elemental_Gauntlet_T2_Ice" | "F_Elemental_Gauntlet_T3_Ice" | "F_Elemental_Gauntlet_T4_Ice" | "F_Elemental_Gauntlet_T5_Ice";
 
-export enum FireJoint {
-    AimDirection = "aim_direction",
-    ArrowAttachTip = "arrowAttach_tip",
-    ArrowAttachTipJnt = "arrowAttach_tip_jnt",
-    ArrowAttachTipJntJnt = "arrowAttach_tip_jnt_jnt",
-    BindSplineG = "bind_spline_g",
-    BowRootJnt = "bow_root_jnt",
-    Empty = "",
-    FXattachA = "FXattach_A",
-    Handattach = "handattach",
-    MusketAMuzzle = "musketA_muzzle",
-    Neck = "neck",
-    SiphonAttachmentPoint = "siphon_attachment_point",
-    Spear = "Spear",
-}
+export type FireJoint = "" | "handattach" | "bind_spline_g" | "arrowAttach_tip_jnt" | "musketA_muzzle" | "FXattach_A" | "siphon_attachment_point" | "aim_direction" | "neck" | "arrowAttach_tip_jnt_jnt" | "bow_root_jnt" | "arrowAttach_tip" | "Spear";
 
-export enum GatheringTypes {
-    AzothFlutePlayingMusicalPerformances = "AzothFlutePlaying+MusicalPerformances",
-    AzothStaff = "AzothStaff",
-    Chopping = "Chopping",
-    Cutting = "Cutting",
-    Dressing = "Dressing",
-    DrumPlayingMusicalPerformances = "DrumPlaying+MusicalPerformances",
-    Empty = "",
-    Fishing = "Fishing",
-    GuitarPlayingMusicalPerformances = "GuitarPlaying+MusicalPerformances",
-    MandolinPlayingMusicalPerformances = "MandolinPlaying+MusicalPerformances",
-    Mining = "Mining",
-    None = "None",
-    UprightBassPlayingMusicalPerformances = "UprightBassPlaying+MusicalPerformances",
-}
+export type GatheringTypes = "None" | "Chopping" | "Dressing" | "Cutting" | "Mining" | "Fishing" | "AzothFlutePlaying+MusicalPerformances" | "DrumPlaying+MusicalPerformances" | "GuitarPlaying+MusicalPerformances" | "UprightBassPlaying+MusicalPerformances" | "MandolinPlaying+MusicalPerformances" | "AzothStaff" | "";
 
-export enum IconPath {
-    Empty = "",
-    LoggingAxe = "LoggingAxe",
-    PickAxe = "PickAxe",
-    Placeholder = "placeholder",
-    Sickle = "Sickle",
-    Skinning = "Skinning",
-    WeaponIronrapier = "weapon_ironrapier",
-}
+export type IconPath = "" | "LoggingAxe" | "Skinning" | "Sickle" | "PickAxe" | "weapon_ironrapier" | "placeholder";
 
-export enum ManaCostID {
-    Empty = "",
-    SpecialAttack = "SpecialAttack",
-}
+export type ManaCostID = "" | "SpecialAttack";
 
-export enum OffHandMannequinTag {
-    Empty = "",
-    HatchetOH = "Hatchet_OH",
-    MeleeOH = "Melee_OH",
-    PistolOH = "Pistol_OH",
-    RangedOH = "Ranged_OH",
-    ShieldOH = "Shield_OH",
-    ShieldOHTowerShield = "Shield_OH, TowerShield",
-    SickleOH = "Sickle_OH",
-    The1HMeleeSickleOH = "1H_Melee, Sickle_OH",
-    TorchOH = "Torch_OH",
-}
+export type OffHandMannequinTag = "" | "Melee_OH" | "Ranged_OH" | "Shield_OH" | "Shield_OH, TowerShield" | "Hatchet_OH" | "Sickle_OH" | "Torch_OH" | "Pistol_OH" | "1H_Melee, Sickle_OH";
 
-export enum PrimaryHand {
-    Empty = "",
-    Main = "Main",
-}
+export type PrimaryHand = "Main" | "";
 
-export enum PrimaryUse {
-    CombatMelee = "Combat Melee",
-    CombatRanged = "Combat Ranged",
-    Empty = "",
-    Tool = "Tool",
-}
+export type PrimaryUse = "Combat Melee" | "Tool" | "Combat Ranged" | "";
 
-export enum ReticleName {
-    Blunderbuss = "blunderbuss",
-    Bow = "bow",
-    Empty = "",
-    Melee = "melee",
-    Pistol = "pistol",
-    Rifle = "rifle",
-    Spear = "spear",
-}
+export type ReticleName = "melee" | "spear" | "bow" | "rifle" | "blunderbuss" | "pistol" | "";
 
-export enum ReticleTargetName {
-    BlunderbussHaveTarget = "blunderbussHaveTarget",
-    BowHaveTarget = "bowHaveTarget",
-    Empty = "",
-    MeleeHaveTarget = "meleeHaveTarget",
-    PistolHaveTarget = "pistolHaveTarget",
-    RifleHaveTarget = "rifleHaveTarget",
-    SpearHaveTarget = "spearHaveTarget",
-}
+export type ReticleTargetName = "meleeHaveTarget" | "bowHaveTarget" | "spearHaveTarget" | "rifleHaveTarget" | "blunderbussHaveTarget" | "pistolHaveTarget" | "";
 
-export enum Weaknesses {
-    Empty = "",
-    Fire8 = "Fire=8",
-    Magic8 = "Magic=8",
-}
+export type Weaknesses = "" | "Magic=8" | "Fire=8";
 
-export interface WhisperData {
+export type WhisperData = {
     WhisperId:             string;
     TriggerType:           TriggerType;
     RequiredAchievementId: RequiredAchievementID;
@@ -12248,31 +5694,15 @@ export interface WhisperData {
     VfxId:                 VfxID;
 }
 
-export enum RequiredAchievementID {
-    Empty = "",
-    The06AWWWhisper01_Unlock = "06A_WW_whisper_01_unlock",
-    The06AWWWhisper02_Unlock = "06A_WW_whisper_02_unlock",
-    The06AWWWhisper03_Unlock = "06A_WW_whisper_03_unlock",
-}
+export type RequiredAchievementID = "" | "06A_WW_whisper_01_unlock" | "06A_WW_whisper_02_unlock" | "06A_WW_whisper_03_unlock";
 
-export enum Subtitle {
-    Empty = "",
-    MinersChanduLine1 = "@Miners_Chandu_line1",
-    MinersShazaanLine1 = "@Miners_Shazaan_line1",
-    MinersTomiraLine1 = "@Miners_Tomira_line1",
-}
+export type Subtitle = "" | "@Miners_Shazaan_line1" | "@Miners_Tomira_line1" | "@Miners_Chandu_line1";
 
-export enum TriggerType {
-    GameEvent = "GAME_EVENT",
-}
+export type TriggerType = "GAME_EVENT";
 
-export enum VfxID {
-    Empty = "",
-    WhisperVfx01 = "whisper_vfx_01",
-    WhisperVfxTest = "whisper_vfx_test",
-}
+export type VfxID = "whisper_vfx_test" | "whisper_vfx_01" | "";
 
-export interface WhisperVfxData {
+export type WhisperVfxData = {
     WhisperVfxId:          VfxID;
     VfxLibrary:            string;
     IntroFlash:            string;
