@@ -1,6 +1,6 @@
 {
   "name": "@mixednuts/types",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "datasheets.d.ts",
   "types": [
